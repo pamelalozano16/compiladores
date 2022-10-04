@@ -111,9 +111,12 @@ def p_forLoop(p):
    '''forLoop : FOR LPAREN vars expresion SEMICOLON expresion RPAREN bloque'''
 
 def p_condicion(p):
-    '''condicion : IF LPAREN expresion RPAREN bloque condicion
-                | ELSE bloque
-                '''
+    '''condicion : IF LPAREN expresion RPAREN bloque condicionelse'''
+    pass
+
+def p_condicionelse(p):
+    '''condicionelse : ELSE bloque
+                     | epsilon'''
     pass
 
 def p_tiposreturn(p):
