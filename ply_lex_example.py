@@ -18,14 +18,21 @@ import re
 
 
 reserved_keywords = {
-    'program': 'PROGRAM',
+    'start': 'START',
     'var': 'VAR',
     'int': 'INT',
+    'function': 'FUNCTION',
+    # 'switch': 'SWITCH',
+    'for': 'FOR',
+    'return': 'RETURN',
     'float': 'FLOAT',
     'print': 'PRINT',
-    'ctestring': 'CTESTRING',
     'if': 'IF',
     'else': 'ELSE',
+    'while': 'WHILE',
+    'bool': 'BOOL',
+    'void': 'VOID',
+    'string': 'STRING',
     'ctel': 'CTEL',
     'ctef': 'CTEF',
 }
@@ -36,9 +43,14 @@ reserved_keywords = {
 
 tokens = [
     'ID',
-    'NUMBER',
     'LCURLY',
     'RCURLY',
+    'LBRACKET',
+    'RBRACKET',
+    'OR',
+    'AND',
+    'DIFF',
+    'EXP',
     'LPAREN',
     'RPAREN',
     'SEMICOLON',
@@ -60,6 +72,8 @@ tokens = [
 
 t_LCURLY = r'\{'
 t_RCURLY = r'\}'
+t_LBRACKET = r'\['
+t_RBRACKET= r'\]'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_SEMICOLON = r'\;'
@@ -68,11 +82,15 @@ t_COMA = r'\,'
 t_EQUAL = r'\='
 t_MORETHAN = r'>'
 t_LESSTHAN = r'<'
-t_NOTEQUAL = r'<>'
+t_NOTEQUAL = r'!='
 t_PLUS    = r'\+'
+t_DIFF    = r'\%'
+t_EXP    = r'\^'
 t_MINUS   = r'-'
 t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
+t_OR = r'!!'
+t_AND = r'&&'
 
 
 # In[6]:
@@ -83,14 +101,33 @@ def t_ID(t):
     t.type = reserved_keywords.get(t.value, 'ID')
     return t
 
-def t_NUMBER(t):
-     r'\d+ (\. \d+)? (E [+-]? \d+)?'
+def t_STRING(t):
+    r'"[^"]*"'
+    t.type = reserved_keywords.get(t.value, 'STRING')
+    t.value = (t.value, 'string')
+    return t
+
+def t_FLOAT(t):
+     r'[0-9]+\.[0-9]+'
+     t.type = reserved_keywords.get(t.value, 'FLOAT')
      t.value = float(t.value)    
+     return t
+
+def t_INT(t):
+     r'[0-9]+'
+     t.type = reserved_keywords.get(t.value, 'INT')
+     t.value = int(t.value)    
      return t
 
 def t_newline(t):
      r'\n+'
      t.lexer.lineno += len(t.value)
+
+def t_BOOL(t):
+    r'true|false'
+    t.type = reserved_keywords.get(t.value, 'BOOL')
+    t.value = bool(t.value)    
+    return t
 
 t_ignore  = ' \t'
  

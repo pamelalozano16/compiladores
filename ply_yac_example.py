@@ -5,13 +5,17 @@ import ply.yacc as yacc
 from ply_lex_example import tokens
 
 def p_programa(p):
-    '''programa : PROGRAM ID SEMICOLON vars bloque'''
+    '''programa : START LPAREN RPAREN bloque'''
+    pass
+
+def p_declaracion(p):
+    '''declaracion : vars
+                   | epsilon'''
     pass
 
 def p_vars(p):
     '''vars : VAR var
-            | vars vars
-            | epsilon'''
+            | vars vars'''
     pass
 
 def p_var(p):
@@ -25,26 +29,49 @@ def p_vardef(p):
 
 def p_tipo(p):
     '''tipo : INT
-            | FLOAT'''
+            | FLOAT
+            | BOOL
+            | STRING'''
+    pass
+
+def p_lista(p):
+    '''lista : ID
+             | ID COMA'''
+    pass
+
+def p_arreglo(p):
+    '''arreglo : LBRACKET lista RBRACKET '''
     pass
 
 def p_bloque(p):
-    '''bloque : LCURLY estatuto RCURLY '''
+    '''bloque : LCURLY declaracion estatutoExp RCURLY'''
+    pass
+
+def p_estatutoExp(p):
+    '''estatutoExp : estatuto SEMICOLON
+                    | estatutoExp estatutoExp'''
     pass
 
 def p_estatuto(p):
     '''estatuto : asignacion 
                 | condicion
+                | whileLoop
+                | forLoop
                 | escritura
-                | epsilon'''
+                | funcion
+                | returnexp'''
+    pass
+                    
+def p_returnexp(p):
+    '''returnexp : RETURN expresion'''
     pass
 
 def p_asignacion(p):
-    '''asignacion : ID EQUAL expresion SEMICOLON'''
+    '''asignacion : ID EQUAL expresion'''
     pass
 
 def p_escritura(p):
-    '''escritura : PRINT LPAREN escrito RPAREN SEMICOLON'''
+    '''escritura : PRINT LPAREN escrito RPAREN'''
     pass
 
 def p_escrito(p):
@@ -53,18 +80,22 @@ def p_escrito(p):
     pass
 
 def p_impr(p):
-    '''impr : CTESTRING
+    '''impr : STRING
             | expresion'''
     pass
 
 def p_expresion(p): 
-    #a => expresion -> exp-> termmino -> factor-> varcte -> ID
+    #a => expresion -> exp-> termino -> factor-> varcte -> ID
     #a<b => expresion -> exp expresion -> exp comparacion exp -> termimno comparacion termino -> factor comparacion factor
     #a+b => expresion -> exp expresion -> exp exp -> termino signo exp -> termino signo termino -> factor signo factor
     #a/b => expresion -> exp expresion -> exp exp -> termino termino -> factor operacion factor
     '''expresion : exp
                 | comparacion exp
-                | exp expresion'''
+                | AND exp
+                | OR exp
+                | exp expresion
+                | arreglo '''
+        #       | expresion expresion '''
     pass  
 
 def p_comparacion(p):
@@ -73,11 +104,35 @@ def p_comparacion(p):
                    | NOTEQUAL'''
     pass
 
+def p_whileLoop(p):
+   '''whileLoop : WHILE LPAREN expresion RPAREN bloque'''
+
+def p_forLoop(p):
+   '''forLoop : FOR LPAREN vars expresion SEMICOLON expresion RPAREN bloque'''
+
 def p_condicion(p):
     '''condicion : IF LPAREN expresion RPAREN bloque condicion
-                | ELSE bloque condicion
-                | SEMICOLON
-                | epsilon'''
+                | ELSE bloque
+                '''
+    pass
+
+def p_tiposreturn(p):
+    '''tiposreturn : tipo
+                    | VOID'''
+    pass
+
+def p_funcion(p):
+    '''funcion : FUNCTION ID LPAREN argumentos RPAREN COLON tiposreturn bloque'''
+    pass
+
+def p_argumentos(p):
+    '''argumentos : args
+                  | epsilon'''
+    pass
+
+def p_args(p):
+    '''args : ID COLON tipo
+            | args COMA args'''
     pass
 
 def p_exp(p):
@@ -97,7 +152,9 @@ def p_termino(p):
 
 def p_operacion(p):
     '''operacion : TIMES exp
-                 | DIVIDE exp'''
+                 | DIVIDE exp
+                 | DIFF exp
+                 | EXP exp'''
     pass
 
 def p_factor(p):
@@ -125,7 +182,7 @@ parser = yacc.yacc(debug=True)
 
 while True:
     try:
-        s = input('littleDuck > ')
+        s = input('Pystachio > ')
     except EOFError:
         break
     if not s:
