@@ -101,6 +101,7 @@ def p_expresion(p):
 def p_comparacion(p):
     '''comparacion : LESSTHAN
                    | MORETHAN
+                   | ISEQUAL
                    | NOTEQUAL'''
     pass
 

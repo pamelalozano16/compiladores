@@ -60,6 +60,7 @@ tokens = [
     'MORETHAN',
     'LESSTHAN',
     'NOTEQUAL',
+    'ISEQUAL',
     'PLUS',
     'MINUS',
     'TIMES',
@@ -83,6 +84,7 @@ t_EQUAL = r'\='
 t_MORETHAN = r'>'
 t_LESSTHAN = r'<'
 t_NOTEQUAL = r'!='
+t_ISEQUAL = r'!='
 t_PLUS    = r'\+'
 t_DIFF    = r'\%'
 t_EXP    = r'\^'
