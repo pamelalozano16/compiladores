@@ -1,0 +1,10 @@
+start() {
+    var a: int;
+
+    function main(): void {
+        if(a&&b) {
+            a=c;
+        };
+        a=c;
+    };
+}

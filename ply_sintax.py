@@ -2,7 +2,7 @@
 import ply.yacc as yacc
  
  # Get the token map from the lexer.  This is required.
-from ply_lex_example import tokens
+from ply_lex import tokens
 
 def p_programa(p):
     '''programa : START LPAREN RPAREN bloque'''
@@ -109,7 +109,7 @@ def p_whileLoop(p):
    '''whileLoop : WHILE LPAREN expresion RPAREN bloque'''
 
 def p_forLoop(p):
-   '''forLoop : FOR LPAREN vars expresion SEMICOLON expresion RPAREN bloque'''
+   '''forLoop : FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque'''
 
 def p_condicion(p):
     '''condicion : IF LPAREN expresion RPAREN bloque condicionelse'''
@@ -184,13 +184,18 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc(debug=True)
 
-while True:
-    try:
-        s = input('Pystachio > ')
-    except EOFError:
-        break
-    if not s:
-        continue
-    result = parser.parse(s)
+with open('test.pyst') as f:
+    contents = f.read()
+    result = parser.parse(contents)
     print(result)
+
+# while True:
+#     try:
+#         s = input('Pystachio > ')
+#     except EOFError:
+#         break
+#     if not s:
+#         continue
+#     result = parser.parse(s)
+#     print(result)
  
