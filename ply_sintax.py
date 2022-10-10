@@ -3,6 +3,9 @@ import ply.yacc as yacc
  
  # Get the token map from the lexer.  This is required.
 from ply_lex import tokens
+from semantic_cube import SemanticCube
+
+semantic_cube = SemanticCube()
 
 def p_programa(p):
     '''programa : START LPAREN RPAREN bloque'''
