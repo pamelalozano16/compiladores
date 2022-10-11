@@ -4,8 +4,12 @@ import ply.yacc as yacc
  # Get the token map from the lexer.  This is required.
 from ply_lex import tokens
 from semantic_cube import SemanticCube
+from variables_control import VariableControl
 
 semantic_cube = SemanticCube()
+variables_control = VariableControl()
+declaring_variable = []
+declaring_types = []
 
 def p_programa(p):
     '''programa : START LPAREN RPAREN bloque'''
@@ -26,8 +30,12 @@ def p_var(p):
     pass
 
 def p_vardef(p):
-    '''vardef : ID
-              | vardef COMA vardef'''
+    '''vardef : ID'''
+            #   | vardef COMA vardef
+    if(variables_control.find_var(p[1]) == None):
+        declaring_variable.append(p[1])
+    else:
+        print('Variable is already declared')
     pass
 
 def p_tipo(p):
@@ -35,6 +43,9 @@ def p_tipo(p):
             | FLOAT
             | BOOL
             | STRING'''
+    if(0<len(declaring_variable)):
+        variables_control.add_var(declaring_variable.pop(), p[1])
+     #   variables_control.print_table()
     pass
 
 def p_lista(p):
@@ -71,6 +82,8 @@ def p_returnexp(p):
 
 def p_asignacion(p):
     '''asignacion : ID EQUAL expresion'''
+    if(variables_control.find_var(p[1]) == None):
+        print("Error: Variable "+p[1]+" is not declared")
     pass
 
 def p_escritura(p):
@@ -123,13 +136,23 @@ def p_condicionelse(p):
                      | epsilon'''
     pass
 
+def p_funcion(p):
+    '''funcion : FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque'''
+    variables_control.scope_back()
+    pass
+
+def p_funcdef(p):
+    '''funcdef : ID'''
+    if(not variables_control.is_in_table(p[1])):
+        declaring_variable.append(p[1])
+    pass
+
 def p_tiposreturn(p):
     '''tiposreturn : tipo
                     | VOID'''
-    pass
-
-def p_funcion(p):
-    '''funcion : FUNCTION ID LPAREN argumentos RPAREN COLON tiposreturn bloque'''
+    if(0<len(declaring_variable)):
+        variables_control.add_func(declaring_variable.pop(), p[1])
+      #  variables_control.print_table()
     pass
 
 def p_argumentos(p):
@@ -187,10 +210,10 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc(debug=True)
 
-with open('test.pyst') as f:
+with open('test_scope.pyst') as f:
     contents = f.read()
     result = parser.parse(contents)
-    print(result)
+    print("Errors:", result)
 
 # while True:
 #     try:

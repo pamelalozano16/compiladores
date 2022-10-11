@@ -7,41 +7,10 @@ class VariableControl:
                 'scope': '#',
                 'return': 'void',
                 'vars_table': [],
-                'types_table': []
-            },
-            # 'func1':{
-            #     'scope': 'global',
-            #     'return': 'void',
-            #     'vars_table': [
-            #         'b'
-            #     ],
-            #     'types_table': [
-            #         'float'
-            #     ]
-            # },
-            # 'func2':{
-            #     'scope': 'func1',
-            #     'return': 'void',
-            #     'vars_table': [
-            #         'c'
-            #     ],
-            #     'types_table': [
-            #         'float'
-            #     ]
-            # },
-            # 'func3':{
-            #     'scope': 'global',
-            #     'return': 'void',
-            #     'vars_table': [
-            #         'd'
-            #     ],
-            #     'types_table': [
-            #         'float'
-            #     ]
-            # },      
+                'vars_values':[],
+                'types_table': [],
+            },  
         }
-    
-    self.variables_values = {}
 
     def change_scope(self, scope):
         self.current_scope=scope
@@ -81,6 +50,7 @@ class VariableControl:
             'return': return_type,
             'scope': self.current_scope,
             'vars_table':[],
+            'vars_values':[],
             'types_table': [],
         }
         self.current_scope = name
@@ -93,9 +63,6 @@ class VariableControl:
     def scope_back(self):
         self.current_scope = self.variables_table[self.current_scope]['scope']
        # print("Scope", self.current_scope)
-    
-    def get_value(self, name):
-        return self.variables_values[name]
 
         
 
