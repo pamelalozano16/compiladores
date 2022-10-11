@@ -1,0 +1,15 @@
+start() {
+    var a: int;
+    var c: float;
+    function main(): void {
+        var lol: int;
+        if(a&&b) {
+            lol=c;
+        };
+        a=c;
+    };
+
+    function jeje(): void {
+        lol=t;
+    };
+}
