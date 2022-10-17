@@ -7,3 +7,7 @@
 ## Avance 1: Lexico y Sintaxis
 
 #### Ejemplo: ![Avance1](/Avance1_tests.png "Avance1")
+
+## Avance 2: Semantica básica
+
+#### Ejemplo: ![Avance2](/Avance2_tests.png "Avance2")

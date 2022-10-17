@@ -210,7 +210,8 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc(debug=True)
 
-with open('test_scope.pyst') as f:
+fileName = input('Pystachio > ')
+with open(fileName) as f:
     contents = f.read()
     result = parser.parse(contents)
     print("Errors:", result)
