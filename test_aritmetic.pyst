@@ -1,10 +1,11 @@
 start() {
     var a: float;
     var c: float;
+    var b:float;
+    var k:float;
     function main(): void {
-        var lol: int;
+        var lol: float;
         var sos: float;
-        c=lol+sos;
-        sos=lol+a;
+        c=lol+sos*a*k;
     };
 }

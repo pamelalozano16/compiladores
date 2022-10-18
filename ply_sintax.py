@@ -114,7 +114,6 @@ def p_expresion(p):
                 | comparacion exp
                 | AND exp
                 | OR exp
-                | exp expresion
                 | arreglo '''
         #       | expresion expresion ''' 
 
@@ -171,27 +170,29 @@ def p_args(p):
 
 def p_exp(p):
     '''exp : termino
-           | termino signo'''
+           | termino signo exp'''
     pass
 
 def p_signo(p):
     '''signo : PLUS
              | MINUS'''
-    print("Signo", p[1])
+ #   print("3", p[1])
     semantics.addTerm(p[1])
     pass
 
 def p_termino(p):
     '''termino : factor
-               | factor operacion'''
+               | factor operacion termino'''
+ #   print("4", "checkTerm")
+    semantics.checkTerm()
     pass
 
 def p_operacion(p):
-    '''operacion : TIMES exp
-                 | DIVIDE exp
-                 | DIFF exp
-                 | EXP exp'''
-    print("operacion", p[1])
+    '''operacion : TIMES
+                 | DIVIDE
+                 | DIFF
+                 | EXP'''
+  #  print("2", p[1])            
     semantics.addFact(p[1])
     pass
 
@@ -199,6 +200,8 @@ def p_factor(p):
     '''factor : LPAREN expresion RPAREN
                | varcte
                | signo varcte'''
+ #   print("5", "checkFact")
+    semantics.checkFact()
     pass
 
 def p_epsilon(p):
@@ -209,9 +212,11 @@ def p_varcte(p):
     '''varcte : ID 
               | CTEL
               | CTEF'''
-    semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
-    semantics.checkFact()
-    semantics.checkTerm()
+ #   print("1", p[1])
+    if(variables_control.find_var(p[1]) == None):
+        raise ValueError("Variable "+p[1]+" is not declared")
+    else:
+        semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
     pass
 
 # Error rule for syntax errors
