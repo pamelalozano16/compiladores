@@ -197,11 +197,23 @@ def p_operacion(p):
     pass
 
 def p_factor(p):
-    '''factor : LPAREN expresion RPAREN
-               | varcte
-               | signo varcte'''
- #   print("5", "checkFact")
+    '''factor : paren expresion paren
+               | varcte'''
+#    print("5", "checkFact")
     semantics.checkFact()
+    pass
+
+def p_paren(p):
+    '''paren : LPAREN
+            | RPAREN'''
+    if(p[1]=='('):
+#      print("(")
+      semantics.addFact(p[1])
+    else:
+#        print(")")
+        semantics.checkFact()
+        semantics.checkTerm()
+        semantics.checkParen()
     pass
 
 def p_epsilon(p):
@@ -226,8 +238,8 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc(debug=True)
 
-fileName = input('Pystachio > ')
-with open(fileName) as f:
+#fileName = input('Pystachio > ')
+with open("test_scope.pyst") as f:
     contents = f.read()
     result = parser.parse(contents)
     print("Errors:", result)

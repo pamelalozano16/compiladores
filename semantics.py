@@ -10,6 +10,11 @@ class Semantics:
         self.quads = []
         self.tempCounter = 0
     
+    def printQuads(self):
+        print("Quads:")
+        for i in self.quads:
+            print(i)
+    
     def insertId(self, id, idType):
         self.pTypes.append(idType)
         self.pilaO.append(id)
@@ -32,7 +37,8 @@ class Semantics:
             right_type = self.pTypes.pop()
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), -1, self.pilaO.pop(), self.pTypes.pop(), right_type, right)
             self.quads.append(quad.getQuad())
-        print("Quads:", self.quads, "PilaO:", self.pilaO, "pOper:", self.pOper)
+        self.printQuads()
+        print("PilaO:", self.pilaO, "pOper:", self.pOper)
 
 
     def checkTerm(self):
@@ -55,6 +61,7 @@ class Semantics:
             self.tempCounter+=1
      #   print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
     
-    
-
+    def checkParen(self):    
+        if 0<len(self.pOper) and (self.pOper[-1]=="("):
+            self.pOper.pop()
 

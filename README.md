@@ -6,8 +6,15 @@
 
 ## Avance 1: Lexico y Sintaxis
 
-#### Ejemplo: ![Avance1](/Avance1_tests.png "Avance1")
+#### Ejemplo:
+<img src="/Avance1_tests.png" alt="Avance1" width="400"/>
 
 ## Avance 2: Semantica básica
 
-#### Ejemplo: ![Avance2](/Avance2_tests.png "Avance2")
+#### Ejemplo:
+<img src="/Avance2_tests.png" alt="Avance2" width="400"/>
+
+## Avance 3: Expresiones Aritméticas y Asignación
+
+#### Ejemplo:
+<img src="/Avance3.1_tests.png" alt="Avance3" width="400"/>

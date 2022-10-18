@@ -8,7 +8,6 @@ start() {
         };
         a=c;
     };
-
     function jeje(): void {
         lol=t;
     };

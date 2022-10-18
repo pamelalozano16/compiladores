@@ -66,13 +66,14 @@ Rule 60    operacion -> TIMES
 Rule 61    operacion -> DIVIDE
 Rule 62    operacion -> DIFF
 Rule 63    operacion -> EXP
-Rule 64    factor -> LPAREN expresion RPAREN
+Rule 64    factor -> paren expresion paren
 Rule 65    factor -> varcte
-Rule 66    factor -> signo varcte
-Rule 67    epsilon -> <empty>
-Rule 68    varcte -> ID
-Rule 69    varcte -> CTEL
-Rule 70    varcte -> CTEF
+Rule 66    paren -> LPAREN
+Rule 67    paren -> RPAREN
+Rule 68    epsilon -> <empty>
+Rule 69    varcte -> ID
+Rule 70    varcte -> CTEL
+Rule 71    varcte -> CTEF
 
 Terminals, with rules where they appear
 
@@ -80,8 +81,8 @@ AND                  : 34
 BOOL                 : 10
 COLON                : 6 46 52
 COMA                 : 13 29 53
-CTEF                 : 70
-CTEL                 : 69
+CTEF                 : 71
+CTEL                 : 70
 DIFF                 : 62
 DIVIDE               : 61
 ELSE                 : 44
@@ -90,14 +91,14 @@ EXP                  : 63
 FLOAT                : 9
 FOR                  : 42
 FUNCTION             : 46
-ID                   : 7 12 13 26 47 52 68
+ID                   : 7 12 13 26 47 52 69
 IF                   : 43
 INT                  : 8
 ISEQUAL              : 39
 LBRACKET             : 14
 LCURLY               : 15
 LESSTHAN             : 37
-LPAREN               : 1 27 41 42 43 46 64
+LPAREN               : 1 27 41 42 43 46 66
 MINUS                : 57
 MORETHAN             : 38
 NOTEQUAL             : 40
@@ -107,7 +108,7 @@ PRINT                : 27
 RBRACKET             : 14
 RCURLY               : 15
 RETURN               : 25
-RPAREN               : 1 27 41 42 43 46 64
+RPAREN               : 1 27 41 42 43 46 67
 SEMICOLON            : 6 16 42
 START                : 1
 STRING               : 11 30
@@ -142,14 +143,15 @@ funcion              : 23
 impr                 : 28 29 29
 lista                : 14
 operacion            : 59
+paren                : 64 64
 programa             : 0
 returnexp            : 24
-signo                : 55 66
+signo                : 55
 termino              : 54 55 59
 tipo                 : 6 48 52
 tiposreturn          : 46
 var                  : 4
-varcte               : 65 66
+varcte               : 65
 vardef               : 6
 vars                 : 2 5 5
 whileLoop            : 20
@@ -208,16 +210,16 @@ state 6
     (3) declaracion -> . epsilon
     (4) vars -> . VAR var
     (5) vars -> . vars vars
-    (67) epsilon -> .
+    (68) epsilon -> .
 
     VAR             shift and go to state 10
-    ID              reduce using rule 67 (epsilon -> .)
-    IF              reduce using rule 67 (epsilon -> .)
-    WHILE           reduce using rule 67 (epsilon -> .)
-    FOR             reduce using rule 67 (epsilon -> .)
-    PRINT           reduce using rule 67 (epsilon -> .)
-    FUNCTION        reduce using rule 67 (epsilon -> .)
-    RETURN          reduce using rule 67 (epsilon -> .)
+    ID              reduce using rule 68 (epsilon -> .)
+    IF              reduce using rule 68 (epsilon -> .)
+    WHILE           reduce using rule 68 (epsilon -> .)
+    FOR             reduce using rule 68 (epsilon -> .)
+    PRINT           reduce using rule 68 (epsilon -> .)
+    FUNCTION        reduce using rule 68 (epsilon -> .)
+    RETURN          reduce using rule 68 (epsilon -> .)
 
     declaracion                    shift and go to state 7
     vars                           shift and go to state 8
@@ -460,37 +462,35 @@ state 26
     (14) arreglo -> . LBRACKET lista RBRACKET
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
     AND             shift and go to state 44
     OR              shift and go to state 45
-    LESSTHAN        shift and go to state 49
-    MORETHAN        shift and go to state 50
-    ISEQUAL         shift and go to state 51
-    NOTEQUAL        shift and go to state 52
-    LBRACKET        shift and go to state 53
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LESSTHAN        shift and go to state 48
+    MORETHAN        shift and go to state 49
+    ISEQUAL         shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
     expresion                      shift and go to state 41
     exp                            shift and go to state 42
     comparacion                    shift and go to state 43
     arreglo                        shift and go to state 46
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 27
 
@@ -531,7 +531,7 @@ state 29
 
     (6) var -> vardef . COLON tipo SEMICOLON
 
-    COLON           shift and go to state 62
+    COLON           shift and go to state 61
 
 
 state 30
@@ -636,37 +636,35 @@ state 34
     (14) arreglo -> . LBRACKET lista RBRACKET
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
     AND             shift and go to state 44
     OR              shift and go to state 45
-    LESSTHAN        shift and go to state 49
-    MORETHAN        shift and go to state 50
-    ISEQUAL         shift and go to state 51
-    NOTEQUAL        shift and go to state 52
-    LBRACKET        shift and go to state 53
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LESSTHAN        shift and go to state 48
+    MORETHAN        shift and go to state 49
+    ISEQUAL         shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
-    expresion                      shift and go to state 63
+    expresion                      shift and go to state 62
     exp                            shift and go to state 42
     comparacion                    shift and go to state 43
     arreglo                        shift and go to state 46
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 35
 
@@ -685,37 +683,35 @@ state 35
     (14) arreglo -> . LBRACKET lista RBRACKET
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
     AND             shift and go to state 44
     OR              shift and go to state 45
-    LESSTHAN        shift and go to state 49
-    MORETHAN        shift and go to state 50
-    ISEQUAL         shift and go to state 51
-    NOTEQUAL        shift and go to state 52
-    LBRACKET        shift and go to state 53
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LESSTHAN        shift and go to state 48
+    MORETHAN        shift and go to state 49
+    ISEQUAL         shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
-    expresion                      shift and go to state 64
+    expresion                      shift and go to state 63
     exp                            shift and go to state 42
     comparacion                    shift and go to state 43
     arreglo                        shift and go to state 46
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 36
 
@@ -734,37 +730,35 @@ state 36
     (14) arreglo -> . LBRACKET lista RBRACKET
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
     AND             shift and go to state 44
     OR              shift and go to state 45
-    LESSTHAN        shift and go to state 49
-    MORETHAN        shift and go to state 50
-    ISEQUAL         shift and go to state 51
-    NOTEQUAL        shift and go to state 52
-    LBRACKET        shift and go to state 53
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LESSTHAN        shift and go to state 48
+    MORETHAN        shift and go to state 49
+    ISEQUAL         shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
-    expresion                      shift and go to state 65
+    expresion                      shift and go to state 64
     exp                            shift and go to state 42
     comparacion                    shift and go to state 43
     arreglo                        shift and go to state 46
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 37
 
@@ -773,28 +767,27 @@ state 37
     (51) argumentos -> . epsilon
     (52) args -> . ID COLON tipo
     (53) args -> . args COMA args
-    (67) epsilon -> .
+    (68) epsilon -> .
 
   ! shift/reduce conflict for ID resolved as shift
-    ID              shift and go to state 69
-    AND             reduce using rule 67 (epsilon -> .)
-    OR              reduce using rule 67 (epsilon -> .)
-    LESSTHAN        reduce using rule 67 (epsilon -> .)
-    MORETHAN        reduce using rule 67 (epsilon -> .)
-    ISEQUAL         reduce using rule 67 (epsilon -> .)
-    NOTEQUAL        reduce using rule 67 (epsilon -> .)
-    LBRACKET        reduce using rule 67 (epsilon -> .)
-    LPAREN          reduce using rule 67 (epsilon -> .)
-    CTEL            reduce using rule 67 (epsilon -> .)
-    CTEF            reduce using rule 67 (epsilon -> .)
-    PLUS            reduce using rule 67 (epsilon -> .)
-    MINUS           reduce using rule 67 (epsilon -> .)
+    ID              shift and go to state 68
+    AND             reduce using rule 68 (epsilon -> .)
+    OR              reduce using rule 68 (epsilon -> .)
+    LESSTHAN        reduce using rule 68 (epsilon -> .)
+    MORETHAN        reduce using rule 68 (epsilon -> .)
+    ISEQUAL         reduce using rule 68 (epsilon -> .)
+    NOTEQUAL        reduce using rule 68 (epsilon -> .)
+    LBRACKET        reduce using rule 68 (epsilon -> .)
+    LPAREN          reduce using rule 68 (epsilon -> .)
+    RPAREN          reduce using rule 68 (epsilon -> .)
+    CTEL            reduce using rule 68 (epsilon -> .)
+    CTEF            reduce using rule 68 (epsilon -> .)
 
-  ! ID              [ reduce using rule 67 (epsilon -> .) ]
+  ! ID              [ reduce using rule 68 (epsilon -> .) ]
 
-    argumentos                     shift and go to state 66
-    args                           shift and go to state 67
-    epsilon                        shift and go to state 68
+    argumentos                     shift and go to state 65
+    args                           shift and go to state 66
+    epsilon                        shift and go to state 67
 
 state 38
 
@@ -817,46 +810,44 @@ state 38
     (14) arreglo -> . LBRACKET lista RBRACKET
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
-    STRING          shift and go to state 72
+    STRING          shift and go to state 71
     AND             shift and go to state 44
     OR              shift and go to state 45
-    LESSTHAN        shift and go to state 49
-    MORETHAN        shift and go to state 50
-    ISEQUAL         shift and go to state 51
-    NOTEQUAL        shift and go to state 52
-    LBRACKET        shift and go to state 53
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LESSTHAN        shift and go to state 48
+    MORETHAN        shift and go to state 49
+    ISEQUAL         shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
-    escrito                        shift and go to state 70
-    impr                           shift and go to state 71
-    expresion                      shift and go to state 73
+    escrito                        shift and go to state 69
+    impr                           shift and go to state 70
+    expresion                      shift and go to state 72
     exp                            shift and go to state 42
     comparacion                    shift and go to state 43
     arreglo                        shift and go to state 46
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 39
 
     (46) funcion -> FUNCTION funcdef . LPAREN argumentos RPAREN COLON tiposreturn bloque
 
-    LPAREN          shift and go to state 74
+    LPAREN          shift and go to state 73
 
 
 state 40
@@ -880,6 +871,7 @@ state 42
     SEMICOLON       reduce using rule 32 (expresion -> exp .)
     RPAREN          reduce using rule 32 (expresion -> exp .)
     COMA            reduce using rule 32 (expresion -> exp .)
+    LPAREN          reduce using rule 32 (expresion -> exp .)
 
 
 state 43
@@ -889,27 +881,25 @@ state 43
     (55) exp -> . termino signo exp
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
-    exp                            shift and go to state 75
+    exp                            shift and go to state 74
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 44
 
@@ -918,27 +908,25 @@ state 44
     (55) exp -> . termino signo exp
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
-    exp                            shift and go to state 76
+    exp                            shift and go to state 75
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 45
 
@@ -947,27 +935,25 @@ state 45
     (55) exp -> . termino signo exp
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
-    exp                            shift and go to state 77
+    exp                            shift and go to state 76
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 46
 
@@ -976,6 +962,7 @@ state 46
     SEMICOLON       reduce using rule 36 (expresion -> arreglo .)
     RPAREN          reduce using rule 36 (expresion -> arreglo .)
     COMA            reduce using rule 36 (expresion -> arreglo .)
+    LPAREN          reduce using rule 36 (expresion -> arreglo .)
 
 
 state 47
@@ -988,73 +975,57 @@ state 47
     SEMICOLON       reduce using rule 54 (exp -> termino .)
     RPAREN          reduce using rule 54 (exp -> termino .)
     COMA            reduce using rule 54 (exp -> termino .)
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LPAREN          reduce using rule 54 (exp -> termino .)
+    PLUS            shift and go to state 78
+    MINUS           shift and go to state 79
 
-    signo                          shift and go to state 78
+    signo                          shift and go to state 77
 
 state 48
-
-    (66) factor -> signo . varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-
-    varcte                         shift and go to state 79
-
-state 49
 
     (37) comparacion -> LESSTHAN .
 
     LPAREN          reduce using rule 37 (comparacion -> LESSTHAN .)
+    RPAREN          reduce using rule 37 (comparacion -> LESSTHAN .)
     ID              reduce using rule 37 (comparacion -> LESSTHAN .)
     CTEL            reduce using rule 37 (comparacion -> LESSTHAN .)
     CTEF            reduce using rule 37 (comparacion -> LESSTHAN .)
-    PLUS            reduce using rule 37 (comparacion -> LESSTHAN .)
-    MINUS           reduce using rule 37 (comparacion -> LESSTHAN .)
 
 
-state 50
+state 49
 
     (38) comparacion -> MORETHAN .
 
     LPAREN          reduce using rule 38 (comparacion -> MORETHAN .)
+    RPAREN          reduce using rule 38 (comparacion -> MORETHAN .)
     ID              reduce using rule 38 (comparacion -> MORETHAN .)
     CTEL            reduce using rule 38 (comparacion -> MORETHAN .)
     CTEF            reduce using rule 38 (comparacion -> MORETHAN .)
-    PLUS            reduce using rule 38 (comparacion -> MORETHAN .)
-    MINUS           reduce using rule 38 (comparacion -> MORETHAN .)
 
 
-state 51
+state 50
 
     (39) comparacion -> ISEQUAL .
 
     LPAREN          reduce using rule 39 (comparacion -> ISEQUAL .)
+    RPAREN          reduce using rule 39 (comparacion -> ISEQUAL .)
     ID              reduce using rule 39 (comparacion -> ISEQUAL .)
     CTEL            reduce using rule 39 (comparacion -> ISEQUAL .)
     CTEF            reduce using rule 39 (comparacion -> ISEQUAL .)
-    PLUS            reduce using rule 39 (comparacion -> ISEQUAL .)
-    MINUS           reduce using rule 39 (comparacion -> ISEQUAL .)
 
 
-state 52
+state 51
 
     (40) comparacion -> NOTEQUAL .
 
     LPAREN          reduce using rule 40 (comparacion -> NOTEQUAL .)
+    RPAREN          reduce using rule 40 (comparacion -> NOTEQUAL .)
     ID              reduce using rule 40 (comparacion -> NOTEQUAL .)
     CTEL            reduce using rule 40 (comparacion -> NOTEQUAL .)
     CTEF            reduce using rule 40 (comparacion -> NOTEQUAL .)
-    PLUS            reduce using rule 40 (comparacion -> NOTEQUAL .)
-    MINUS           reduce using rule 40 (comparacion -> NOTEQUAL .)
 
 
-state 53
+state 52
 
     (14) arreglo -> LBRACKET . lista RBRACKET
     (12) lista -> . ID
@@ -1064,7 +1035,7 @@ state 53
 
     lista                          shift and go to state 80
 
-state 54
+state 53
 
     (58) termino -> factor .
     (59) termino -> factor . operacion termino
@@ -1078,6 +1049,7 @@ state 54
     SEMICOLON       reduce using rule 58 (termino -> factor .)
     RPAREN          reduce using rule 58 (termino -> factor .)
     COMA            reduce using rule 58 (termino -> factor .)
+    LPAREN          reduce using rule 58 (termino -> factor .)
     TIMES           shift and go to state 83
     DIVIDE          shift and go to state 84
     DIFF            shift and go to state 85
@@ -1085,9 +1057,9 @@ state 54
 
     operacion                      shift and go to state 82
 
-state 55
+state 54
 
-    (64) factor -> LPAREN . expresion RPAREN
+    (64) factor -> paren . expresion paren
     (32) expresion -> . exp
     (33) expresion -> . comparacion exp
     (34) expresion -> . AND exp
@@ -1102,39 +1074,37 @@ state 55
     (14) arreglo -> . LBRACKET lista RBRACKET
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
     AND             shift and go to state 44
     OR              shift and go to state 45
-    LESSTHAN        shift and go to state 49
-    MORETHAN        shift and go to state 50
-    ISEQUAL         shift and go to state 51
-    NOTEQUAL        shift and go to state 52
-    LBRACKET        shift and go to state 53
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LESSTHAN        shift and go to state 48
+    MORETHAN        shift and go to state 49
+    ISEQUAL         shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
+    paren                          shift and go to state 54
     expresion                      shift and go to state 87
     exp                            shift and go to state 42
     comparacion                    shift and go to state 43
     arreglo                        shift and go to state 46
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    varcte                         shift and go to state 55
 
-state 56
+state 55
 
     (65) factor -> varcte .
 
@@ -1147,78 +1117,110 @@ state 56
     SEMICOLON       reduce using rule 65 (factor -> varcte .)
     RPAREN          reduce using rule 65 (factor -> varcte .)
     COMA            reduce using rule 65 (factor -> varcte .)
+    LPAREN          reduce using rule 65 (factor -> varcte .)
+
+
+state 56
+
+    (66) paren -> LPAREN .
+
+    AND             reduce using rule 66 (paren -> LPAREN .)
+    OR              reduce using rule 66 (paren -> LPAREN .)
+    LESSTHAN        reduce using rule 66 (paren -> LPAREN .)
+    MORETHAN        reduce using rule 66 (paren -> LPAREN .)
+    ISEQUAL         reduce using rule 66 (paren -> LPAREN .)
+    NOTEQUAL        reduce using rule 66 (paren -> LPAREN .)
+    LBRACKET        reduce using rule 66 (paren -> LPAREN .)
+    LPAREN          reduce using rule 66 (paren -> LPAREN .)
+    RPAREN          reduce using rule 66 (paren -> LPAREN .)
+    ID              reduce using rule 66 (paren -> LPAREN .)
+    CTEL            reduce using rule 66 (paren -> LPAREN .)
+    CTEF            reduce using rule 66 (paren -> LPAREN .)
+    TIMES           reduce using rule 66 (paren -> LPAREN .)
+    DIVIDE          reduce using rule 66 (paren -> LPAREN .)
+    DIFF            reduce using rule 66 (paren -> LPAREN .)
+    EXP             reduce using rule 66 (paren -> LPAREN .)
+    PLUS            reduce using rule 66 (paren -> LPAREN .)
+    MINUS           reduce using rule 66 (paren -> LPAREN .)
+    SEMICOLON       reduce using rule 66 (paren -> LPAREN .)
+    COMA            reduce using rule 66 (paren -> LPAREN .)
 
 
 state 57
 
-    (68) varcte -> ID .
+    (67) paren -> RPAREN .
 
-    TIMES           reduce using rule 68 (varcte -> ID .)
-    DIVIDE          reduce using rule 68 (varcte -> ID .)
-    DIFF            reduce using rule 68 (varcte -> ID .)
-    EXP             reduce using rule 68 (varcte -> ID .)
-    PLUS            reduce using rule 68 (varcte -> ID .)
-    MINUS           reduce using rule 68 (varcte -> ID .)
-    SEMICOLON       reduce using rule 68 (varcte -> ID .)
-    RPAREN          reduce using rule 68 (varcte -> ID .)
-    COMA            reduce using rule 68 (varcte -> ID .)
+    AND             reduce using rule 67 (paren -> RPAREN .)
+    OR              reduce using rule 67 (paren -> RPAREN .)
+    LESSTHAN        reduce using rule 67 (paren -> RPAREN .)
+    MORETHAN        reduce using rule 67 (paren -> RPAREN .)
+    ISEQUAL         reduce using rule 67 (paren -> RPAREN .)
+    NOTEQUAL        reduce using rule 67 (paren -> RPAREN .)
+    LBRACKET        reduce using rule 67 (paren -> RPAREN .)
+    LPAREN          reduce using rule 67 (paren -> RPAREN .)
+    RPAREN          reduce using rule 67 (paren -> RPAREN .)
+    ID              reduce using rule 67 (paren -> RPAREN .)
+    CTEL            reduce using rule 67 (paren -> RPAREN .)
+    CTEF            reduce using rule 67 (paren -> RPAREN .)
+    TIMES           reduce using rule 67 (paren -> RPAREN .)
+    DIVIDE          reduce using rule 67 (paren -> RPAREN .)
+    DIFF            reduce using rule 67 (paren -> RPAREN .)
+    EXP             reduce using rule 67 (paren -> RPAREN .)
+    PLUS            reduce using rule 67 (paren -> RPAREN .)
+    MINUS           reduce using rule 67 (paren -> RPAREN .)
+    SEMICOLON       reduce using rule 67 (paren -> RPAREN .)
+    COMA            reduce using rule 67 (paren -> RPAREN .)
 
 
 state 58
 
-    (69) varcte -> CTEL .
+    (69) varcte -> ID .
 
-    TIMES           reduce using rule 69 (varcte -> CTEL .)
-    DIVIDE          reduce using rule 69 (varcte -> CTEL .)
-    DIFF            reduce using rule 69 (varcte -> CTEL .)
-    EXP             reduce using rule 69 (varcte -> CTEL .)
-    PLUS            reduce using rule 69 (varcte -> CTEL .)
-    MINUS           reduce using rule 69 (varcte -> CTEL .)
-    SEMICOLON       reduce using rule 69 (varcte -> CTEL .)
-    RPAREN          reduce using rule 69 (varcte -> CTEL .)
-    COMA            reduce using rule 69 (varcte -> CTEL .)
+    TIMES           reduce using rule 69 (varcte -> ID .)
+    DIVIDE          reduce using rule 69 (varcte -> ID .)
+    DIFF            reduce using rule 69 (varcte -> ID .)
+    EXP             reduce using rule 69 (varcte -> ID .)
+    PLUS            reduce using rule 69 (varcte -> ID .)
+    MINUS           reduce using rule 69 (varcte -> ID .)
+    SEMICOLON       reduce using rule 69 (varcte -> ID .)
+    RPAREN          reduce using rule 69 (varcte -> ID .)
+    COMA            reduce using rule 69 (varcte -> ID .)
+    LPAREN          reduce using rule 69 (varcte -> ID .)
 
 
 state 59
 
-    (70) varcte -> CTEF .
+    (70) varcte -> CTEL .
 
-    TIMES           reduce using rule 70 (varcte -> CTEF .)
-    DIVIDE          reduce using rule 70 (varcte -> CTEF .)
-    DIFF            reduce using rule 70 (varcte -> CTEF .)
-    EXP             reduce using rule 70 (varcte -> CTEF .)
-    PLUS            reduce using rule 70 (varcte -> CTEF .)
-    MINUS           reduce using rule 70 (varcte -> CTEF .)
-    SEMICOLON       reduce using rule 70 (varcte -> CTEF .)
-    RPAREN          reduce using rule 70 (varcte -> CTEF .)
-    COMA            reduce using rule 70 (varcte -> CTEF .)
+    TIMES           reduce using rule 70 (varcte -> CTEL .)
+    DIVIDE          reduce using rule 70 (varcte -> CTEL .)
+    DIFF            reduce using rule 70 (varcte -> CTEL .)
+    EXP             reduce using rule 70 (varcte -> CTEL .)
+    PLUS            reduce using rule 70 (varcte -> CTEL .)
+    MINUS           reduce using rule 70 (varcte -> CTEL .)
+    SEMICOLON       reduce using rule 70 (varcte -> CTEL .)
+    RPAREN          reduce using rule 70 (varcte -> CTEL .)
+    COMA            reduce using rule 70 (varcte -> CTEL .)
+    LPAREN          reduce using rule 70 (varcte -> CTEL .)
 
 
 state 60
 
-    (56) signo -> PLUS .
+    (71) varcte -> CTEF .
 
-    ID              reduce using rule 56 (signo -> PLUS .)
-    CTEL            reduce using rule 56 (signo -> PLUS .)
-    CTEF            reduce using rule 56 (signo -> PLUS .)
-    LPAREN          reduce using rule 56 (signo -> PLUS .)
-    PLUS            reduce using rule 56 (signo -> PLUS .)
-    MINUS           reduce using rule 56 (signo -> PLUS .)
+    TIMES           reduce using rule 71 (varcte -> CTEF .)
+    DIVIDE          reduce using rule 71 (varcte -> CTEF .)
+    DIFF            reduce using rule 71 (varcte -> CTEF .)
+    EXP             reduce using rule 71 (varcte -> CTEF .)
+    PLUS            reduce using rule 71 (varcte -> CTEF .)
+    MINUS           reduce using rule 71 (varcte -> CTEF .)
+    SEMICOLON       reduce using rule 71 (varcte -> CTEF .)
+    RPAREN          reduce using rule 71 (varcte -> CTEF .)
+    COMA            reduce using rule 71 (varcte -> CTEF .)
+    LPAREN          reduce using rule 71 (varcte -> CTEF .)
 
 
 state 61
-
-    (57) signo -> MINUS .
-
-    ID              reduce using rule 57 (signo -> MINUS .)
-    CTEL            reduce using rule 57 (signo -> MINUS .)
-    CTEF            reduce using rule 57 (signo -> MINUS .)
-    LPAREN          reduce using rule 57 (signo -> MINUS .)
-    PLUS            reduce using rule 57 (signo -> MINUS .)
-    MINUS           reduce using rule 57 (signo -> MINUS .)
-
-
-state 62
 
     (6) var -> vardef COLON . tipo SEMICOLON
     (8) tipo -> . INT
@@ -1233,28 +1235,28 @@ state 62
 
     tipo                           shift and go to state 88
 
-state 63
+state 62
 
     (26) asignacion -> ID EQUAL expresion .
 
     SEMICOLON       reduce using rule 26 (asignacion -> ID EQUAL expresion .)
 
 
-state 64
+state 63
 
     (43) condicion -> IF LPAREN expresion . RPAREN bloque condicionelse
 
     RPAREN          shift and go to state 93
 
 
-state 65
+state 64
 
     (41) whileLoop -> WHILE LPAREN expresion . RPAREN bloque
 
     RPAREN          shift and go to state 94
 
 
-state 66
+state 65
 
     (42) forLoop -> FOR LPAREN argumentos . expresion SEMICOLON expresion RPAREN bloque
     (32) expresion -> . exp
@@ -1271,39 +1273,37 @@ state 66
     (14) arreglo -> . LBRACKET lista RBRACKET
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
     AND             shift and go to state 44
     OR              shift and go to state 45
-    LESSTHAN        shift and go to state 49
-    MORETHAN        shift and go to state 50
-    ISEQUAL         shift and go to state 51
-    NOTEQUAL        shift and go to state 52
-    LBRACKET        shift and go to state 53
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LESSTHAN        shift and go to state 48
+    MORETHAN        shift and go to state 49
+    ISEQUAL         shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
     expresion                      shift and go to state 95
     exp                            shift and go to state 42
     comparacion                    shift and go to state 43
     arreglo                        shift and go to state 46
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
-state 67
+state 66
 
     (50) argumentos -> args .
     (53) args -> args . COMA args
@@ -1316,16 +1316,14 @@ state 67
     NOTEQUAL        reduce using rule 50 (argumentos -> args .)
     LBRACKET        reduce using rule 50 (argumentos -> args .)
     LPAREN          reduce using rule 50 (argumentos -> args .)
+    RPAREN          reduce using rule 50 (argumentos -> args .)
     ID              reduce using rule 50 (argumentos -> args .)
     CTEL            reduce using rule 50 (argumentos -> args .)
     CTEF            reduce using rule 50 (argumentos -> args .)
-    PLUS            reduce using rule 50 (argumentos -> args .)
-    MINUS           reduce using rule 50 (argumentos -> args .)
-    RPAREN          reduce using rule 50 (argumentos -> args .)
     COMA            shift and go to state 96
 
 
-state 68
+state 67
 
     (51) argumentos -> epsilon .
 
@@ -1337,29 +1335,27 @@ state 68
     NOTEQUAL        reduce using rule 51 (argumentos -> epsilon .)
     LBRACKET        reduce using rule 51 (argumentos -> epsilon .)
     LPAREN          reduce using rule 51 (argumentos -> epsilon .)
+    RPAREN          reduce using rule 51 (argumentos -> epsilon .)
     ID              reduce using rule 51 (argumentos -> epsilon .)
     CTEL            reduce using rule 51 (argumentos -> epsilon .)
     CTEF            reduce using rule 51 (argumentos -> epsilon .)
-    PLUS            reduce using rule 51 (argumentos -> epsilon .)
-    MINUS           reduce using rule 51 (argumentos -> epsilon .)
-    RPAREN          reduce using rule 51 (argumentos -> epsilon .)
 
 
-state 69
+state 68
 
     (52) args -> ID . COLON tipo
 
     COLON           shift and go to state 97
 
 
-state 70
+state 69
 
     (27) escritura -> PRINT LPAREN escrito . RPAREN
 
     RPAREN          shift and go to state 98
 
 
-state 71
+state 70
 
     (28) escrito -> impr .
     (29) escrito -> impr . COMA impr
@@ -1368,7 +1364,7 @@ state 71
     COMA            shift and go to state 99
 
 
-state 72
+state 71
 
     (30) impr -> STRING .
 
@@ -1376,7 +1372,7 @@ state 72
     RPAREN          reduce using rule 30 (impr -> STRING .)
 
 
-state 73
+state 72
 
     (31) impr -> expresion .
 
@@ -1384,91 +1380,99 @@ state 73
     RPAREN          reduce using rule 31 (impr -> expresion .)
 
 
-state 74
+state 73
 
     (46) funcion -> FUNCTION funcdef LPAREN . argumentos RPAREN COLON tiposreturn bloque
     (50) argumentos -> . args
     (51) argumentos -> . epsilon
     (52) args -> . ID COLON tipo
     (53) args -> . args COMA args
-    (67) epsilon -> .
+    (68) epsilon -> .
 
-    ID              shift and go to state 69
-    RPAREN          reduce using rule 67 (epsilon -> .)
+    ID              shift and go to state 68
+    RPAREN          reduce using rule 68 (epsilon -> .)
 
     argumentos                     shift and go to state 100
-    args                           shift and go to state 67
-    epsilon                        shift and go to state 68
+    args                           shift and go to state 66
+    epsilon                        shift and go to state 67
 
-state 75
+state 74
 
     (33) expresion -> comparacion exp .
 
     SEMICOLON       reduce using rule 33 (expresion -> comparacion exp .)
     RPAREN          reduce using rule 33 (expresion -> comparacion exp .)
     COMA            reduce using rule 33 (expresion -> comparacion exp .)
+    LPAREN          reduce using rule 33 (expresion -> comparacion exp .)
 
 
-state 76
+state 75
 
     (34) expresion -> AND exp .
 
     SEMICOLON       reduce using rule 34 (expresion -> AND exp .)
     RPAREN          reduce using rule 34 (expresion -> AND exp .)
     COMA            reduce using rule 34 (expresion -> AND exp .)
+    LPAREN          reduce using rule 34 (expresion -> AND exp .)
 
 
-state 77
+state 76
 
     (35) expresion -> OR exp .
 
     SEMICOLON       reduce using rule 35 (expresion -> OR exp .)
     RPAREN          reduce using rule 35 (expresion -> OR exp .)
     COMA            reduce using rule 35 (expresion -> OR exp .)
+    LPAREN          reduce using rule 35 (expresion -> OR exp .)
 
 
-state 78
+state 77
 
     (55) exp -> termino signo . exp
     (54) exp -> . termino
     (55) exp -> . termino signo exp
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
     exp                            shift and go to state 101
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
+
+state 78
+
+    (56) signo -> PLUS .
+
+    LPAREN          reduce using rule 56 (signo -> PLUS .)
+    RPAREN          reduce using rule 56 (signo -> PLUS .)
+    ID              reduce using rule 56 (signo -> PLUS .)
+    CTEL            reduce using rule 56 (signo -> PLUS .)
+    CTEF            reduce using rule 56 (signo -> PLUS .)
+
 
 state 79
 
-    (66) factor -> signo varcte .
+    (57) signo -> MINUS .
 
-    TIMES           reduce using rule 66 (factor -> signo varcte .)
-    DIVIDE          reduce using rule 66 (factor -> signo varcte .)
-    DIFF            reduce using rule 66 (factor -> signo varcte .)
-    EXP             reduce using rule 66 (factor -> signo varcte .)
-    PLUS            reduce using rule 66 (factor -> signo varcte .)
-    MINUS           reduce using rule 66 (factor -> signo varcte .)
-    SEMICOLON       reduce using rule 66 (factor -> signo varcte .)
-    RPAREN          reduce using rule 66 (factor -> signo varcte .)
-    COMA            reduce using rule 66 (factor -> signo varcte .)
+    LPAREN          reduce using rule 57 (signo -> MINUS .)
+    RPAREN          reduce using rule 57 (signo -> MINUS .)
+    ID              reduce using rule 57 (signo -> MINUS .)
+    CTEL            reduce using rule 57 (signo -> MINUS .)
+    CTEF            reduce using rule 57 (signo -> MINUS .)
 
 
 state 80
@@ -1492,37 +1496,34 @@ state 82
     (59) termino -> factor operacion . termino
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
-    factor                         shift and go to state 54
+    factor                         shift and go to state 53
     termino                        shift and go to state 104
-    varcte                         shift and go to state 56
-    signo                          shift and go to state 48
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 83
 
     (60) operacion -> TIMES .
 
     LPAREN          reduce using rule 60 (operacion -> TIMES .)
+    RPAREN          reduce using rule 60 (operacion -> TIMES .)
     ID              reduce using rule 60 (operacion -> TIMES .)
     CTEL            reduce using rule 60 (operacion -> TIMES .)
     CTEF            reduce using rule 60 (operacion -> TIMES .)
-    PLUS            reduce using rule 60 (operacion -> TIMES .)
-    MINUS           reduce using rule 60 (operacion -> TIMES .)
 
 
 state 84
@@ -1530,11 +1531,10 @@ state 84
     (61) operacion -> DIVIDE .
 
     LPAREN          reduce using rule 61 (operacion -> DIVIDE .)
+    RPAREN          reduce using rule 61 (operacion -> DIVIDE .)
     ID              reduce using rule 61 (operacion -> DIVIDE .)
     CTEL            reduce using rule 61 (operacion -> DIVIDE .)
     CTEF            reduce using rule 61 (operacion -> DIVIDE .)
-    PLUS            reduce using rule 61 (operacion -> DIVIDE .)
-    MINUS           reduce using rule 61 (operacion -> DIVIDE .)
 
 
 state 85
@@ -1542,11 +1542,10 @@ state 85
     (62) operacion -> DIFF .
 
     LPAREN          reduce using rule 62 (operacion -> DIFF .)
+    RPAREN          reduce using rule 62 (operacion -> DIFF .)
     ID              reduce using rule 62 (operacion -> DIFF .)
     CTEL            reduce using rule 62 (operacion -> DIFF .)
     CTEF            reduce using rule 62 (operacion -> DIFF .)
-    PLUS            reduce using rule 62 (operacion -> DIFF .)
-    MINUS           reduce using rule 62 (operacion -> DIFF .)
 
 
 state 86
@@ -1554,19 +1553,22 @@ state 86
     (63) operacion -> EXP .
 
     LPAREN          reduce using rule 63 (operacion -> EXP .)
+    RPAREN          reduce using rule 63 (operacion -> EXP .)
     ID              reduce using rule 63 (operacion -> EXP .)
     CTEL            reduce using rule 63 (operacion -> EXP .)
     CTEF            reduce using rule 63 (operacion -> EXP .)
-    PLUS            reduce using rule 63 (operacion -> EXP .)
-    MINUS           reduce using rule 63 (operacion -> EXP .)
 
 
 state 87
 
-    (64) factor -> LPAREN expresion . RPAREN
+    (64) factor -> paren expresion . paren
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
 
-    RPAREN          shift and go to state 105
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
 
+    paren                          shift and go to state 105
 
 state 88
 
@@ -1589,12 +1591,10 @@ state 89
     NOTEQUAL        reduce using rule 8 (tipo -> INT .)
     LBRACKET        reduce using rule 8 (tipo -> INT .)
     LPAREN          reduce using rule 8 (tipo -> INT .)
+    RPAREN          reduce using rule 8 (tipo -> INT .)
     ID              reduce using rule 8 (tipo -> INT .)
     CTEL            reduce using rule 8 (tipo -> INT .)
     CTEF            reduce using rule 8 (tipo -> INT .)
-    PLUS            reduce using rule 8 (tipo -> INT .)
-    MINUS           reduce using rule 8 (tipo -> INT .)
-    RPAREN          reduce using rule 8 (tipo -> INT .)
     LCURLY          reduce using rule 8 (tipo -> INT .)
 
 
@@ -1612,12 +1612,10 @@ state 90
     NOTEQUAL        reduce using rule 9 (tipo -> FLOAT .)
     LBRACKET        reduce using rule 9 (tipo -> FLOAT .)
     LPAREN          reduce using rule 9 (tipo -> FLOAT .)
+    RPAREN          reduce using rule 9 (tipo -> FLOAT .)
     ID              reduce using rule 9 (tipo -> FLOAT .)
     CTEL            reduce using rule 9 (tipo -> FLOAT .)
     CTEF            reduce using rule 9 (tipo -> FLOAT .)
-    PLUS            reduce using rule 9 (tipo -> FLOAT .)
-    MINUS           reduce using rule 9 (tipo -> FLOAT .)
-    RPAREN          reduce using rule 9 (tipo -> FLOAT .)
     LCURLY          reduce using rule 9 (tipo -> FLOAT .)
 
 
@@ -1635,12 +1633,10 @@ state 91
     NOTEQUAL        reduce using rule 10 (tipo -> BOOL .)
     LBRACKET        reduce using rule 10 (tipo -> BOOL .)
     LPAREN          reduce using rule 10 (tipo -> BOOL .)
+    RPAREN          reduce using rule 10 (tipo -> BOOL .)
     ID              reduce using rule 10 (tipo -> BOOL .)
     CTEL            reduce using rule 10 (tipo -> BOOL .)
     CTEF            reduce using rule 10 (tipo -> BOOL .)
-    PLUS            reduce using rule 10 (tipo -> BOOL .)
-    MINUS           reduce using rule 10 (tipo -> BOOL .)
-    RPAREN          reduce using rule 10 (tipo -> BOOL .)
     LCURLY          reduce using rule 10 (tipo -> BOOL .)
 
 
@@ -1658,12 +1654,10 @@ state 92
     NOTEQUAL        reduce using rule 11 (tipo -> STRING .)
     LBRACKET        reduce using rule 11 (tipo -> STRING .)
     LPAREN          reduce using rule 11 (tipo -> STRING .)
+    RPAREN          reduce using rule 11 (tipo -> STRING .)
     ID              reduce using rule 11 (tipo -> STRING .)
     CTEL            reduce using rule 11 (tipo -> STRING .)
     CTEF            reduce using rule 11 (tipo -> STRING .)
-    PLUS            reduce using rule 11 (tipo -> STRING .)
-    MINUS           reduce using rule 11 (tipo -> STRING .)
-    RPAREN          reduce using rule 11 (tipo -> STRING .)
     LCURLY          reduce using rule 11 (tipo -> STRING .)
 
 
@@ -1698,7 +1692,7 @@ state 96
     (52) args -> . ID COLON tipo
     (53) args -> . args COMA args
 
-    ID              shift and go to state 69
+    ID              shift and go to state 68
 
     args                           shift and go to state 110
 
@@ -1743,39 +1737,37 @@ state 99
     (14) arreglo -> . LBRACKET lista RBRACKET
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
-    STRING          shift and go to state 72
+    STRING          shift and go to state 71
     AND             shift and go to state 44
     OR              shift and go to state 45
-    LESSTHAN        shift and go to state 49
-    MORETHAN        shift and go to state 50
-    ISEQUAL         shift and go to state 51
-    NOTEQUAL        shift and go to state 52
-    LBRACKET        shift and go to state 53
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LESSTHAN        shift and go to state 48
+    MORETHAN        shift and go to state 49
+    ISEQUAL         shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
     impr                           shift and go to state 112
-    expresion                      shift and go to state 73
+    expresion                      shift and go to state 72
     exp                            shift and go to state 42
     comparacion                    shift and go to state 43
     arreglo                        shift and go to state 46
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 100
 
@@ -1791,6 +1783,7 @@ state 101
     SEMICOLON       reduce using rule 55 (exp -> termino signo exp .)
     RPAREN          reduce using rule 55 (exp -> termino signo exp .)
     COMA            reduce using rule 55 (exp -> termino signo exp .)
+    LPAREN          reduce using rule 55 (exp -> termino signo exp .)
 
 
 state 102
@@ -1800,6 +1793,7 @@ state 102
     SEMICOLON       reduce using rule 14 (arreglo -> LBRACKET lista RBRACKET .)
     RPAREN          reduce using rule 14 (arreglo -> LBRACKET lista RBRACKET .)
     COMA            reduce using rule 14 (arreglo -> LBRACKET lista RBRACKET .)
+    LPAREN          reduce using rule 14 (arreglo -> LBRACKET lista RBRACKET .)
 
 
 state 103
@@ -1818,21 +1812,23 @@ state 104
     SEMICOLON       reduce using rule 59 (termino -> factor operacion termino .)
     RPAREN          reduce using rule 59 (termino -> factor operacion termino .)
     COMA            reduce using rule 59 (termino -> factor operacion termino .)
+    LPAREN          reduce using rule 59 (termino -> factor operacion termino .)
 
 
 state 105
 
-    (64) factor -> LPAREN expresion RPAREN .
+    (64) factor -> paren expresion paren .
 
-    TIMES           reduce using rule 64 (factor -> LPAREN expresion RPAREN .)
-    DIVIDE          reduce using rule 64 (factor -> LPAREN expresion RPAREN .)
-    DIFF            reduce using rule 64 (factor -> LPAREN expresion RPAREN .)
-    EXP             reduce using rule 64 (factor -> LPAREN expresion RPAREN .)
-    PLUS            reduce using rule 64 (factor -> LPAREN expresion RPAREN .)
-    MINUS           reduce using rule 64 (factor -> LPAREN expresion RPAREN .)
-    SEMICOLON       reduce using rule 64 (factor -> LPAREN expresion RPAREN .)
-    RPAREN          reduce using rule 64 (factor -> LPAREN expresion RPAREN .)
-    COMA            reduce using rule 64 (factor -> LPAREN expresion RPAREN .)
+    TIMES           reduce using rule 64 (factor -> paren expresion paren .)
+    DIVIDE          reduce using rule 64 (factor -> paren expresion paren .)
+    DIFF            reduce using rule 64 (factor -> paren expresion paren .)
+    EXP             reduce using rule 64 (factor -> paren expresion paren .)
+    PLUS            reduce using rule 64 (factor -> paren expresion paren .)
+    MINUS           reduce using rule 64 (factor -> paren expresion paren .)
+    SEMICOLON       reduce using rule 64 (factor -> paren expresion paren .)
+    RPAREN          reduce using rule 64 (factor -> paren expresion paren .)
+    COMA            reduce using rule 64 (factor -> paren expresion paren .)
+    LPAREN          reduce using rule 64 (factor -> paren expresion paren .)
 
 
 state 106
@@ -1854,10 +1850,10 @@ state 107
     (43) condicion -> IF LPAREN expresion RPAREN bloque . condicionelse
     (44) condicionelse -> . ELSE bloque
     (45) condicionelse -> . epsilon
-    (67) epsilon -> .
+    (68) epsilon -> .
 
     ELSE            shift and go to state 115
-    SEMICOLON       reduce using rule 67 (epsilon -> .)
+    SEMICOLON       reduce using rule 68 (epsilon -> .)
 
     condicionelse                  shift and go to state 114
     epsilon                        shift and go to state 116
@@ -1886,37 +1882,35 @@ state 109
     (14) arreglo -> . LBRACKET lista RBRACKET
     (58) termino -> . factor
     (59) termino -> . factor operacion termino
-    (64) factor -> . LPAREN expresion RPAREN
+    (64) factor -> . paren expresion paren
     (65) factor -> . varcte
-    (66) factor -> . signo varcte
-    (68) varcte -> . ID
-    (69) varcte -> . CTEL
-    (70) varcte -> . CTEF
-    (56) signo -> . PLUS
-    (57) signo -> . MINUS
+    (66) paren -> . LPAREN
+    (67) paren -> . RPAREN
+    (69) varcte -> . ID
+    (70) varcte -> . CTEL
+    (71) varcte -> . CTEF
 
     AND             shift and go to state 44
     OR              shift and go to state 45
-    LESSTHAN        shift and go to state 49
-    MORETHAN        shift and go to state 50
-    ISEQUAL         shift and go to state 51
-    NOTEQUAL        shift and go to state 52
-    LBRACKET        shift and go to state 53
-    LPAREN          shift and go to state 55
-    ID              shift and go to state 57
-    CTEL            shift and go to state 58
-    CTEF            shift and go to state 59
-    PLUS            shift and go to state 60
-    MINUS           shift and go to state 61
+    LESSTHAN        shift and go to state 48
+    MORETHAN        shift and go to state 49
+    ISEQUAL         shift and go to state 50
+    NOTEQUAL        shift and go to state 51
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    CTEL            shift and go to state 59
+    CTEF            shift and go to state 60
 
     expresion                      shift and go to state 117
     exp                            shift and go to state 42
     comparacion                    shift and go to state 43
     arreglo                        shift and go to state 46
     termino                        shift and go to state 47
-    signo                          shift and go to state 48
-    factor                         shift and go to state 54
-    varcte                         shift and go to state 56
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
 
 state 110
 
@@ -1932,12 +1926,10 @@ state 110
     NOTEQUAL        reduce using rule 53 (args -> args COMA args .)
     LBRACKET        reduce using rule 53 (args -> args COMA args .)
     LPAREN          reduce using rule 53 (args -> args COMA args .)
+    RPAREN          reduce using rule 53 (args -> args COMA args .)
     ID              reduce using rule 53 (args -> args COMA args .)
     CTEL            reduce using rule 53 (args -> args COMA args .)
     CTEF            reduce using rule 53 (args -> args COMA args .)
-    PLUS            reduce using rule 53 (args -> args COMA args .)
-    MINUS           reduce using rule 53 (args -> args COMA args .)
-    RPAREN          reduce using rule 53 (args -> args COMA args .)
     COMA            shift and go to state 96
 
   ! COMA            [ reduce using rule 53 (args -> args COMA args .) ]
@@ -1956,12 +1948,10 @@ state 111
     NOTEQUAL        reduce using rule 52 (args -> ID COLON tipo .)
     LBRACKET        reduce using rule 52 (args -> ID COLON tipo .)
     LPAREN          reduce using rule 52 (args -> ID COLON tipo .)
+    RPAREN          reduce using rule 52 (args -> ID COLON tipo .)
     ID              reduce using rule 52 (args -> ID COLON tipo .)
     CTEL            reduce using rule 52 (args -> ID COLON tipo .)
     CTEF            reduce using rule 52 (args -> ID COLON tipo .)
-    PLUS            reduce using rule 52 (args -> ID COLON tipo .)
-    MINUS           reduce using rule 52 (args -> ID COLON tipo .)
-    RPAREN          reduce using rule 52 (args -> ID COLON tipo .)
 
 
 state 112

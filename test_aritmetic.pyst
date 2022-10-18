@@ -6,6 +6,6 @@ start() {
     function main(): void {
         var lol: float;
         var sos: float;
-        c=lol+sos*a*k;
+        c=lol+(a+k*b)*sos;
     };
 }
