@@ -1,0 +1,10 @@
+start() {
+    var a: float;
+    var c: float;
+    function main(): void {
+        var lol: int;
+        var sos: float;
+        c=lol+sos;
+        sos=lol+a;
+    };
+}

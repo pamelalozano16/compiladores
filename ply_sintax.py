@@ -3,13 +3,14 @@ import ply.yacc as yacc
  
  # Get the token map from the lexer.  This is required.
 from ply_lex import tokens
-from semantic_cube import SemanticCube
 from variables_control import VariableControl
+from semantics import Semantics
 
-semantic_cube = SemanticCube()
 variables_control = VariableControl()
-declaring_variable = []
-declaring_types = []
+semantics = Semantics()
+declaring_variable = [] #Which variable am I declaring
+declaring_types = [] #Which variable type am I declaring
+opers = []
 
 def p_programa(p):
     '''programa : START LPAREN RPAREN bloque'''
@@ -84,6 +85,10 @@ def p_asignacion(p):
     '''asignacion : ID EQUAL expresion'''
     if(variables_control.find_var(p[1]) == None):
         print("Error: Variable "+p[1]+" is not declared")
+    else:
+        semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
+        semantics.addAssign()
+        semantics.checkAssign()
     pass
 
 def p_escritura(p):
@@ -111,8 +116,7 @@ def p_expresion(p):
                 | OR exp
                 | exp expresion
                 | arreglo '''
-        #       | expresion expresion '''
-    pass  
+        #       | expresion expresion ''' 
 
 def p_comparacion(p):
     '''comparacion : LESSTHAN
@@ -173,6 +177,8 @@ def p_exp(p):
 def p_signo(p):
     '''signo : PLUS
              | MINUS'''
+    print("Signo", p[1])
+    semantics.addTerm(p[1])
     pass
 
 def p_termino(p):
@@ -185,6 +191,8 @@ def p_operacion(p):
                  | DIVIDE exp
                  | DIFF exp
                  | EXP exp'''
+    print("operacion", p[1])
+    semantics.addFact(p[1])
     pass
 
 def p_factor(p):
@@ -201,6 +209,9 @@ def p_varcte(p):
     '''varcte : ID 
               | CTEL
               | CTEF'''
+    semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
+    semantics.checkFact()
+    semantics.checkTerm()
     pass
 
 # Error rule for syntax errors
