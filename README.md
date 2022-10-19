@@ -14,7 +14,8 @@
 #### Ejemplo:
 <img src="/Avance2_tests.png" alt="Avance2" width="400"/>
 
-## Avance 3: Expresiones Aritméticas y Asignación
+## Avance 3: Expresiones: Aritméticas, Asignación y Condicionales.
 
 #### Ejemplo:
 <img src="/Avance3.1_tests.png" alt="Avance3" width="400"/>
+<img src="/Avance3.2_tests.png" alt="Avance3" width="400"/>

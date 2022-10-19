@@ -98,6 +98,11 @@ class SemanticCube:
                     '&&':'bool',                    
                 },
             },
+            '#': {
+                '#': {
+                    'end':'bool'
+                }
+            }
         }
 
     def is_match(self, left, right, op):

@@ -14,6 +14,8 @@ opers = []
 
 def p_programa(p):
     '''programa : START LPAREN RPAREN bloque'''
+    semantics.endProgram()
+    semantics.endStatus()
     pass
 
 def p_declaracion(p):
@@ -111,17 +113,22 @@ def p_expresion(p):
     #a+b => expresion -> exp expresion -> exp exp -> termino signo exp -> termino signo termino -> factor signo factor
     #a/b => expresion -> exp expresion -> exp exp -> termino termino -> factor operacion factor
     '''expresion : exp
-                | comparacion exp
-                | AND exp
-                | OR exp
+                | condition
                 | arreglo '''
         #       | expresion expresion ''' 
+
+def p_condition(p):
+    '''condition : exp comparacion expresion'''
+    pass
 
 def p_comparacion(p):
     '''comparacion : LESSTHAN
                    | MORETHAN
                    | ISEQUAL
-                   | NOTEQUAL'''
+                   | NOTEQUAL
+                   | AND
+                   | OR '''
+    semantics.addOper(p[1])
     pass
 
 def p_whileLoop(p):
@@ -131,12 +138,23 @@ def p_forLoop(p):
    '''forLoop : FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque'''
 
 def p_condicion(p):
-    '''condicion : IF LPAREN expresion RPAREN bloque condicionelse'''
+    '''condicion : IF LPAREN expresion endif bloque condicionelse'''
+    semantics.assignGoTo()
+    pass
+
+def p_endif(p):
+    '''endif : RPAREN'''
+    semantics.createGoToF()
     pass
 
 def p_condicionelse(p):
-    '''condicionelse : ELSE bloque
+    '''condicionelse : else bloque
                      | epsilon'''
+    pass
+
+def p_else(p):
+    '''else : ELSE'''
+    print("Paso 3")
     pass
 
 def p_funcion(p):
@@ -171,13 +189,14 @@ def p_args(p):
 def p_exp(p):
     '''exp : termino
            | termino signo exp'''
+    semantics.checkCompare()
     pass
 
 def p_signo(p):
     '''signo : PLUS
              | MINUS'''
  #   print("3", p[1])
-    semantics.addTerm(p[1])
+    semantics.addOper(p[1])
     pass
 
 def p_termino(p):
@@ -193,7 +212,7 @@ def p_operacion(p):
                  | DIFF
                  | EXP'''
   #  print("2", p[1])            
-    semantics.addFact(p[1])
+    semantics.addOper(p[1])
     pass
 
 def p_factor(p):
@@ -208,11 +227,12 @@ def p_paren(p):
             | RPAREN'''
     if(p[1]=='('):
 #      print("(")
-      semantics.addFact(p[1])
+      semantics.addOper(p[1])
     else:
 #        print(")")
         semantics.checkFact()
         semantics.checkTerm()
+        semantics.checkCompare()
         semantics.checkParen()
     pass
 
@@ -239,7 +259,7 @@ def p_error(p):
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
-with open("test_scope.pyst") as f:
+with open("test_conditionals.pyst") as f:
     contents = f.read()
     result = parser.parse(contents)
     print("Errors:", result)

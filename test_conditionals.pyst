@@ -1,0 +1,11 @@
+start() {
+    var a: float;
+    var c: float;
+    var b:float;
+    var k:float;
+    function main(): void {
+        if(b && c) {
+            b=k;
+        };
+    };
+}

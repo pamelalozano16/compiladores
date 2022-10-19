@@ -8,24 +8,25 @@ class Semantics:
         self.pilaO = []
         self.pOper = []
         self.quads = []
+        self.pSaltos = []
         self.tempCounter = 0
     
     def printQuads(self):
         print("Quads:")
         for i in self.quads:
             print(i)
-    
+
+    def endStatus(self):
+        self.printQuads()
+        print("PilaO:", self.pilaO, "pOper:", self.pOper,"pSalos:", self.pSaltos)
+
     def insertId(self, id, idType):
         self.pTypes.append(idType)
         self.pilaO.append(id)
       #  print("Pilas:", self.pilaO, self.pTypes)
 
-    def addTerm(self, term):
-        self.pOper.append(term)
-     #   print(self.pOper)
-
-    def addFact(self, factor):
-        self.pOper.append(factor)
+    def addOper(self, oper):
+        self.pOper.append(oper)
      #   print(self.pOper)
     
     def addAssign(self):
@@ -37,8 +38,6 @@ class Semantics:
             right_type = self.pTypes.pop()
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), -1, self.pilaO.pop(), self.pTypes.pop(), right_type, right)
             self.quads.append(quad.getQuad())
-        self.printQuads()
-        print("PilaO:", self.pilaO, "pOper:", self.pOper)
 
 
     def checkTerm(self):
@@ -60,8 +59,31 @@ class Semantics:
             self.pTypes.append(typeRes)
             self.tempCounter+=1
      #   print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
+
+    def checkCompare(self):
+        if 0<len(self.pOper) and (self.pOper[-1]=="&&" or self.pOper[-1]=="!!" or self.pOper[-1]==">" or self.pOper[-1]=="<" or self.pOper[-1]=="==" or self.pOper[-1]=="!="):
+            res = "t"+str(self.tempCounter)
+            quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.pilaO.pop(), self.pilaO.pop(), self.pTypes.pop(), self.pTypes.pop(), res)
+            self.quads.append(quad.getQuad())
+            self.pilaO.append(res)
+            self.pTypes.append(typeRes)
+            self.tempCounter+=1
     
     def checkParen(self):    
         if 0<len(self.pOper) and (self.pOper[-1]=="("):
             self.pOper.pop()
 
+    def createGoToF(self):
+        quadGoto = quadruple.createGoToF(self.pilaO.pop())
+        self.quads.append(quadGoto.getQuad())
+        self.pSaltos.append(len(self.quads)-1)
+    
+    def assignGoTo(self):
+        salto = self.pSaltos.pop()
+        quad= self.quads[salto]
+        quad[-1] = len(self.quads)
+        self.quads[salto] = quad
+
+    def endProgram(self):
+        quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
+        self.quads.append(quad.getQuad())

@@ -20,16 +20,30 @@ class Quadruple:
         else:
             raise ValueError('Types mismatch', typeLeft, typeRight, operator)
     
-    def createGoTo(self, isVariable, temp):
+    def createGoToV(self, temp):
+        self.operator="gotoV"
+        self.left=temp
+        self.right=-1
+        self.res=None
+        return self
+
+    def createGoToF(self, temp):
+        self.operator="gotoF"
+        self.left=temp
+        self.right=-1
+        self.res=None
+        return self
+
+    def createGoTo(self, temp):
         self.operator="goto"
-        if(isVariable==1):
-            self.left=True
-        if(isVariable==0):
-            self.left=False
-        self.right = temp
+        self.left=temp
+        self.right=-1
+        self.res=None
+        return self
     
-    def addDestination(self, quad, dest):
-        quad.left = dest
+    def addDestination(self, dest):
+        self.res = dest
+        return self
     
     def getQuad(self):
         return [self.operator, self.left, self.right, self.res]
