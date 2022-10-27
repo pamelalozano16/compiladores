@@ -6,6 +6,8 @@ start() {
     function main(): void {
         if(b && c) {
             b=k;
+        } else {
+            k=b+a;
         };
     };
 }

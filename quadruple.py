@@ -34,9 +34,9 @@ class Quadruple:
         self.res=None
         return self
 
-    def createGoTo(self, temp):
+    def createGoTo(self):
         self.operator="goto"
-        self.left=temp
+        self.left=-1
         self.right=-1
         self.res=None
         return self

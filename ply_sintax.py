@@ -139,7 +139,6 @@ def p_forLoop(p):
 
 def p_condicion(p):
     '''condicion : IF LPAREN expresion endif bloque condicionelse'''
-    semantics.assignGoTo()
     pass
 
 def p_endif(p):
@@ -150,11 +149,13 @@ def p_endif(p):
 def p_condicionelse(p):
     '''condicionelse : else bloque
                      | epsilon'''
+    semantics.assignGoTo()
     pass
 
 def p_else(p):
     '''else : ELSE'''
-    print("Paso 3")
+    semantics.createGoTo()
+    semantics.assignGoTo()
     pass
 
 def p_funcion(p):

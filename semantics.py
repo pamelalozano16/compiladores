@@ -73,16 +73,22 @@ class Semantics:
         if 0<len(self.pOper) and (self.pOper[-1]=="("):
             self.pOper.pop()
 
+    def createGoTo(self):
+        quadGoto = quadruple.createGoTo()
+        self.quads.append(quadGoto.getQuad())
+        self.pSaltos.append(len(self.quads)-1)
+
     def createGoToF(self):
         quadGoto = quadruple.createGoToF(self.pilaO.pop())
         self.quads.append(quadGoto.getQuad())
         self.pSaltos.append(len(self.quads)-1)
     
     def assignGoTo(self):
-        salto = self.pSaltos.pop()
-        quad= self.quads[salto]
-        quad[-1] = len(self.quads)
-        self.quads[salto] = quad
+        if 0<len(self.pSaltos):
+            salto = self.pSaltos.pop(0)
+            quad= self.quads[salto]
+            quad[-1] = len(self.quads)
+            self.quads[salto] = quad
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
