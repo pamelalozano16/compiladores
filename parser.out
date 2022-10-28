@@ -23,143 +23,147 @@ Rule 17    estatutoExp -> estatutoExp estatutoExp
 Rule 18    estatuto -> asignacion
 Rule 19    estatuto -> condicion
 Rule 20    estatuto -> whileLoop
-Rule 21    estatuto -> forLoop
-Rule 22    estatuto -> escritura
-Rule 23    estatuto -> funcion
-Rule 24    estatuto -> returnexp
-Rule 25    returnexp -> RETURN expresion
-Rule 26    asignacion -> ID EQUAL expresion
-Rule 27    escritura -> PRINT LPAREN escrito RPAREN
-Rule 28    escrito -> impr
-Rule 29    escrito -> impr COMA impr
-Rule 30    impr -> STRING
-Rule 31    impr -> expresion
-Rule 32    expresion -> exp
-Rule 33    expresion -> condition
-Rule 34    expresion -> arreglo
-Rule 35    condition -> exp comparacion expresion
-Rule 36    comparacion -> LESSTHAN
-Rule 37    comparacion -> MORETHAN
-Rule 38    comparacion -> ISEQUAL
-Rule 39    comparacion -> NOTEQUAL
-Rule 40    comparacion -> AND
-Rule 41    comparacion -> OR
-Rule 42    whileLoop -> WHILE LPAREN expresion RPAREN bloque
-Rule 43    forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
-Rule 44    condicion -> IF LPAREN expresion endif bloque condicionelse
-Rule 45    bloqueCondicional -> bloque
-Rule 46    endif -> RPAREN
-Rule 47    condicionelse -> else bloque
-Rule 48    condicionelse -> epsilon
-Rule 49    else -> ELSE
-Rule 50    funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
-Rule 51    funcdef -> ID
-Rule 52    tiposreturn -> tipo
-Rule 53    tiposreturn -> VOID
-Rule 54    argumentos -> args
-Rule 55    argumentos -> epsilon
-Rule 56    args -> ID COLON tipo
-Rule 57    args -> args COMA args
-Rule 58    exp -> termino
-Rule 59    exp -> termino signo exp
-Rule 60    signo -> PLUS
-Rule 61    signo -> MINUS
-Rule 62    termino -> factor
-Rule 63    termino -> factor operacion termino
-Rule 64    operacion -> TIMES
-Rule 65    operacion -> DIVIDE
-Rule 66    operacion -> DIFF
-Rule 67    operacion -> EXP
-Rule 68    factor -> paren expresion paren
-Rule 69    factor -> varcte
-Rule 70    paren -> LPAREN
-Rule 71    paren -> RPAREN
-Rule 72    epsilon -> <empty>
-Rule 73    varcte -> ID
-Rule 74    varcte -> CTEL
-Rule 75    varcte -> CTEF
+Rule 21    estatuto -> doWhile
+Rule 22    estatuto -> forLoop
+Rule 23    estatuto -> escritura
+Rule 24    estatuto -> funcion
+Rule 25    estatuto -> returnexp
+Rule 26    returnexp -> RETURN expresion
+Rule 27    asignacion -> ID EQUAL expresion
+Rule 28    escritura -> PRINT LPAREN escrito RPAREN
+Rule 29    escrito -> impr
+Rule 30    escrito -> impr COMA impr
+Rule 31    impr -> STRING
+Rule 32    impr -> expresion
+Rule 33    expresion -> exp
+Rule 34    expresion -> condition
+Rule 35    expresion -> arreglo
+Rule 36    condition -> exp comparacion expresion
+Rule 37    comparacion -> LESSTHAN
+Rule 38    comparacion -> MORETHAN
+Rule 39    comparacion -> ISEQUAL
+Rule 40    comparacion -> NOTEQUAL
+Rule 41    comparacion -> AND
+Rule 42    comparacion -> OR
+Rule 43    doWhile -> DO bloque WHILE startParen expresion endParen
+Rule 44    whileLoop -> WHILE startParen expresion endParen bloque
+Rule 45    startParen -> LPAREN
+Rule 46    forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
+Rule 47    condicion -> IF LPAREN expresion endParen bloque condicionelse
+Rule 48    endParen -> RPAREN
+Rule 49    condicionelse -> else bloque
+Rule 50    condicionelse -> epsilon
+Rule 51    else -> ELSE
+Rule 52    funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+Rule 53    funcdef -> ID
+Rule 54    tiposreturn -> tipo
+Rule 55    tiposreturn -> VOID
+Rule 56    argumentos -> args
+Rule 57    argumentos -> epsilon
+Rule 58    args -> ID COLON tipo
+Rule 59    args -> args COMA args
+Rule 60    exp -> termino
+Rule 61    exp -> termino signo exp
+Rule 62    signo -> PLUS
+Rule 63    signo -> MINUS
+Rule 64    termino -> factor
+Rule 65    termino -> factor operacion termino
+Rule 66    operacion -> TIMES
+Rule 67    operacion -> DIVIDE
+Rule 68    operacion -> DIFF
+Rule 69    operacion -> EXP
+Rule 70    factor -> paren expresion paren
+Rule 71    factor -> varcte
+Rule 72    paren -> LPAREN
+Rule 73    paren -> RPAREN
+Rule 74    epsilon -> <empty>
+Rule 75    varcte -> ID
+Rule 76    varcte -> CTEL
+Rule 77    varcte -> CTEF
 
 Terminals, with rules where they appear
 
-AND                  : 40
+AND                  : 41
 BOOL                 : 10
-COLON                : 6 50 56
-COMA                 : 13 29 57
-CTEF                 : 75
-CTEL                 : 74
-DIFF                 : 66
-DIVIDE               : 65
-ELSE                 : 49
-EQUAL                : 26
-EXP                  : 67
+COLON                : 6 52 58
+COMA                 : 13 30 59
+CTEF                 : 77
+CTEL                 : 76
+DIFF                 : 68
+DIVIDE               : 67
+DO                   : 43
+ELSE                 : 51
+EQUAL                : 27
+EXP                  : 69
 FLOAT                : 9
-FOR                  : 43
-FUNCTION             : 50
-ID                   : 7 12 13 26 51 56 73
-IF                   : 44
+FOR                  : 46
+FUNCTION             : 52
+ID                   : 7 12 13 27 53 58 75
+IF                   : 47
 INT                  : 8
-ISEQUAL              : 38
+ISEQUAL              : 39
 LBRACKET             : 14
 LCURLY               : 15
-LESSTHAN             : 36
-LPAREN               : 1 27 42 43 44 50 70
-MINUS                : 61
-MORETHAN             : 37
-NOTEQUAL             : 39
-OR                   : 41
-PLUS                 : 60
-PRINT                : 27
+LESSTHAN             : 37
+LPAREN               : 1 28 45 46 47 52 72
+MINUS                : 63
+MORETHAN             : 38
+NOTEQUAL             : 40
+OR                   : 42
+PLUS                 : 62
+PRINT                : 28
 RBRACKET             : 14
 RCURLY               : 15
-RETURN               : 25
-RPAREN               : 1 27 42 43 46 50 71
-SEMICOLON            : 6 16 43
+RETURN               : 26
+RPAREN               : 1 28 46 48 52 73
+SEMICOLON            : 6 16 46
 START                : 1
-STRING               : 11 30
-TIMES                : 64
+STRING               : 11 31
+TIMES                : 66
 VAR                  : 4
-VOID                 : 53
-WHILE                : 42
+VOID                 : 55
+WHILE                : 43 44
 error                : 
 
 Nonterminals, with rules where they appear
 
-args                 : 54 57 57
-argumentos           : 43 50
-arreglo              : 34
+args                 : 56 59 59
+argumentos           : 46 52
+arreglo              : 35
 asignacion           : 18
-bloque               : 1 42 43 44 45 47 50
-bloqueCondicional    : 
-comparacion          : 35
+bloque               : 1 43 44 46 47 49 52
+comparacion          : 36
 condicion            : 19
-condicionelse        : 44
-condition            : 33
+condicionelse        : 47
+condition            : 34
 declaracion          : 15
-else                 : 47
-endif                : 44
-epsilon              : 3 48 55
-escrito              : 27
-escritura            : 22
+doWhile              : 21
+else                 : 49
+endParen             : 43 44 47
+epsilon              : 3 50 57
+escrito              : 28
+escritura            : 23
 estatuto             : 16
 estatutoExp          : 15 17 17
-exp                  : 32 35 59
-expresion            : 25 26 31 35 42 43 43 44 68
-factor               : 62 63
-forLoop              : 21
-funcdef              : 50
-funcion              : 23
-impr                 : 28 29 29
+exp                  : 33 36 61
+expresion            : 26 27 32 36 43 44 46 46 47 70
+factor               : 64 65
+forLoop              : 22
+funcdef              : 52
+funcion              : 24
+impr                 : 29 30 30
 lista                : 14
-operacion            : 63
-paren                : 68 68
+operacion            : 65
+paren                : 70 70
 programa             : 0
-returnexp            : 24
-signo                : 59
-termino              : 58 59 63
-tipo                 : 6 52 56
-tiposreturn          : 50
+returnexp            : 25
+signo                : 61
+startParen           : 43 44
+termino              : 60 61 65
+tipo                 : 6 54 58
+tiposreturn          : 52
 var                  : 4
-varcte               : 69
+varcte               : 71
 vardef               : 6
 vars                 : 2 5 5
 whileLoop            : 20
@@ -218,16 +222,17 @@ state 6
     (3) declaracion -> . epsilon
     (4) vars -> . VAR var
     (5) vars -> . vars vars
-    (72) epsilon -> .
+    (74) epsilon -> .
 
     VAR             shift and go to state 10
-    ID              reduce using rule 72 (epsilon -> .)
-    IF              reduce using rule 72 (epsilon -> .)
-    WHILE           reduce using rule 72 (epsilon -> .)
-    FOR             reduce using rule 72 (epsilon -> .)
-    PRINT           reduce using rule 72 (epsilon -> .)
-    FUNCTION        reduce using rule 72 (epsilon -> .)
-    RETURN          reduce using rule 72 (epsilon -> .)
+    ID              reduce using rule 74 (epsilon -> .)
+    IF              reduce using rule 74 (epsilon -> .)
+    WHILE           reduce using rule 74 (epsilon -> .)
+    DO              reduce using rule 74 (epsilon -> .)
+    FOR             reduce using rule 74 (epsilon -> .)
+    PRINT           reduce using rule 74 (epsilon -> .)
+    FUNCTION        reduce using rule 74 (epsilon -> .)
+    RETURN          reduce using rule 74 (epsilon -> .)
 
     declaracion                    shift and go to state 7
     vars                           shift and go to state 8
@@ -241,35 +246,39 @@ state 7
     (18) estatuto -> . asignacion
     (19) estatuto -> . condicion
     (20) estatuto -> . whileLoop
-    (21) estatuto -> . forLoop
-    (22) estatuto -> . escritura
-    (23) estatuto -> . funcion
-    (24) estatuto -> . returnexp
-    (26) asignacion -> . ID EQUAL expresion
-    (44) condicion -> . IF LPAREN expresion endif bloque condicionelse
-    (42) whileLoop -> . WHILE LPAREN expresion RPAREN bloque
-    (43) forLoop -> . FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
-    (27) escritura -> . PRINT LPAREN escrito RPAREN
-    (50) funcion -> . FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
-    (25) returnexp -> . RETURN expresion
+    (21) estatuto -> . doWhile
+    (22) estatuto -> . forLoop
+    (23) estatuto -> . escritura
+    (24) estatuto -> . funcion
+    (25) estatuto -> . returnexp
+    (27) asignacion -> . ID EQUAL expresion
+    (47) condicion -> . IF LPAREN expresion endParen bloque condicionelse
+    (44) whileLoop -> . WHILE startParen expresion endParen bloque
+    (43) doWhile -> . DO bloque WHILE startParen expresion endParen
+    (46) forLoop -> . FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
+    (28) escritura -> . PRINT LPAREN escrito RPAREN
+    (52) funcion -> . FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (26) returnexp -> . RETURN expresion
 
-    ID              shift and go to state 20
-    IF              shift and go to state 21
-    WHILE           shift and go to state 22
-    FOR             shift and go to state 23
-    PRINT           shift and go to state 24
-    FUNCTION        shift and go to state 25
-    RETURN          shift and go to state 26
+    ID              shift and go to state 21
+    IF              shift and go to state 22
+    WHILE           shift and go to state 23
+    DO              shift and go to state 24
+    FOR             shift and go to state 25
+    PRINT           shift and go to state 26
+    FUNCTION        shift and go to state 27
+    RETURN          shift and go to state 28
 
     estatutoExp                    shift and go to state 11
     estatuto                       shift and go to state 12
     asignacion                     shift and go to state 13
     condicion                      shift and go to state 14
     whileLoop                      shift and go to state 15
-    forLoop                        shift and go to state 16
-    escritura                      shift and go to state 17
-    funcion                        shift and go to state 18
-    returnexp                      shift and go to state 19
+    doWhile                        shift and go to state 16
+    forLoop                        shift and go to state 17
+    escritura                      shift and go to state 18
+    funcion                        shift and go to state 19
+    returnexp                      shift and go to state 20
 
 state 8
 
@@ -281,13 +290,14 @@ state 8
     ID              reduce using rule 2 (declaracion -> vars .)
     IF              reduce using rule 2 (declaracion -> vars .)
     WHILE           reduce using rule 2 (declaracion -> vars .)
+    DO              reduce using rule 2 (declaracion -> vars .)
     FOR             reduce using rule 2 (declaracion -> vars .)
     PRINT           reduce using rule 2 (declaracion -> vars .)
     FUNCTION        reduce using rule 2 (declaracion -> vars .)
     RETURN          reduce using rule 2 (declaracion -> vars .)
     VAR             shift and go to state 10
 
-    vars                           shift and go to state 27
+    vars                           shift and go to state 29
 
 state 9
 
@@ -296,6 +306,7 @@ state 9
     ID              reduce using rule 3 (declaracion -> epsilon .)
     IF              reduce using rule 3 (declaracion -> epsilon .)
     WHILE           reduce using rule 3 (declaracion -> epsilon .)
+    DO              reduce using rule 3 (declaracion -> epsilon .)
     FOR             reduce using rule 3 (declaracion -> epsilon .)
     PRINT           reduce using rule 3 (declaracion -> epsilon .)
     FUNCTION        reduce using rule 3 (declaracion -> epsilon .)
@@ -308,10 +319,10 @@ state 10
     (6) var -> . vardef COLON tipo SEMICOLON
     (7) vardef -> . ID
 
-    ID              shift and go to state 30
+    ID              shift and go to state 32
 
-    var                            shift and go to state 28
-    vardef                         shift and go to state 29
+    var                            shift and go to state 30
+    vardef                         shift and go to state 31
 
 state 11
 
@@ -322,42 +333,46 @@ state 11
     (18) estatuto -> . asignacion
     (19) estatuto -> . condicion
     (20) estatuto -> . whileLoop
-    (21) estatuto -> . forLoop
-    (22) estatuto -> . escritura
-    (23) estatuto -> . funcion
-    (24) estatuto -> . returnexp
-    (26) asignacion -> . ID EQUAL expresion
-    (44) condicion -> . IF LPAREN expresion endif bloque condicionelse
-    (42) whileLoop -> . WHILE LPAREN expresion RPAREN bloque
-    (43) forLoop -> . FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
-    (27) escritura -> . PRINT LPAREN escrito RPAREN
-    (50) funcion -> . FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
-    (25) returnexp -> . RETURN expresion
+    (21) estatuto -> . doWhile
+    (22) estatuto -> . forLoop
+    (23) estatuto -> . escritura
+    (24) estatuto -> . funcion
+    (25) estatuto -> . returnexp
+    (27) asignacion -> . ID EQUAL expresion
+    (47) condicion -> . IF LPAREN expresion endParen bloque condicionelse
+    (44) whileLoop -> . WHILE startParen expresion endParen bloque
+    (43) doWhile -> . DO bloque WHILE startParen expresion endParen
+    (46) forLoop -> . FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
+    (28) escritura -> . PRINT LPAREN escrito RPAREN
+    (52) funcion -> . FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (26) returnexp -> . RETURN expresion
 
-    RCURLY          shift and go to state 32
-    ID              shift and go to state 20
-    IF              shift and go to state 21
-    WHILE           shift and go to state 22
-    FOR             shift and go to state 23
-    PRINT           shift and go to state 24
-    FUNCTION        shift and go to state 25
-    RETURN          shift and go to state 26
+    RCURLY          shift and go to state 34
+    ID              shift and go to state 21
+    IF              shift and go to state 22
+    WHILE           shift and go to state 23
+    DO              shift and go to state 24
+    FOR             shift and go to state 25
+    PRINT           shift and go to state 26
+    FUNCTION        shift and go to state 27
+    RETURN          shift and go to state 28
 
-    estatutoExp                    shift and go to state 31
+    estatutoExp                    shift and go to state 33
     estatuto                       shift and go to state 12
     asignacion                     shift and go to state 13
     condicion                      shift and go to state 14
     whileLoop                      shift and go to state 15
-    forLoop                        shift and go to state 16
-    escritura                      shift and go to state 17
-    funcion                        shift and go to state 18
-    returnexp                      shift and go to state 19
+    doWhile                        shift and go to state 16
+    forLoop                        shift and go to state 17
+    escritura                      shift and go to state 18
+    funcion                        shift and go to state 19
+    returnexp                      shift and go to state 20
 
 state 12
 
     (16) estatutoExp -> estatuto . SEMICOLON
 
-    SEMICOLON       shift and go to state 33
+    SEMICOLON       shift and go to state 35
 
 
 state 13
@@ -383,113 +398,131 @@ state 15
 
 state 16
 
-    (21) estatuto -> forLoop .
+    (21) estatuto -> doWhile .
 
-    SEMICOLON       reduce using rule 21 (estatuto -> forLoop .)
+    SEMICOLON       reduce using rule 21 (estatuto -> doWhile .)
 
 
 state 17
 
-    (22) estatuto -> escritura .
+    (22) estatuto -> forLoop .
 
-    SEMICOLON       reduce using rule 22 (estatuto -> escritura .)
+    SEMICOLON       reduce using rule 22 (estatuto -> forLoop .)
 
 
 state 18
 
-    (23) estatuto -> funcion .
+    (23) estatuto -> escritura .
 
-    SEMICOLON       reduce using rule 23 (estatuto -> funcion .)
+    SEMICOLON       reduce using rule 23 (estatuto -> escritura .)
 
 
 state 19
 
-    (24) estatuto -> returnexp .
+    (24) estatuto -> funcion .
 
-    SEMICOLON       reduce using rule 24 (estatuto -> returnexp .)
+    SEMICOLON       reduce using rule 24 (estatuto -> funcion .)
 
 
 state 20
 
-    (26) asignacion -> ID . EQUAL expresion
+    (25) estatuto -> returnexp .
 
-    EQUAL           shift and go to state 34
+    SEMICOLON       reduce using rule 25 (estatuto -> returnexp .)
 
 
 state 21
 
-    (44) condicion -> IF . LPAREN expresion endif bloque condicionelse
+    (27) asignacion -> ID . EQUAL expresion
 
-    LPAREN          shift and go to state 35
+    EQUAL           shift and go to state 36
 
 
 state 22
 
-    (42) whileLoop -> WHILE . LPAREN expresion RPAREN bloque
-
-    LPAREN          shift and go to state 36
-
-
-state 23
-
-    (43) forLoop -> FOR . LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
+    (47) condicion -> IF . LPAREN expresion endParen bloque condicionelse
 
     LPAREN          shift and go to state 37
 
 
+state 23
+
+    (44) whileLoop -> WHILE . startParen expresion endParen bloque
+    (45) startParen -> . LPAREN
+
+    LPAREN          shift and go to state 39
+
+    startParen                     shift and go to state 38
+
 state 24
 
-    (27) escritura -> PRINT . LPAREN escrito RPAREN
+    (43) doWhile -> DO . bloque WHILE startParen expresion endParen
+    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
 
-    LPAREN          shift and go to state 38
+    LCURLY          shift and go to state 6
 
+    bloque                         shift and go to state 40
 
 state 25
 
-    (50) funcion -> FUNCTION . funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
-    (51) funcdef -> . ID
+    (46) forLoop -> FOR . LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
 
-    ID              shift and go to state 40
+    LPAREN          shift and go to state 41
 
-    funcdef                        shift and go to state 39
 
 state 26
 
-    (25) returnexp -> RETURN . expresion
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
+    (28) escritura -> PRINT . LPAREN escrito RPAREN
 
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
+    LPAREN          shift and go to state 42
 
-    expresion                      shift and go to state 41
-    exp                            shift and go to state 42
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
 
 state 27
+
+    (52) funcion -> FUNCTION . funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (53) funcdef -> . ID
+
+    ID              shift and go to state 44
+
+    funcdef                        shift and go to state 43
+
+state 28
+
+    (26) returnexp -> RETURN . expresion
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
+
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
+
+    expresion                      shift and go to state 45
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
+
+state 29
 
     (5) vars -> vars vars .
     (5) vars -> vars . vars
@@ -500,6 +533,7 @@ state 27
     ID              reduce using rule 5 (vars -> vars vars .)
     IF              reduce using rule 5 (vars -> vars vars .)
     WHILE           reduce using rule 5 (vars -> vars vars .)
+    DO              reduce using rule 5 (vars -> vars vars .)
     FOR             reduce using rule 5 (vars -> vars vars .)
     PRINT           reduce using rule 5 (vars -> vars vars .)
     FUNCTION        reduce using rule 5 (vars -> vars vars .)
@@ -508,9 +542,9 @@ state 27
 
   ! VAR             [ reduce using rule 5 (vars -> vars vars .) ]
 
-    vars                           shift and go to state 27
+    vars                           shift and go to state 29
 
-state 28
+state 30
 
     (4) vars -> VAR var .
 
@@ -518,27 +552,28 @@ state 28
     ID              reduce using rule 4 (vars -> VAR var .)
     IF              reduce using rule 4 (vars -> VAR var .)
     WHILE           reduce using rule 4 (vars -> VAR var .)
+    DO              reduce using rule 4 (vars -> VAR var .)
     FOR             reduce using rule 4 (vars -> VAR var .)
     PRINT           reduce using rule 4 (vars -> VAR var .)
     FUNCTION        reduce using rule 4 (vars -> VAR var .)
     RETURN          reduce using rule 4 (vars -> VAR var .)
 
 
-state 29
+state 31
 
     (6) var -> vardef . COLON tipo SEMICOLON
 
-    COLON           shift and go to state 55
+    COLON           shift and go to state 59
 
 
-state 30
+state 32
 
     (7) vardef -> ID .
 
     COLON           reduce using rule 7 (vardef -> ID .)
 
 
-state 31
+state 33
 
     (17) estatutoExp -> estatutoExp estatutoExp .
     (17) estatutoExp -> estatutoExp . estatutoExp
@@ -547,62 +582,69 @@ state 31
     (18) estatuto -> . asignacion
     (19) estatuto -> . condicion
     (20) estatuto -> . whileLoop
-    (21) estatuto -> . forLoop
-    (22) estatuto -> . escritura
-    (23) estatuto -> . funcion
-    (24) estatuto -> . returnexp
-    (26) asignacion -> . ID EQUAL expresion
-    (44) condicion -> . IF LPAREN expresion endif bloque condicionelse
-    (42) whileLoop -> . WHILE LPAREN expresion RPAREN bloque
-    (43) forLoop -> . FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
-    (27) escritura -> . PRINT LPAREN escrito RPAREN
-    (50) funcion -> . FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
-    (25) returnexp -> . RETURN expresion
+    (21) estatuto -> . doWhile
+    (22) estatuto -> . forLoop
+    (23) estatuto -> . escritura
+    (24) estatuto -> . funcion
+    (25) estatuto -> . returnexp
+    (27) asignacion -> . ID EQUAL expresion
+    (47) condicion -> . IF LPAREN expresion endParen bloque condicionelse
+    (44) whileLoop -> . WHILE startParen expresion endParen bloque
+    (43) doWhile -> . DO bloque WHILE startParen expresion endParen
+    (46) forLoop -> . FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque
+    (28) escritura -> . PRINT LPAREN escrito RPAREN
+    (52) funcion -> . FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (26) returnexp -> . RETURN expresion
 
   ! shift/reduce conflict for ID resolved as shift
   ! shift/reduce conflict for IF resolved as shift
   ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DO resolved as shift
   ! shift/reduce conflict for FOR resolved as shift
   ! shift/reduce conflict for PRINT resolved as shift
   ! shift/reduce conflict for FUNCTION resolved as shift
   ! shift/reduce conflict for RETURN resolved as shift
     RCURLY          reduce using rule 17 (estatutoExp -> estatutoExp estatutoExp .)
-    ID              shift and go to state 20
-    IF              shift and go to state 21
-    WHILE           shift and go to state 22
-    FOR             shift and go to state 23
-    PRINT           shift and go to state 24
-    FUNCTION        shift and go to state 25
-    RETURN          shift and go to state 26
+    ID              shift and go to state 21
+    IF              shift and go to state 22
+    WHILE           shift and go to state 23
+    DO              shift and go to state 24
+    FOR             shift and go to state 25
+    PRINT           shift and go to state 26
+    FUNCTION        shift and go to state 27
+    RETURN          shift and go to state 28
 
   ! ID              [ reduce using rule 17 (estatutoExp -> estatutoExp estatutoExp .) ]
   ! IF              [ reduce using rule 17 (estatutoExp -> estatutoExp estatutoExp .) ]
   ! WHILE           [ reduce using rule 17 (estatutoExp -> estatutoExp estatutoExp .) ]
+  ! DO              [ reduce using rule 17 (estatutoExp -> estatutoExp estatutoExp .) ]
   ! FOR             [ reduce using rule 17 (estatutoExp -> estatutoExp estatutoExp .) ]
   ! PRINT           [ reduce using rule 17 (estatutoExp -> estatutoExp estatutoExp .) ]
   ! FUNCTION        [ reduce using rule 17 (estatutoExp -> estatutoExp estatutoExp .) ]
   ! RETURN          [ reduce using rule 17 (estatutoExp -> estatutoExp estatutoExp .) ]
 
-    estatutoExp                    shift and go to state 31
+    estatutoExp                    shift and go to state 33
     estatuto                       shift and go to state 12
     asignacion                     shift and go to state 13
     condicion                      shift and go to state 14
     whileLoop                      shift and go to state 15
-    forLoop                        shift and go to state 16
-    escritura                      shift and go to state 17
-    funcion                        shift and go to state 18
-    returnexp                      shift and go to state 19
+    doWhile                        shift and go to state 16
+    forLoop                        shift and go to state 17
+    escritura                      shift and go to state 18
+    funcion                        shift and go to state 19
+    returnexp                      shift and go to state 20
 
-state 32
+state 34
 
     (15) bloque -> LCURLY declaracion estatutoExp RCURLY .
 
     $end            reduce using rule 15 (bloque -> LCURLY declaracion estatutoExp RCURLY .)
+    WHILE           reduce using rule 15 (bloque -> LCURLY declaracion estatutoExp RCURLY .)
     ELSE            reduce using rule 15 (bloque -> LCURLY declaracion estatutoExp RCURLY .)
     SEMICOLON       reduce using rule 15 (bloque -> LCURLY declaracion estatutoExp RCURLY .)
 
 
-state 33
+state 35
 
     (16) estatutoExp -> estatuto SEMICOLON .
 
@@ -610,488 +652,508 @@ state 33
     ID              reduce using rule 16 (estatutoExp -> estatuto SEMICOLON .)
     IF              reduce using rule 16 (estatutoExp -> estatuto SEMICOLON .)
     WHILE           reduce using rule 16 (estatutoExp -> estatuto SEMICOLON .)
+    DO              reduce using rule 16 (estatutoExp -> estatuto SEMICOLON .)
     FOR             reduce using rule 16 (estatutoExp -> estatuto SEMICOLON .)
     PRINT           reduce using rule 16 (estatutoExp -> estatuto SEMICOLON .)
     FUNCTION        reduce using rule 16 (estatutoExp -> estatuto SEMICOLON .)
     RETURN          reduce using rule 16 (estatutoExp -> estatuto SEMICOLON .)
 
 
-state 34
-
-    (26) asignacion -> ID EQUAL . expresion
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
-
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
-
-    expresion                      shift and go to state 56
-    exp                            shift and go to state 42
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
-
-state 35
-
-    (44) condicion -> IF LPAREN . expresion endif bloque condicionelse
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
-
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
-
-    expresion                      shift and go to state 57
-    exp                            shift and go to state 42
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
-
 state 36
 
-    (42) whileLoop -> WHILE LPAREN . expresion RPAREN bloque
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
+    (27) asignacion -> ID EQUAL . expresion
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
-    expresion                      shift and go to state 58
-    exp                            shift and go to state 42
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
+    expresion                      shift and go to state 60
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
 
 state 37
 
-    (43) forLoop -> FOR LPAREN . argumentos expresion SEMICOLON expresion RPAREN bloque
-    (54) argumentos -> . args
-    (55) argumentos -> . epsilon
-    (56) args -> . ID COLON tipo
-    (57) args -> . args COMA args
-    (72) epsilon -> .
+    (47) condicion -> IF LPAREN . expresion endParen bloque condicionelse
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-  ! shift/reduce conflict for ID resolved as shift
-    ID              shift and go to state 62
-    LBRACKET        reduce using rule 72 (epsilon -> .)
-    LPAREN          reduce using rule 72 (epsilon -> .)
-    RPAREN          reduce using rule 72 (epsilon -> .)
-    CTEL            reduce using rule 72 (epsilon -> .)
-    CTEF            reduce using rule 72 (epsilon -> .)
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
-  ! ID              [ reduce using rule 72 (epsilon -> .) ]
-
-    argumentos                     shift and go to state 59
-    args                           shift and go to state 60
-    epsilon                        shift and go to state 61
+    expresion                      shift and go to state 61
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
 
 state 38
 
-    (27) escritura -> PRINT LPAREN . escrito RPAREN
-    (28) escrito -> . impr
-    (29) escrito -> . impr COMA impr
-    (30) impr -> . STRING
-    (31) impr -> . expresion
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
+    (44) whileLoop -> WHILE startParen . expresion endParen bloque
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-    STRING          shift and go to state 65
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
-    escrito                        shift and go to state 63
-    impr                           shift and go to state 64
-    expresion                      shift and go to state 66
-    exp                            shift and go to state 42
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
+    expresion                      shift and go to state 62
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
 
 state 39
 
-    (50) funcion -> FUNCTION funcdef . LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (45) startParen -> LPAREN .
 
-    LPAREN          shift and go to state 67
+    LBRACKET        reduce using rule 45 (startParen -> LPAREN .)
+    LPAREN          reduce using rule 45 (startParen -> LPAREN .)
+    RPAREN          reduce using rule 45 (startParen -> LPAREN .)
+    ID              reduce using rule 45 (startParen -> LPAREN .)
+    CTEL            reduce using rule 45 (startParen -> LPAREN .)
+    CTEF            reduce using rule 45 (startParen -> LPAREN .)
 
 
 state 40
 
-    (51) funcdef -> ID .
+    (43) doWhile -> DO bloque . WHILE startParen expresion endParen
 
-    LPAREN          reduce using rule 51 (funcdef -> ID .)
+    WHILE           shift and go to state 63
 
 
 state 41
 
-    (25) returnexp -> RETURN expresion .
+    (46) forLoop -> FOR LPAREN . argumentos expresion SEMICOLON expresion RPAREN bloque
+    (56) argumentos -> . args
+    (57) argumentos -> . epsilon
+    (58) args -> . ID COLON tipo
+    (59) args -> . args COMA args
+    (74) epsilon -> .
 
-    SEMICOLON       reduce using rule 25 (returnexp -> RETURN expresion .)
+  ! shift/reduce conflict for ID resolved as shift
+    ID              shift and go to state 67
+    LBRACKET        reduce using rule 74 (epsilon -> .)
+    LPAREN          reduce using rule 74 (epsilon -> .)
+    RPAREN          reduce using rule 74 (epsilon -> .)
+    CTEL            reduce using rule 74 (epsilon -> .)
+    CTEF            reduce using rule 74 (epsilon -> .)
 
+  ! ID              [ reduce using rule 74 (epsilon -> .) ]
+
+    argumentos                     shift and go to state 64
+    args                           shift and go to state 65
+    epsilon                        shift and go to state 66
 
 state 42
 
-    (32) expresion -> exp .
-    (35) condition -> exp . comparacion expresion
-    (36) comparacion -> . LESSTHAN
-    (37) comparacion -> . MORETHAN
-    (38) comparacion -> . ISEQUAL
-    (39) comparacion -> . NOTEQUAL
-    (40) comparacion -> . AND
-    (41) comparacion -> . OR
+    (28) escritura -> PRINT LPAREN . escrito RPAREN
+    (29) escrito -> . impr
+    (30) escrito -> . impr COMA impr
+    (31) impr -> . STRING
+    (32) impr -> . expresion
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-    SEMICOLON       reduce using rule 32 (expresion -> exp .)
-    RPAREN          reduce using rule 32 (expresion -> exp .)
-    COMA            reduce using rule 32 (expresion -> exp .)
-    LPAREN          reduce using rule 32 (expresion -> exp .)
-    LESSTHAN        shift and go to state 69
-    MORETHAN        shift and go to state 70
-    ISEQUAL         shift and go to state 71
-    NOTEQUAL        shift and go to state 72
-    AND             shift and go to state 73
-    OR              shift and go to state 74
+    STRING          shift and go to state 70
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
-    comparacion                    shift and go to state 68
+    escrito                        shift and go to state 68
+    impr                           shift and go to state 69
+    expresion                      shift and go to state 71
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
 
 state 43
 
-    (33) expresion -> condition .
+    (52) funcion -> FUNCTION funcdef . LPAREN argumentos RPAREN COLON tiposreturn bloque
 
-    SEMICOLON       reduce using rule 33 (expresion -> condition .)
-    RPAREN          reduce using rule 33 (expresion -> condition .)
-    COMA            reduce using rule 33 (expresion -> condition .)
-    LPAREN          reduce using rule 33 (expresion -> condition .)
+    LPAREN          shift and go to state 72
 
 
 state 44
 
-    (34) expresion -> arreglo .
+    (53) funcdef -> ID .
 
-    SEMICOLON       reduce using rule 34 (expresion -> arreglo .)
-    RPAREN          reduce using rule 34 (expresion -> arreglo .)
-    COMA            reduce using rule 34 (expresion -> arreglo .)
-    LPAREN          reduce using rule 34 (expresion -> arreglo .)
+    LPAREN          reduce using rule 53 (funcdef -> ID .)
 
 
 state 45
 
-    (58) exp -> termino .
-    (59) exp -> termino . signo exp
-    (60) signo -> . PLUS
-    (61) signo -> . MINUS
+    (26) returnexp -> RETURN expresion .
 
-    LESSTHAN        reduce using rule 58 (exp -> termino .)
-    MORETHAN        reduce using rule 58 (exp -> termino .)
-    ISEQUAL         reduce using rule 58 (exp -> termino .)
-    NOTEQUAL        reduce using rule 58 (exp -> termino .)
-    AND             reduce using rule 58 (exp -> termino .)
-    OR              reduce using rule 58 (exp -> termino .)
-    SEMICOLON       reduce using rule 58 (exp -> termino .)
-    RPAREN          reduce using rule 58 (exp -> termino .)
-    COMA            reduce using rule 58 (exp -> termino .)
-    LPAREN          reduce using rule 58 (exp -> termino .)
-    PLUS            shift and go to state 76
-    MINUS           shift and go to state 77
+    SEMICOLON       reduce using rule 26 (returnexp -> RETURN expresion .)
 
-    signo                          shift and go to state 75
 
 state 46
+
+    (33) expresion -> exp .
+    (36) condition -> exp . comparacion expresion
+    (37) comparacion -> . LESSTHAN
+    (38) comparacion -> . MORETHAN
+    (39) comparacion -> . ISEQUAL
+    (40) comparacion -> . NOTEQUAL
+    (41) comparacion -> . AND
+    (42) comparacion -> . OR
+
+    SEMICOLON       reduce using rule 33 (expresion -> exp .)
+    RPAREN          reduce using rule 33 (expresion -> exp .)
+    COMA            reduce using rule 33 (expresion -> exp .)
+    LPAREN          reduce using rule 33 (expresion -> exp .)
+    LESSTHAN        shift and go to state 74
+    MORETHAN        shift and go to state 75
+    ISEQUAL         shift and go to state 76
+    NOTEQUAL        shift and go to state 77
+    AND             shift and go to state 78
+    OR              shift and go to state 79
+
+    comparacion                    shift and go to state 73
+
+state 47
+
+    (34) expresion -> condition .
+
+    SEMICOLON       reduce using rule 34 (expresion -> condition .)
+    RPAREN          reduce using rule 34 (expresion -> condition .)
+    COMA            reduce using rule 34 (expresion -> condition .)
+    LPAREN          reduce using rule 34 (expresion -> condition .)
+
+
+state 48
+
+    (35) expresion -> arreglo .
+
+    SEMICOLON       reduce using rule 35 (expresion -> arreglo .)
+    RPAREN          reduce using rule 35 (expresion -> arreglo .)
+    COMA            reduce using rule 35 (expresion -> arreglo .)
+    LPAREN          reduce using rule 35 (expresion -> arreglo .)
+
+
+state 49
+
+    (60) exp -> termino .
+    (61) exp -> termino . signo exp
+    (62) signo -> . PLUS
+    (63) signo -> . MINUS
+
+    LESSTHAN        reduce using rule 60 (exp -> termino .)
+    MORETHAN        reduce using rule 60 (exp -> termino .)
+    ISEQUAL         reduce using rule 60 (exp -> termino .)
+    NOTEQUAL        reduce using rule 60 (exp -> termino .)
+    AND             reduce using rule 60 (exp -> termino .)
+    OR              reduce using rule 60 (exp -> termino .)
+    SEMICOLON       reduce using rule 60 (exp -> termino .)
+    RPAREN          reduce using rule 60 (exp -> termino .)
+    COMA            reduce using rule 60 (exp -> termino .)
+    LPAREN          reduce using rule 60 (exp -> termino .)
+    PLUS            shift and go to state 81
+    MINUS           shift and go to state 82
+
+    signo                          shift and go to state 80
+
+state 50
 
     (14) arreglo -> LBRACKET . lista RBRACKET
     (12) lista -> . ID
     (13) lista -> . ID COMA
 
-    ID              shift and go to state 79
+    ID              shift and go to state 84
 
-    lista                          shift and go to state 78
-
-state 47
-
-    (62) termino -> factor .
-    (63) termino -> factor . operacion termino
-    (64) operacion -> . TIMES
-    (65) operacion -> . DIVIDE
-    (66) operacion -> . DIFF
-    (67) operacion -> . EXP
-
-    PLUS            reduce using rule 62 (termino -> factor .)
-    MINUS           reduce using rule 62 (termino -> factor .)
-    LESSTHAN        reduce using rule 62 (termino -> factor .)
-    MORETHAN        reduce using rule 62 (termino -> factor .)
-    ISEQUAL         reduce using rule 62 (termino -> factor .)
-    NOTEQUAL        reduce using rule 62 (termino -> factor .)
-    AND             reduce using rule 62 (termino -> factor .)
-    OR              reduce using rule 62 (termino -> factor .)
-    SEMICOLON       reduce using rule 62 (termino -> factor .)
-    RPAREN          reduce using rule 62 (termino -> factor .)
-    COMA            reduce using rule 62 (termino -> factor .)
-    LPAREN          reduce using rule 62 (termino -> factor .)
-    TIMES           shift and go to state 81
-    DIVIDE          shift and go to state 82
-    DIFF            shift and go to state 83
-    EXP             shift and go to state 84
-
-    operacion                      shift and go to state 80
-
-state 48
-
-    (68) factor -> paren . expresion paren
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
-
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
-
-    paren                          shift and go to state 48
-    expresion                      shift and go to state 85
-    exp                            shift and go to state 42
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    varcte                         shift and go to state 49
-
-state 49
-
-    (69) factor -> varcte .
-
-    TIMES           reduce using rule 69 (factor -> varcte .)
-    DIVIDE          reduce using rule 69 (factor -> varcte .)
-    DIFF            reduce using rule 69 (factor -> varcte .)
-    EXP             reduce using rule 69 (factor -> varcte .)
-    PLUS            reduce using rule 69 (factor -> varcte .)
-    MINUS           reduce using rule 69 (factor -> varcte .)
-    LESSTHAN        reduce using rule 69 (factor -> varcte .)
-    MORETHAN        reduce using rule 69 (factor -> varcte .)
-    ISEQUAL         reduce using rule 69 (factor -> varcte .)
-    NOTEQUAL        reduce using rule 69 (factor -> varcte .)
-    AND             reduce using rule 69 (factor -> varcte .)
-    OR              reduce using rule 69 (factor -> varcte .)
-    SEMICOLON       reduce using rule 69 (factor -> varcte .)
-    RPAREN          reduce using rule 69 (factor -> varcte .)
-    COMA            reduce using rule 69 (factor -> varcte .)
-    LPAREN          reduce using rule 69 (factor -> varcte .)
-
-
-state 50
-
-    (70) paren -> LPAREN .
-
-    LBRACKET        reduce using rule 70 (paren -> LPAREN .)
-    LPAREN          reduce using rule 70 (paren -> LPAREN .)
-    RPAREN          reduce using rule 70 (paren -> LPAREN .)
-    ID              reduce using rule 70 (paren -> LPAREN .)
-    CTEL            reduce using rule 70 (paren -> LPAREN .)
-    CTEF            reduce using rule 70 (paren -> LPAREN .)
-    TIMES           reduce using rule 70 (paren -> LPAREN .)
-    DIVIDE          reduce using rule 70 (paren -> LPAREN .)
-    DIFF            reduce using rule 70 (paren -> LPAREN .)
-    EXP             reduce using rule 70 (paren -> LPAREN .)
-    PLUS            reduce using rule 70 (paren -> LPAREN .)
-    MINUS           reduce using rule 70 (paren -> LPAREN .)
-    LESSTHAN        reduce using rule 70 (paren -> LPAREN .)
-    MORETHAN        reduce using rule 70 (paren -> LPAREN .)
-    ISEQUAL         reduce using rule 70 (paren -> LPAREN .)
-    NOTEQUAL        reduce using rule 70 (paren -> LPAREN .)
-    AND             reduce using rule 70 (paren -> LPAREN .)
-    OR              reduce using rule 70 (paren -> LPAREN .)
-    SEMICOLON       reduce using rule 70 (paren -> LPAREN .)
-    COMA            reduce using rule 70 (paren -> LPAREN .)
-
+    lista                          shift and go to state 83
 
 state 51
 
-    (71) paren -> RPAREN .
+    (64) termino -> factor .
+    (65) termino -> factor . operacion termino
+    (66) operacion -> . TIMES
+    (67) operacion -> . DIVIDE
+    (68) operacion -> . DIFF
+    (69) operacion -> . EXP
 
-    LBRACKET        reduce using rule 71 (paren -> RPAREN .)
-    LPAREN          reduce using rule 71 (paren -> RPAREN .)
-    RPAREN          reduce using rule 71 (paren -> RPAREN .)
-    ID              reduce using rule 71 (paren -> RPAREN .)
-    CTEL            reduce using rule 71 (paren -> RPAREN .)
-    CTEF            reduce using rule 71 (paren -> RPAREN .)
-    TIMES           reduce using rule 71 (paren -> RPAREN .)
-    DIVIDE          reduce using rule 71 (paren -> RPAREN .)
-    DIFF            reduce using rule 71 (paren -> RPAREN .)
-    EXP             reduce using rule 71 (paren -> RPAREN .)
-    PLUS            reduce using rule 71 (paren -> RPAREN .)
-    MINUS           reduce using rule 71 (paren -> RPAREN .)
-    LESSTHAN        reduce using rule 71 (paren -> RPAREN .)
-    MORETHAN        reduce using rule 71 (paren -> RPAREN .)
-    ISEQUAL         reduce using rule 71 (paren -> RPAREN .)
-    NOTEQUAL        reduce using rule 71 (paren -> RPAREN .)
-    AND             reduce using rule 71 (paren -> RPAREN .)
-    OR              reduce using rule 71 (paren -> RPAREN .)
-    SEMICOLON       reduce using rule 71 (paren -> RPAREN .)
-    COMA            reduce using rule 71 (paren -> RPAREN .)
+    PLUS            reduce using rule 64 (termino -> factor .)
+    MINUS           reduce using rule 64 (termino -> factor .)
+    LESSTHAN        reduce using rule 64 (termino -> factor .)
+    MORETHAN        reduce using rule 64 (termino -> factor .)
+    ISEQUAL         reduce using rule 64 (termino -> factor .)
+    NOTEQUAL        reduce using rule 64 (termino -> factor .)
+    AND             reduce using rule 64 (termino -> factor .)
+    OR              reduce using rule 64 (termino -> factor .)
+    SEMICOLON       reduce using rule 64 (termino -> factor .)
+    RPAREN          reduce using rule 64 (termino -> factor .)
+    COMA            reduce using rule 64 (termino -> factor .)
+    LPAREN          reduce using rule 64 (termino -> factor .)
+    TIMES           shift and go to state 86
+    DIVIDE          shift and go to state 87
+    DIFF            shift and go to state 88
+    EXP             shift and go to state 89
 
+    operacion                      shift and go to state 85
 
 state 52
 
-    (73) varcte -> ID .
+    (70) factor -> paren . expresion paren
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-    TIMES           reduce using rule 73 (varcte -> ID .)
-    DIVIDE          reduce using rule 73 (varcte -> ID .)
-    DIFF            reduce using rule 73 (varcte -> ID .)
-    EXP             reduce using rule 73 (varcte -> ID .)
-    PLUS            reduce using rule 73 (varcte -> ID .)
-    MINUS           reduce using rule 73 (varcte -> ID .)
-    LESSTHAN        reduce using rule 73 (varcte -> ID .)
-    MORETHAN        reduce using rule 73 (varcte -> ID .)
-    ISEQUAL         reduce using rule 73 (varcte -> ID .)
-    NOTEQUAL        reduce using rule 73 (varcte -> ID .)
-    AND             reduce using rule 73 (varcte -> ID .)
-    OR              reduce using rule 73 (varcte -> ID .)
-    SEMICOLON       reduce using rule 73 (varcte -> ID .)
-    RPAREN          reduce using rule 73 (varcte -> ID .)
-    COMA            reduce using rule 73 (varcte -> ID .)
-    LPAREN          reduce using rule 73 (varcte -> ID .)
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
+    paren                          shift and go to state 52
+    expresion                      shift and go to state 90
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    varcte                         shift and go to state 53
 
 state 53
 
-    (74) varcte -> CTEL .
+    (71) factor -> varcte .
 
-    TIMES           reduce using rule 74 (varcte -> CTEL .)
-    DIVIDE          reduce using rule 74 (varcte -> CTEL .)
-    DIFF            reduce using rule 74 (varcte -> CTEL .)
-    EXP             reduce using rule 74 (varcte -> CTEL .)
-    PLUS            reduce using rule 74 (varcte -> CTEL .)
-    MINUS           reduce using rule 74 (varcte -> CTEL .)
-    LESSTHAN        reduce using rule 74 (varcte -> CTEL .)
-    MORETHAN        reduce using rule 74 (varcte -> CTEL .)
-    ISEQUAL         reduce using rule 74 (varcte -> CTEL .)
-    NOTEQUAL        reduce using rule 74 (varcte -> CTEL .)
-    AND             reduce using rule 74 (varcte -> CTEL .)
-    OR              reduce using rule 74 (varcte -> CTEL .)
-    SEMICOLON       reduce using rule 74 (varcte -> CTEL .)
-    RPAREN          reduce using rule 74 (varcte -> CTEL .)
-    COMA            reduce using rule 74 (varcte -> CTEL .)
-    LPAREN          reduce using rule 74 (varcte -> CTEL .)
+    TIMES           reduce using rule 71 (factor -> varcte .)
+    DIVIDE          reduce using rule 71 (factor -> varcte .)
+    DIFF            reduce using rule 71 (factor -> varcte .)
+    EXP             reduce using rule 71 (factor -> varcte .)
+    PLUS            reduce using rule 71 (factor -> varcte .)
+    MINUS           reduce using rule 71 (factor -> varcte .)
+    LESSTHAN        reduce using rule 71 (factor -> varcte .)
+    MORETHAN        reduce using rule 71 (factor -> varcte .)
+    ISEQUAL         reduce using rule 71 (factor -> varcte .)
+    NOTEQUAL        reduce using rule 71 (factor -> varcte .)
+    AND             reduce using rule 71 (factor -> varcte .)
+    OR              reduce using rule 71 (factor -> varcte .)
+    SEMICOLON       reduce using rule 71 (factor -> varcte .)
+    RPAREN          reduce using rule 71 (factor -> varcte .)
+    COMA            reduce using rule 71 (factor -> varcte .)
+    LPAREN          reduce using rule 71 (factor -> varcte .)
 
 
 state 54
 
-    (75) varcte -> CTEF .
+    (72) paren -> LPAREN .
 
-    TIMES           reduce using rule 75 (varcte -> CTEF .)
-    DIVIDE          reduce using rule 75 (varcte -> CTEF .)
-    DIFF            reduce using rule 75 (varcte -> CTEF .)
-    EXP             reduce using rule 75 (varcte -> CTEF .)
-    PLUS            reduce using rule 75 (varcte -> CTEF .)
-    MINUS           reduce using rule 75 (varcte -> CTEF .)
-    LESSTHAN        reduce using rule 75 (varcte -> CTEF .)
-    MORETHAN        reduce using rule 75 (varcte -> CTEF .)
-    ISEQUAL         reduce using rule 75 (varcte -> CTEF .)
-    NOTEQUAL        reduce using rule 75 (varcte -> CTEF .)
-    AND             reduce using rule 75 (varcte -> CTEF .)
-    OR              reduce using rule 75 (varcte -> CTEF .)
-    SEMICOLON       reduce using rule 75 (varcte -> CTEF .)
-    RPAREN          reduce using rule 75 (varcte -> CTEF .)
-    COMA            reduce using rule 75 (varcte -> CTEF .)
-    LPAREN          reduce using rule 75 (varcte -> CTEF .)
+    LBRACKET        reduce using rule 72 (paren -> LPAREN .)
+    LPAREN          reduce using rule 72 (paren -> LPAREN .)
+    RPAREN          reduce using rule 72 (paren -> LPAREN .)
+    ID              reduce using rule 72 (paren -> LPAREN .)
+    CTEL            reduce using rule 72 (paren -> LPAREN .)
+    CTEF            reduce using rule 72 (paren -> LPAREN .)
+    TIMES           reduce using rule 72 (paren -> LPAREN .)
+    DIVIDE          reduce using rule 72 (paren -> LPAREN .)
+    DIFF            reduce using rule 72 (paren -> LPAREN .)
+    EXP             reduce using rule 72 (paren -> LPAREN .)
+    PLUS            reduce using rule 72 (paren -> LPAREN .)
+    MINUS           reduce using rule 72 (paren -> LPAREN .)
+    LESSTHAN        reduce using rule 72 (paren -> LPAREN .)
+    MORETHAN        reduce using rule 72 (paren -> LPAREN .)
+    ISEQUAL         reduce using rule 72 (paren -> LPAREN .)
+    NOTEQUAL        reduce using rule 72 (paren -> LPAREN .)
+    AND             reduce using rule 72 (paren -> LPAREN .)
+    OR              reduce using rule 72 (paren -> LPAREN .)
+    SEMICOLON       reduce using rule 72 (paren -> LPAREN .)
+    COMA            reduce using rule 72 (paren -> LPAREN .)
 
 
 state 55
+
+    (73) paren -> RPAREN .
+
+    LBRACKET        reduce using rule 73 (paren -> RPAREN .)
+    LPAREN          reduce using rule 73 (paren -> RPAREN .)
+    RPAREN          reduce using rule 73 (paren -> RPAREN .)
+    ID              reduce using rule 73 (paren -> RPAREN .)
+    CTEL            reduce using rule 73 (paren -> RPAREN .)
+    CTEF            reduce using rule 73 (paren -> RPAREN .)
+    TIMES           reduce using rule 73 (paren -> RPAREN .)
+    DIVIDE          reduce using rule 73 (paren -> RPAREN .)
+    DIFF            reduce using rule 73 (paren -> RPAREN .)
+    EXP             reduce using rule 73 (paren -> RPAREN .)
+    PLUS            reduce using rule 73 (paren -> RPAREN .)
+    MINUS           reduce using rule 73 (paren -> RPAREN .)
+    LESSTHAN        reduce using rule 73 (paren -> RPAREN .)
+    MORETHAN        reduce using rule 73 (paren -> RPAREN .)
+    ISEQUAL         reduce using rule 73 (paren -> RPAREN .)
+    NOTEQUAL        reduce using rule 73 (paren -> RPAREN .)
+    AND             reduce using rule 73 (paren -> RPAREN .)
+    OR              reduce using rule 73 (paren -> RPAREN .)
+    SEMICOLON       reduce using rule 73 (paren -> RPAREN .)
+    COMA            reduce using rule 73 (paren -> RPAREN .)
+
+
+state 56
+
+    (75) varcte -> ID .
+
+    TIMES           reduce using rule 75 (varcte -> ID .)
+    DIVIDE          reduce using rule 75 (varcte -> ID .)
+    DIFF            reduce using rule 75 (varcte -> ID .)
+    EXP             reduce using rule 75 (varcte -> ID .)
+    PLUS            reduce using rule 75 (varcte -> ID .)
+    MINUS           reduce using rule 75 (varcte -> ID .)
+    LESSTHAN        reduce using rule 75 (varcte -> ID .)
+    MORETHAN        reduce using rule 75 (varcte -> ID .)
+    ISEQUAL         reduce using rule 75 (varcte -> ID .)
+    NOTEQUAL        reduce using rule 75 (varcte -> ID .)
+    AND             reduce using rule 75 (varcte -> ID .)
+    OR              reduce using rule 75 (varcte -> ID .)
+    SEMICOLON       reduce using rule 75 (varcte -> ID .)
+    RPAREN          reduce using rule 75 (varcte -> ID .)
+    COMA            reduce using rule 75 (varcte -> ID .)
+    LPAREN          reduce using rule 75 (varcte -> ID .)
+
+
+state 57
+
+    (76) varcte -> CTEL .
+
+    TIMES           reduce using rule 76 (varcte -> CTEL .)
+    DIVIDE          reduce using rule 76 (varcte -> CTEL .)
+    DIFF            reduce using rule 76 (varcte -> CTEL .)
+    EXP             reduce using rule 76 (varcte -> CTEL .)
+    PLUS            reduce using rule 76 (varcte -> CTEL .)
+    MINUS           reduce using rule 76 (varcte -> CTEL .)
+    LESSTHAN        reduce using rule 76 (varcte -> CTEL .)
+    MORETHAN        reduce using rule 76 (varcte -> CTEL .)
+    ISEQUAL         reduce using rule 76 (varcte -> CTEL .)
+    NOTEQUAL        reduce using rule 76 (varcte -> CTEL .)
+    AND             reduce using rule 76 (varcte -> CTEL .)
+    OR              reduce using rule 76 (varcte -> CTEL .)
+    SEMICOLON       reduce using rule 76 (varcte -> CTEL .)
+    RPAREN          reduce using rule 76 (varcte -> CTEL .)
+    COMA            reduce using rule 76 (varcte -> CTEL .)
+    LPAREN          reduce using rule 76 (varcte -> CTEL .)
+
+
+state 58
+
+    (77) varcte -> CTEF .
+
+    TIMES           reduce using rule 77 (varcte -> CTEF .)
+    DIVIDE          reduce using rule 77 (varcte -> CTEF .)
+    DIFF            reduce using rule 77 (varcte -> CTEF .)
+    EXP             reduce using rule 77 (varcte -> CTEF .)
+    PLUS            reduce using rule 77 (varcte -> CTEF .)
+    MINUS           reduce using rule 77 (varcte -> CTEF .)
+    LESSTHAN        reduce using rule 77 (varcte -> CTEF .)
+    MORETHAN        reduce using rule 77 (varcte -> CTEF .)
+    ISEQUAL         reduce using rule 77 (varcte -> CTEF .)
+    NOTEQUAL        reduce using rule 77 (varcte -> CTEF .)
+    AND             reduce using rule 77 (varcte -> CTEF .)
+    OR              reduce using rule 77 (varcte -> CTEF .)
+    SEMICOLON       reduce using rule 77 (varcte -> CTEF .)
+    RPAREN          reduce using rule 77 (varcte -> CTEF .)
+    COMA            reduce using rule 77 (varcte -> CTEF .)
+    LPAREN          reduce using rule 77 (varcte -> CTEF .)
+
+
+state 59
 
     (6) var -> vardef COLON . tipo SEMICOLON
     (8) tipo -> . INT
@@ -1099,413 +1161,424 @@ state 55
     (10) tipo -> . BOOL
     (11) tipo -> . STRING
 
-    INT             shift and go to state 87
-    FLOAT           shift and go to state 88
-    BOOL            shift and go to state 89
-    STRING          shift and go to state 90
+    INT             shift and go to state 92
+    FLOAT           shift and go to state 93
+    BOOL            shift and go to state 94
+    STRING          shift and go to state 95
 
-    tipo                           shift and go to state 86
-
-state 56
-
-    (26) asignacion -> ID EQUAL expresion .
-
-    SEMICOLON       reduce using rule 26 (asignacion -> ID EQUAL expresion .)
-
-
-state 57
-
-    (44) condicion -> IF LPAREN expresion . endif bloque condicionelse
-    (46) endif -> . RPAREN
-
-    RPAREN          shift and go to state 92
-
-    endif                          shift and go to state 91
-
-state 58
-
-    (42) whileLoop -> WHILE LPAREN expresion . RPAREN bloque
-
-    RPAREN          shift and go to state 93
-
-
-state 59
-
-    (43) forLoop -> FOR LPAREN argumentos . expresion SEMICOLON expresion RPAREN bloque
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
-
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
-
-    expresion                      shift and go to state 94
-    exp                            shift and go to state 42
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
+    tipo                           shift and go to state 91
 
 state 60
 
-    (54) argumentos -> args .
-    (57) args -> args . COMA args
+    (27) asignacion -> ID EQUAL expresion .
 
-    LBRACKET        reduce using rule 54 (argumentos -> args .)
-    LPAREN          reduce using rule 54 (argumentos -> args .)
-    RPAREN          reduce using rule 54 (argumentos -> args .)
-    ID              reduce using rule 54 (argumentos -> args .)
-    CTEL            reduce using rule 54 (argumentos -> args .)
-    CTEF            reduce using rule 54 (argumentos -> args .)
-    COMA            shift and go to state 95
+    SEMICOLON       reduce using rule 27 (asignacion -> ID EQUAL expresion .)
 
 
 state 61
 
-    (55) argumentos -> epsilon .
-
-    LBRACKET        reduce using rule 55 (argumentos -> epsilon .)
-    LPAREN          reduce using rule 55 (argumentos -> epsilon .)
-    RPAREN          reduce using rule 55 (argumentos -> epsilon .)
-    ID              reduce using rule 55 (argumentos -> epsilon .)
-    CTEL            reduce using rule 55 (argumentos -> epsilon .)
-    CTEF            reduce using rule 55 (argumentos -> epsilon .)
-
-
-state 62
-
-    (56) args -> ID . COLON tipo
-
-    COLON           shift and go to state 96
-
-
-state 63
-
-    (27) escritura -> PRINT LPAREN escrito . RPAREN
+    (47) condicion -> IF LPAREN expresion . endParen bloque condicionelse
+    (48) endParen -> . RPAREN
 
     RPAREN          shift and go to state 97
 
+    endParen                       shift and go to state 96
+
+state 62
+
+    (44) whileLoop -> WHILE startParen expresion . endParen bloque
+    (48) endParen -> . RPAREN
+
+    RPAREN          shift and go to state 97
+
+    endParen                       shift and go to state 98
+
+state 63
+
+    (43) doWhile -> DO bloque WHILE . startParen expresion endParen
+    (45) startParen -> . LPAREN
+
+    LPAREN          shift and go to state 39
+
+    startParen                     shift and go to state 99
 
 state 64
 
-    (28) escrito -> impr .
-    (29) escrito -> impr . COMA impr
+    (46) forLoop -> FOR LPAREN argumentos . expresion SEMICOLON expresion RPAREN bloque
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-    RPAREN          reduce using rule 28 (escrito -> impr .)
-    COMA            shift and go to state 98
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
+    expresion                      shift and go to state 100
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
 
 state 65
 
-    (30) impr -> STRING .
+    (56) argumentos -> args .
+    (59) args -> args . COMA args
 
-    COMA            reduce using rule 30 (impr -> STRING .)
-    RPAREN          reduce using rule 30 (impr -> STRING .)
+    LBRACKET        reduce using rule 56 (argumentos -> args .)
+    LPAREN          reduce using rule 56 (argumentos -> args .)
+    RPAREN          reduce using rule 56 (argumentos -> args .)
+    ID              reduce using rule 56 (argumentos -> args .)
+    CTEL            reduce using rule 56 (argumentos -> args .)
+    CTEF            reduce using rule 56 (argumentos -> args .)
+    COMA            shift and go to state 101
 
 
 state 66
 
-    (31) impr -> expresion .
+    (57) argumentos -> epsilon .
 
-    COMA            reduce using rule 31 (impr -> expresion .)
-    RPAREN          reduce using rule 31 (impr -> expresion .)
+    LBRACKET        reduce using rule 57 (argumentos -> epsilon .)
+    LPAREN          reduce using rule 57 (argumentos -> epsilon .)
+    RPAREN          reduce using rule 57 (argumentos -> epsilon .)
+    ID              reduce using rule 57 (argumentos -> epsilon .)
+    CTEL            reduce using rule 57 (argumentos -> epsilon .)
+    CTEF            reduce using rule 57 (argumentos -> epsilon .)
 
 
 state 67
 
-    (50) funcion -> FUNCTION funcdef LPAREN . argumentos RPAREN COLON tiposreturn bloque
-    (54) argumentos -> . args
-    (55) argumentos -> . epsilon
-    (56) args -> . ID COLON tipo
-    (57) args -> . args COMA args
-    (72) epsilon -> .
+    (58) args -> ID . COLON tipo
 
-    ID              shift and go to state 62
-    RPAREN          reduce using rule 72 (epsilon -> .)
+    COLON           shift and go to state 102
 
-    argumentos                     shift and go to state 99
-    args                           shift and go to state 60
-    epsilon                        shift and go to state 61
 
 state 68
 
-    (35) condition -> exp comparacion . expresion
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
+    (28) escritura -> PRINT LPAREN escrito . RPAREN
 
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
+    RPAREN          shift and go to state 103
 
-    exp                            shift and go to state 42
-    expresion                      shift and go to state 100
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
 
 state 69
 
-    (36) comparacion -> LESSTHAN .
+    (29) escrito -> impr .
+    (30) escrito -> impr . COMA impr
 
-    LBRACKET        reduce using rule 36 (comparacion -> LESSTHAN .)
-    LPAREN          reduce using rule 36 (comparacion -> LESSTHAN .)
-    RPAREN          reduce using rule 36 (comparacion -> LESSTHAN .)
-    ID              reduce using rule 36 (comparacion -> LESSTHAN .)
-    CTEL            reduce using rule 36 (comparacion -> LESSTHAN .)
-    CTEF            reduce using rule 36 (comparacion -> LESSTHAN .)
+    RPAREN          reduce using rule 29 (escrito -> impr .)
+    COMA            shift and go to state 104
 
 
 state 70
 
-    (37) comparacion -> MORETHAN .
+    (31) impr -> STRING .
 
-    LBRACKET        reduce using rule 37 (comparacion -> MORETHAN .)
-    LPAREN          reduce using rule 37 (comparacion -> MORETHAN .)
-    RPAREN          reduce using rule 37 (comparacion -> MORETHAN .)
-    ID              reduce using rule 37 (comparacion -> MORETHAN .)
-    CTEL            reduce using rule 37 (comparacion -> MORETHAN .)
-    CTEF            reduce using rule 37 (comparacion -> MORETHAN .)
+    COMA            reduce using rule 31 (impr -> STRING .)
+    RPAREN          reduce using rule 31 (impr -> STRING .)
 
 
 state 71
 
-    (38) comparacion -> ISEQUAL .
+    (32) impr -> expresion .
 
-    LBRACKET        reduce using rule 38 (comparacion -> ISEQUAL .)
-    LPAREN          reduce using rule 38 (comparacion -> ISEQUAL .)
-    RPAREN          reduce using rule 38 (comparacion -> ISEQUAL .)
-    ID              reduce using rule 38 (comparacion -> ISEQUAL .)
-    CTEL            reduce using rule 38 (comparacion -> ISEQUAL .)
-    CTEF            reduce using rule 38 (comparacion -> ISEQUAL .)
+    COMA            reduce using rule 32 (impr -> expresion .)
+    RPAREN          reduce using rule 32 (impr -> expresion .)
 
 
 state 72
 
-    (39) comparacion -> NOTEQUAL .
+    (52) funcion -> FUNCTION funcdef LPAREN . argumentos RPAREN COLON tiposreturn bloque
+    (56) argumentos -> . args
+    (57) argumentos -> . epsilon
+    (58) args -> . ID COLON tipo
+    (59) args -> . args COMA args
+    (74) epsilon -> .
 
-    LBRACKET        reduce using rule 39 (comparacion -> NOTEQUAL .)
-    LPAREN          reduce using rule 39 (comparacion -> NOTEQUAL .)
-    RPAREN          reduce using rule 39 (comparacion -> NOTEQUAL .)
-    ID              reduce using rule 39 (comparacion -> NOTEQUAL .)
-    CTEL            reduce using rule 39 (comparacion -> NOTEQUAL .)
-    CTEF            reduce using rule 39 (comparacion -> NOTEQUAL .)
+    ID              shift and go to state 67
+    RPAREN          reduce using rule 74 (epsilon -> .)
 
+    argumentos                     shift and go to state 105
+    args                           shift and go to state 65
+    epsilon                        shift and go to state 66
 
 state 73
 
-    (40) comparacion -> AND .
+    (36) condition -> exp comparacion . expresion
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-    LBRACKET        reduce using rule 40 (comparacion -> AND .)
-    LPAREN          reduce using rule 40 (comparacion -> AND .)
-    RPAREN          reduce using rule 40 (comparacion -> AND .)
-    ID              reduce using rule 40 (comparacion -> AND .)
-    CTEL            reduce using rule 40 (comparacion -> AND .)
-    CTEF            reduce using rule 40 (comparacion -> AND .)
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
+    exp                            shift and go to state 46
+    expresion                      shift and go to state 106
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
 
 state 74
 
-    (41) comparacion -> OR .
+    (37) comparacion -> LESSTHAN .
 
-    LBRACKET        reduce using rule 41 (comparacion -> OR .)
-    LPAREN          reduce using rule 41 (comparacion -> OR .)
-    RPAREN          reduce using rule 41 (comparacion -> OR .)
-    ID              reduce using rule 41 (comparacion -> OR .)
-    CTEL            reduce using rule 41 (comparacion -> OR .)
-    CTEF            reduce using rule 41 (comparacion -> OR .)
+    LBRACKET        reduce using rule 37 (comparacion -> LESSTHAN .)
+    LPAREN          reduce using rule 37 (comparacion -> LESSTHAN .)
+    RPAREN          reduce using rule 37 (comparacion -> LESSTHAN .)
+    ID              reduce using rule 37 (comparacion -> LESSTHAN .)
+    CTEL            reduce using rule 37 (comparacion -> LESSTHAN .)
+    CTEF            reduce using rule 37 (comparacion -> LESSTHAN .)
 
 
 state 75
 
-    (59) exp -> termino signo . exp
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
+    (38) comparacion -> MORETHAN .
 
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
+    LBRACKET        reduce using rule 38 (comparacion -> MORETHAN .)
+    LPAREN          reduce using rule 38 (comparacion -> MORETHAN .)
+    RPAREN          reduce using rule 38 (comparacion -> MORETHAN .)
+    ID              reduce using rule 38 (comparacion -> MORETHAN .)
+    CTEL            reduce using rule 38 (comparacion -> MORETHAN .)
+    CTEF            reduce using rule 38 (comparacion -> MORETHAN .)
 
-    termino                        shift and go to state 45
-    exp                            shift and go to state 101
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
 
 state 76
 
-    (60) signo -> PLUS .
+    (39) comparacion -> ISEQUAL .
 
-    LPAREN          reduce using rule 60 (signo -> PLUS .)
-    RPAREN          reduce using rule 60 (signo -> PLUS .)
-    ID              reduce using rule 60 (signo -> PLUS .)
-    CTEL            reduce using rule 60 (signo -> PLUS .)
-    CTEF            reduce using rule 60 (signo -> PLUS .)
+    LBRACKET        reduce using rule 39 (comparacion -> ISEQUAL .)
+    LPAREN          reduce using rule 39 (comparacion -> ISEQUAL .)
+    RPAREN          reduce using rule 39 (comparacion -> ISEQUAL .)
+    ID              reduce using rule 39 (comparacion -> ISEQUAL .)
+    CTEL            reduce using rule 39 (comparacion -> ISEQUAL .)
+    CTEF            reduce using rule 39 (comparacion -> ISEQUAL .)
 
 
 state 77
 
-    (61) signo -> MINUS .
+    (40) comparacion -> NOTEQUAL .
 
-    LPAREN          reduce using rule 61 (signo -> MINUS .)
-    RPAREN          reduce using rule 61 (signo -> MINUS .)
-    ID              reduce using rule 61 (signo -> MINUS .)
-    CTEL            reduce using rule 61 (signo -> MINUS .)
-    CTEF            reduce using rule 61 (signo -> MINUS .)
+    LBRACKET        reduce using rule 40 (comparacion -> NOTEQUAL .)
+    LPAREN          reduce using rule 40 (comparacion -> NOTEQUAL .)
+    RPAREN          reduce using rule 40 (comparacion -> NOTEQUAL .)
+    ID              reduce using rule 40 (comparacion -> NOTEQUAL .)
+    CTEL            reduce using rule 40 (comparacion -> NOTEQUAL .)
+    CTEF            reduce using rule 40 (comparacion -> NOTEQUAL .)
 
 
 state 78
 
-    (14) arreglo -> LBRACKET lista . RBRACKET
+    (41) comparacion -> AND .
 
-    RBRACKET        shift and go to state 102
+    LBRACKET        reduce using rule 41 (comparacion -> AND .)
+    LPAREN          reduce using rule 41 (comparacion -> AND .)
+    RPAREN          reduce using rule 41 (comparacion -> AND .)
+    ID              reduce using rule 41 (comparacion -> AND .)
+    CTEL            reduce using rule 41 (comparacion -> AND .)
+    CTEF            reduce using rule 41 (comparacion -> AND .)
 
 
 state 79
+
+    (42) comparacion -> OR .
+
+    LBRACKET        reduce using rule 42 (comparacion -> OR .)
+    LPAREN          reduce using rule 42 (comparacion -> OR .)
+    RPAREN          reduce using rule 42 (comparacion -> OR .)
+    ID              reduce using rule 42 (comparacion -> OR .)
+    CTEL            reduce using rule 42 (comparacion -> OR .)
+    CTEF            reduce using rule 42 (comparacion -> OR .)
+
+
+state 80
+
+    (61) exp -> termino signo . exp
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
+
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
+
+    termino                        shift and go to state 49
+    exp                            shift and go to state 107
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
+
+state 81
+
+    (62) signo -> PLUS .
+
+    LPAREN          reduce using rule 62 (signo -> PLUS .)
+    RPAREN          reduce using rule 62 (signo -> PLUS .)
+    ID              reduce using rule 62 (signo -> PLUS .)
+    CTEL            reduce using rule 62 (signo -> PLUS .)
+    CTEF            reduce using rule 62 (signo -> PLUS .)
+
+
+state 82
+
+    (63) signo -> MINUS .
+
+    LPAREN          reduce using rule 63 (signo -> MINUS .)
+    RPAREN          reduce using rule 63 (signo -> MINUS .)
+    ID              reduce using rule 63 (signo -> MINUS .)
+    CTEL            reduce using rule 63 (signo -> MINUS .)
+    CTEF            reduce using rule 63 (signo -> MINUS .)
+
+
+state 83
+
+    (14) arreglo -> LBRACKET lista . RBRACKET
+
+    RBRACKET        shift and go to state 108
+
+
+state 84
 
     (12) lista -> ID .
     (13) lista -> ID . COMA
 
     RBRACKET        reduce using rule 12 (lista -> ID .)
-    COMA            shift and go to state 103
-
-
-state 80
-
-    (63) termino -> factor operacion . termino
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
-
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
-
-    factor                         shift and go to state 47
-    termino                        shift and go to state 104
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
-
-state 81
-
-    (64) operacion -> TIMES .
-
-    LPAREN          reduce using rule 64 (operacion -> TIMES .)
-    RPAREN          reduce using rule 64 (operacion -> TIMES .)
-    ID              reduce using rule 64 (operacion -> TIMES .)
-    CTEL            reduce using rule 64 (operacion -> TIMES .)
-    CTEF            reduce using rule 64 (operacion -> TIMES .)
-
-
-state 82
-
-    (65) operacion -> DIVIDE .
-
-    LPAREN          reduce using rule 65 (operacion -> DIVIDE .)
-    RPAREN          reduce using rule 65 (operacion -> DIVIDE .)
-    ID              reduce using rule 65 (operacion -> DIVIDE .)
-    CTEL            reduce using rule 65 (operacion -> DIVIDE .)
-    CTEF            reduce using rule 65 (operacion -> DIVIDE .)
-
-
-state 83
-
-    (66) operacion -> DIFF .
-
-    LPAREN          reduce using rule 66 (operacion -> DIFF .)
-    RPAREN          reduce using rule 66 (operacion -> DIFF .)
-    ID              reduce using rule 66 (operacion -> DIFF .)
-    CTEL            reduce using rule 66 (operacion -> DIFF .)
-    CTEF            reduce using rule 66 (operacion -> DIFF .)
-
-
-state 84
-
-    (67) operacion -> EXP .
-
-    LPAREN          reduce using rule 67 (operacion -> EXP .)
-    RPAREN          reduce using rule 67 (operacion -> EXP .)
-    ID              reduce using rule 67 (operacion -> EXP .)
-    CTEL            reduce using rule 67 (operacion -> EXP .)
-    CTEF            reduce using rule 67 (operacion -> EXP .)
+    COMA            shift and go to state 109
 
 
 state 85
 
-    (68) factor -> paren expresion . paren
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
+    (65) termino -> factor operacion . termino
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
-    paren                          shift and go to state 105
+    factor                         shift and go to state 51
+    termino                        shift and go to state 110
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
 
 state 86
 
-    (6) var -> vardef COLON tipo . SEMICOLON
+    (66) operacion -> TIMES .
 
-    SEMICOLON       shift and go to state 106
+    LPAREN          reduce using rule 66 (operacion -> TIMES .)
+    RPAREN          reduce using rule 66 (operacion -> TIMES .)
+    ID              reduce using rule 66 (operacion -> TIMES .)
+    CTEL            reduce using rule 66 (operacion -> TIMES .)
+    CTEF            reduce using rule 66 (operacion -> TIMES .)
 
 
 state 87
+
+    (67) operacion -> DIVIDE .
+
+    LPAREN          reduce using rule 67 (operacion -> DIVIDE .)
+    RPAREN          reduce using rule 67 (operacion -> DIVIDE .)
+    ID              reduce using rule 67 (operacion -> DIVIDE .)
+    CTEL            reduce using rule 67 (operacion -> DIVIDE .)
+    CTEF            reduce using rule 67 (operacion -> DIVIDE .)
+
+
+state 88
+
+    (68) operacion -> DIFF .
+
+    LPAREN          reduce using rule 68 (operacion -> DIFF .)
+    RPAREN          reduce using rule 68 (operacion -> DIFF .)
+    ID              reduce using rule 68 (operacion -> DIFF .)
+    CTEL            reduce using rule 68 (operacion -> DIFF .)
+    CTEF            reduce using rule 68 (operacion -> DIFF .)
+
+
+state 89
+
+    (69) operacion -> EXP .
+
+    LPAREN          reduce using rule 69 (operacion -> EXP .)
+    RPAREN          reduce using rule 69 (operacion -> EXP .)
+    ID              reduce using rule 69 (operacion -> EXP .)
+    CTEL            reduce using rule 69 (operacion -> EXP .)
+    CTEF            reduce using rule 69 (operacion -> EXP .)
+
+
+state 90
+
+    (70) factor -> paren expresion . paren
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+
+    paren                          shift and go to state 111
+
+state 91
+
+    (6) var -> vardef COLON tipo . SEMICOLON
+
+    SEMICOLON       shift and go to state 112
+
+
+state 92
 
     (8) tipo -> INT .
 
@@ -1520,7 +1593,7 @@ state 87
     LCURLY          reduce using rule 8 (tipo -> INT .)
 
 
-state 88
+state 93
 
     (9) tipo -> FLOAT .
 
@@ -1535,7 +1608,7 @@ state 88
     LCURLY          reduce using rule 9 (tipo -> FLOAT .)
 
 
-state 89
+state 94
 
     (10) tipo -> BOOL .
 
@@ -1550,7 +1623,7 @@ state 89
     LCURLY          reduce using rule 10 (tipo -> BOOL .)
 
 
-state 90
+state 95
 
     (11) tipo -> STRING .
 
@@ -1565,144 +1638,181 @@ state 90
     LCURLY          reduce using rule 11 (tipo -> STRING .)
 
 
-state 91
-
-    (44) condicion -> IF LPAREN expresion endif . bloque condicionelse
-    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
-
-    LCURLY          shift and go to state 6
-
-    bloque                         shift and go to state 107
-
-state 92
-
-    (46) endif -> RPAREN .
-
-    LCURLY          reduce using rule 46 (endif -> RPAREN .)
-
-
-state 93
-
-    (42) whileLoop -> WHILE LPAREN expresion RPAREN . bloque
-    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
-
-    LCURLY          shift and go to state 6
-
-    bloque                         shift and go to state 108
-
-state 94
-
-    (43) forLoop -> FOR LPAREN argumentos expresion . SEMICOLON expresion RPAREN bloque
-
-    SEMICOLON       shift and go to state 109
-
-
-state 95
-
-    (57) args -> args COMA . args
-    (56) args -> . ID COLON tipo
-    (57) args -> . args COMA args
-
-    ID              shift and go to state 62
-
-    args                           shift and go to state 110
-
 state 96
 
-    (56) args -> ID COLON . tipo
+    (47) condicion -> IF LPAREN expresion endParen . bloque condicionelse
+    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
+
+    LCURLY          shift and go to state 6
+
+    bloque                         shift and go to state 113
+
+state 97
+
+    (48) endParen -> RPAREN .
+
+    LCURLY          reduce using rule 48 (endParen -> RPAREN .)
+    SEMICOLON       reduce using rule 48 (endParen -> RPAREN .)
+
+
+state 98
+
+    (44) whileLoop -> WHILE startParen expresion endParen . bloque
+    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
+
+    LCURLY          shift and go to state 6
+
+    bloque                         shift and go to state 114
+
+state 99
+
+    (43) doWhile -> DO bloque WHILE startParen . expresion endParen
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
+
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
+
+    expresion                      shift and go to state 115
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
+
+state 100
+
+    (46) forLoop -> FOR LPAREN argumentos expresion . SEMICOLON expresion RPAREN bloque
+
+    SEMICOLON       shift and go to state 116
+
+
+state 101
+
+    (59) args -> args COMA . args
+    (58) args -> . ID COLON tipo
+    (59) args -> . args COMA args
+
+    ID              shift and go to state 67
+
+    args                           shift and go to state 117
+
+state 102
+
+    (58) args -> ID COLON . tipo
     (8) tipo -> . INT
     (9) tipo -> . FLOAT
     (10) tipo -> . BOOL
     (11) tipo -> . STRING
 
-    INT             shift and go to state 87
-    FLOAT           shift and go to state 88
-    BOOL            shift and go to state 89
-    STRING          shift and go to state 90
+    INT             shift and go to state 92
+    FLOAT           shift and go to state 93
+    BOOL            shift and go to state 94
+    STRING          shift and go to state 95
 
-    tipo                           shift and go to state 111
+    tipo                           shift and go to state 118
 
-state 97
+state 103
 
-    (27) escritura -> PRINT LPAREN escrito RPAREN .
+    (28) escritura -> PRINT LPAREN escrito RPAREN .
 
-    SEMICOLON       reduce using rule 27 (escritura -> PRINT LPAREN escrito RPAREN .)
+    SEMICOLON       reduce using rule 28 (escritura -> PRINT LPAREN escrito RPAREN .)
 
 
-state 98
+state 104
 
-    (29) escrito -> impr COMA . impr
-    (30) impr -> . STRING
-    (31) impr -> . expresion
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
+    (30) escrito -> impr COMA . impr
+    (31) impr -> . STRING
+    (32) impr -> . expresion
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-    STRING          shift and go to state 65
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
+    STRING          shift and go to state 70
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
-    impr                           shift and go to state 112
-    expresion                      shift and go to state 66
-    exp                            shift and go to state 42
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
+    impr                           shift and go to state 119
+    expresion                      shift and go to state 71
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
 
-state 99
+state 105
 
-    (50) funcion -> FUNCTION funcdef LPAREN argumentos . RPAREN COLON tiposreturn bloque
+    (52) funcion -> FUNCTION funcdef LPAREN argumentos . RPAREN COLON tiposreturn bloque
 
-    RPAREN          shift and go to state 113
-
-
-state 100
-
-    (35) condition -> exp comparacion expresion .
-
-    SEMICOLON       reduce using rule 35 (condition -> exp comparacion expresion .)
-    RPAREN          reduce using rule 35 (condition -> exp comparacion expresion .)
-    COMA            reduce using rule 35 (condition -> exp comparacion expresion .)
-    LPAREN          reduce using rule 35 (condition -> exp comparacion expresion .)
+    RPAREN          shift and go to state 120
 
 
-state 101
+state 106
 
-    (59) exp -> termino signo exp .
+    (36) condition -> exp comparacion expresion .
 
-    LESSTHAN        reduce using rule 59 (exp -> termino signo exp .)
-    MORETHAN        reduce using rule 59 (exp -> termino signo exp .)
-    ISEQUAL         reduce using rule 59 (exp -> termino signo exp .)
-    NOTEQUAL        reduce using rule 59 (exp -> termino signo exp .)
-    AND             reduce using rule 59 (exp -> termino signo exp .)
-    OR              reduce using rule 59 (exp -> termino signo exp .)
-    SEMICOLON       reduce using rule 59 (exp -> termino signo exp .)
-    RPAREN          reduce using rule 59 (exp -> termino signo exp .)
-    COMA            reduce using rule 59 (exp -> termino signo exp .)
-    LPAREN          reduce using rule 59 (exp -> termino signo exp .)
+    SEMICOLON       reduce using rule 36 (condition -> exp comparacion expresion .)
+    RPAREN          reduce using rule 36 (condition -> exp comparacion expresion .)
+    COMA            reduce using rule 36 (condition -> exp comparacion expresion .)
+    LPAREN          reduce using rule 36 (condition -> exp comparacion expresion .)
 
 
-state 102
+state 107
+
+    (61) exp -> termino signo exp .
+
+    LESSTHAN        reduce using rule 61 (exp -> termino signo exp .)
+    MORETHAN        reduce using rule 61 (exp -> termino signo exp .)
+    ISEQUAL         reduce using rule 61 (exp -> termino signo exp .)
+    NOTEQUAL        reduce using rule 61 (exp -> termino signo exp .)
+    AND             reduce using rule 61 (exp -> termino signo exp .)
+    OR              reduce using rule 61 (exp -> termino signo exp .)
+    SEMICOLON       reduce using rule 61 (exp -> termino signo exp .)
+    RPAREN          reduce using rule 61 (exp -> termino signo exp .)
+    COMA            reduce using rule 61 (exp -> termino signo exp .)
+    LPAREN          reduce using rule 61 (exp -> termino signo exp .)
+
+
+state 108
 
     (14) arreglo -> LBRACKET lista RBRACKET .
 
@@ -1712,54 +1822,54 @@ state 102
     LPAREN          reduce using rule 14 (arreglo -> LBRACKET lista RBRACKET .)
 
 
-state 103
+state 109
 
     (13) lista -> ID COMA .
 
     RBRACKET        reduce using rule 13 (lista -> ID COMA .)
 
 
-state 104
+state 110
 
-    (63) termino -> factor operacion termino .
+    (65) termino -> factor operacion termino .
 
-    PLUS            reduce using rule 63 (termino -> factor operacion termino .)
-    MINUS           reduce using rule 63 (termino -> factor operacion termino .)
-    LESSTHAN        reduce using rule 63 (termino -> factor operacion termino .)
-    MORETHAN        reduce using rule 63 (termino -> factor operacion termino .)
-    ISEQUAL         reduce using rule 63 (termino -> factor operacion termino .)
-    NOTEQUAL        reduce using rule 63 (termino -> factor operacion termino .)
-    AND             reduce using rule 63 (termino -> factor operacion termino .)
-    OR              reduce using rule 63 (termino -> factor operacion termino .)
-    SEMICOLON       reduce using rule 63 (termino -> factor operacion termino .)
-    RPAREN          reduce using rule 63 (termino -> factor operacion termino .)
-    COMA            reduce using rule 63 (termino -> factor operacion termino .)
-    LPAREN          reduce using rule 63 (termino -> factor operacion termino .)
-
-
-state 105
-
-    (68) factor -> paren expresion paren .
-
-    TIMES           reduce using rule 68 (factor -> paren expresion paren .)
-    DIVIDE          reduce using rule 68 (factor -> paren expresion paren .)
-    DIFF            reduce using rule 68 (factor -> paren expresion paren .)
-    EXP             reduce using rule 68 (factor -> paren expresion paren .)
-    PLUS            reduce using rule 68 (factor -> paren expresion paren .)
-    MINUS           reduce using rule 68 (factor -> paren expresion paren .)
-    LESSTHAN        reduce using rule 68 (factor -> paren expresion paren .)
-    MORETHAN        reduce using rule 68 (factor -> paren expresion paren .)
-    ISEQUAL         reduce using rule 68 (factor -> paren expresion paren .)
-    NOTEQUAL        reduce using rule 68 (factor -> paren expresion paren .)
-    AND             reduce using rule 68 (factor -> paren expresion paren .)
-    OR              reduce using rule 68 (factor -> paren expresion paren .)
-    SEMICOLON       reduce using rule 68 (factor -> paren expresion paren .)
-    RPAREN          reduce using rule 68 (factor -> paren expresion paren .)
-    COMA            reduce using rule 68 (factor -> paren expresion paren .)
-    LPAREN          reduce using rule 68 (factor -> paren expresion paren .)
+    PLUS            reduce using rule 65 (termino -> factor operacion termino .)
+    MINUS           reduce using rule 65 (termino -> factor operacion termino .)
+    LESSTHAN        reduce using rule 65 (termino -> factor operacion termino .)
+    MORETHAN        reduce using rule 65 (termino -> factor operacion termino .)
+    ISEQUAL         reduce using rule 65 (termino -> factor operacion termino .)
+    NOTEQUAL        reduce using rule 65 (termino -> factor operacion termino .)
+    AND             reduce using rule 65 (termino -> factor operacion termino .)
+    OR              reduce using rule 65 (termino -> factor operacion termino .)
+    SEMICOLON       reduce using rule 65 (termino -> factor operacion termino .)
+    RPAREN          reduce using rule 65 (termino -> factor operacion termino .)
+    COMA            reduce using rule 65 (termino -> factor operacion termino .)
+    LPAREN          reduce using rule 65 (termino -> factor operacion termino .)
 
 
-state 106
+state 111
+
+    (70) factor -> paren expresion paren .
+
+    TIMES           reduce using rule 70 (factor -> paren expresion paren .)
+    DIVIDE          reduce using rule 70 (factor -> paren expresion paren .)
+    DIFF            reduce using rule 70 (factor -> paren expresion paren .)
+    EXP             reduce using rule 70 (factor -> paren expresion paren .)
+    PLUS            reduce using rule 70 (factor -> paren expresion paren .)
+    MINUS           reduce using rule 70 (factor -> paren expresion paren .)
+    LESSTHAN        reduce using rule 70 (factor -> paren expresion paren .)
+    MORETHAN        reduce using rule 70 (factor -> paren expresion paren .)
+    ISEQUAL         reduce using rule 70 (factor -> paren expresion paren .)
+    NOTEQUAL        reduce using rule 70 (factor -> paren expresion paren .)
+    AND             reduce using rule 70 (factor -> paren expresion paren .)
+    OR              reduce using rule 70 (factor -> paren expresion paren .)
+    SEMICOLON       reduce using rule 70 (factor -> paren expresion paren .)
+    RPAREN          reduce using rule 70 (factor -> paren expresion paren .)
+    COMA            reduce using rule 70 (factor -> paren expresion paren .)
+    LPAREN          reduce using rule 70 (factor -> paren expresion paren .)
+
+
+state 112
 
     (6) var -> vardef COLON tipo SEMICOLON .
 
@@ -1767,232 +1877,250 @@ state 106
     ID              reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
     IF              reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
     WHILE           reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
+    DO              reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
     FOR             reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
     PRINT           reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
     FUNCTION        reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
     RETURN          reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
 
 
-state 107
-
-    (44) condicion -> IF LPAREN expresion endif bloque . condicionelse
-    (47) condicionelse -> . else bloque
-    (48) condicionelse -> . epsilon
-    (49) else -> . ELSE
-    (72) epsilon -> .
-
-    ELSE            shift and go to state 117
-    SEMICOLON       reduce using rule 72 (epsilon -> .)
-
-    condicionelse                  shift and go to state 114
-    else                           shift and go to state 115
-    epsilon                        shift and go to state 116
-
-state 108
-
-    (42) whileLoop -> WHILE LPAREN expresion RPAREN bloque .
-
-    SEMICOLON       reduce using rule 42 (whileLoop -> WHILE LPAREN expresion RPAREN bloque .)
-
-
-state 109
-
-    (43) forLoop -> FOR LPAREN argumentos expresion SEMICOLON . expresion RPAREN bloque
-    (32) expresion -> . exp
-    (33) expresion -> . condition
-    (34) expresion -> . arreglo
-    (58) exp -> . termino
-    (59) exp -> . termino signo exp
-    (35) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (62) termino -> . factor
-    (63) termino -> . factor operacion termino
-    (68) factor -> . paren expresion paren
-    (69) factor -> . varcte
-    (70) paren -> . LPAREN
-    (71) paren -> . RPAREN
-    (73) varcte -> . ID
-    (74) varcte -> . CTEL
-    (75) varcte -> . CTEF
-
-    LBRACKET        shift and go to state 46
-    LPAREN          shift and go to state 50
-    RPAREN          shift and go to state 51
-    ID              shift and go to state 52
-    CTEL            shift and go to state 53
-    CTEF            shift and go to state 54
-
-    expresion                      shift and go to state 118
-    exp                            shift and go to state 42
-    condition                      shift and go to state 43
-    arreglo                        shift and go to state 44
-    termino                        shift and go to state 45
-    factor                         shift and go to state 47
-    paren                          shift and go to state 48
-    varcte                         shift and go to state 49
-
-state 110
-
-    (57) args -> args COMA args .
-    (57) args -> args . COMA args
-
-  ! shift/reduce conflict for COMA resolved as shift
-    LBRACKET        reduce using rule 57 (args -> args COMA args .)
-    LPAREN          reduce using rule 57 (args -> args COMA args .)
-    RPAREN          reduce using rule 57 (args -> args COMA args .)
-    ID              reduce using rule 57 (args -> args COMA args .)
-    CTEL            reduce using rule 57 (args -> args COMA args .)
-    CTEF            reduce using rule 57 (args -> args COMA args .)
-    COMA            shift and go to state 95
-
-  ! COMA            [ reduce using rule 57 (args -> args COMA args .) ]
-
-
-state 111
-
-    (56) args -> ID COLON tipo .
-
-    COMA            reduce using rule 56 (args -> ID COLON tipo .)
-    LBRACKET        reduce using rule 56 (args -> ID COLON tipo .)
-    LPAREN          reduce using rule 56 (args -> ID COLON tipo .)
-    RPAREN          reduce using rule 56 (args -> ID COLON tipo .)
-    ID              reduce using rule 56 (args -> ID COLON tipo .)
-    CTEL            reduce using rule 56 (args -> ID COLON tipo .)
-    CTEF            reduce using rule 56 (args -> ID COLON tipo .)
-
-
-state 112
-
-    (29) escrito -> impr COMA impr .
-
-    RPAREN          reduce using rule 29 (escrito -> impr COMA impr .)
-
-
 state 113
 
-    (50) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN . COLON tiposreturn bloque
+    (47) condicion -> IF LPAREN expresion endParen bloque . condicionelse
+    (49) condicionelse -> . else bloque
+    (50) condicionelse -> . epsilon
+    (51) else -> . ELSE
+    (74) epsilon -> .
 
-    COLON           shift and go to state 119
+    ELSE            shift and go to state 124
+    SEMICOLON       reduce using rule 74 (epsilon -> .)
 
+    condicionelse                  shift and go to state 121
+    else                           shift and go to state 122
+    epsilon                        shift and go to state 123
 
 state 114
 
-    (44) condicion -> IF LPAREN expresion endif bloque condicionelse .
+    (44) whileLoop -> WHILE startParen expresion endParen bloque .
 
-    SEMICOLON       reduce using rule 44 (condicion -> IF LPAREN expresion endif bloque condicionelse .)
+    SEMICOLON       reduce using rule 44 (whileLoop -> WHILE startParen expresion endParen bloque .)
 
 
 state 115
 
-    (47) condicionelse -> else . bloque
-    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
+    (43) doWhile -> DO bloque WHILE startParen expresion . endParen
+    (48) endParen -> . RPAREN
 
-    LCURLY          shift and go to state 6
+    RPAREN          shift and go to state 97
 
-    bloque                         shift and go to state 120
+    endParen                       shift and go to state 125
 
 state 116
 
-    (48) condicionelse -> epsilon .
+    (46) forLoop -> FOR LPAREN argumentos expresion SEMICOLON . expresion RPAREN bloque
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (60) exp -> . termino
+    (61) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (64) termino -> . factor
+    (65) termino -> . factor operacion termino
+    (70) factor -> . paren expresion paren
+    (71) factor -> . varcte
+    (72) paren -> . LPAREN
+    (73) paren -> . RPAREN
+    (75) varcte -> . ID
+    (76) varcte -> . CTEL
+    (77) varcte -> . CTEF
 
-    SEMICOLON       reduce using rule 48 (condicionelse -> epsilon .)
+    LBRACKET        shift and go to state 50
+    LPAREN          shift and go to state 54
+    RPAREN          shift and go to state 55
+    ID              shift and go to state 56
+    CTEL            shift and go to state 57
+    CTEF            shift and go to state 58
 
+    expresion                      shift and go to state 126
+    exp                            shift and go to state 46
+    condition                      shift and go to state 47
+    arreglo                        shift and go to state 48
+    termino                        shift and go to state 49
+    factor                         shift and go to state 51
+    paren                          shift and go to state 52
+    varcte                         shift and go to state 53
 
 state 117
 
-    (49) else -> ELSE .
+    (59) args -> args COMA args .
+    (59) args -> args . COMA args
 
-    LCURLY          reduce using rule 49 (else -> ELSE .)
+  ! shift/reduce conflict for COMA resolved as shift
+    LBRACKET        reduce using rule 59 (args -> args COMA args .)
+    LPAREN          reduce using rule 59 (args -> args COMA args .)
+    RPAREN          reduce using rule 59 (args -> args COMA args .)
+    ID              reduce using rule 59 (args -> args COMA args .)
+    CTEL            reduce using rule 59 (args -> args COMA args .)
+    CTEF            reduce using rule 59 (args -> args COMA args .)
+    COMA            shift and go to state 101
+
+  ! COMA            [ reduce using rule 59 (args -> args COMA args .) ]
 
 
 state 118
 
-    (43) forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion . RPAREN bloque
+    (58) args -> ID COLON tipo .
 
-    RPAREN          shift and go to state 121
+    COMA            reduce using rule 58 (args -> ID COLON tipo .)
+    LBRACKET        reduce using rule 58 (args -> ID COLON tipo .)
+    LPAREN          reduce using rule 58 (args -> ID COLON tipo .)
+    RPAREN          reduce using rule 58 (args -> ID COLON tipo .)
+    ID              reduce using rule 58 (args -> ID COLON tipo .)
+    CTEL            reduce using rule 58 (args -> ID COLON tipo .)
+    CTEF            reduce using rule 58 (args -> ID COLON tipo .)
 
 
 state 119
 
-    (50) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON . tiposreturn bloque
-    (52) tiposreturn -> . tipo
-    (53) tiposreturn -> . VOID
+    (30) escrito -> impr COMA impr .
+
+    RPAREN          reduce using rule 30 (escrito -> impr COMA impr .)
+
+
+state 120
+
+    (52) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN . COLON tiposreturn bloque
+
+    COLON           shift and go to state 127
+
+
+state 121
+
+    (47) condicion -> IF LPAREN expresion endParen bloque condicionelse .
+
+    SEMICOLON       reduce using rule 47 (condicion -> IF LPAREN expresion endParen bloque condicionelse .)
+
+
+state 122
+
+    (49) condicionelse -> else . bloque
+    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
+
+    LCURLY          shift and go to state 6
+
+    bloque                         shift and go to state 128
+
+state 123
+
+    (50) condicionelse -> epsilon .
+
+    SEMICOLON       reduce using rule 50 (condicionelse -> epsilon .)
+
+
+state 124
+
+    (51) else -> ELSE .
+
+    LCURLY          reduce using rule 51 (else -> ELSE .)
+
+
+state 125
+
+    (43) doWhile -> DO bloque WHILE startParen expresion endParen .
+
+    SEMICOLON       reduce using rule 43 (doWhile -> DO bloque WHILE startParen expresion endParen .)
+
+
+state 126
+
+    (46) forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion . RPAREN bloque
+
+    RPAREN          shift and go to state 129
+
+
+state 127
+
+    (52) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON . tiposreturn bloque
+    (54) tiposreturn -> . tipo
+    (55) tiposreturn -> . VOID
     (8) tipo -> . INT
     (9) tipo -> . FLOAT
     (10) tipo -> . BOOL
     (11) tipo -> . STRING
 
-    VOID            shift and go to state 124
-    INT             shift and go to state 87
-    FLOAT           shift and go to state 88
-    BOOL            shift and go to state 89
-    STRING          shift and go to state 90
+    VOID            shift and go to state 132
+    INT             shift and go to state 92
+    FLOAT           shift and go to state 93
+    BOOL            shift and go to state 94
+    STRING          shift and go to state 95
 
-    tiposreturn                    shift and go to state 122
-    tipo                           shift and go to state 123
+    tiposreturn                    shift and go to state 130
+    tipo                           shift and go to state 131
 
-state 120
+state 128
 
-    (47) condicionelse -> else bloque .
+    (49) condicionelse -> else bloque .
 
-    SEMICOLON       reduce using rule 47 (condicionelse -> else bloque .)
+    SEMICOLON       reduce using rule 49 (condicionelse -> else bloque .)
 
 
-state 121
+state 129
 
-    (43) forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN . bloque
+    (46) forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN . bloque
     (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
 
     LCURLY          shift and go to state 6
 
-    bloque                         shift and go to state 125
+    bloque                         shift and go to state 133
 
-state 122
+state 130
 
-    (50) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn . bloque
+    (52) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn . bloque
     (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
 
     LCURLY          shift and go to state 6
 
-    bloque                         shift and go to state 126
+    bloque                         shift and go to state 134
 
-state 123
+state 131
 
-    (52) tiposreturn -> tipo .
+    (54) tiposreturn -> tipo .
 
-    LCURLY          reduce using rule 52 (tiposreturn -> tipo .)
-
-
-state 124
-
-    (53) tiposreturn -> VOID .
-
-    LCURLY          reduce using rule 53 (tiposreturn -> VOID .)
+    LCURLY          reduce using rule 54 (tiposreturn -> tipo .)
 
 
-state 125
+state 132
 
-    (43) forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque .
+    (55) tiposreturn -> VOID .
 
-    SEMICOLON       reduce using rule 43 (forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque .)
+    LCURLY          reduce using rule 55 (tiposreturn -> VOID .)
 
 
-state 126
+state 133
 
-    (50) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque .
+    (46) forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque .
 
-    SEMICOLON       reduce using rule 50 (funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque .)
+    SEMICOLON       reduce using rule 46 (forLoop -> FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque .)
+
+
+state 134
+
+    (52) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque .
+
+    SEMICOLON       reduce using rule 52 (funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for VAR in state 27 resolved as shift
-WARNING: shift/reduce conflict for ID in state 31 resolved as shift
-WARNING: shift/reduce conflict for IF in state 31 resolved as shift
-WARNING: shift/reduce conflict for WHILE in state 31 resolved as shift
-WARNING: shift/reduce conflict for FOR in state 31 resolved as shift
-WARNING: shift/reduce conflict for PRINT in state 31 resolved as shift
-WARNING: shift/reduce conflict for FUNCTION in state 31 resolved as shift
-WARNING: shift/reduce conflict for RETURN in state 31 resolved as shift
-WARNING: shift/reduce conflict for ID in state 37 resolved as shift
-WARNING: shift/reduce conflict for COMA in state 110 resolved as shift
+WARNING: shift/reduce conflict for VAR in state 29 resolved as shift
+WARNING: shift/reduce conflict for ID in state 33 resolved as shift
+WARNING: shift/reduce conflict for IF in state 33 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 33 resolved as shift
+WARNING: shift/reduce conflict for DO in state 33 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 33 resolved as shift
+WARNING: shift/reduce conflict for PRINT in state 33 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 33 resolved as shift
+WARNING: shift/reduce conflict for RETURN in state 33 resolved as shift
+WARNING: shift/reduce conflict for ID in state 41 resolved as shift
+WARNING: shift/reduce conflict for COMA in state 117 resolved as shift

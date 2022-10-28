@@ -27,6 +27,7 @@ reserved_keywords = {
     'return': 'RETURN',
     'float': 'FLOAT',
     'print': 'PRINT',
+    'do': 'DO',
     'if': 'IF',
     'else': 'ELSE',
     'while': 'WHILE',

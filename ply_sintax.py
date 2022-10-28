@@ -73,6 +73,7 @@ def p_estatuto(p):
     '''estatuto : asignacion 
                 | condicion
                 | whileLoop
+                | doWhile
                 | forLoop
                 | escritura
                 | funcion
@@ -131,20 +132,33 @@ def p_comparacion(p):
     semantics.addOper(p[1])
     pass
 
+def p_doWhile(p):
+   '''doWhile : DO bloque WHILE startParen expresion endParen'''
+   pass
+
 def p_whileLoop(p):
-   '''whileLoop : WHILE LPAREN expresion RPAREN bloque'''
+   '''whileLoop : WHILE startParen expresion endParen bloque'''
+   semantics.createGoTo()
+   semantics.assignEndWhile()
+   pass
+
+def p_startParen(p):
+   '''startParen : LPAREN'''
+   semantics.addCounterToSaltos()
+   pass
 
 def p_forLoop(p):
    '''forLoop : FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque'''
+   pass
 
 def p_condicion(p):
-    '''condicion : IF LPAREN expresion endif bloque condicionelse'''
+    '''condicion : IF LPAREN expresion endParen bloque condicionelse'''
     pass
 
-def p_endif(p):
-    '''endif : RPAREN'''
-    semantics.createGoToF()
-    pass
+def p_endParen(p):
+   '''endParen : RPAREN'''
+   semantics.createGoToF()
+   pass
 
 def p_condicionelse(p):
     '''condicionelse : else bloque
@@ -260,7 +274,7 @@ def p_error(p):
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
-with open("test_conditionals.pyst") as f:
+with open("test_while.pyst") as f:
     contents = f.read()
     result = parser.parse(contents)
     print("Errors:", result)

@@ -31,6 +31,9 @@ class Semantics:
     
     def addAssign(self):
         self.pOper.append("=")
+
+    def addCounterToSaltos(self):
+        self.pSaltos.append(len(self.quads))
     
     def checkAssign(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="="):
@@ -89,6 +92,18 @@ class Semantics:
             quad= self.quads[salto]
             quad[-1] = len(self.quads)
             self.quads[salto] = quad
+
+    def assignEndWhile(self):
+        if 0<len(self.pSaltos):
+            salto = self.pSaltos.pop()
+            falso = self.pSaltos.pop()
+            retorno = self.pSaltos.pop()
+            quad= self.quads[salto]
+            quad[-1] = retorno
+            self.quads[salto] = quad
+            quad= self.quads[falso]
+            quad[-1] = len(self.quads)
+            self.quads[falso] = quad
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
