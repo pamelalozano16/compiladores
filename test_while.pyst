@@ -5,9 +5,9 @@ start() {
     var k:float;
     function main(): void {
         a=a*k;
-        while(a + b > c){
-            a=b;
-        };
+        do {
+            a=b*c*(a+b);
+        } while(a + b > c);
         a=k;
     };
 }

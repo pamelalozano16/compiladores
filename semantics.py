@@ -85,12 +85,25 @@ class Semantics:
         quadGoto = quadruple.createGoToF(self.pilaO.pop())
         self.quads.append(quadGoto.getQuad())
         self.pSaltos.append(len(self.quads)-1)
+
+    def createGoToV(self):
+        quadGoto = quadruple.createGoToV(self.pilaO.pop())
+        self.quads.append(quadGoto.getQuad())
+        self.pSaltos.append(len(self.quads)-1)
     
-    def assignGoTo(self):
+    def assignGoTo(self, plus=0):
         if 0<len(self.pSaltos):
-            salto = self.pSaltos.pop(0)
+            salto = self.pSaltos.pop()
             quad= self.quads[salto]
-            quad[-1] = len(self.quads)
+            quad[-1] = len(self.quads)+plus
+            self.quads[salto] = quad
+
+    def assignCrumb(self):
+        if 0<len(self.pSaltos):
+            salto = self.pSaltos.pop()
+            migaja = self.pSaltos.pop()
+            quad= self.quads[salto]
+            quad[-1] = migaja
             self.quads[salto] = quad
 
     def assignEndWhile(self):

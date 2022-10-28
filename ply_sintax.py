@@ -133,7 +133,14 @@ def p_comparacion(p):
     pass
 
 def p_doWhile(p):
-   '''doWhile : DO bloque WHILE startParen expresion endParen'''
+   '''doWhile : do bloque WHILE LPAREN expresion RPAREN'''
+   semantics.createGoToV()
+   semantics.assignCrumb()
+   pass
+
+def p_do(p):
+   '''do : DO'''
+   semantics.addCounterToSaltos()
    pass
 
 def p_whileLoop(p):
@@ -162,14 +169,14 @@ def p_endParen(p):
 
 def p_condicionelse(p):
     '''condicionelse : else bloque
-                     | epsilon'''
+                     | epsilon''' 
     semantics.assignGoTo()
     pass
 
 def p_else(p):
     '''else : ELSE'''
+    semantics.assignGoTo(1)
     semantics.createGoTo()
-    semantics.assignGoTo()
     pass
 
 def p_funcion(p):
@@ -274,7 +281,7 @@ def p_error(p):
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
-with open("test_while.pyst") as f:
+with open("test_conditionals.pyst") as f:
     contents = f.read()
     result = parser.parse(contents)
     print("Errors:", result)

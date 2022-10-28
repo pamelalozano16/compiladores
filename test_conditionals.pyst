@@ -9,5 +9,6 @@ start() {
         } else {
             k=b+a;
         };
+        c=a*b;
     };
 }
