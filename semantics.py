@@ -13,8 +13,8 @@ class Semantics:
     
     def printQuads(self):
         print("Quads:")
-        for i in self.quads:
-            print(i)
+        for i, x in enumerate(self.quads):
+            print(i, x)
 
     def endStatus(self):
         self.printQuads()
