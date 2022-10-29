@@ -144,26 +144,30 @@ def p_do(p):
    pass
 
 def p_whileLoop(p):
-   '''whileLoop : WHILE startParen expresion endParen bloque'''
+   '''whileLoop : WHILE startCondition expresion endCondition bloque'''
    semantics.createGoTo()
-   semantics.assignEndWhile()
+   semantics.assignEndLoop()
    pass
 
-def p_startParen(p):
-   '''startParen : LPAREN'''
+def p_startCondition(p):
+   '''startCondition : LPAREN
+                     |  SEMICOLON'''
    semantics.addCounterToSaltos()
    pass
 
 def p_forLoop(p):
-   '''forLoop : FOR LPAREN argumentos expresion SEMICOLON expresion RPAREN bloque'''
+   '''forLoop : FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque'''
+   semantics.createGoTo()
+   semantics.assignEndLoop()
    pass
 
 def p_condicion(p):
-    '''condicion : IF LPAREN expresion endParen bloque condicionelse'''
+    '''condicion : IF LPAREN expresion endCondition bloque condicionelse'''
     pass
 
-def p_endParen(p):
-   '''endParen : RPAREN'''
+def p_endCondition(p):
+   '''endCondition : RPAREN
+                    | SEMICOLON'''
    semantics.createGoToF()
    pass
 
@@ -204,7 +208,7 @@ def p_argumentos(p):
     pass
 
 def p_args(p):
-    '''args : ID COLON tipo
+    '''args : asignacion
             | args COMA args'''
     pass
 

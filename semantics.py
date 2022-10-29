@@ -106,7 +106,7 @@ class Semantics:
             quad[-1] = migaja
             self.quads[salto] = quad
 
-    def assignEndWhile(self):
+    def assignEndLoop(self):
         if 0<len(self.pSaltos):
             salto = self.pSaltos.pop()
             falso = self.pSaltos.pop()

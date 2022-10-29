@@ -24,3 +24,4 @@
 
 #### Ejemplo:
 <img src="/Avance4_tests.png" alt="Avance4" width="400"/>
+<img src="/Avance4.1_tests.png" alt="Avance4" width="400"/>
