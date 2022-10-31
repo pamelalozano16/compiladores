@@ -3,7 +3,8 @@ from quadruple import Quadruple
 quadruple = Quadruple()
 
 class Semantics:
-    def __init__(self):
+    def __init__(self, variables_control):
+        self.variables_control = variables_control
         self.pTypes= []
         self.pilaO = []
         self.pOper = []
@@ -37,17 +38,20 @@ class Semantics:
     
     def checkAssign(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="="):
-            right = self.pilaO.pop()
+            right = self.variables_control.find_vars_dir(self.pilaO.pop())
             right_type = self.pTypes.pop()
-            quad, typeRes = quadruple.createQuad(self.pOper.pop(), -1, self.pilaO.pop(), self.pTypes.pop(), right_type, right)
+            quad, typeRes = quadruple.createQuad(self.pOper.pop(), -1, self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), right_type, right)
             self.quads.append(quad.getQuad())
 
 
     def checkTerm(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="+" or self.pOper[-1]=="-" or self.pOper[-1]=="="):
             res = "t"+str(self.tempCounter)
-            quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.pilaO.pop(), self.pilaO.pop(), self.pTypes.pop(), self.pTypes.pop(), res)
-            self.quads.append(quad.getQuad())
+            quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.variables_control.find_vars_dir(self.pilaO.pop()), self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), self.pTypes.pop(), res)
+            dirTemp = self.variables_control.addTemp(res, typeRes)
+            newQuad = quad.getQuad()
+            newQuad[-1] = dirTemp
+            self.quads.append(newQuad)
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
             self.tempCounter+=1
@@ -56,8 +60,11 @@ class Semantics:
     def checkFact(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="*" or self.pOper[-1]=="/"):
             res = "t"+str(self.tempCounter)
-            quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.pilaO.pop(), self.pilaO.pop(), self.pTypes.pop(), self.pTypes.pop(), res)
-            self.quads.append(quad.getQuad())
+            quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.variables_control.find_vars_dir(self.pilaO.pop()), self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), self.pTypes.pop(), res)
+            dirTemp = self.variables_control.addTemp(res, typeRes)
+            newQuad = quad.getQuad()
+            newQuad[-1] = dirTemp
+            self.quads.append(newQuad)
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
             self.tempCounter+=1
@@ -66,8 +73,11 @@ class Semantics:
     def checkCompare(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="&&" or self.pOper[-1]=="!!" or self.pOper[-1]==">" or self.pOper[-1]=="<" or self.pOper[-1]=="==" or self.pOper[-1]=="!="):
             res = "t"+str(self.tempCounter)
-            quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.pilaO.pop(), self.pilaO.pop(), self.pTypes.pop(), self.pTypes.pop(), res)
-            self.quads.append(quad.getQuad())
+            quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.variables_control.find_vars_dir(self.pilaO.pop()), self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), self.pTypes.pop(), res)
+            dirTemp = self.variables_control.addTemp(res, typeRes)
+            newQuad = quad.getQuad()
+            newQuad[-1] = dirTemp
+            self.quads.append(newQuad)
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
             self.tempCounter+=1
@@ -82,12 +92,12 @@ class Semantics:
         self.pSaltos.append(len(self.quads)-1)
 
     def createGoToF(self):
-        quadGoto = quadruple.createGoToF(self.pilaO.pop())
+        quadGoto = quadruple.createGoToF(self.variables_control.find_vars_dir(self.pilaO.pop()))
         self.quads.append(quadGoto.getQuad())
         self.pSaltos.append(len(self.quads)-1)
 
     def createGoToV(self):
-        quadGoto = quadruple.createGoToV(self.pilaO.pop())
+        quadGoto = quadruple.createGoToV(self.variables_control.find_vars_dir(self.pilaO.pop()))
         self.quads.append(quadGoto.getQuad())
         self.pSaltos.append(len(self.quads)-1)
     

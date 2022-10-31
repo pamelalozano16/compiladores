@@ -7,7 +7,7 @@ from variables_control import VariableControl
 from semantics import Semantics
 
 variables_control = VariableControl()
-semantics = Semantics()
+semantics = Semantics(variables_control)
 declaring_variable = [] #Which variable am I declaring
 declaring_types = [] #Which variable type am I declaring
 opers = []
@@ -311,7 +311,7 @@ def p_error(p):
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
-with open("test_aritmetic.pyst") as f:
+with open("test_while.pyst") as f:
     contents = f.read()
     result = parser.parse(contents)
     print("Errors:", result)

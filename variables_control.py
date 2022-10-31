@@ -1,9 +1,10 @@
 from directions_control import DirectionsControl
 
+directions_control = DirectionsControl()
+
 class VariableControl:
     def __init__(self):
         self.current_scope = 'global'
-        self.directions_control = DirectionsControl()
 
         self.variables_table = {
             'global':{
@@ -37,8 +38,8 @@ class VariableControl:
         for scopes in self.variables_table:
             try:
                 indx=self.variables_table[scopes]['vars_table'].index(name)
-                varType=self.variables_table[scopes]['vars_dir'][indx]
-                return varType
+                varDir=self.variables_table[scopes]['vars_dir'][indx]
+                return varDir
             except:
                 continue
 
@@ -69,7 +70,7 @@ class VariableControl:
        # print("Scope", self.current_scope)
     
     def getDir(self, varType, varDir):
-        return self.directions_control.getDirection(varDir, varType)
+        return directions_control.getDirection(varDir, varType)
     
     def add_var(self, name, var_type):
         self.variables_table[self.current_scope]['vars_table'].append(name)
@@ -85,6 +86,14 @@ class VariableControl:
         self.variables_table['global']['vars_table'].append(num)
         self.variables_table['global']['vars_dir'].append(self.getDir(varType, 'const'))
         self.variables_table['global']['vars_types'].append(varType)
+    #    self.print_table()
+
+    def addTemp(self, temp, varType):
+        self.variables_table['global']['vars_table'].append(temp)
+        varDir = self.getDir(varType, 'temp')
+        self.variables_table['global']['vars_dir'].append(varDir)
+        self.variables_table['global']['vars_types'].append(varType)
+        return varDir
     #    self.print_table()
 
         
