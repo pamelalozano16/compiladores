@@ -87,7 +87,7 @@ def p_returnexp(p):
 def p_asignacion(p):
     '''asignacion : ID EQUAL expresion'''
     if(variables_control.find_var(p[1]) == None):
-        print("Error: Variable "+p[1]+" is not declared")
+        print("Error: Variable "+str(p[1])+" is not declared")
     else:
         semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
         semantics.addAssign()
@@ -268,13 +268,39 @@ def p_epsilon(p):
 
 def p_varcte(p):
     '''varcte : ID 
-              | CTEL
-              | CTEF'''
- #   print("1", p[1])
-    if(variables_control.find_var(p[1]) == None):
-        raise ValueError("Variable "+p[1]+" is not declared")
-    else:
-        semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
+              | int
+              | float
+              | bool
+              | string'''
+    if (p[1]):
+        if variables_control.find_var(p[1]) == None:
+            raise ValueError("Variable "+str(p[1])+" is not declared")
+        else:
+            semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
+    pass
+
+def p_int(p):
+    '''int : INT'''
+    variables_control.addConst(p[1], 'int')
+    semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
+    pass
+
+def p_float(p):
+    '''float : FLOAT'''
+    variables_control.addConst(p[1], 'float')
+    semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
+    pass
+
+def p_bool(p):
+    '''bool : BOOL'''
+    variables_control.addConst(p[1], 'bool')
+    semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
+    pass
+
+def p_string(p):
+    '''string : STRING'''
+    variables_control.addConst(p[1], 'string')
+    semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
     pass
 
 # Error rule for syntax errors

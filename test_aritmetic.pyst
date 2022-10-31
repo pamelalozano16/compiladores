@@ -7,6 +7,7 @@ start() {
         var lol: float;
         var sos: float;
         var ja: bool;
-        c=lol+(a+k*b)*sos;
+        ja=True;
+        c=5+(a+k+b)*sos;
     };
 }

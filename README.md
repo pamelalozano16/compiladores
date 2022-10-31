@@ -25,3 +25,6 @@
 #### Ejemplo:
 <img src="/Avance4_tests.png" alt="Avance4" width="400"/>
 <img src="/Avance4.1_tests.png" alt="Avance4" width="400"/>
+
+## Avance 5: Direccionamiento de Variables
+<img src="/Avance5_tests.png" alt="Avance5" width="400"/>

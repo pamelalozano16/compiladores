@@ -99,6 +99,12 @@ t_AND = r'&&'
 # In[6]:
 
 
+def t_BOOL(t):
+    r'True|False'
+    t.type = reserved_keywords.get(t.value, 'BOOL')
+    t.value = bool(t.value)    
+    return t
+
 def t_ID(t):
     r'[a-zA-Z][a-zA-Z_0-9]*'
     t.type = reserved_keywords.get(t.value, 'ID')
@@ -125,12 +131,6 @@ def t_INT(t):
 def t_newline(t):
      r'\n+'
      t.lexer.lineno += len(t.value)
-
-def t_BOOL(t):
-    r'true|false'
-    t.type = reserved_keywords.get(t.value, 'BOOL')
-    t.value = bool(t.value)    
-    return t
 
 t_ignore  = ' \t'
  

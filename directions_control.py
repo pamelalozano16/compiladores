@@ -28,7 +28,9 @@ class DirectionsControl:
         }
     
     def getDirection(self, scope, varType):
+        if scope not in self.directions: scope = 'local'
+        if(self.directions[scope][varType][0] > self.directions[scope][varType][2]):
+            raise ValueError("Direccion de memoria llena")
         nextDir = self.directions[scope][varType][0]+self.directions[scope][varType][1]
-        print(nextDir)
         self.directions[scope][varType][0] += 1
         return nextDir
