@@ -285,7 +285,7 @@ def p_error(p):
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
-with open("test_while.pyst") as f:
+with open("test_aritmetic.pyst") as f:
     contents = f.read()
     result = parser.parse(contents)
     print("Errors:", result)
