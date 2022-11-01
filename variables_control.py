@@ -31,6 +31,21 @@ class VariableControl:
     def is_in_table(self, func_name):
         return func_name in self.variables_table
     
+    def find_dir_name(self, num):
+        for scopes in self.variables_table:
+            try:
+                indx=self.variables_table[scopes]['vars_dir'].index(num)
+                varName=self.variables_table[scopes]['vars_table'][indx]
+                return varName
+            except:
+                continue
+        try:
+            indx=self.constants['vars_dir'].index(num)
+            varName=self.constants['vars_table'][indx]
+            return varName
+        except:
+            return None
+    
     def find_vars_type(self, name):
         for scopes in self.variables_table:
             try:

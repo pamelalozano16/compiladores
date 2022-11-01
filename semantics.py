@@ -11,6 +11,25 @@ class Semantics:
         self.quads = []
         self.pSaltos = []
         self.tempCounter = 0
+
+    def printQuadsWithNames(self):
+        print("Quads:")
+        quadStr = "["
+        for i, x in enumerate(self.quads):
+            for j in x:
+                if type(j)!=str and x[0][0] != 'g':
+                    dirName =self.variables_control.find_dir_name(j)
+                    if dirName : quadStr+=f', {dirName}'
+                else:
+                    dirName =self.variables_control.find_dir_name(j)
+                    if dirName : 
+                        quadStr+=f', {dirName}'
+                    else:
+                        quadStr+=f', {str(j)}'
+            quadStr = quadStr[:1] + '' + quadStr[2 + 1:]
+            quadStr+=']'
+            print(i, quadStr)
+            quadStr="["
     
     def printQuads(self):
         print("Quads:")
@@ -18,7 +37,7 @@ class Semantics:
             print(i, x)
 
     def endStatus(self):
-        self.printQuads()
+        self.printQuadsWithNames()
         print("PilaO:", self.pilaO, "pOper:", self.pOper,"pSalos:", self.pSaltos)
 
     def insertId(self, id, idType):
