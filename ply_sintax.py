@@ -191,14 +191,13 @@ def p_funcion(p):
 def p_funcdef(p):
     '''funcdef : ID'''
     if(not variables_control.is_in_table(p[1])):
-        declaring_variable.append(p[1])
+        variables_control.add_func(p[1])
     pass
 
 def p_tiposreturn(p):
     '''tiposreturn : tipo
                     | VOID'''
-    if(0<len(declaring_variable)):
-        variables_control.add_func(declaring_variable.pop(), p[1])
+    variables_control.add_return(p[1])
       #  variables_control.print_table()
     pass
 
@@ -311,7 +310,7 @@ def p_error(p):
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
-with open("test_aritmetic.pyst") as f:
+with open("test_while.pyst") as f:
     contents = f.read()
     result = parser.parse(contents)
     print("Errors:", result)
