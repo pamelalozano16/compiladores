@@ -39,8 +39,9 @@ class Semantics:
     def checkAssign(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="="):
             right = self.variables_control.find_vars_dir(self.pilaO.pop())
+            left = self.variables_control.find_vars_dir(self.pilaO.pop())
             right_type = self.pTypes.pop()
-            quad, typeRes = quadruple.createQuad(self.pOper.pop(), -1, self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), right_type, right)
+            quad, typeRes = quadruple.createQuad(self.pOper.pop(), -1, left, self.pTypes.pop(), right_type, right)
             self.quads.append(quad.getQuad())
 
 

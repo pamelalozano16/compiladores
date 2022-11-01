@@ -8,6 +8,6 @@ start() {
         var sos: float;
         var ja: bool;
         ja=True;
-        c=5+(a+k+b)*sos;
+        c=5+(a+k+b+5)*sos;
     };
 }

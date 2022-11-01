@@ -6,6 +6,12 @@ class VariableControl:
     def __init__(self):
         self.current_scope = 'global'
 
+        self.constants = {
+            'vars_table': [],
+            'vars_types': [],
+            'vars_dir':[]            
+        }
+
         self.variables_table = {
             'global':{
                 'scope': '#', #Scope Anterior
@@ -33,6 +39,12 @@ class VariableControl:
                 return varType
             except:
                 continue
+        try:
+            indx=self.constants['vars_table'].index(name)
+            varType=self.constants['vars_types'][indx]
+            return varType
+        except:
+            return None
 
     def find_vars_dir(self, name):
         for scopes in self.variables_table:
@@ -42,6 +54,12 @@ class VariableControl:
                 return varDir
             except:
                 continue
+        try:
+            indx=self.constants['vars_table'].index(name)
+            varDir=self.constants['vars_dir'][indx]
+            return varDir
+        except:
+            return None
 
     def find_vars_scope(self, name):
         for scopes in self.variables_table:
@@ -56,8 +74,12 @@ class VariableControl:
                 return current_scope, indx
             except:
                 current_scope = self.variables_table[current_scope]['scope']
-        return None
-    
+        try:
+            indx=self.constants['vars_table'].index(name)
+            return 'const', indx
+        except:
+            return None
+
     def add_func(self, name, return_type):
         self.variables_table[name]= {
             'return': return_type,
@@ -83,10 +105,9 @@ class VariableControl:
        # print("Scope", self.current_scope)
     
     def addConst(self, num, varType):
-        self.variables_table['global']['vars_table'].append(num)
-        self.variables_table['global']['vars_dir'].append(self.getDir(varType, 'const'))
-        self.variables_table['global']['vars_types'].append(varType)
-    #    self.print_table()
+        self.constants['vars_table'].append(num)
+        self.constants['vars_dir'].append(self.getDir(varType, 'const'))
+        self.constants['vars_types'].append(varType)
 
     def addTemp(self, temp, varType):
         self.variables_table['global']['vars_table'].append(temp)
