@@ -62,7 +62,7 @@ Rule 51    endCondition -> SEMICOLON
 Rule 52    condicionelse -> else bloque
 Rule 53    condicionelse -> epsilon
 Rule 54    else -> ELSE
-Rule 55    funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+Rule 55    funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
 Rule 56    funcdef -> ID
 Rule 57    tiposreturn -> tipo
 Rule 58    tiposreturn -> VOID
@@ -142,7 +142,7 @@ error                :
 Nonterminals, with rules where they appear
 
 args                 : 59 62 62
-argumentos           : 48 55
+argumentos           : 48
 arreglo              : 35
 asignacion           : 18 48 61
 bloque               : 1 43 45 48 49 52 55
@@ -151,7 +151,7 @@ comparacion          : 36
 condicion            : 19
 condicionelse        : 49
 condition            : 34
-declaracion          : 15
+declaracion          : 15 55
 do                   : 43
 doWhile              : 21
 else                 : 52
@@ -276,7 +276,7 @@ state 7
     (43) doWhile -> . do bloque WHILE LPAREN expresion RPAREN
     (48) forLoop -> . FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
     (28) escritura -> . PRINT LPAREN escrito RPAREN
-    (55) funcion -> . FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (55) funcion -> . FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
     (26) returnexp -> . RETURN expresion
     (44) do -> . DO
 
@@ -316,6 +316,7 @@ state 8
     FUNCTION        reduce using rule 2 (declaracion -> vars .)
     RETURN          reduce using rule 2 (declaracion -> vars .)
     DO              reduce using rule 2 (declaracion -> vars .)
+    RPAREN          reduce using rule 2 (declaracion -> vars .)
     VAR             shift and go to state 10
 
     vars                           shift and go to state 30
@@ -332,6 +333,7 @@ state 9
     FUNCTION        reduce using rule 3 (declaracion -> epsilon .)
     RETURN          reduce using rule 3 (declaracion -> epsilon .)
     DO              reduce using rule 3 (declaracion -> epsilon .)
+    RPAREN          reduce using rule 3 (declaracion -> epsilon .)
 
 
 state 10
@@ -365,7 +367,7 @@ state 11
     (43) doWhile -> . do bloque WHILE LPAREN expresion RPAREN
     (48) forLoop -> . FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
     (28) escritura -> . PRINT LPAREN escrito RPAREN
-    (55) funcion -> . FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (55) funcion -> . FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
     (26) returnexp -> . RETURN expresion
     (44) do -> . DO
 
@@ -504,7 +506,7 @@ state 26
 
 state 27
 
-    (55) funcion -> FUNCTION . funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (55) funcion -> FUNCTION . funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
     (56) funcdef -> . ID
 
     ID              shift and go to state 46
@@ -582,6 +584,7 @@ state 30
     FUNCTION        reduce using rule 5 (vars -> vars vars .)
     RETURN          reduce using rule 5 (vars -> vars vars .)
     DO              reduce using rule 5 (vars -> vars vars .)
+    RPAREN          reduce using rule 5 (vars -> vars vars .)
     VAR             shift and go to state 10
 
   ! VAR             [ reduce using rule 5 (vars -> vars vars .) ]
@@ -601,6 +604,7 @@ state 31
     FUNCTION        reduce using rule 4 (vars -> VAR var .)
     RETURN          reduce using rule 4 (vars -> VAR var .)
     DO              reduce using rule 4 (vars -> VAR var .)
+    RPAREN          reduce using rule 4 (vars -> VAR var .)
 
 
 state 32
@@ -637,7 +641,7 @@ state 34
     (43) doWhile -> . do bloque WHILE LPAREN expresion RPAREN
     (48) forLoop -> . FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
     (28) escritura -> . PRINT LPAREN escrito RPAREN
-    (55) funcion -> . FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (55) funcion -> . FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
     (26) returnexp -> . RETURN expresion
     (44) do -> . DO
 
@@ -959,7 +963,7 @@ state 44
 
 state 45
 
-    (55) funcion -> FUNCTION funcdef . LPAREN argumentos RPAREN COLON tiposreturn bloque
+    (55) funcion -> FUNCTION funcdef . LPAREN declaracion RPAREN COLON tiposreturn bloque
 
     LPAREN          shift and go to state 80
 
@@ -1478,7 +1482,6 @@ state 73
     COMA            reduce using rule 61 (args -> asignacion .)
     LPAREN          reduce using rule 61 (args -> asignacion .)
     SEMICOLON       reduce using rule 61 (args -> asignacion .)
-    RPAREN          reduce using rule 61 (args -> asignacion .)
 
 
 state 74
@@ -1488,7 +1491,6 @@ state 74
 
     LPAREN          reduce using rule 59 (argumentos -> args .)
     SEMICOLON       reduce using rule 59 (argumentos -> args .)
-    RPAREN          reduce using rule 59 (argumentos -> args .)
     COMA            shift and go to state 110
 
 
@@ -1498,7 +1500,6 @@ state 75
 
     LPAREN          reduce using rule 60 (argumentos -> epsilon .)
     SEMICOLON       reduce using rule 60 (argumentos -> epsilon .)
-    RPAREN          reduce using rule 60 (argumentos -> epsilon .)
 
 
 state 76
@@ -1553,21 +1554,19 @@ state 79
 
 state 80
 
-    (55) funcion -> FUNCTION funcdef LPAREN . argumentos RPAREN COLON tiposreturn bloque
-    (59) argumentos -> . args
-    (60) argumentos -> . epsilon
-    (61) args -> . asignacion
-    (62) args -> . args COMA args
+    (55) funcion -> FUNCTION funcdef LPAREN . declaracion RPAREN COLON tiposreturn bloque
+    (2) declaracion -> . vars
+    (3) declaracion -> . epsilon
+    (4) vars -> . VAR var
+    (5) vars -> . vars vars
     (77) epsilon -> .
-    (27) asignacion -> . ID EQUAL expresion
 
+    VAR             shift and go to state 10
     RPAREN          reduce using rule 77 (epsilon -> .)
-    ID              shift and go to state 21
 
-    argumentos                     shift and go to state 113
-    args                           shift and go to state 74
-    epsilon                        shift and go to state 75
-    asignacion                     shift and go to state 73
+    declaracion                    shift and go to state 113
+    vars                           shift and go to state 8
+    epsilon                        shift and go to state 9
 
 state 81
 
@@ -2122,7 +2121,7 @@ state 112
 
 state 113
 
-    (55) funcion -> FUNCTION funcdef LPAREN argumentos . RPAREN COLON tiposreturn bloque
+    (55) funcion -> FUNCTION funcdef LPAREN declaracion . RPAREN COLON tiposreturn bloque
 
     RPAREN          shift and go to state 127
 
@@ -2223,6 +2222,7 @@ state 120
     FUNCTION        reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
     RETURN          reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
     DO              reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
+    RPAREN          reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
 
 
 state 121
@@ -2273,7 +2273,6 @@ state 125
   ! shift/reduce conflict for COMA resolved as shift
     LPAREN          reduce using rule 62 (args -> args COMA args .)
     SEMICOLON       reduce using rule 62 (args -> args COMA args .)
-    RPAREN          reduce using rule 62 (args -> args COMA args .)
     COMA            shift and go to state 110
 
   ! COMA            [ reduce using rule 62 (args -> args COMA args .) ]
@@ -2288,7 +2287,7 @@ state 126
 
 state 127
 
-    (55) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN . COLON tiposreturn bloque
+    (55) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN . COLON tiposreturn bloque
 
     COLON           shift and go to state 134
 
@@ -2341,7 +2340,7 @@ state 133
 
 state 134
 
-    (55) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON . tiposreturn bloque
+    (55) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON . tiposreturn bloque
     (57) tiposreturn -> . tipo
     (58) tiposreturn -> . VOID
     (8) tipo -> . INT
@@ -2374,7 +2373,7 @@ state 136
 
 state 137
 
-    (55) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn . bloque
+    (55) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn . bloque
     (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
 
     LCURLY          shift and go to state 6
@@ -2406,9 +2405,9 @@ state 140
 
 state 141
 
-    (55) funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque .
+    (55) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque .
 
-    SEMICOLON       reduce using rule 55 (funcion -> FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque .)
+    SEMICOLON       reduce using rule 55 (funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque .)
 
 
 state 142

@@ -108,7 +108,7 @@ class VariableControl:
 
     def add_return(self, return_type):
         self.variables_table[self.current_scope]['return'] = return_type
-        print("Scope", self.variables_table)
+       # print("Scope", self.variables_table)
     
     def getDir(self, varType, varDir):
         return directions_control.getDirection(varDir, varType)

@@ -184,7 +184,7 @@ def p_else(p):
     pass
 
 def p_funcion(p):
-    '''funcion : FUNCTION funcdef LPAREN argumentos RPAREN COLON tiposreturn bloque'''
+    '''funcion : FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque'''
     variables_control.scope_back()
     pass
 
@@ -310,7 +310,7 @@ def p_error(p):
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
-with open("test_while.pyst") as f:
+with open("test_aritmetic.pyst") as f:
     contents = f.read()
     result = parser.parse(contents)
     print("Errors:", result)
