@@ -13,4 +13,5 @@ start() {
     function jeje(var z: int;): void {
         a=k;
     };
+    jeje(z=6);
 }

@@ -64,6 +64,10 @@ def p_bloque(p):
     '''bloque : LCURLY declaracion estatutoExp RCURLY'''
     pass
 
+def p_bloqueReturn(p):
+    '''bloqueReturn : LCURLY declaracion estatutoExp returnexp RCURLY'''
+    pass
+
 def p_estatutoExp(p):
     '''estatutoExp : estatuto SEMICOLON
                     | estatutoExp estatutoExp'''
@@ -77,11 +81,11 @@ def p_estatuto(p):
                 | forLoop
                 | escritura
                 | funcion
-                | returnexp'''
+                | functionCall'''
     pass
                     
 def p_returnexp(p):
-    '''returnexp : RETURN expresion'''
+    '''returnexp : RETURN expresion SEMICOLON'''
     pass
 
 def p_asignacion(p):
@@ -115,7 +119,8 @@ def p_expresion(p):
     #a/b => expresion -> exp expresion -> exp exp -> termino termino -> factor operacion factor
     '''expresion : exp
                 | condition
-                | arreglo '''
+                | arreglo 
+                | functionCall'''
         #       | expresion expresion ''' 
     semantics.checkVarMatch(variables_control)
 
@@ -190,7 +195,7 @@ def p_else(p):
     pass
 
 def p_funcion(p):
-    '''funcion : FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque'''
+    '''funcion : FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn'''
     variables_control.scope_back()
     pass
 
@@ -198,13 +203,32 @@ def p_funcdef(p):
     '''funcdef : ID'''
     if(not variables_control.is_in_table(p[1])):
         variables_control.add_func(p[1])
+    else:
+        raise ValueError(f'Function {p[1]} is declared twice.')
     pass
 
 def p_tiposreturn(p):
-    '''tiposreturn : tipo
-                    | VOID'''
+    '''tiposreturn : tipo bloqueReturn
+                    | VOID bloque'''
     variables_control.add_return(p[1])
       #  variables_control.print_table()
+    pass
+
+def p_functionCall(p):
+    '''functionCall : funCall LPAREN funcArgs RPAREN'''
+    pass
+
+def p_funCall(p):
+    '''funCall : ID'''
+    if(variables_control.is_in_table(p[1]) == None):
+        raise ValueError(f'Function not declared {p[1]}')
+    variables_control.change_scope(p[1])
+    pass
+
+def p_funcArgs(p):
+    '''funcArgs : asignacion
+                  | funcArgs COMA funcArgs
+                  | epsilon'''
     pass
 
 def p_argumentos(p):
