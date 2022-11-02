@@ -50,139 +50,141 @@ Rule 39    comparacion -> ISEQUAL
 Rule 40    comparacion -> NOTEQUAL
 Rule 41    comparacion -> AND
 Rule 42    comparacion -> OR
-Rule 43    doWhile -> do bloque WHILE LPAREN expresion RPAREN
+Rule 43    doWhile -> do bloque WHILE LPAREN addCheckBool expresion RPAREN
 Rule 44    do -> DO
-Rule 45    whileLoop -> WHILE startCondition expresion endCondition bloque
-Rule 46    startCondition -> LPAREN
-Rule 47    startCondition -> SEMICOLON
-Rule 48    forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
-Rule 49    condicion -> IF LPAREN expresion endCondition bloque condicionelse
-Rule 50    endCondition -> RPAREN
-Rule 51    endCondition -> SEMICOLON
-Rule 52    condicionelse -> else bloque
-Rule 53    condicionelse -> epsilon
-Rule 54    else -> ELSE
-Rule 55    funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
-Rule 56    funcdef -> ID
-Rule 57    tiposreturn -> tipo
-Rule 58    tiposreturn -> VOID
-Rule 59    argumentos -> args
-Rule 60    argumentos -> epsilon
-Rule 61    args -> asignacion
-Rule 62    args -> args COMA args
-Rule 63    exp -> termino
-Rule 64    exp -> termino signo exp
-Rule 65    signo -> PLUS
-Rule 66    signo -> MINUS
-Rule 67    termino -> factor
-Rule 68    termino -> factor operacion termino
-Rule 69    operacion -> TIMES
-Rule 70    operacion -> DIVIDE
-Rule 71    operacion -> DIFF
-Rule 72    operacion -> EXP
-Rule 73    factor -> paren expresion paren
-Rule 74    factor -> varcte
-Rule 75    paren -> LPAREN
-Rule 76    paren -> RPAREN
-Rule 77    epsilon -> <empty>
-Rule 78    varcte -> ID
-Rule 79    varcte -> int
-Rule 80    varcte -> float
-Rule 81    varcte -> bool
-Rule 82    varcte -> string
-Rule 83    int -> INT
-Rule 84    float -> FLOAT
-Rule 85    bool -> BOOL
-Rule 86    string -> STRING
+Rule 45    whileLoop -> WHILE startCondition addCheckBool expresion endCondition bloque
+Rule 46    addCheckBool -> epsilon
+Rule 47    startCondition -> LPAREN
+Rule 48    startCondition -> SEMICOLON
+Rule 49    forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
+Rule 50    condicion -> IF LPAREN addCheckBool expresion endCondition bloque condicionelse
+Rule 51    endCondition -> RPAREN
+Rule 52    endCondition -> SEMICOLON
+Rule 53    condicionelse -> else bloque
+Rule 54    condicionelse -> epsilon
+Rule 55    else -> ELSE
+Rule 56    funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
+Rule 57    funcdef -> ID
+Rule 58    tiposreturn -> tipo
+Rule 59    tiposreturn -> VOID
+Rule 60    argumentos -> args
+Rule 61    argumentos -> epsilon
+Rule 62    args -> asignacion
+Rule 63    args -> args COMA args
+Rule 64    exp -> termino
+Rule 65    exp -> termino signo exp
+Rule 66    signo -> PLUS
+Rule 67    signo -> MINUS
+Rule 68    termino -> factor
+Rule 69    termino -> factor operacion termino
+Rule 70    operacion -> TIMES
+Rule 71    operacion -> DIVIDE
+Rule 72    operacion -> DIFF
+Rule 73    operacion -> EXP
+Rule 74    factor -> paren expresion paren
+Rule 75    factor -> varcte
+Rule 76    paren -> LPAREN
+Rule 77    paren -> RPAREN
+Rule 78    epsilon -> <empty>
+Rule 79    varcte -> ID
+Rule 80    varcte -> int
+Rule 81    varcte -> float
+Rule 82    varcte -> bool
+Rule 83    varcte -> string
+Rule 84    int -> INT
+Rule 85    float -> FLOAT
+Rule 86    bool -> BOOL
+Rule 87    string -> STRING
 
 Terminals, with rules where they appear
 
 AND                  : 41
-BOOL                 : 10 85
-COLON                : 6 55
-COMA                 : 13 30 62
+BOOL                 : 10 86
+COLON                : 6 56
+COMA                 : 13 30 63
 CTEF                 : 
 CTEL                 : 
-DIFF                 : 71
-DIVIDE               : 70
+DIFF                 : 72
+DIVIDE               : 71
 DO                   : 44
-ELSE                 : 54
+ELSE                 : 55
 EQUAL                : 27
-EXP                  : 72
-FLOAT                : 9 84
-FOR                  : 48
-FUNCTION             : 55
-ID                   : 7 12 13 27 56 78
-IF                   : 49
-INT                  : 8 83
+EXP                  : 73
+FLOAT                : 9 85
+FOR                  : 49
+FUNCTION             : 56
+ID                   : 7 12 13 27 57 79
+IF                   : 50
+INT                  : 8 84
 ISEQUAL              : 39
 LBRACKET             : 14
 LCURLY               : 15
 LESSTHAN             : 37
-LPAREN               : 1 28 43 46 48 49 55 75
-MINUS                : 66
+LPAREN               : 1 28 43 47 49 50 56 76
+MINUS                : 67
 MORETHAN             : 38
 NOTEQUAL             : 40
 OR                   : 42
-PLUS                 : 65
+PLUS                 : 66
 PRINT                : 28
 RBRACKET             : 14
 RCURLY               : 15
 RETURN               : 26
-RPAREN               : 1 28 43 48 50 55 76
-SEMICOLON            : 6 16 47 51
+RPAREN               : 1 28 43 49 51 56 77
+SEMICOLON            : 6 16 48 52
 START                : 1
-STRING               : 11 31 86
-TIMES                : 69
+STRING               : 11 31 87
+TIMES                : 70
 VAR                  : 4
-VOID                 : 58
+VOID                 : 59
 WHILE                : 43 45
 error                : 
 
 Nonterminals, with rules where they appear
 
-args                 : 59 62 62
-argumentos           : 48
+addCheckBool         : 43 45 50
+args                 : 60 63 63
+argumentos           : 49
 arreglo              : 35
-asignacion           : 18 48 61
-bloque               : 1 43 45 48 49 52 55
-bool                 : 81
+asignacion           : 18 49 62
+bloque               : 1 43 45 49 50 53 56
+bool                 : 82
 comparacion          : 36
 condicion            : 19
-condicionelse        : 49
+condicionelse        : 50
 condition            : 34
-declaracion          : 15 55
+declaracion          : 15 56
 do                   : 43
 doWhile              : 21
-else                 : 52
-endCondition         : 45 48 49
-epsilon              : 3 53 60
+else                 : 53
+endCondition         : 45 49 50
+epsilon              : 3 46 54 61
 escrito              : 28
 escritura            : 23
 estatuto             : 16
 estatutoExp          : 15 17 17
-exp                  : 33 36 64
-expresion            : 26 27 32 36 43 45 48 49 73
-factor               : 67 68
-float                : 80
+exp                  : 33 36 65
+expresion            : 26 27 32 36 43 45 49 50 74
+factor               : 68 69
+float                : 81
 forLoop              : 22
-funcdef              : 55
+funcdef              : 56
 funcion              : 24
 impr                 : 29 30 30
-int                  : 79
+int                  : 80
 lista                : 14
-operacion            : 68
-paren                : 73 73
+operacion            : 69
+paren                : 74 74
 programa             : 0
 returnexp            : 25
-signo                : 64
-startCondition       : 45 48
-string               : 82
-termino              : 63 64 68
-tipo                 : 6 57
-tiposreturn          : 55
+signo                : 65
+startCondition       : 45 49
+string               : 83
+termino              : 64 65 69
+tipo                 : 6 58
+tiposreturn          : 56
 var                  : 4
-varcte               : 74
+varcte               : 75
 vardef               : 6
 vars                 : 2 5 5
 whileLoop            : 20
@@ -241,17 +243,17 @@ state 6
     (3) declaracion -> . epsilon
     (4) vars -> . VAR var
     (5) vars -> . vars vars
-    (77) epsilon -> .
+    (78) epsilon -> .
 
     VAR             shift and go to state 10
-    ID              reduce using rule 77 (epsilon -> .)
-    IF              reduce using rule 77 (epsilon -> .)
-    WHILE           reduce using rule 77 (epsilon -> .)
-    FOR             reduce using rule 77 (epsilon -> .)
-    PRINT           reduce using rule 77 (epsilon -> .)
-    FUNCTION        reduce using rule 77 (epsilon -> .)
-    RETURN          reduce using rule 77 (epsilon -> .)
-    DO              reduce using rule 77 (epsilon -> .)
+    ID              reduce using rule 78 (epsilon -> .)
+    IF              reduce using rule 78 (epsilon -> .)
+    WHILE           reduce using rule 78 (epsilon -> .)
+    FOR             reduce using rule 78 (epsilon -> .)
+    PRINT           reduce using rule 78 (epsilon -> .)
+    FUNCTION        reduce using rule 78 (epsilon -> .)
+    RETURN          reduce using rule 78 (epsilon -> .)
+    DO              reduce using rule 78 (epsilon -> .)
 
     declaracion                    shift and go to state 7
     vars                           shift and go to state 8
@@ -271,12 +273,12 @@ state 7
     (24) estatuto -> . funcion
     (25) estatuto -> . returnexp
     (27) asignacion -> . ID EQUAL expresion
-    (49) condicion -> . IF LPAREN expresion endCondition bloque condicionelse
-    (45) whileLoop -> . WHILE startCondition expresion endCondition bloque
-    (43) doWhile -> . do bloque WHILE LPAREN expresion RPAREN
-    (48) forLoop -> . FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
+    (50) condicion -> . IF LPAREN addCheckBool expresion endCondition bloque condicionelse
+    (45) whileLoop -> . WHILE startCondition addCheckBool expresion endCondition bloque
+    (43) doWhile -> . do bloque WHILE LPAREN addCheckBool expresion RPAREN
+    (49) forLoop -> . FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
     (28) escritura -> . PRINT LPAREN escrito RPAREN
-    (55) funcion -> . FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
+    (56) funcion -> . FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
     (26) returnexp -> . RETURN expresion
     (44) do -> . DO
 
@@ -362,12 +364,12 @@ state 11
     (24) estatuto -> . funcion
     (25) estatuto -> . returnexp
     (27) asignacion -> . ID EQUAL expresion
-    (49) condicion -> . IF LPAREN expresion endCondition bloque condicionelse
-    (45) whileLoop -> . WHILE startCondition expresion endCondition bloque
-    (43) doWhile -> . do bloque WHILE LPAREN expresion RPAREN
-    (48) forLoop -> . FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
+    (50) condicion -> . IF LPAREN addCheckBool expresion endCondition bloque condicionelse
+    (45) whileLoop -> . WHILE startCondition addCheckBool expresion endCondition bloque
+    (43) doWhile -> . do bloque WHILE LPAREN addCheckBool expresion RPAREN
+    (49) forLoop -> . FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
     (28) escritura -> . PRINT LPAREN escrito RPAREN
-    (55) funcion -> . FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
+    (56) funcion -> . FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
     (26) returnexp -> . RETURN expresion
     (44) do -> . DO
 
@@ -465,16 +467,16 @@ state 21
 
 state 22
 
-    (49) condicion -> IF . LPAREN expresion endCondition bloque condicionelse
+    (50) condicion -> IF . LPAREN addCheckBool expresion endCondition bloque condicionelse
 
     LPAREN          shift and go to state 38
 
 
 state 23
 
-    (45) whileLoop -> WHILE . startCondition expresion endCondition bloque
-    (46) startCondition -> . LPAREN
-    (47) startCondition -> . SEMICOLON
+    (45) whileLoop -> WHILE . startCondition addCheckBool expresion endCondition bloque
+    (47) startCondition -> . LPAREN
+    (48) startCondition -> . SEMICOLON
 
     LPAREN          shift and go to state 40
     SEMICOLON       shift and go to state 41
@@ -483,7 +485,7 @@ state 23
 
 state 24
 
-    (43) doWhile -> do . bloque WHILE LPAREN expresion RPAREN
+    (43) doWhile -> do . bloque WHILE LPAREN addCheckBool expresion RPAREN
     (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
 
     LCURLY          shift and go to state 6
@@ -492,7 +494,7 @@ state 24
 
 state 25
 
-    (48) forLoop -> FOR . LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
+    (49) forLoop -> FOR . LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
 
     LPAREN          shift and go to state 43
 
@@ -506,8 +508,8 @@ state 26
 
 state 27
 
-    (55) funcion -> FUNCTION . funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
-    (56) funcdef -> . ID
+    (56) funcion -> FUNCTION . funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
+    (57) funcdef -> . ID
 
     ID              shift and go to state 46
 
@@ -519,25 +521,25 @@ state 28
     (33) expresion -> . exp
     (34) expresion -> . condition
     (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
     (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
     LBRACKET        shift and go to state 52
     LPAREN          shift and go to state 56
@@ -636,12 +638,12 @@ state 34
     (24) estatuto -> . funcion
     (25) estatuto -> . returnexp
     (27) asignacion -> . ID EQUAL expresion
-    (49) condicion -> . IF LPAREN expresion endCondition bloque condicionelse
-    (45) whileLoop -> . WHILE startCondition expresion endCondition bloque
-    (43) doWhile -> . do bloque WHILE LPAREN expresion RPAREN
-    (48) forLoop -> . FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
+    (50) condicion -> . IF LPAREN addCheckBool expresion endCondition bloque condicionelse
+    (45) whileLoop -> . WHILE startCondition addCheckBool expresion endCondition bloque
+    (43) doWhile -> . do bloque WHILE LPAREN addCheckBool expresion RPAREN
+    (49) forLoop -> . FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque
     (28) escritura -> . PRINT LPAREN escrito RPAREN
-    (55) funcion -> . FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
+    (56) funcion -> . FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque
     (26) returnexp -> . RETURN expresion
     (44) do -> . DO
 
@@ -715,25 +717,25 @@ state 37
     (33) expresion -> . exp
     (34) expresion -> . condition
     (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
     (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
     LBRACKET        shift and go to state 52
     LPAREN          shift and go to state 56
@@ -759,153 +761,93 @@ state 37
 
 state 38
 
-    (49) condicion -> IF LPAREN . expresion endCondition bloque condicionelse
-    (33) expresion -> . exp
-    (34) expresion -> . condition
-    (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
-    (36) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (50) condicion -> IF LPAREN . addCheckBool expresion endCondition bloque condicionelse
+    (46) addCheckBool -> . epsilon
+    (78) epsilon -> .
 
-    LBRACKET        shift and go to state 52
-    LPAREN          shift and go to state 56
-    RPAREN          shift and go to state 57
-    ID              shift and go to state 58
-    INT             shift and go to state 63
-    FLOAT           shift and go to state 64
-    BOOL            shift and go to state 65
-    STRING          shift and go to state 66
+    LBRACKET        reduce using rule 78 (epsilon -> .)
+    LPAREN          reduce using rule 78 (epsilon -> .)
+    RPAREN          reduce using rule 78 (epsilon -> .)
+    ID              reduce using rule 78 (epsilon -> .)
+    INT             reduce using rule 78 (epsilon -> .)
+    FLOAT           reduce using rule 78 (epsilon -> .)
+    BOOL            reduce using rule 78 (epsilon -> .)
+    STRING          reduce using rule 78 (epsilon -> .)
 
-    expresion                      shift and go to state 69
-    exp                            shift and go to state 48
-    condition                      shift and go to state 49
-    arreglo                        shift and go to state 50
-    termino                        shift and go to state 51
-    factor                         shift and go to state 53
-    paren                          shift and go to state 54
-    varcte                         shift and go to state 55
-    int                            shift and go to state 59
-    float                          shift and go to state 60
-    bool                           shift and go to state 61
-    string                         shift and go to state 62
+    addCheckBool                   shift and go to state 69
+    epsilon                        shift and go to state 70
 
 state 39
 
-    (45) whileLoop -> WHILE startCondition . expresion endCondition bloque
-    (33) expresion -> . exp
-    (34) expresion -> . condition
-    (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
-    (36) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (45) whileLoop -> WHILE startCondition . addCheckBool expresion endCondition bloque
+    (46) addCheckBool -> . epsilon
+    (78) epsilon -> .
 
-    LBRACKET        shift and go to state 52
-    LPAREN          shift and go to state 56
-    RPAREN          shift and go to state 57
-    ID              shift and go to state 58
-    INT             shift and go to state 63
-    FLOAT           shift and go to state 64
-    BOOL            shift and go to state 65
-    STRING          shift and go to state 66
+    LBRACKET        reduce using rule 78 (epsilon -> .)
+    LPAREN          reduce using rule 78 (epsilon -> .)
+    RPAREN          reduce using rule 78 (epsilon -> .)
+    ID              reduce using rule 78 (epsilon -> .)
+    INT             reduce using rule 78 (epsilon -> .)
+    FLOAT           reduce using rule 78 (epsilon -> .)
+    BOOL            reduce using rule 78 (epsilon -> .)
+    STRING          reduce using rule 78 (epsilon -> .)
 
-    expresion                      shift and go to state 70
-    exp                            shift and go to state 48
-    condition                      shift and go to state 49
-    arreglo                        shift and go to state 50
-    termino                        shift and go to state 51
-    factor                         shift and go to state 53
-    paren                          shift and go to state 54
-    varcte                         shift and go to state 55
-    int                            shift and go to state 59
-    float                          shift and go to state 60
-    bool                           shift and go to state 61
-    string                         shift and go to state 62
+    addCheckBool                   shift and go to state 71
+    epsilon                        shift and go to state 70
 
 state 40
 
-    (46) startCondition -> LPAREN .
+    (47) startCondition -> LPAREN .
 
-    LBRACKET        reduce using rule 46 (startCondition -> LPAREN .)
-    LPAREN          reduce using rule 46 (startCondition -> LPAREN .)
-    RPAREN          reduce using rule 46 (startCondition -> LPAREN .)
-    ID              reduce using rule 46 (startCondition -> LPAREN .)
-    INT             reduce using rule 46 (startCondition -> LPAREN .)
-    FLOAT           reduce using rule 46 (startCondition -> LPAREN .)
-    BOOL            reduce using rule 46 (startCondition -> LPAREN .)
-    STRING          reduce using rule 46 (startCondition -> LPAREN .)
+    LBRACKET        reduce using rule 47 (startCondition -> LPAREN .)
+    LPAREN          reduce using rule 47 (startCondition -> LPAREN .)
+    RPAREN          reduce using rule 47 (startCondition -> LPAREN .)
+    ID              reduce using rule 47 (startCondition -> LPAREN .)
+    INT             reduce using rule 47 (startCondition -> LPAREN .)
+    FLOAT           reduce using rule 47 (startCondition -> LPAREN .)
+    BOOL            reduce using rule 47 (startCondition -> LPAREN .)
+    STRING          reduce using rule 47 (startCondition -> LPAREN .)
 
 
 state 41
 
-    (47) startCondition -> SEMICOLON .
+    (48) startCondition -> SEMICOLON .
 
-    LBRACKET        reduce using rule 47 (startCondition -> SEMICOLON .)
-    LPAREN          reduce using rule 47 (startCondition -> SEMICOLON .)
-    RPAREN          reduce using rule 47 (startCondition -> SEMICOLON .)
-    ID              reduce using rule 47 (startCondition -> SEMICOLON .)
-    INT             reduce using rule 47 (startCondition -> SEMICOLON .)
-    FLOAT           reduce using rule 47 (startCondition -> SEMICOLON .)
-    BOOL            reduce using rule 47 (startCondition -> SEMICOLON .)
-    STRING          reduce using rule 47 (startCondition -> SEMICOLON .)
+    LBRACKET        reduce using rule 48 (startCondition -> SEMICOLON .)
+    LPAREN          reduce using rule 48 (startCondition -> SEMICOLON .)
+    RPAREN          reduce using rule 48 (startCondition -> SEMICOLON .)
+    ID              reduce using rule 48 (startCondition -> SEMICOLON .)
+    INT             reduce using rule 48 (startCondition -> SEMICOLON .)
+    FLOAT           reduce using rule 48 (startCondition -> SEMICOLON .)
+    BOOL            reduce using rule 48 (startCondition -> SEMICOLON .)
+    STRING          reduce using rule 48 (startCondition -> SEMICOLON .)
 
 
 state 42
 
-    (43) doWhile -> do bloque . WHILE LPAREN expresion RPAREN
+    (43) doWhile -> do bloque . WHILE LPAREN addCheckBool expresion RPAREN
 
-    WHILE           shift and go to state 71
+    WHILE           shift and go to state 72
 
 
 state 43
 
-    (48) forLoop -> FOR LPAREN . argumentos startCondition expresion endCondition asignacion RPAREN bloque
-    (59) argumentos -> . args
-    (60) argumentos -> . epsilon
-    (61) args -> . asignacion
-    (62) args -> . args COMA args
-    (77) epsilon -> .
+    (49) forLoop -> FOR LPAREN . argumentos startCondition expresion endCondition asignacion RPAREN bloque
+    (60) argumentos -> . args
+    (61) argumentos -> . epsilon
+    (62) args -> . asignacion
+    (63) args -> . args COMA args
+    (78) epsilon -> .
     (27) asignacion -> . ID EQUAL expresion
 
-    LPAREN          reduce using rule 77 (epsilon -> .)
-    SEMICOLON       reduce using rule 77 (epsilon -> .)
+    LPAREN          reduce using rule 78 (epsilon -> .)
+    SEMICOLON       reduce using rule 78 (epsilon -> .)
     ID              shift and go to state 21
 
-    argumentos                     shift and go to state 72
-    asignacion                     shift and go to state 73
-    args                           shift and go to state 74
-    epsilon                        shift and go to state 75
+    argumentos                     shift and go to state 73
+    asignacion                     shift and go to state 74
+    args                           shift and go to state 75
+    epsilon                        shift and go to state 76
 
 state 44
 
@@ -917,27 +859,27 @@ state 44
     (33) expresion -> . exp
     (34) expresion -> . condition
     (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
     (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
-    STRING          shift and go to state 78
+    STRING          shift and go to state 79
     LBRACKET        shift and go to state 52
     LPAREN          shift and go to state 56
     RPAREN          shift and go to state 57
@@ -946,9 +888,9 @@ state 44
     FLOAT           shift and go to state 64
     BOOL            shift and go to state 65
 
-    escrito                        shift and go to state 76
-    impr                           shift and go to state 77
-    expresion                      shift and go to state 79
+    escrito                        shift and go to state 77
+    impr                           shift and go to state 78
+    expresion                      shift and go to state 80
     exp                            shift and go to state 48
     condition                      shift and go to state 49
     arreglo                        shift and go to state 50
@@ -963,16 +905,16 @@ state 44
 
 state 45
 
-    (55) funcion -> FUNCTION funcdef . LPAREN declaracion RPAREN COLON tiposreturn bloque
+    (56) funcion -> FUNCTION funcdef . LPAREN declaracion RPAREN COLON tiposreturn bloque
 
-    LPAREN          shift and go to state 80
+    LPAREN          shift and go to state 81
 
 
 state 46
 
-    (56) funcdef -> ID .
+    (57) funcdef -> ID .
 
-    LPAREN          reduce using rule 56 (funcdef -> ID .)
+    LPAREN          reduce using rule 57 (funcdef -> ID .)
 
 
 state 47
@@ -997,14 +939,14 @@ state 48
     COMA            reduce using rule 33 (expresion -> exp .)
     LPAREN          reduce using rule 33 (expresion -> exp .)
     RPAREN          reduce using rule 33 (expresion -> exp .)
-    LESSTHAN        shift and go to state 82
-    MORETHAN        shift and go to state 83
-    ISEQUAL         shift and go to state 84
-    NOTEQUAL        shift and go to state 85
-    AND             shift and go to state 86
-    OR              shift and go to state 87
+    LESSTHAN        shift and go to state 83
+    MORETHAN        shift and go to state 84
+    ISEQUAL         shift and go to state 85
+    NOTEQUAL        shift and go to state 86
+    AND             shift and go to state 87
+    OR              shift and go to state 88
 
-    comparacion                    shift and go to state 81
+    comparacion                    shift and go to state 82
 
 state 49
 
@@ -1028,25 +970,25 @@ state 50
 
 state 51
 
-    (63) exp -> termino .
-    (64) exp -> termino . signo exp
-    (65) signo -> . PLUS
-    (66) signo -> . MINUS
+    (64) exp -> termino .
+    (65) exp -> termino . signo exp
+    (66) signo -> . PLUS
+    (67) signo -> . MINUS
 
-    LESSTHAN        reduce using rule 63 (exp -> termino .)
-    MORETHAN        reduce using rule 63 (exp -> termino .)
-    ISEQUAL         reduce using rule 63 (exp -> termino .)
-    NOTEQUAL        reduce using rule 63 (exp -> termino .)
-    AND             reduce using rule 63 (exp -> termino .)
-    OR              reduce using rule 63 (exp -> termino .)
-    SEMICOLON       reduce using rule 63 (exp -> termino .)
-    COMA            reduce using rule 63 (exp -> termino .)
-    LPAREN          reduce using rule 63 (exp -> termino .)
-    RPAREN          reduce using rule 63 (exp -> termino .)
-    PLUS            shift and go to state 89
-    MINUS           shift and go to state 90
+    LESSTHAN        reduce using rule 64 (exp -> termino .)
+    MORETHAN        reduce using rule 64 (exp -> termino .)
+    ISEQUAL         reduce using rule 64 (exp -> termino .)
+    NOTEQUAL        reduce using rule 64 (exp -> termino .)
+    AND             reduce using rule 64 (exp -> termino .)
+    OR              reduce using rule 64 (exp -> termino .)
+    SEMICOLON       reduce using rule 64 (exp -> termino .)
+    COMA            reduce using rule 64 (exp -> termino .)
+    LPAREN          reduce using rule 64 (exp -> termino .)
+    RPAREN          reduce using rule 64 (exp -> termino .)
+    PLUS            shift and go to state 90
+    MINUS           shift and go to state 91
 
-    signo                          shift and go to state 88
+    signo                          shift and go to state 89
 
 state 52
 
@@ -1054,63 +996,63 @@ state 52
     (12) lista -> . ID
     (13) lista -> . ID COMA
 
-    ID              shift and go to state 92
+    ID              shift and go to state 93
 
-    lista                          shift and go to state 91
+    lista                          shift and go to state 92
 
 state 53
 
-    (67) termino -> factor .
-    (68) termino -> factor . operacion termino
-    (69) operacion -> . TIMES
-    (70) operacion -> . DIVIDE
-    (71) operacion -> . DIFF
-    (72) operacion -> . EXP
+    (68) termino -> factor .
+    (69) termino -> factor . operacion termino
+    (70) operacion -> . TIMES
+    (71) operacion -> . DIVIDE
+    (72) operacion -> . DIFF
+    (73) operacion -> . EXP
 
-    PLUS            reduce using rule 67 (termino -> factor .)
-    MINUS           reduce using rule 67 (termino -> factor .)
-    LESSTHAN        reduce using rule 67 (termino -> factor .)
-    MORETHAN        reduce using rule 67 (termino -> factor .)
-    ISEQUAL         reduce using rule 67 (termino -> factor .)
-    NOTEQUAL        reduce using rule 67 (termino -> factor .)
-    AND             reduce using rule 67 (termino -> factor .)
-    OR              reduce using rule 67 (termino -> factor .)
-    SEMICOLON       reduce using rule 67 (termino -> factor .)
-    COMA            reduce using rule 67 (termino -> factor .)
-    LPAREN          reduce using rule 67 (termino -> factor .)
-    RPAREN          reduce using rule 67 (termino -> factor .)
-    TIMES           shift and go to state 94
-    DIVIDE          shift and go to state 95
-    DIFF            shift and go to state 96
-    EXP             shift and go to state 97
+    PLUS            reduce using rule 68 (termino -> factor .)
+    MINUS           reduce using rule 68 (termino -> factor .)
+    LESSTHAN        reduce using rule 68 (termino -> factor .)
+    MORETHAN        reduce using rule 68 (termino -> factor .)
+    ISEQUAL         reduce using rule 68 (termino -> factor .)
+    NOTEQUAL        reduce using rule 68 (termino -> factor .)
+    AND             reduce using rule 68 (termino -> factor .)
+    OR              reduce using rule 68 (termino -> factor .)
+    SEMICOLON       reduce using rule 68 (termino -> factor .)
+    COMA            reduce using rule 68 (termino -> factor .)
+    LPAREN          reduce using rule 68 (termino -> factor .)
+    RPAREN          reduce using rule 68 (termino -> factor .)
+    TIMES           shift and go to state 95
+    DIVIDE          shift and go to state 96
+    DIFF            shift and go to state 97
+    EXP             shift and go to state 98
 
-    operacion                      shift and go to state 93
+    operacion                      shift and go to state 94
 
 state 54
 
-    (73) factor -> paren . expresion paren
+    (74) factor -> paren . expresion paren
     (33) expresion -> . exp
     (34) expresion -> . condition
     (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
     (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
     LBRACKET        shift and go to state 52
     LPAREN          shift and go to state 56
@@ -1122,7 +1064,7 @@ state 54
     STRING          shift and go to state 66
 
     paren                          shift and go to state 54
-    expresion                      shift and go to state 98
+    expresion                      shift and go to state 99
     exp                            shift and go to state 48
     condition                      shift and go to state 49
     arreglo                        shift and go to state 50
@@ -1136,278 +1078,278 @@ state 54
 
 state 55
 
-    (74) factor -> varcte .
+    (75) factor -> varcte .
 
-    TIMES           reduce using rule 74 (factor -> varcte .)
-    DIVIDE          reduce using rule 74 (factor -> varcte .)
-    DIFF            reduce using rule 74 (factor -> varcte .)
-    EXP             reduce using rule 74 (factor -> varcte .)
-    PLUS            reduce using rule 74 (factor -> varcte .)
-    MINUS           reduce using rule 74 (factor -> varcte .)
-    LESSTHAN        reduce using rule 74 (factor -> varcte .)
-    MORETHAN        reduce using rule 74 (factor -> varcte .)
-    ISEQUAL         reduce using rule 74 (factor -> varcte .)
-    NOTEQUAL        reduce using rule 74 (factor -> varcte .)
-    AND             reduce using rule 74 (factor -> varcte .)
-    OR              reduce using rule 74 (factor -> varcte .)
-    SEMICOLON       reduce using rule 74 (factor -> varcte .)
-    COMA            reduce using rule 74 (factor -> varcte .)
-    LPAREN          reduce using rule 74 (factor -> varcte .)
-    RPAREN          reduce using rule 74 (factor -> varcte .)
+    TIMES           reduce using rule 75 (factor -> varcte .)
+    DIVIDE          reduce using rule 75 (factor -> varcte .)
+    DIFF            reduce using rule 75 (factor -> varcte .)
+    EXP             reduce using rule 75 (factor -> varcte .)
+    PLUS            reduce using rule 75 (factor -> varcte .)
+    MINUS           reduce using rule 75 (factor -> varcte .)
+    LESSTHAN        reduce using rule 75 (factor -> varcte .)
+    MORETHAN        reduce using rule 75 (factor -> varcte .)
+    ISEQUAL         reduce using rule 75 (factor -> varcte .)
+    NOTEQUAL        reduce using rule 75 (factor -> varcte .)
+    AND             reduce using rule 75 (factor -> varcte .)
+    OR              reduce using rule 75 (factor -> varcte .)
+    SEMICOLON       reduce using rule 75 (factor -> varcte .)
+    COMA            reduce using rule 75 (factor -> varcte .)
+    LPAREN          reduce using rule 75 (factor -> varcte .)
+    RPAREN          reduce using rule 75 (factor -> varcte .)
 
 
 state 56
 
-    (75) paren -> LPAREN .
+    (76) paren -> LPAREN .
 
-    LBRACKET        reduce using rule 75 (paren -> LPAREN .)
-    LPAREN          reduce using rule 75 (paren -> LPAREN .)
-    RPAREN          reduce using rule 75 (paren -> LPAREN .)
-    ID              reduce using rule 75 (paren -> LPAREN .)
-    INT             reduce using rule 75 (paren -> LPAREN .)
-    FLOAT           reduce using rule 75 (paren -> LPAREN .)
-    BOOL            reduce using rule 75 (paren -> LPAREN .)
-    STRING          reduce using rule 75 (paren -> LPAREN .)
-    TIMES           reduce using rule 75 (paren -> LPAREN .)
-    DIVIDE          reduce using rule 75 (paren -> LPAREN .)
-    DIFF            reduce using rule 75 (paren -> LPAREN .)
-    EXP             reduce using rule 75 (paren -> LPAREN .)
-    PLUS            reduce using rule 75 (paren -> LPAREN .)
-    MINUS           reduce using rule 75 (paren -> LPAREN .)
-    LESSTHAN        reduce using rule 75 (paren -> LPAREN .)
-    MORETHAN        reduce using rule 75 (paren -> LPAREN .)
-    ISEQUAL         reduce using rule 75 (paren -> LPAREN .)
-    NOTEQUAL        reduce using rule 75 (paren -> LPAREN .)
-    AND             reduce using rule 75 (paren -> LPAREN .)
-    OR              reduce using rule 75 (paren -> LPAREN .)
-    SEMICOLON       reduce using rule 75 (paren -> LPAREN .)
-    COMA            reduce using rule 75 (paren -> LPAREN .)
+    LBRACKET        reduce using rule 76 (paren -> LPAREN .)
+    LPAREN          reduce using rule 76 (paren -> LPAREN .)
+    RPAREN          reduce using rule 76 (paren -> LPAREN .)
+    ID              reduce using rule 76 (paren -> LPAREN .)
+    INT             reduce using rule 76 (paren -> LPAREN .)
+    FLOAT           reduce using rule 76 (paren -> LPAREN .)
+    BOOL            reduce using rule 76 (paren -> LPAREN .)
+    STRING          reduce using rule 76 (paren -> LPAREN .)
+    TIMES           reduce using rule 76 (paren -> LPAREN .)
+    DIVIDE          reduce using rule 76 (paren -> LPAREN .)
+    DIFF            reduce using rule 76 (paren -> LPAREN .)
+    EXP             reduce using rule 76 (paren -> LPAREN .)
+    PLUS            reduce using rule 76 (paren -> LPAREN .)
+    MINUS           reduce using rule 76 (paren -> LPAREN .)
+    LESSTHAN        reduce using rule 76 (paren -> LPAREN .)
+    MORETHAN        reduce using rule 76 (paren -> LPAREN .)
+    ISEQUAL         reduce using rule 76 (paren -> LPAREN .)
+    NOTEQUAL        reduce using rule 76 (paren -> LPAREN .)
+    AND             reduce using rule 76 (paren -> LPAREN .)
+    OR              reduce using rule 76 (paren -> LPAREN .)
+    SEMICOLON       reduce using rule 76 (paren -> LPAREN .)
+    COMA            reduce using rule 76 (paren -> LPAREN .)
 
 
 state 57
 
-    (76) paren -> RPAREN .
+    (77) paren -> RPAREN .
 
-    LBRACKET        reduce using rule 76 (paren -> RPAREN .)
-    LPAREN          reduce using rule 76 (paren -> RPAREN .)
-    RPAREN          reduce using rule 76 (paren -> RPAREN .)
-    ID              reduce using rule 76 (paren -> RPAREN .)
-    INT             reduce using rule 76 (paren -> RPAREN .)
-    FLOAT           reduce using rule 76 (paren -> RPAREN .)
-    BOOL            reduce using rule 76 (paren -> RPAREN .)
-    STRING          reduce using rule 76 (paren -> RPAREN .)
-    TIMES           reduce using rule 76 (paren -> RPAREN .)
-    DIVIDE          reduce using rule 76 (paren -> RPAREN .)
-    DIFF            reduce using rule 76 (paren -> RPAREN .)
-    EXP             reduce using rule 76 (paren -> RPAREN .)
-    PLUS            reduce using rule 76 (paren -> RPAREN .)
-    MINUS           reduce using rule 76 (paren -> RPAREN .)
-    LESSTHAN        reduce using rule 76 (paren -> RPAREN .)
-    MORETHAN        reduce using rule 76 (paren -> RPAREN .)
-    ISEQUAL         reduce using rule 76 (paren -> RPAREN .)
-    NOTEQUAL        reduce using rule 76 (paren -> RPAREN .)
-    AND             reduce using rule 76 (paren -> RPAREN .)
-    OR              reduce using rule 76 (paren -> RPAREN .)
-    SEMICOLON       reduce using rule 76 (paren -> RPAREN .)
-    COMA            reduce using rule 76 (paren -> RPAREN .)
+    LBRACKET        reduce using rule 77 (paren -> RPAREN .)
+    LPAREN          reduce using rule 77 (paren -> RPAREN .)
+    RPAREN          reduce using rule 77 (paren -> RPAREN .)
+    ID              reduce using rule 77 (paren -> RPAREN .)
+    INT             reduce using rule 77 (paren -> RPAREN .)
+    FLOAT           reduce using rule 77 (paren -> RPAREN .)
+    BOOL            reduce using rule 77 (paren -> RPAREN .)
+    STRING          reduce using rule 77 (paren -> RPAREN .)
+    TIMES           reduce using rule 77 (paren -> RPAREN .)
+    DIVIDE          reduce using rule 77 (paren -> RPAREN .)
+    DIFF            reduce using rule 77 (paren -> RPAREN .)
+    EXP             reduce using rule 77 (paren -> RPAREN .)
+    PLUS            reduce using rule 77 (paren -> RPAREN .)
+    MINUS           reduce using rule 77 (paren -> RPAREN .)
+    LESSTHAN        reduce using rule 77 (paren -> RPAREN .)
+    MORETHAN        reduce using rule 77 (paren -> RPAREN .)
+    ISEQUAL         reduce using rule 77 (paren -> RPAREN .)
+    NOTEQUAL        reduce using rule 77 (paren -> RPAREN .)
+    AND             reduce using rule 77 (paren -> RPAREN .)
+    OR              reduce using rule 77 (paren -> RPAREN .)
+    SEMICOLON       reduce using rule 77 (paren -> RPAREN .)
+    COMA            reduce using rule 77 (paren -> RPAREN .)
 
 
 state 58
 
-    (78) varcte -> ID .
+    (79) varcte -> ID .
 
-    TIMES           reduce using rule 78 (varcte -> ID .)
-    DIVIDE          reduce using rule 78 (varcte -> ID .)
-    DIFF            reduce using rule 78 (varcte -> ID .)
-    EXP             reduce using rule 78 (varcte -> ID .)
-    PLUS            reduce using rule 78 (varcte -> ID .)
-    MINUS           reduce using rule 78 (varcte -> ID .)
-    LESSTHAN        reduce using rule 78 (varcte -> ID .)
-    MORETHAN        reduce using rule 78 (varcte -> ID .)
-    ISEQUAL         reduce using rule 78 (varcte -> ID .)
-    NOTEQUAL        reduce using rule 78 (varcte -> ID .)
-    AND             reduce using rule 78 (varcte -> ID .)
-    OR              reduce using rule 78 (varcte -> ID .)
-    SEMICOLON       reduce using rule 78 (varcte -> ID .)
-    COMA            reduce using rule 78 (varcte -> ID .)
-    LPAREN          reduce using rule 78 (varcte -> ID .)
-    RPAREN          reduce using rule 78 (varcte -> ID .)
+    TIMES           reduce using rule 79 (varcte -> ID .)
+    DIVIDE          reduce using rule 79 (varcte -> ID .)
+    DIFF            reduce using rule 79 (varcte -> ID .)
+    EXP             reduce using rule 79 (varcte -> ID .)
+    PLUS            reduce using rule 79 (varcte -> ID .)
+    MINUS           reduce using rule 79 (varcte -> ID .)
+    LESSTHAN        reduce using rule 79 (varcte -> ID .)
+    MORETHAN        reduce using rule 79 (varcte -> ID .)
+    ISEQUAL         reduce using rule 79 (varcte -> ID .)
+    NOTEQUAL        reduce using rule 79 (varcte -> ID .)
+    AND             reduce using rule 79 (varcte -> ID .)
+    OR              reduce using rule 79 (varcte -> ID .)
+    SEMICOLON       reduce using rule 79 (varcte -> ID .)
+    COMA            reduce using rule 79 (varcte -> ID .)
+    LPAREN          reduce using rule 79 (varcte -> ID .)
+    RPAREN          reduce using rule 79 (varcte -> ID .)
 
 
 state 59
 
-    (79) varcte -> int .
+    (80) varcte -> int .
 
-    TIMES           reduce using rule 79 (varcte -> int .)
-    DIVIDE          reduce using rule 79 (varcte -> int .)
-    DIFF            reduce using rule 79 (varcte -> int .)
-    EXP             reduce using rule 79 (varcte -> int .)
-    PLUS            reduce using rule 79 (varcte -> int .)
-    MINUS           reduce using rule 79 (varcte -> int .)
-    LESSTHAN        reduce using rule 79 (varcte -> int .)
-    MORETHAN        reduce using rule 79 (varcte -> int .)
-    ISEQUAL         reduce using rule 79 (varcte -> int .)
-    NOTEQUAL        reduce using rule 79 (varcte -> int .)
-    AND             reduce using rule 79 (varcte -> int .)
-    OR              reduce using rule 79 (varcte -> int .)
-    SEMICOLON       reduce using rule 79 (varcte -> int .)
-    COMA            reduce using rule 79 (varcte -> int .)
-    LPAREN          reduce using rule 79 (varcte -> int .)
-    RPAREN          reduce using rule 79 (varcte -> int .)
+    TIMES           reduce using rule 80 (varcte -> int .)
+    DIVIDE          reduce using rule 80 (varcte -> int .)
+    DIFF            reduce using rule 80 (varcte -> int .)
+    EXP             reduce using rule 80 (varcte -> int .)
+    PLUS            reduce using rule 80 (varcte -> int .)
+    MINUS           reduce using rule 80 (varcte -> int .)
+    LESSTHAN        reduce using rule 80 (varcte -> int .)
+    MORETHAN        reduce using rule 80 (varcte -> int .)
+    ISEQUAL         reduce using rule 80 (varcte -> int .)
+    NOTEQUAL        reduce using rule 80 (varcte -> int .)
+    AND             reduce using rule 80 (varcte -> int .)
+    OR              reduce using rule 80 (varcte -> int .)
+    SEMICOLON       reduce using rule 80 (varcte -> int .)
+    COMA            reduce using rule 80 (varcte -> int .)
+    LPAREN          reduce using rule 80 (varcte -> int .)
+    RPAREN          reduce using rule 80 (varcte -> int .)
 
 
 state 60
 
-    (80) varcte -> float .
+    (81) varcte -> float .
 
-    TIMES           reduce using rule 80 (varcte -> float .)
-    DIVIDE          reduce using rule 80 (varcte -> float .)
-    DIFF            reduce using rule 80 (varcte -> float .)
-    EXP             reduce using rule 80 (varcte -> float .)
-    PLUS            reduce using rule 80 (varcte -> float .)
-    MINUS           reduce using rule 80 (varcte -> float .)
-    LESSTHAN        reduce using rule 80 (varcte -> float .)
-    MORETHAN        reduce using rule 80 (varcte -> float .)
-    ISEQUAL         reduce using rule 80 (varcte -> float .)
-    NOTEQUAL        reduce using rule 80 (varcte -> float .)
-    AND             reduce using rule 80 (varcte -> float .)
-    OR              reduce using rule 80 (varcte -> float .)
-    SEMICOLON       reduce using rule 80 (varcte -> float .)
-    COMA            reduce using rule 80 (varcte -> float .)
-    LPAREN          reduce using rule 80 (varcte -> float .)
-    RPAREN          reduce using rule 80 (varcte -> float .)
+    TIMES           reduce using rule 81 (varcte -> float .)
+    DIVIDE          reduce using rule 81 (varcte -> float .)
+    DIFF            reduce using rule 81 (varcte -> float .)
+    EXP             reduce using rule 81 (varcte -> float .)
+    PLUS            reduce using rule 81 (varcte -> float .)
+    MINUS           reduce using rule 81 (varcte -> float .)
+    LESSTHAN        reduce using rule 81 (varcte -> float .)
+    MORETHAN        reduce using rule 81 (varcte -> float .)
+    ISEQUAL         reduce using rule 81 (varcte -> float .)
+    NOTEQUAL        reduce using rule 81 (varcte -> float .)
+    AND             reduce using rule 81 (varcte -> float .)
+    OR              reduce using rule 81 (varcte -> float .)
+    SEMICOLON       reduce using rule 81 (varcte -> float .)
+    COMA            reduce using rule 81 (varcte -> float .)
+    LPAREN          reduce using rule 81 (varcte -> float .)
+    RPAREN          reduce using rule 81 (varcte -> float .)
 
 
 state 61
 
-    (81) varcte -> bool .
+    (82) varcte -> bool .
 
-    TIMES           reduce using rule 81 (varcte -> bool .)
-    DIVIDE          reduce using rule 81 (varcte -> bool .)
-    DIFF            reduce using rule 81 (varcte -> bool .)
-    EXP             reduce using rule 81 (varcte -> bool .)
-    PLUS            reduce using rule 81 (varcte -> bool .)
-    MINUS           reduce using rule 81 (varcte -> bool .)
-    LESSTHAN        reduce using rule 81 (varcte -> bool .)
-    MORETHAN        reduce using rule 81 (varcte -> bool .)
-    ISEQUAL         reduce using rule 81 (varcte -> bool .)
-    NOTEQUAL        reduce using rule 81 (varcte -> bool .)
-    AND             reduce using rule 81 (varcte -> bool .)
-    OR              reduce using rule 81 (varcte -> bool .)
-    SEMICOLON       reduce using rule 81 (varcte -> bool .)
-    COMA            reduce using rule 81 (varcte -> bool .)
-    LPAREN          reduce using rule 81 (varcte -> bool .)
-    RPAREN          reduce using rule 81 (varcte -> bool .)
+    TIMES           reduce using rule 82 (varcte -> bool .)
+    DIVIDE          reduce using rule 82 (varcte -> bool .)
+    DIFF            reduce using rule 82 (varcte -> bool .)
+    EXP             reduce using rule 82 (varcte -> bool .)
+    PLUS            reduce using rule 82 (varcte -> bool .)
+    MINUS           reduce using rule 82 (varcte -> bool .)
+    LESSTHAN        reduce using rule 82 (varcte -> bool .)
+    MORETHAN        reduce using rule 82 (varcte -> bool .)
+    ISEQUAL         reduce using rule 82 (varcte -> bool .)
+    NOTEQUAL        reduce using rule 82 (varcte -> bool .)
+    AND             reduce using rule 82 (varcte -> bool .)
+    OR              reduce using rule 82 (varcte -> bool .)
+    SEMICOLON       reduce using rule 82 (varcte -> bool .)
+    COMA            reduce using rule 82 (varcte -> bool .)
+    LPAREN          reduce using rule 82 (varcte -> bool .)
+    RPAREN          reduce using rule 82 (varcte -> bool .)
 
 
 state 62
 
-    (82) varcte -> string .
+    (83) varcte -> string .
 
-    TIMES           reduce using rule 82 (varcte -> string .)
-    DIVIDE          reduce using rule 82 (varcte -> string .)
-    DIFF            reduce using rule 82 (varcte -> string .)
-    EXP             reduce using rule 82 (varcte -> string .)
-    PLUS            reduce using rule 82 (varcte -> string .)
-    MINUS           reduce using rule 82 (varcte -> string .)
-    LESSTHAN        reduce using rule 82 (varcte -> string .)
-    MORETHAN        reduce using rule 82 (varcte -> string .)
-    ISEQUAL         reduce using rule 82 (varcte -> string .)
-    NOTEQUAL        reduce using rule 82 (varcte -> string .)
-    AND             reduce using rule 82 (varcte -> string .)
-    OR              reduce using rule 82 (varcte -> string .)
-    SEMICOLON       reduce using rule 82 (varcte -> string .)
-    COMA            reduce using rule 82 (varcte -> string .)
-    LPAREN          reduce using rule 82 (varcte -> string .)
-    RPAREN          reduce using rule 82 (varcte -> string .)
+    TIMES           reduce using rule 83 (varcte -> string .)
+    DIVIDE          reduce using rule 83 (varcte -> string .)
+    DIFF            reduce using rule 83 (varcte -> string .)
+    EXP             reduce using rule 83 (varcte -> string .)
+    PLUS            reduce using rule 83 (varcte -> string .)
+    MINUS           reduce using rule 83 (varcte -> string .)
+    LESSTHAN        reduce using rule 83 (varcte -> string .)
+    MORETHAN        reduce using rule 83 (varcte -> string .)
+    ISEQUAL         reduce using rule 83 (varcte -> string .)
+    NOTEQUAL        reduce using rule 83 (varcte -> string .)
+    AND             reduce using rule 83 (varcte -> string .)
+    OR              reduce using rule 83 (varcte -> string .)
+    SEMICOLON       reduce using rule 83 (varcte -> string .)
+    COMA            reduce using rule 83 (varcte -> string .)
+    LPAREN          reduce using rule 83 (varcte -> string .)
+    RPAREN          reduce using rule 83 (varcte -> string .)
 
 
 state 63
 
-    (83) int -> INT .
+    (84) int -> INT .
 
-    TIMES           reduce using rule 83 (int -> INT .)
-    DIVIDE          reduce using rule 83 (int -> INT .)
-    DIFF            reduce using rule 83 (int -> INT .)
-    EXP             reduce using rule 83 (int -> INT .)
-    PLUS            reduce using rule 83 (int -> INT .)
-    MINUS           reduce using rule 83 (int -> INT .)
-    LESSTHAN        reduce using rule 83 (int -> INT .)
-    MORETHAN        reduce using rule 83 (int -> INT .)
-    ISEQUAL         reduce using rule 83 (int -> INT .)
-    NOTEQUAL        reduce using rule 83 (int -> INT .)
-    AND             reduce using rule 83 (int -> INT .)
-    OR              reduce using rule 83 (int -> INT .)
-    SEMICOLON       reduce using rule 83 (int -> INT .)
-    COMA            reduce using rule 83 (int -> INT .)
-    LPAREN          reduce using rule 83 (int -> INT .)
-    RPAREN          reduce using rule 83 (int -> INT .)
+    TIMES           reduce using rule 84 (int -> INT .)
+    DIVIDE          reduce using rule 84 (int -> INT .)
+    DIFF            reduce using rule 84 (int -> INT .)
+    EXP             reduce using rule 84 (int -> INT .)
+    PLUS            reduce using rule 84 (int -> INT .)
+    MINUS           reduce using rule 84 (int -> INT .)
+    LESSTHAN        reduce using rule 84 (int -> INT .)
+    MORETHAN        reduce using rule 84 (int -> INT .)
+    ISEQUAL         reduce using rule 84 (int -> INT .)
+    NOTEQUAL        reduce using rule 84 (int -> INT .)
+    AND             reduce using rule 84 (int -> INT .)
+    OR              reduce using rule 84 (int -> INT .)
+    SEMICOLON       reduce using rule 84 (int -> INT .)
+    COMA            reduce using rule 84 (int -> INT .)
+    LPAREN          reduce using rule 84 (int -> INT .)
+    RPAREN          reduce using rule 84 (int -> INT .)
 
 
 state 64
 
-    (84) float -> FLOAT .
+    (85) float -> FLOAT .
 
-    TIMES           reduce using rule 84 (float -> FLOAT .)
-    DIVIDE          reduce using rule 84 (float -> FLOAT .)
-    DIFF            reduce using rule 84 (float -> FLOAT .)
-    EXP             reduce using rule 84 (float -> FLOAT .)
-    PLUS            reduce using rule 84 (float -> FLOAT .)
-    MINUS           reduce using rule 84 (float -> FLOAT .)
-    LESSTHAN        reduce using rule 84 (float -> FLOAT .)
-    MORETHAN        reduce using rule 84 (float -> FLOAT .)
-    ISEQUAL         reduce using rule 84 (float -> FLOAT .)
-    NOTEQUAL        reduce using rule 84 (float -> FLOAT .)
-    AND             reduce using rule 84 (float -> FLOAT .)
-    OR              reduce using rule 84 (float -> FLOAT .)
-    SEMICOLON       reduce using rule 84 (float -> FLOAT .)
-    COMA            reduce using rule 84 (float -> FLOAT .)
-    LPAREN          reduce using rule 84 (float -> FLOAT .)
-    RPAREN          reduce using rule 84 (float -> FLOAT .)
+    TIMES           reduce using rule 85 (float -> FLOAT .)
+    DIVIDE          reduce using rule 85 (float -> FLOAT .)
+    DIFF            reduce using rule 85 (float -> FLOAT .)
+    EXP             reduce using rule 85 (float -> FLOAT .)
+    PLUS            reduce using rule 85 (float -> FLOAT .)
+    MINUS           reduce using rule 85 (float -> FLOAT .)
+    LESSTHAN        reduce using rule 85 (float -> FLOAT .)
+    MORETHAN        reduce using rule 85 (float -> FLOAT .)
+    ISEQUAL         reduce using rule 85 (float -> FLOAT .)
+    NOTEQUAL        reduce using rule 85 (float -> FLOAT .)
+    AND             reduce using rule 85 (float -> FLOAT .)
+    OR              reduce using rule 85 (float -> FLOAT .)
+    SEMICOLON       reduce using rule 85 (float -> FLOAT .)
+    COMA            reduce using rule 85 (float -> FLOAT .)
+    LPAREN          reduce using rule 85 (float -> FLOAT .)
+    RPAREN          reduce using rule 85 (float -> FLOAT .)
 
 
 state 65
 
-    (85) bool -> BOOL .
+    (86) bool -> BOOL .
 
-    TIMES           reduce using rule 85 (bool -> BOOL .)
-    DIVIDE          reduce using rule 85 (bool -> BOOL .)
-    DIFF            reduce using rule 85 (bool -> BOOL .)
-    EXP             reduce using rule 85 (bool -> BOOL .)
-    PLUS            reduce using rule 85 (bool -> BOOL .)
-    MINUS           reduce using rule 85 (bool -> BOOL .)
-    LESSTHAN        reduce using rule 85 (bool -> BOOL .)
-    MORETHAN        reduce using rule 85 (bool -> BOOL .)
-    ISEQUAL         reduce using rule 85 (bool -> BOOL .)
-    NOTEQUAL        reduce using rule 85 (bool -> BOOL .)
-    AND             reduce using rule 85 (bool -> BOOL .)
-    OR              reduce using rule 85 (bool -> BOOL .)
-    SEMICOLON       reduce using rule 85 (bool -> BOOL .)
-    COMA            reduce using rule 85 (bool -> BOOL .)
-    LPAREN          reduce using rule 85 (bool -> BOOL .)
-    RPAREN          reduce using rule 85 (bool -> BOOL .)
+    TIMES           reduce using rule 86 (bool -> BOOL .)
+    DIVIDE          reduce using rule 86 (bool -> BOOL .)
+    DIFF            reduce using rule 86 (bool -> BOOL .)
+    EXP             reduce using rule 86 (bool -> BOOL .)
+    PLUS            reduce using rule 86 (bool -> BOOL .)
+    MINUS           reduce using rule 86 (bool -> BOOL .)
+    LESSTHAN        reduce using rule 86 (bool -> BOOL .)
+    MORETHAN        reduce using rule 86 (bool -> BOOL .)
+    ISEQUAL         reduce using rule 86 (bool -> BOOL .)
+    NOTEQUAL        reduce using rule 86 (bool -> BOOL .)
+    AND             reduce using rule 86 (bool -> BOOL .)
+    OR              reduce using rule 86 (bool -> BOOL .)
+    SEMICOLON       reduce using rule 86 (bool -> BOOL .)
+    COMA            reduce using rule 86 (bool -> BOOL .)
+    LPAREN          reduce using rule 86 (bool -> BOOL .)
+    RPAREN          reduce using rule 86 (bool -> BOOL .)
 
 
 state 66
 
-    (86) string -> STRING .
+    (87) string -> STRING .
 
-    TIMES           reduce using rule 86 (string -> STRING .)
-    DIVIDE          reduce using rule 86 (string -> STRING .)
-    DIFF            reduce using rule 86 (string -> STRING .)
-    EXP             reduce using rule 86 (string -> STRING .)
-    PLUS            reduce using rule 86 (string -> STRING .)
-    MINUS           reduce using rule 86 (string -> STRING .)
-    LESSTHAN        reduce using rule 86 (string -> STRING .)
-    MORETHAN        reduce using rule 86 (string -> STRING .)
-    ISEQUAL         reduce using rule 86 (string -> STRING .)
-    NOTEQUAL        reduce using rule 86 (string -> STRING .)
-    AND             reduce using rule 86 (string -> STRING .)
-    OR              reduce using rule 86 (string -> STRING .)
-    SEMICOLON       reduce using rule 86 (string -> STRING .)
-    COMA            reduce using rule 86 (string -> STRING .)
-    LPAREN          reduce using rule 86 (string -> STRING .)
-    RPAREN          reduce using rule 86 (string -> STRING .)
+    TIMES           reduce using rule 87 (string -> STRING .)
+    DIVIDE          reduce using rule 87 (string -> STRING .)
+    DIFF            reduce using rule 87 (string -> STRING .)
+    EXP             reduce using rule 87 (string -> STRING .)
+    PLUS            reduce using rule 87 (string -> STRING .)
+    MINUS           reduce using rule 87 (string -> STRING .)
+    LESSTHAN        reduce using rule 87 (string -> STRING .)
+    MORETHAN        reduce using rule 87 (string -> STRING .)
+    ISEQUAL         reduce using rule 87 (string -> STRING .)
+    NOTEQUAL        reduce using rule 87 (string -> STRING .)
+    AND             reduce using rule 87 (string -> STRING .)
+    OR              reduce using rule 87 (string -> STRING .)
+    SEMICOLON       reduce using rule 87 (string -> STRING .)
+    COMA            reduce using rule 87 (string -> STRING .)
+    LPAREN          reduce using rule 87 (string -> STRING .)
+    RPAREN          reduce using rule 87 (string -> STRING .)
 
 
 state 67
@@ -1418,12 +1360,12 @@ state 67
     (10) tipo -> . BOOL
     (11) tipo -> . STRING
 
-    INT             shift and go to state 100
-    FLOAT           shift and go to state 101
-    BOOL            shift and go to state 102
-    STRING          shift and go to state 103
+    INT             shift and go to state 101
+    FLOAT           shift and go to state 102
+    BOOL            shift and go to state 103
+    STRING          shift and go to state 104
 
-    tipo                           shift and go to state 99
+    tipo                           shift and go to state 100
 
 state 68
 
@@ -1437,162 +1379,29 @@ state 68
 
 state 69
 
-    (49) condicion -> IF LPAREN expresion . endCondition bloque condicionelse
-    (50) endCondition -> . RPAREN
-    (51) endCondition -> . SEMICOLON
-
-    RPAREN          shift and go to state 105
-    SEMICOLON       shift and go to state 106
-
-    endCondition                   shift and go to state 104
-
-state 70
-
-    (45) whileLoop -> WHILE startCondition expresion . endCondition bloque
-    (50) endCondition -> . RPAREN
-    (51) endCondition -> . SEMICOLON
-
-    RPAREN          shift and go to state 105
-    SEMICOLON       shift and go to state 106
-
-    endCondition                   shift and go to state 107
-
-state 71
-
-    (43) doWhile -> do bloque WHILE . LPAREN expresion RPAREN
-
-    LPAREN          shift and go to state 108
-
-
-state 72
-
-    (48) forLoop -> FOR LPAREN argumentos . startCondition expresion endCondition asignacion RPAREN bloque
-    (46) startCondition -> . LPAREN
-    (47) startCondition -> . SEMICOLON
-
-    LPAREN          shift and go to state 40
-    SEMICOLON       shift and go to state 41
-
-    startCondition                 shift and go to state 109
-
-state 73
-
-    (61) args -> asignacion .
-
-    COMA            reduce using rule 61 (args -> asignacion .)
-    LPAREN          reduce using rule 61 (args -> asignacion .)
-    SEMICOLON       reduce using rule 61 (args -> asignacion .)
-
-
-state 74
-
-    (59) argumentos -> args .
-    (62) args -> args . COMA args
-
-    LPAREN          reduce using rule 59 (argumentos -> args .)
-    SEMICOLON       reduce using rule 59 (argumentos -> args .)
-    COMA            shift and go to state 110
-
-
-state 75
-
-    (60) argumentos -> epsilon .
-
-    LPAREN          reduce using rule 60 (argumentos -> epsilon .)
-    SEMICOLON       reduce using rule 60 (argumentos -> epsilon .)
-
-
-state 76
-
-    (28) escritura -> PRINT LPAREN escrito . RPAREN
-
-    RPAREN          shift and go to state 111
-
-
-state 77
-
-    (29) escrito -> impr .
-    (30) escrito -> impr . COMA impr
-
-    RPAREN          reduce using rule 29 (escrito -> impr .)
-    COMA            shift and go to state 112
-
-
-state 78
-
-    (31) impr -> STRING .
-    (86) string -> STRING .
-
-  ! reduce/reduce conflict for COMA resolved using rule 31 (impr -> STRING .)
-  ! reduce/reduce conflict for RPAREN resolved using rule 31 (impr -> STRING .)
-    COMA            reduce using rule 31 (impr -> STRING .)
-    RPAREN          reduce using rule 31 (impr -> STRING .)
-    TIMES           reduce using rule 86 (string -> STRING .)
-    DIVIDE          reduce using rule 86 (string -> STRING .)
-    DIFF            reduce using rule 86 (string -> STRING .)
-    EXP             reduce using rule 86 (string -> STRING .)
-    PLUS            reduce using rule 86 (string -> STRING .)
-    MINUS           reduce using rule 86 (string -> STRING .)
-    LESSTHAN        reduce using rule 86 (string -> STRING .)
-    MORETHAN        reduce using rule 86 (string -> STRING .)
-    ISEQUAL         reduce using rule 86 (string -> STRING .)
-    NOTEQUAL        reduce using rule 86 (string -> STRING .)
-    AND             reduce using rule 86 (string -> STRING .)
-    OR              reduce using rule 86 (string -> STRING .)
-
-  ! COMA            [ reduce using rule 86 (string -> STRING .) ]
-  ! RPAREN          [ reduce using rule 86 (string -> STRING .) ]
-
-
-state 79
-
-    (32) impr -> expresion .
-
-    COMA            reduce using rule 32 (impr -> expresion .)
-    RPAREN          reduce using rule 32 (impr -> expresion .)
-
-
-state 80
-
-    (55) funcion -> FUNCTION funcdef LPAREN . declaracion RPAREN COLON tiposreturn bloque
-    (2) declaracion -> . vars
-    (3) declaracion -> . epsilon
-    (4) vars -> . VAR var
-    (5) vars -> . vars vars
-    (77) epsilon -> .
-
-    VAR             shift and go to state 10
-    RPAREN          reduce using rule 77 (epsilon -> .)
-
-    declaracion                    shift and go to state 113
-    vars                           shift and go to state 8
-    epsilon                        shift and go to state 9
-
-state 81
-
-    (36) condition -> exp comparacion . expresion
+    (50) condicion -> IF LPAREN addCheckBool . expresion endCondition bloque condicionelse
     (33) expresion -> . exp
     (34) expresion -> . condition
     (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
     (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
     LBRACKET        shift and go to state 52
     LPAREN          shift and go to state 56
@@ -1603,8 +1412,8 @@ state 81
     BOOL            shift and go to state 65
     STRING          shift and go to state 66
 
+    expresion                      shift and go to state 105
     exp                            shift and go to state 48
-    expresion                      shift and go to state 114
     condition                      shift and go to state 49
     arreglo                        shift and go to state 50
     termino                        shift and go to state 51
@@ -1616,7 +1425,228 @@ state 81
     bool                           shift and go to state 61
     string                         shift and go to state 62
 
+state 70
+
+    (46) addCheckBool -> epsilon .
+
+    LBRACKET        reduce using rule 46 (addCheckBool -> epsilon .)
+    LPAREN          reduce using rule 46 (addCheckBool -> epsilon .)
+    RPAREN          reduce using rule 46 (addCheckBool -> epsilon .)
+    ID              reduce using rule 46 (addCheckBool -> epsilon .)
+    INT             reduce using rule 46 (addCheckBool -> epsilon .)
+    FLOAT           reduce using rule 46 (addCheckBool -> epsilon .)
+    BOOL            reduce using rule 46 (addCheckBool -> epsilon .)
+    STRING          reduce using rule 46 (addCheckBool -> epsilon .)
+
+
+state 71
+
+    (45) whileLoop -> WHILE startCondition addCheckBool . expresion endCondition bloque
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
+
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    INT             shift and go to state 63
+    FLOAT           shift and go to state 64
+    BOOL            shift and go to state 65
+    STRING          shift and go to state 66
+
+    expresion                      shift and go to state 106
+    exp                            shift and go to state 48
+    condition                      shift and go to state 49
+    arreglo                        shift and go to state 50
+    termino                        shift and go to state 51
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
+    int                            shift and go to state 59
+    float                          shift and go to state 60
+    bool                           shift and go to state 61
+    string                         shift and go to state 62
+
+state 72
+
+    (43) doWhile -> do bloque WHILE . LPAREN addCheckBool expresion RPAREN
+
+    LPAREN          shift and go to state 107
+
+
+state 73
+
+    (49) forLoop -> FOR LPAREN argumentos . startCondition expresion endCondition asignacion RPAREN bloque
+    (47) startCondition -> . LPAREN
+    (48) startCondition -> . SEMICOLON
+
+    LPAREN          shift and go to state 40
+    SEMICOLON       shift and go to state 41
+
+    startCondition                 shift and go to state 108
+
+state 74
+
+    (62) args -> asignacion .
+
+    COMA            reduce using rule 62 (args -> asignacion .)
+    LPAREN          reduce using rule 62 (args -> asignacion .)
+    SEMICOLON       reduce using rule 62 (args -> asignacion .)
+
+
+state 75
+
+    (60) argumentos -> args .
+    (63) args -> args . COMA args
+
+    LPAREN          reduce using rule 60 (argumentos -> args .)
+    SEMICOLON       reduce using rule 60 (argumentos -> args .)
+    COMA            shift and go to state 109
+
+
+state 76
+
+    (61) argumentos -> epsilon .
+
+    LPAREN          reduce using rule 61 (argumentos -> epsilon .)
+    SEMICOLON       reduce using rule 61 (argumentos -> epsilon .)
+
+
+state 77
+
+    (28) escritura -> PRINT LPAREN escrito . RPAREN
+
+    RPAREN          shift and go to state 110
+
+
+state 78
+
+    (29) escrito -> impr .
+    (30) escrito -> impr . COMA impr
+
+    RPAREN          reduce using rule 29 (escrito -> impr .)
+    COMA            shift and go to state 111
+
+
+state 79
+
+    (31) impr -> STRING .
+    (87) string -> STRING .
+
+  ! reduce/reduce conflict for COMA resolved using rule 31 (impr -> STRING .)
+  ! reduce/reduce conflict for RPAREN resolved using rule 31 (impr -> STRING .)
+    COMA            reduce using rule 31 (impr -> STRING .)
+    RPAREN          reduce using rule 31 (impr -> STRING .)
+    TIMES           reduce using rule 87 (string -> STRING .)
+    DIVIDE          reduce using rule 87 (string -> STRING .)
+    DIFF            reduce using rule 87 (string -> STRING .)
+    EXP             reduce using rule 87 (string -> STRING .)
+    PLUS            reduce using rule 87 (string -> STRING .)
+    MINUS           reduce using rule 87 (string -> STRING .)
+    LESSTHAN        reduce using rule 87 (string -> STRING .)
+    MORETHAN        reduce using rule 87 (string -> STRING .)
+    ISEQUAL         reduce using rule 87 (string -> STRING .)
+    NOTEQUAL        reduce using rule 87 (string -> STRING .)
+    AND             reduce using rule 87 (string -> STRING .)
+    OR              reduce using rule 87 (string -> STRING .)
+
+  ! COMA            [ reduce using rule 87 (string -> STRING .) ]
+  ! RPAREN          [ reduce using rule 87 (string -> STRING .) ]
+
+
+state 80
+
+    (32) impr -> expresion .
+
+    COMA            reduce using rule 32 (impr -> expresion .)
+    RPAREN          reduce using rule 32 (impr -> expresion .)
+
+
+state 81
+
+    (56) funcion -> FUNCTION funcdef LPAREN . declaracion RPAREN COLON tiposreturn bloque
+    (2) declaracion -> . vars
+    (3) declaracion -> . epsilon
+    (4) vars -> . VAR var
+    (5) vars -> . vars vars
+    (78) epsilon -> .
+
+    VAR             shift and go to state 10
+    RPAREN          reduce using rule 78 (epsilon -> .)
+
+    declaracion                    shift and go to state 112
+    vars                           shift and go to state 8
+    epsilon                        shift and go to state 9
+
 state 82
+
+    (36) condition -> exp comparacion . expresion
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
+
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    INT             shift and go to state 63
+    FLOAT           shift and go to state 64
+    BOOL            shift and go to state 65
+    STRING          shift and go to state 66
+
+    exp                            shift and go to state 48
+    expresion                      shift and go to state 113
+    condition                      shift and go to state 49
+    arreglo                        shift and go to state 50
+    termino                        shift and go to state 51
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
+    int                            shift and go to state 59
+    float                          shift and go to state 60
+    bool                           shift and go to state 61
+    string                         shift and go to state 62
+
+state 83
 
     (37) comparacion -> LESSTHAN .
 
@@ -1630,7 +1660,7 @@ state 82
     STRING          reduce using rule 37 (comparacion -> LESSTHAN .)
 
 
-state 83
+state 84
 
     (38) comparacion -> MORETHAN .
 
@@ -1644,7 +1674,7 @@ state 83
     STRING          reduce using rule 38 (comparacion -> MORETHAN .)
 
 
-state 84
+state 85
 
     (39) comparacion -> ISEQUAL .
 
@@ -1658,7 +1688,7 @@ state 84
     STRING          reduce using rule 39 (comparacion -> ISEQUAL .)
 
 
-state 85
+state 86
 
     (40) comparacion -> NOTEQUAL .
 
@@ -1672,7 +1702,7 @@ state 85
     STRING          reduce using rule 40 (comparacion -> NOTEQUAL .)
 
 
-state 86
+state 87
 
     (41) comparacion -> AND .
 
@@ -1686,7 +1716,7 @@ state 86
     STRING          reduce using rule 41 (comparacion -> AND .)
 
 
-state 87
+state 88
 
     (42) comparacion -> OR .
 
@@ -1700,26 +1730,26 @@ state 87
     STRING          reduce using rule 42 (comparacion -> OR .)
 
 
-state 88
+state 89
 
-    (64) exp -> termino signo . exp
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (65) exp -> termino signo . exp
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
     LPAREN          shift and go to state 56
     RPAREN          shift and go to state 57
@@ -1730,7 +1760,7 @@ state 88
     STRING          shift and go to state 66
 
     termino                        shift and go to state 51
-    exp                            shift and go to state 115
+    exp                            shift and go to state 114
     factor                         shift and go to state 53
     paren                          shift and go to state 54
     varcte                         shift and go to state 55
@@ -1739,66 +1769,66 @@ state 88
     bool                           shift and go to state 61
     string                         shift and go to state 62
 
-state 89
-
-    (65) signo -> PLUS .
-
-    LPAREN          reduce using rule 65 (signo -> PLUS .)
-    RPAREN          reduce using rule 65 (signo -> PLUS .)
-    ID              reduce using rule 65 (signo -> PLUS .)
-    INT             reduce using rule 65 (signo -> PLUS .)
-    FLOAT           reduce using rule 65 (signo -> PLUS .)
-    BOOL            reduce using rule 65 (signo -> PLUS .)
-    STRING          reduce using rule 65 (signo -> PLUS .)
-
-
 state 90
 
-    (66) signo -> MINUS .
+    (66) signo -> PLUS .
 
-    LPAREN          reduce using rule 66 (signo -> MINUS .)
-    RPAREN          reduce using rule 66 (signo -> MINUS .)
-    ID              reduce using rule 66 (signo -> MINUS .)
-    INT             reduce using rule 66 (signo -> MINUS .)
-    FLOAT           reduce using rule 66 (signo -> MINUS .)
-    BOOL            reduce using rule 66 (signo -> MINUS .)
-    STRING          reduce using rule 66 (signo -> MINUS .)
+    LPAREN          reduce using rule 66 (signo -> PLUS .)
+    RPAREN          reduce using rule 66 (signo -> PLUS .)
+    ID              reduce using rule 66 (signo -> PLUS .)
+    INT             reduce using rule 66 (signo -> PLUS .)
+    FLOAT           reduce using rule 66 (signo -> PLUS .)
+    BOOL            reduce using rule 66 (signo -> PLUS .)
+    STRING          reduce using rule 66 (signo -> PLUS .)
 
 
 state 91
 
-    (14) arreglo -> LBRACKET lista . RBRACKET
+    (67) signo -> MINUS .
 
-    RBRACKET        shift and go to state 116
+    LPAREN          reduce using rule 67 (signo -> MINUS .)
+    RPAREN          reduce using rule 67 (signo -> MINUS .)
+    ID              reduce using rule 67 (signo -> MINUS .)
+    INT             reduce using rule 67 (signo -> MINUS .)
+    FLOAT           reduce using rule 67 (signo -> MINUS .)
+    BOOL            reduce using rule 67 (signo -> MINUS .)
+    STRING          reduce using rule 67 (signo -> MINUS .)
 
 
 state 92
+
+    (14) arreglo -> LBRACKET lista . RBRACKET
+
+    RBRACKET        shift and go to state 115
+
+
+state 93
 
     (12) lista -> ID .
     (13) lista -> ID . COMA
 
     RBRACKET        reduce using rule 12 (lista -> ID .)
-    COMA            shift and go to state 117
+    COMA            shift and go to state 116
 
 
-state 93
+state 94
 
-    (68) termino -> factor operacion . termino
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (69) termino -> factor operacion . termino
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
     LPAREN          shift and go to state 56
     RPAREN          shift and go to state 57
@@ -1809,7 +1839,7 @@ state 93
     STRING          shift and go to state 66
 
     factor                         shift and go to state 53
-    termino                        shift and go to state 118
+    termino                        shift and go to state 117
     paren                          shift and go to state 54
     varcte                         shift and go to state 55
     int                            shift and go to state 59
@@ -1817,77 +1847,77 @@ state 93
     bool                           shift and go to state 61
     string                         shift and go to state 62
 
-state 94
-
-    (69) operacion -> TIMES .
-
-    LPAREN          reduce using rule 69 (operacion -> TIMES .)
-    RPAREN          reduce using rule 69 (operacion -> TIMES .)
-    ID              reduce using rule 69 (operacion -> TIMES .)
-    INT             reduce using rule 69 (operacion -> TIMES .)
-    FLOAT           reduce using rule 69 (operacion -> TIMES .)
-    BOOL            reduce using rule 69 (operacion -> TIMES .)
-    STRING          reduce using rule 69 (operacion -> TIMES .)
-
-
 state 95
 
-    (70) operacion -> DIVIDE .
+    (70) operacion -> TIMES .
 
-    LPAREN          reduce using rule 70 (operacion -> DIVIDE .)
-    RPAREN          reduce using rule 70 (operacion -> DIVIDE .)
-    ID              reduce using rule 70 (operacion -> DIVIDE .)
-    INT             reduce using rule 70 (operacion -> DIVIDE .)
-    FLOAT           reduce using rule 70 (operacion -> DIVIDE .)
-    BOOL            reduce using rule 70 (operacion -> DIVIDE .)
-    STRING          reduce using rule 70 (operacion -> DIVIDE .)
+    LPAREN          reduce using rule 70 (operacion -> TIMES .)
+    RPAREN          reduce using rule 70 (operacion -> TIMES .)
+    ID              reduce using rule 70 (operacion -> TIMES .)
+    INT             reduce using rule 70 (operacion -> TIMES .)
+    FLOAT           reduce using rule 70 (operacion -> TIMES .)
+    BOOL            reduce using rule 70 (operacion -> TIMES .)
+    STRING          reduce using rule 70 (operacion -> TIMES .)
 
 
 state 96
 
-    (71) operacion -> DIFF .
+    (71) operacion -> DIVIDE .
 
-    LPAREN          reduce using rule 71 (operacion -> DIFF .)
-    RPAREN          reduce using rule 71 (operacion -> DIFF .)
-    ID              reduce using rule 71 (operacion -> DIFF .)
-    INT             reduce using rule 71 (operacion -> DIFF .)
-    FLOAT           reduce using rule 71 (operacion -> DIFF .)
-    BOOL            reduce using rule 71 (operacion -> DIFF .)
-    STRING          reduce using rule 71 (operacion -> DIFF .)
+    LPAREN          reduce using rule 71 (operacion -> DIVIDE .)
+    RPAREN          reduce using rule 71 (operacion -> DIVIDE .)
+    ID              reduce using rule 71 (operacion -> DIVIDE .)
+    INT             reduce using rule 71 (operacion -> DIVIDE .)
+    FLOAT           reduce using rule 71 (operacion -> DIVIDE .)
+    BOOL            reduce using rule 71 (operacion -> DIVIDE .)
+    STRING          reduce using rule 71 (operacion -> DIVIDE .)
 
 
 state 97
 
-    (72) operacion -> EXP .
+    (72) operacion -> DIFF .
 
-    LPAREN          reduce using rule 72 (operacion -> EXP .)
-    RPAREN          reduce using rule 72 (operacion -> EXP .)
-    ID              reduce using rule 72 (operacion -> EXP .)
-    INT             reduce using rule 72 (operacion -> EXP .)
-    FLOAT           reduce using rule 72 (operacion -> EXP .)
-    BOOL            reduce using rule 72 (operacion -> EXP .)
-    STRING          reduce using rule 72 (operacion -> EXP .)
+    LPAREN          reduce using rule 72 (operacion -> DIFF .)
+    RPAREN          reduce using rule 72 (operacion -> DIFF .)
+    ID              reduce using rule 72 (operacion -> DIFF .)
+    INT             reduce using rule 72 (operacion -> DIFF .)
+    FLOAT           reduce using rule 72 (operacion -> DIFF .)
+    BOOL            reduce using rule 72 (operacion -> DIFF .)
+    STRING          reduce using rule 72 (operacion -> DIFF .)
 
 
 state 98
 
-    (73) factor -> paren expresion . paren
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
+    (73) operacion -> EXP .
+
+    LPAREN          reduce using rule 73 (operacion -> EXP .)
+    RPAREN          reduce using rule 73 (operacion -> EXP .)
+    ID              reduce using rule 73 (operacion -> EXP .)
+    INT             reduce using rule 73 (operacion -> EXP .)
+    FLOAT           reduce using rule 73 (operacion -> EXP .)
+    BOOL            reduce using rule 73 (operacion -> EXP .)
+    STRING          reduce using rule 73 (operacion -> EXP .)
+
+
+state 99
+
+    (74) factor -> paren expresion . paren
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
 
     LPAREN          shift and go to state 56
     RPAREN          shift and go to state 57
 
-    paren                          shift and go to state 119
+    paren                          shift and go to state 118
 
-state 99
+state 100
 
     (6) var -> vardef COLON tipo . SEMICOLON
 
-    SEMICOLON       shift and go to state 120
+    SEMICOLON       shift and go to state 119
 
 
-state 100
+state 101
 
     (8) tipo -> INT .
 
@@ -1895,7 +1925,7 @@ state 100
     LCURLY          reduce using rule 8 (tipo -> INT .)
 
 
-state 101
+state 102
 
     (9) tipo -> FLOAT .
 
@@ -1903,7 +1933,7 @@ state 101
     LCURLY          reduce using rule 9 (tipo -> FLOAT .)
 
 
-state 102
+state 103
 
     (10) tipo -> BOOL .
 
@@ -1911,7 +1941,7 @@ state 102
     LCURLY          reduce using rule 10 (tipo -> BOOL .)
 
 
-state 103
+state 104
 
     (11) tipo -> STRING .
 
@@ -1919,65 +1949,71 @@ state 103
     LCURLY          reduce using rule 11 (tipo -> STRING .)
 
 
-state 104
-
-    (49) condicion -> IF LPAREN expresion endCondition . bloque condicionelse
-    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
-
-    LCURLY          shift and go to state 6
-
-    bloque                         shift and go to state 121
-
 state 105
 
-    (50) endCondition -> RPAREN .
+    (50) condicion -> IF LPAREN addCheckBool expresion . endCondition bloque condicionelse
+    (51) endCondition -> . RPAREN
+    (52) endCondition -> . SEMICOLON
 
-    LCURLY          reduce using rule 50 (endCondition -> RPAREN .)
-    ID              reduce using rule 50 (endCondition -> RPAREN .)
+    RPAREN          shift and go to state 121
+    SEMICOLON       shift and go to state 122
 
+    endCondition                   shift and go to state 120
 
 state 106
 
-    (51) endCondition -> SEMICOLON .
+    (45) whileLoop -> WHILE startCondition addCheckBool expresion . endCondition bloque
+    (51) endCondition -> . RPAREN
+    (52) endCondition -> . SEMICOLON
 
-    LCURLY          reduce using rule 51 (endCondition -> SEMICOLON .)
-    ID              reduce using rule 51 (endCondition -> SEMICOLON .)
+    RPAREN          shift and go to state 121
+    SEMICOLON       shift and go to state 122
 
+    endCondition                   shift and go to state 123
 
 state 107
 
-    (45) whileLoop -> WHILE startCondition expresion endCondition . bloque
-    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
+    (43) doWhile -> do bloque WHILE LPAREN . addCheckBool expresion RPAREN
+    (46) addCheckBool -> . epsilon
+    (78) epsilon -> .
 
-    LCURLY          shift and go to state 6
+    LBRACKET        reduce using rule 78 (epsilon -> .)
+    LPAREN          reduce using rule 78 (epsilon -> .)
+    RPAREN          reduce using rule 78 (epsilon -> .)
+    ID              reduce using rule 78 (epsilon -> .)
+    INT             reduce using rule 78 (epsilon -> .)
+    FLOAT           reduce using rule 78 (epsilon -> .)
+    BOOL            reduce using rule 78 (epsilon -> .)
+    STRING          reduce using rule 78 (epsilon -> .)
 
-    bloque                         shift and go to state 122
+    addCheckBool                   shift and go to state 124
+    epsilon                        shift and go to state 70
 
 state 108
 
-    (43) doWhile -> do bloque WHILE LPAREN . expresion RPAREN
+    (49) forLoop -> FOR LPAREN argumentos startCondition . expresion endCondition asignacion RPAREN bloque
     (33) expresion -> . exp
     (34) expresion -> . condition
     (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
     (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
     LBRACKET        shift and go to state 52
     LPAREN          shift and go to state 56
@@ -1988,7 +2024,7 @@ state 108
     BOOL            shift and go to state 65
     STRING          shift and go to state 66
 
-    expresion                      shift and go to state 123
+    expresion                      shift and go to state 125
     exp                            shift and go to state 48
     condition                      shift and go to state 49
     arreglo                        shift and go to state 50
@@ -2003,72 +2039,24 @@ state 108
 
 state 109
 
-    (48) forLoop -> FOR LPAREN argumentos startCondition . expresion endCondition asignacion RPAREN bloque
-    (33) expresion -> . exp
-    (34) expresion -> . condition
-    (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
-    (36) condition -> . exp comparacion expresion
-    (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
-
-    LBRACKET        shift and go to state 52
-    LPAREN          shift and go to state 56
-    RPAREN          shift and go to state 57
-    ID              shift and go to state 58
-    INT             shift and go to state 63
-    FLOAT           shift and go to state 64
-    BOOL            shift and go to state 65
-    STRING          shift and go to state 66
-
-    expresion                      shift and go to state 124
-    exp                            shift and go to state 48
-    condition                      shift and go to state 49
-    arreglo                        shift and go to state 50
-    termino                        shift and go to state 51
-    factor                         shift and go to state 53
-    paren                          shift and go to state 54
-    varcte                         shift and go to state 55
-    int                            shift and go to state 59
-    float                          shift and go to state 60
-    bool                           shift and go to state 61
-    string                         shift and go to state 62
-
-state 110
-
-    (62) args -> args COMA . args
-    (61) args -> . asignacion
-    (62) args -> . args COMA args
+    (63) args -> args COMA . args
+    (62) args -> . asignacion
+    (63) args -> . args COMA args
     (27) asignacion -> . ID EQUAL expresion
 
     ID              shift and go to state 21
 
-    args                           shift and go to state 125
-    asignacion                     shift and go to state 73
+    args                           shift and go to state 126
+    asignacion                     shift and go to state 74
 
-state 111
+state 110
 
     (28) escritura -> PRINT LPAREN escrito RPAREN .
 
     SEMICOLON       reduce using rule 28 (escritura -> PRINT LPAREN escrito RPAREN .)
 
 
-state 112
+state 111
 
     (30) escrito -> impr COMA . impr
     (31) impr -> . STRING
@@ -2076,27 +2064,27 @@ state 112
     (33) expresion -> . exp
     (34) expresion -> . condition
     (35) expresion -> . arreglo
-    (63) exp -> . termino
-    (64) exp -> . termino signo exp
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
     (36) condition -> . exp comparacion expresion
     (14) arreglo -> . LBRACKET lista RBRACKET
-    (67) termino -> . factor
-    (68) termino -> . factor operacion termino
-    (73) factor -> . paren expresion paren
-    (74) factor -> . varcte
-    (75) paren -> . LPAREN
-    (76) paren -> . RPAREN
-    (78) varcte -> . ID
-    (79) varcte -> . int
-    (80) varcte -> . float
-    (81) varcte -> . bool
-    (82) varcte -> . string
-    (83) int -> . INT
-    (84) float -> . FLOAT
-    (85) bool -> . BOOL
-    (86) string -> . STRING
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
-    STRING          shift and go to state 78
+    STRING          shift and go to state 79
     LBRACKET        shift and go to state 52
     LPAREN          shift and go to state 56
     RPAREN          shift and go to state 57
@@ -2105,8 +2093,8 @@ state 112
     FLOAT           shift and go to state 64
     BOOL            shift and go to state 65
 
-    impr                           shift and go to state 126
-    expresion                      shift and go to state 79
+    impr                           shift and go to state 127
+    expresion                      shift and go to state 80
     exp                            shift and go to state 48
     condition                      shift and go to state 49
     arreglo                        shift and go to state 50
@@ -2119,14 +2107,14 @@ state 112
     bool                           shift and go to state 61
     string                         shift and go to state 62
 
+state 112
+
+    (56) funcion -> FUNCTION funcdef LPAREN declaracion . RPAREN COLON tiposreturn bloque
+
+    RPAREN          shift and go to state 128
+
+
 state 113
-
-    (55) funcion -> FUNCTION funcdef LPAREN declaracion . RPAREN COLON tiposreturn bloque
-
-    RPAREN          shift and go to state 127
-
-
-state 114
 
     (36) condition -> exp comparacion expresion .
 
@@ -2136,23 +2124,23 @@ state 114
     RPAREN          reduce using rule 36 (condition -> exp comparacion expresion .)
 
 
+state 114
+
+    (65) exp -> termino signo exp .
+
+    LESSTHAN        reduce using rule 65 (exp -> termino signo exp .)
+    MORETHAN        reduce using rule 65 (exp -> termino signo exp .)
+    ISEQUAL         reduce using rule 65 (exp -> termino signo exp .)
+    NOTEQUAL        reduce using rule 65 (exp -> termino signo exp .)
+    AND             reduce using rule 65 (exp -> termino signo exp .)
+    OR              reduce using rule 65 (exp -> termino signo exp .)
+    SEMICOLON       reduce using rule 65 (exp -> termino signo exp .)
+    COMA            reduce using rule 65 (exp -> termino signo exp .)
+    LPAREN          reduce using rule 65 (exp -> termino signo exp .)
+    RPAREN          reduce using rule 65 (exp -> termino signo exp .)
+
+
 state 115
-
-    (64) exp -> termino signo exp .
-
-    LESSTHAN        reduce using rule 64 (exp -> termino signo exp .)
-    MORETHAN        reduce using rule 64 (exp -> termino signo exp .)
-    ISEQUAL         reduce using rule 64 (exp -> termino signo exp .)
-    NOTEQUAL        reduce using rule 64 (exp -> termino signo exp .)
-    AND             reduce using rule 64 (exp -> termino signo exp .)
-    OR              reduce using rule 64 (exp -> termino signo exp .)
-    SEMICOLON       reduce using rule 64 (exp -> termino signo exp .)
-    COMA            reduce using rule 64 (exp -> termino signo exp .)
-    LPAREN          reduce using rule 64 (exp -> termino signo exp .)
-    RPAREN          reduce using rule 64 (exp -> termino signo exp .)
-
-
-state 116
 
     (14) arreglo -> LBRACKET lista RBRACKET .
 
@@ -2162,54 +2150,54 @@ state 116
     RPAREN          reduce using rule 14 (arreglo -> LBRACKET lista RBRACKET .)
 
 
-state 117
+state 116
 
     (13) lista -> ID COMA .
 
     RBRACKET        reduce using rule 13 (lista -> ID COMA .)
 
 
+state 117
+
+    (69) termino -> factor operacion termino .
+
+    PLUS            reduce using rule 69 (termino -> factor operacion termino .)
+    MINUS           reduce using rule 69 (termino -> factor operacion termino .)
+    LESSTHAN        reduce using rule 69 (termino -> factor operacion termino .)
+    MORETHAN        reduce using rule 69 (termino -> factor operacion termino .)
+    ISEQUAL         reduce using rule 69 (termino -> factor operacion termino .)
+    NOTEQUAL        reduce using rule 69 (termino -> factor operacion termino .)
+    AND             reduce using rule 69 (termino -> factor operacion termino .)
+    OR              reduce using rule 69 (termino -> factor operacion termino .)
+    SEMICOLON       reduce using rule 69 (termino -> factor operacion termino .)
+    COMA            reduce using rule 69 (termino -> factor operacion termino .)
+    LPAREN          reduce using rule 69 (termino -> factor operacion termino .)
+    RPAREN          reduce using rule 69 (termino -> factor operacion termino .)
+
+
 state 118
 
-    (68) termino -> factor operacion termino .
+    (74) factor -> paren expresion paren .
 
-    PLUS            reduce using rule 68 (termino -> factor operacion termino .)
-    MINUS           reduce using rule 68 (termino -> factor operacion termino .)
-    LESSTHAN        reduce using rule 68 (termino -> factor operacion termino .)
-    MORETHAN        reduce using rule 68 (termino -> factor operacion termino .)
-    ISEQUAL         reduce using rule 68 (termino -> factor operacion termino .)
-    NOTEQUAL        reduce using rule 68 (termino -> factor operacion termino .)
-    AND             reduce using rule 68 (termino -> factor operacion termino .)
-    OR              reduce using rule 68 (termino -> factor operacion termino .)
-    SEMICOLON       reduce using rule 68 (termino -> factor operacion termino .)
-    COMA            reduce using rule 68 (termino -> factor operacion termino .)
-    LPAREN          reduce using rule 68 (termino -> factor operacion termino .)
-    RPAREN          reduce using rule 68 (termino -> factor operacion termino .)
+    TIMES           reduce using rule 74 (factor -> paren expresion paren .)
+    DIVIDE          reduce using rule 74 (factor -> paren expresion paren .)
+    DIFF            reduce using rule 74 (factor -> paren expresion paren .)
+    EXP             reduce using rule 74 (factor -> paren expresion paren .)
+    PLUS            reduce using rule 74 (factor -> paren expresion paren .)
+    MINUS           reduce using rule 74 (factor -> paren expresion paren .)
+    LESSTHAN        reduce using rule 74 (factor -> paren expresion paren .)
+    MORETHAN        reduce using rule 74 (factor -> paren expresion paren .)
+    ISEQUAL         reduce using rule 74 (factor -> paren expresion paren .)
+    NOTEQUAL        reduce using rule 74 (factor -> paren expresion paren .)
+    AND             reduce using rule 74 (factor -> paren expresion paren .)
+    OR              reduce using rule 74 (factor -> paren expresion paren .)
+    SEMICOLON       reduce using rule 74 (factor -> paren expresion paren .)
+    COMA            reduce using rule 74 (factor -> paren expresion paren .)
+    LPAREN          reduce using rule 74 (factor -> paren expresion paren .)
+    RPAREN          reduce using rule 74 (factor -> paren expresion paren .)
 
 
 state 119
-
-    (73) factor -> paren expresion paren .
-
-    TIMES           reduce using rule 73 (factor -> paren expresion paren .)
-    DIVIDE          reduce using rule 73 (factor -> paren expresion paren .)
-    DIFF            reduce using rule 73 (factor -> paren expresion paren .)
-    EXP             reduce using rule 73 (factor -> paren expresion paren .)
-    PLUS            reduce using rule 73 (factor -> paren expresion paren .)
-    MINUS           reduce using rule 73 (factor -> paren expresion paren .)
-    LESSTHAN        reduce using rule 73 (factor -> paren expresion paren .)
-    MORETHAN        reduce using rule 73 (factor -> paren expresion paren .)
-    ISEQUAL         reduce using rule 73 (factor -> paren expresion paren .)
-    NOTEQUAL        reduce using rule 73 (factor -> paren expresion paren .)
-    AND             reduce using rule 73 (factor -> paren expresion paren .)
-    OR              reduce using rule 73 (factor -> paren expresion paren .)
-    SEMICOLON       reduce using rule 73 (factor -> paren expresion paren .)
-    COMA            reduce using rule 73 (factor -> paren expresion paren .)
-    LPAREN          reduce using rule 73 (factor -> paren expresion paren .)
-    RPAREN          reduce using rule 73 (factor -> paren expresion paren .)
-
-
-state 120
 
     (6) var -> vardef COLON tipo SEMICOLON .
 
@@ -2225,196 +2213,278 @@ state 120
     RPAREN          reduce using rule 6 (var -> vardef COLON tipo SEMICOLON .)
 
 
+state 120
+
+    (50) condicion -> IF LPAREN addCheckBool expresion endCondition . bloque condicionelse
+    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
+
+    LCURLY          shift and go to state 6
+
+    bloque                         shift and go to state 129
+
 state 121
 
-    (49) condicion -> IF LPAREN expresion endCondition bloque . condicionelse
-    (52) condicionelse -> . else bloque
-    (53) condicionelse -> . epsilon
-    (54) else -> . ELSE
-    (77) epsilon -> .
+    (51) endCondition -> RPAREN .
 
-    ELSE            shift and go to state 131
-    SEMICOLON       reduce using rule 77 (epsilon -> .)
+    LCURLY          reduce using rule 51 (endCondition -> RPAREN .)
+    ID              reduce using rule 51 (endCondition -> RPAREN .)
 
-    condicionelse                  shift and go to state 128
-    else                           shift and go to state 129
-    epsilon                        shift and go to state 130
 
 state 122
 
-    (45) whileLoop -> WHILE startCondition expresion endCondition bloque .
+    (52) endCondition -> SEMICOLON .
 
-    SEMICOLON       reduce using rule 45 (whileLoop -> WHILE startCondition expresion endCondition bloque .)
+    LCURLY          reduce using rule 52 (endCondition -> SEMICOLON .)
+    ID              reduce using rule 52 (endCondition -> SEMICOLON .)
 
 
 state 123
 
-    (43) doWhile -> do bloque WHILE LPAREN expresion . RPAREN
+    (45) whileLoop -> WHILE startCondition addCheckBool expresion endCondition . bloque
+    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
 
-    RPAREN          shift and go to state 132
+    LCURLY          shift and go to state 6
 
+    bloque                         shift and go to state 130
 
 state 124
 
-    (48) forLoop -> FOR LPAREN argumentos startCondition expresion . endCondition asignacion RPAREN bloque
-    (50) endCondition -> . RPAREN
-    (51) endCondition -> . SEMICOLON
+    (43) doWhile -> do bloque WHILE LPAREN addCheckBool . expresion RPAREN
+    (33) expresion -> . exp
+    (34) expresion -> . condition
+    (35) expresion -> . arreglo
+    (64) exp -> . termino
+    (65) exp -> . termino signo exp
+    (36) condition -> . exp comparacion expresion
+    (14) arreglo -> . LBRACKET lista RBRACKET
+    (68) termino -> . factor
+    (69) termino -> . factor operacion termino
+    (74) factor -> . paren expresion paren
+    (75) factor -> . varcte
+    (76) paren -> . LPAREN
+    (77) paren -> . RPAREN
+    (79) varcte -> . ID
+    (80) varcte -> . int
+    (81) varcte -> . float
+    (82) varcte -> . bool
+    (83) varcte -> . string
+    (84) int -> . INT
+    (85) float -> . FLOAT
+    (86) bool -> . BOOL
+    (87) string -> . STRING
 
-    RPAREN          shift and go to state 105
-    SEMICOLON       shift and go to state 106
+    LBRACKET        shift and go to state 52
+    LPAREN          shift and go to state 56
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 58
+    INT             shift and go to state 63
+    FLOAT           shift and go to state 64
+    BOOL            shift and go to state 65
+    STRING          shift and go to state 66
 
-    endCondition                   shift and go to state 133
+    expresion                      shift and go to state 131
+    exp                            shift and go to state 48
+    condition                      shift and go to state 49
+    arreglo                        shift and go to state 50
+    termino                        shift and go to state 51
+    factor                         shift and go to state 53
+    paren                          shift and go to state 54
+    varcte                         shift and go to state 55
+    int                            shift and go to state 59
+    float                          shift and go to state 60
+    bool                           shift and go to state 61
+    string                         shift and go to state 62
 
 state 125
 
-    (62) args -> args COMA args .
-    (62) args -> args . COMA args
+    (49) forLoop -> FOR LPAREN argumentos startCondition expresion . endCondition asignacion RPAREN bloque
+    (51) endCondition -> . RPAREN
+    (52) endCondition -> . SEMICOLON
 
-  ! shift/reduce conflict for COMA resolved as shift
-    LPAREN          reduce using rule 62 (args -> args COMA args .)
-    SEMICOLON       reduce using rule 62 (args -> args COMA args .)
-    COMA            shift and go to state 110
+    RPAREN          shift and go to state 121
+    SEMICOLON       shift and go to state 122
 
-  ! COMA            [ reduce using rule 62 (args -> args COMA args .) ]
-
+    endCondition                   shift and go to state 132
 
 state 126
+
+    (63) args -> args COMA args .
+    (63) args -> args . COMA args
+
+  ! shift/reduce conflict for COMA resolved as shift
+    LPAREN          reduce using rule 63 (args -> args COMA args .)
+    SEMICOLON       reduce using rule 63 (args -> args COMA args .)
+    COMA            shift and go to state 109
+
+  ! COMA            [ reduce using rule 63 (args -> args COMA args .) ]
+
+
+state 127
 
     (30) escrito -> impr COMA impr .
 
     RPAREN          reduce using rule 30 (escrito -> impr COMA impr .)
 
 
-state 127
-
-    (55) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN . COLON tiposreturn bloque
-
-    COLON           shift and go to state 134
-
-
 state 128
 
-    (49) condicion -> IF LPAREN expresion endCondition bloque condicionelse .
+    (56) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN . COLON tiposreturn bloque
 
-    SEMICOLON       reduce using rule 49 (condicion -> IF LPAREN expresion endCondition bloque condicionelse .)
+    COLON           shift and go to state 133
 
 
 state 129
 
-    (52) condicionelse -> else . bloque
-    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
+    (50) condicion -> IF LPAREN addCheckBool expresion endCondition bloque . condicionelse
+    (53) condicionelse -> . else bloque
+    (54) condicionelse -> . epsilon
+    (55) else -> . ELSE
+    (78) epsilon -> .
 
-    LCURLY          shift and go to state 6
+    ELSE            shift and go to state 137
+    SEMICOLON       reduce using rule 78 (epsilon -> .)
 
-    bloque                         shift and go to state 135
+    condicionelse                  shift and go to state 134
+    else                           shift and go to state 135
+    epsilon                        shift and go to state 136
 
 state 130
 
-    (53) condicionelse -> epsilon .
+    (45) whileLoop -> WHILE startCondition addCheckBool expresion endCondition bloque .
 
-    SEMICOLON       reduce using rule 53 (condicionelse -> epsilon .)
+    SEMICOLON       reduce using rule 45 (whileLoop -> WHILE startCondition addCheckBool expresion endCondition bloque .)
 
 
 state 131
 
-    (54) else -> ELSE .
+    (43) doWhile -> do bloque WHILE LPAREN addCheckBool expresion . RPAREN
 
-    LCURLY          reduce using rule 54 (else -> ELSE .)
+    RPAREN          shift and go to state 138
 
 
 state 132
 
-    (43) doWhile -> do bloque WHILE LPAREN expresion RPAREN .
-
-    SEMICOLON       reduce using rule 43 (doWhile -> do bloque WHILE LPAREN expresion RPAREN .)
-
-
-state 133
-
-    (48) forLoop -> FOR LPAREN argumentos startCondition expresion endCondition . asignacion RPAREN bloque
+    (49) forLoop -> FOR LPAREN argumentos startCondition expresion endCondition . asignacion RPAREN bloque
     (27) asignacion -> . ID EQUAL expresion
 
     ID              shift and go to state 21
 
-    asignacion                     shift and go to state 136
+    asignacion                     shift and go to state 139
 
-state 134
+state 133
 
-    (55) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON . tiposreturn bloque
-    (57) tiposreturn -> . tipo
-    (58) tiposreturn -> . VOID
+    (56) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON . tiposreturn bloque
+    (58) tiposreturn -> . tipo
+    (59) tiposreturn -> . VOID
     (8) tipo -> . INT
     (9) tipo -> . FLOAT
     (10) tipo -> . BOOL
     (11) tipo -> . STRING
 
-    VOID            shift and go to state 139
-    INT             shift and go to state 100
-    FLOAT           shift and go to state 101
-    BOOL            shift and go to state 102
-    STRING          shift and go to state 103
+    VOID            shift and go to state 142
+    INT             shift and go to state 101
+    FLOAT           shift and go to state 102
+    BOOL            shift and go to state 103
+    STRING          shift and go to state 104
 
-    tiposreturn                    shift and go to state 137
-    tipo                           shift and go to state 138
+    tiposreturn                    shift and go to state 140
+    tipo                           shift and go to state 141
+
+state 134
+
+    (50) condicion -> IF LPAREN addCheckBool expresion endCondition bloque condicionelse .
+
+    SEMICOLON       reduce using rule 50 (condicion -> IF LPAREN addCheckBool expresion endCondition bloque condicionelse .)
+
 
 state 135
 
-    (52) condicionelse -> else bloque .
+    (53) condicionelse -> else . bloque
+    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
 
-    SEMICOLON       reduce using rule 52 (condicionelse -> else bloque .)
+    LCURLY          shift and go to state 6
 
+    bloque                         shift and go to state 143
 
 state 136
 
-    (48) forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion . RPAREN bloque
+    (54) condicionelse -> epsilon .
 
-    RPAREN          shift and go to state 140
+    SEMICOLON       reduce using rule 54 (condicionelse -> epsilon .)
 
 
 state 137
 
-    (55) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn . bloque
-    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
+    (55) else -> ELSE .
 
-    LCURLY          shift and go to state 6
+    LCURLY          reduce using rule 55 (else -> ELSE .)
 
-    bloque                         shift and go to state 141
 
 state 138
 
-    (57) tiposreturn -> tipo .
+    (43) doWhile -> do bloque WHILE LPAREN addCheckBool expresion RPAREN .
 
-    LCURLY          reduce using rule 57 (tiposreturn -> tipo .)
+    SEMICOLON       reduce using rule 43 (doWhile -> do bloque WHILE LPAREN addCheckBool expresion RPAREN .)
 
 
 state 139
 
-    (58) tiposreturn -> VOID .
+    (49) forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion . RPAREN bloque
 
-    LCURLY          reduce using rule 58 (tiposreturn -> VOID .)
+    RPAREN          shift and go to state 144
 
 
 state 140
 
-    (48) forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN . bloque
+    (56) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn . bloque
     (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
 
     LCURLY          shift and go to state 6
 
-    bloque                         shift and go to state 142
+    bloque                         shift and go to state 145
 
 state 141
 
-    (55) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque .
+    (58) tiposreturn -> tipo .
 
-    SEMICOLON       reduce using rule 55 (funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque .)
+    LCURLY          reduce using rule 58 (tiposreturn -> tipo .)
 
 
 state 142
 
-    (48) forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque .
+    (59) tiposreturn -> VOID .
 
-    SEMICOLON       reduce using rule 48 (forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque .)
+    LCURLY          reduce using rule 59 (tiposreturn -> VOID .)
+
+
+state 143
+
+    (53) condicionelse -> else bloque .
+
+    SEMICOLON       reduce using rule 53 (condicionelse -> else bloque .)
+
+
+state 144
+
+    (49) forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN . bloque
+    (15) bloque -> . LCURLY declaracion estatutoExp RCURLY
+
+    LCURLY          shift and go to state 6
+
+    bloque                         shift and go to state 146
+
+state 145
+
+    (56) funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque .
+
+    SEMICOLON       reduce using rule 56 (funcion -> FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn bloque .)
+
+
+state 146
+
+    (49) forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque .
+
+    SEMICOLON       reduce using rule 49 (forLoop -> FOR LPAREN argumentos startCondition expresion endCondition asignacion RPAREN bloque .)
 
 WARNING: 
 WARNING: Conflicts:
@@ -2428,6 +2498,6 @@ WARNING: shift/reduce conflict for PRINT in state 34 resolved as shift
 WARNING: shift/reduce conflict for FUNCTION in state 34 resolved as shift
 WARNING: shift/reduce conflict for RETURN in state 34 resolved as shift
 WARNING: shift/reduce conflict for DO in state 34 resolved as shift
-WARNING: shift/reduce conflict for COMA in state 125 resolved as shift
-WARNING: reduce/reduce conflict in state 78 resolved using rule (impr -> STRING)
-WARNING: rejected rule (string -> STRING) in state 78
+WARNING: shift/reduce conflict for COMA in state 126 resolved as shift
+WARNING: reduce/reduce conflict in state 79 resolved using rule (impr -> STRING)
+WARNING: rejected rule (string -> STRING) in state 79

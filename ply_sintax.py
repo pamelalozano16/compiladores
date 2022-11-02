@@ -117,6 +117,7 @@ def p_expresion(p):
                 | condition
                 | arreglo '''
         #       | expresion expresion ''' 
+    semantics.checkVarMatch(variables_control)
 
 def p_condition(p):
     '''condition : exp comparacion expresion'''
@@ -133,7 +134,7 @@ def p_comparacion(p):
     pass
 
 def p_doWhile(p):
-   '''doWhile : do bloque WHILE LPAREN expresion RPAREN'''
+   '''doWhile : do bloque WHILE LPAREN addCheckBool expresion RPAREN'''
    semantics.createGoToV()
    semantics.assignCrumb()
    pass
@@ -144,9 +145,14 @@ def p_do(p):
    pass
 
 def p_whileLoop(p):
-   '''whileLoop : WHILE startCondition expresion endCondition bloque'''
+   '''whileLoop : WHILE startCondition addCheckBool expresion endCondition bloque'''
    semantics.createGoTo()
    semantics.assignEndLoop()
+   pass
+
+def p_addCheckBool(p):
+   '''addCheckBool : epsilon'''
+   semantics.addVarMatch('bool')
    pass
 
 def p_startCondition(p):
@@ -162,7 +168,7 @@ def p_forLoop(p):
    pass
 
 def p_condicion(p):
-    '''condicion : IF LPAREN expresion endCondition bloque condicionelse'''
+    '''condicion : IF LPAREN addCheckBool expresion endCondition bloque condicionelse'''
     pass
 
 def p_endCondition(p):

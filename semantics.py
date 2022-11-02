@@ -10,6 +10,7 @@ class Semantics:
         self.pOper = []
         self.quads = []
         self.pSaltos = []
+        self.resultMatch = [] #Append a type check before expression is finished
         self.tempCounter = 0
 
     def printQuadsWithNames(self):
@@ -147,6 +148,18 @@ class Semantics:
             quad= self.quads[falso]
             quad[-1] = len(self.quads)
             self.quads[falso] = quad
+
+    def addVarMatch(self, varType):
+       self.resultMatch.append(varType) 
+
+    def checkVarMatch(self, variables_control): 
+        #Check if the expression return is the expected type (if, while = bool)
+        if 0 < len(self.resultMatch):
+            varName = variables_control.find_dir_name(self.quads[-1][-1])
+            varType = variables_control.find_vars_type(varName)
+            if varType != self.resultMatch.pop():
+                raise ValueError('Types mismatch', varName)
+            print(variables_control.find_vars_type(varName))
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
