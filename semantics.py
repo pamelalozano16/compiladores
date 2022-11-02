@@ -19,7 +19,7 @@ class Semantics:
         quadStr = "["
         for i, x in enumerate(self.quads):
             for j in x:
-                if type(j)!=str and x[0][0] != 'g':
+                if type(j)!=str and type(x[0])!=int:
                     dirName =self.variables_control.find_dir_name(j)
                     if dirName : quadStr+=f', {dirName}'
                 else:

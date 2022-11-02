@@ -1,8 +1,25 @@
 class DirectionsControl:
     def __init__(self):
+        self.operationCodes = {
+                '+':1,
+                '-':2,
+                '*':3,
+                '/':4,
+                '=':5,
+                '>':6,
+                '<':7,
+                '!=':8,
+                '==':9,
+                '%':10,
+                '!!':11,
+                '&&':12,
+                '^':13,
+                'end':14
+        }
+
         self.directions = {
             'global': {
-                'int' : [0, 1, 1000], #Counter, First dir, Last dir
+                'int' : [0, 15, 1000], #Counter, First dir, Last dir
                 'float' : [0, 1001, 2000],
                 'bool' : [0, 2001, 3000],
                 'string' : [0, 3001, 4000],
@@ -34,3 +51,11 @@ class DirectionsControl:
         nextDir = self.directions[scope][varType][0]+self.directions[scope][varType][1]
         self.directions[scope][varType][0] += 1
         return nextDir
+
+    def getOpCode(self, op):
+        opCode = self.operationCodes[op]
+        return opCode
+    
+    def getOpSign(self, op):
+        for i,x in self.operationCodes.items():
+            if x==op: return i

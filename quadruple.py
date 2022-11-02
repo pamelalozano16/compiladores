@@ -1,6 +1,8 @@
 from semantic_cube import SemanticCube
+from directions_control import DirectionsControl
 
 semantic_cube = SemanticCube()
+directions_control = DirectionsControl()
 
 class Quadruple:
     def __init__(self):
@@ -12,7 +14,7 @@ class Quadruple:
     def createQuad(self, operator, right, left, typeRight, typeLeft, res):
         resType = semantic_cube.is_match(typeLeft, typeRight, operator)
         if resType:
-            self.operator = operator
+            self.operator = directions_control.getOpCode(operator)
             self.right = right
             self.left = left
             self.res = res

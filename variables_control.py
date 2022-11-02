@@ -32,6 +32,8 @@ class VariableControl:
         return func_name in self.variables_table
     
     def find_dir_name(self, num):
+        opCode = directions_control.getOpSign(num)
+        if opCode: return opCode
         for scopes in self.variables_table:
             try:
                 indx=self.variables_table[scopes]['vars_dir'].index(num)
