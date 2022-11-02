@@ -13,7 +13,8 @@ class Semantics:
         self.resultMatch = [] #Append a type check before expression is finished
         self.tempCounter = 0
 
-    def printQuadsWithNames(self):
+    def printQuadsWithNames(self): 
+        #Imprime quads con nombres en lugar de direcciones
         print("Quads:")
         quadStr = "["
         for i, x in enumerate(self.quads):
@@ -54,6 +55,7 @@ class Semantics:
         self.pOper.append("=")
 
     def addCounterToSaltos(self):
+        #Add current counter (migaja)
         self.pSaltos.append(len(self.quads))
     
     def checkAssign(self):
@@ -103,7 +105,8 @@ class Semantics:
             self.pTypes.append(typeRes)
             self.tempCounter+=1
     
-    def checkParen(self):    
+    def checkParen(self):
+        #Fondo negro    
         if 0<len(self.pOper) and (self.pOper[-1]=="("):
             self.pOper.pop()
 
@@ -130,6 +133,7 @@ class Semantics:
             self.quads[salto] = quad
 
     def assignCrumb(self):
+        #Add end of do while to goto
         if 0<len(self.pSaltos):
             salto = self.pSaltos.pop()
             migaja = self.pSaltos.pop()
@@ -150,6 +154,7 @@ class Semantics:
             self.quads[falso] = quad
 
     def addVarMatch(self, varType):
+        #Add a pending return type check
        self.resultMatch.append(varType) 
 
     def checkVarMatch(self, variables_control): 
