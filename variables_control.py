@@ -18,7 +18,15 @@ class VariableControl:
                 'return': 'void',
                 'vars_table': [],
                 'vars_types': [],
-                'vars_dir':[]
+                'vars_dir':[],
+                'args':[],
+                'resource_count':{
+                    'int':0,
+                    'float':0,
+                    'bool':0,
+                    'string':0,
+                    'temp':0
+                }
             },  
         }
 
@@ -103,7 +111,15 @@ class VariableControl:
             'scope': self.current_scope,
             'vars_table':[],
             'vars_types': [],
-            'vars_dir':[]
+            'vars_dir':[],
+            'args':[],
+            'resource_count':{
+                'int':0,
+                'float':0,
+                'bool':0,
+                'string':0,
+                'temp':0
+            }
         }
         self.current_scope = name
        # print("Scope", self.current_scope)
@@ -119,10 +135,12 @@ class VariableControl:
         self.variables_table[self.current_scope]['vars_table'].append(name)
         self.variables_table[self.current_scope]['vars_types'].append(var_type)
         self.variables_table[self.current_scope]['vars_dir'].append(self.getDir(var_type, self.current_scope))
+        self.variables_table[self.current_scope]['resource_count'][var_type]+=1
        # self.print_table()
     
     def scope_back(self):
         self.current_scope = self.variables_table[self.current_scope]['scope']
+        directions_control.resetLocalDirections()
        # print("Scope", self.current_scope)
     
     def addConst(self, num, varType):
@@ -131,12 +149,18 @@ class VariableControl:
         self.constants['vars_types'].append(varType)
 
     def addTemp(self, temp, varType):
-        self.variables_table['global']['vars_table'].append(temp)
+        self.variables_table[self.current_scope]['vars_table'].append(temp)
         varDir = self.getDir(varType, 'temp')
-        self.variables_table['global']['vars_dir'].append(varDir)
-        self.variables_table['global']['vars_types'].append(varType)
+        self.variables_table[self.current_scope]['vars_dir'].append(varDir)
+        self.variables_table[self.current_scope]['vars_types'].append(varType)
+        self.variables_table[self.current_scope]['resource_count']['temp']+=1
         return varDir
-    #    self.print_table()
+
+    def addArgs(self):
+        current_vars = self.variables_table[self.current_scope]['vars_dir']
+        for i in self.variables_table[self.current_scope]['vars_dir']:
+            self.variables_table[self.current_scope]['args'].append(i)
+      #  print(self.current_scope, self.variables_table[self.current_scope])
 
         
 

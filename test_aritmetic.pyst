@@ -11,7 +11,7 @@ start() {
         c=5+(a+k+b+5)*sos;
     };
     function jeje(var z: int;): void {
-        a=k;
+        a=k*c;
     };
-    jeje(z=6);
+    jeje(z=6, x=3);
 }

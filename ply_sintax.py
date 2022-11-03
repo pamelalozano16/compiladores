@@ -195,8 +195,14 @@ def p_else(p):
     pass
 
 def p_funcion(p):
-    '''funcion : FUNCTION funcdef LPAREN declaracion RPAREN COLON tiposreturn'''
+    '''funcion : FUNCTION funcdef LPAREN declaracion addArgs RPAREN COLON tiposreturn'''
     variables_control.scope_back()
+    semantics.resetCounter()
+    pass
+
+def p_addArgs(p):
+    '''addArgs : epsilon'''
+    variables_control.addArgs()
     pass
 
 def p_funcdef(p):
@@ -226,9 +232,13 @@ def p_funCall(p):
     pass
 
 def p_funcArgs(p):
-    '''funcArgs : asignacion
+    '''funcArgs : checkArgs
                   | funcArgs COMA funcArgs
                   | epsilon'''
+    pass
+
+def p_checkArgs(p):
+    '''checkArgs : ID EQUAL expresion'''
     pass
 
 def p_argumentos(p):

@@ -40,6 +40,8 @@ class Semantics:
 
     def endStatus(self):
         self.printQuadsWithNames()
+        #self.printQuads()
+        self.variables_control.print_table()
         print("PilaO:", self.pilaO, "pOper:", self.pOper,"pSalos:", self.pSaltos)
 
     def insertId(self, id, idType):
@@ -165,6 +167,9 @@ class Semantics:
             if varType != self.resultMatch.pop():
                 raise ValueError('Types mismatch', varName)
             print(variables_control.find_vars_type(varName))
+    
+    def resetCounter(self):
+        self.tempCounter=0
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)

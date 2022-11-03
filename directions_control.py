@@ -52,6 +52,11 @@ class DirectionsControl:
         self.directions[scope][varType][0] += 1
         return nextDir
 
+    def resetLocalDirections(self):
+        for i in self.directions['local']:
+            self.directions['local'][i][0]=0
+            self.directions['temp'][i][0]=0
+        
     def getOpCode(self, op):
         opCode = self.operationCodes[op]
         return opCode
