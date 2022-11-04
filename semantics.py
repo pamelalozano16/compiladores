@@ -43,6 +43,9 @@ class Semantics:
         #self.printQuads()
         self.variables_control.print_table()
         print("PilaO:", self.pilaO, "pOper:", self.pOper,"pSalos:", self.pSaltos)
+    
+    def getCounter(self):
+        return len(self.quads)
 
     def insertId(self, id, idType):
         self.pTypes.append(idType)

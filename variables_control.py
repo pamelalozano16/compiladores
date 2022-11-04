@@ -12,6 +12,10 @@ class VariableControl:
             'vars_dir':[]            
         }
 
+        self.args = {
+            'global': []
+        }
+
         self.variables_table = {
             'global':{
                 'scope': '#', #Scope Anterior
@@ -19,7 +23,7 @@ class VariableControl:
                 'vars_table': [],
                 'vars_types': [],
                 'vars_dir':[],
-                'args':[],
+                'initial_address':-1,
                 'resource_count':{
                     'int':0,
                     'float':0,
@@ -34,7 +38,8 @@ class VariableControl:
         self.current_scope=scope
 
     def print_table(self):
-        print(self.variables_table)
+        print('Func table:', self.variables_table)
+        print('Args table:', self.args)
     
     def is_in_table(self, func_name):
         return func_name in self.variables_table
@@ -112,7 +117,7 @@ class VariableControl:
             'vars_table':[],
             'vars_types': [],
             'vars_dir':[],
-            'args':[],
+            'initial_address':-1,
             'resource_count':{
                 'int':0,
                 'float':0,
@@ -121,6 +126,7 @@ class VariableControl:
                 'temp':0
             }
         }
+        self.args[name]=[]
         self.current_scope = name
        # print("Scope", self.current_scope)
 
@@ -157,10 +163,12 @@ class VariableControl:
         return varDir
 
     def addArgs(self):
-        current_vars = self.variables_table[self.current_scope]['vars_dir']
-        for i in self.variables_table[self.current_scope]['vars_dir']:
-            self.variables_table[self.current_scope]['args'].append(i)
+        for i in self.variables_table[self.current_scope]['vars_types']:
+            self.args[self.current_scope].append(i)
       #  print(self.current_scope, self.variables_table[self.current_scope])
+
+    def addFuncInitialAddress(self, count):
+        self.variables_table[self.current_scope]['initial_address'] = count
 
         
 

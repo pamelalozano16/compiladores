@@ -196,12 +196,14 @@ def p_else(p):
 
 def p_funcion(p):
     '''funcion : FUNCTION funcdef LPAREN declaracion addArgs RPAREN COLON tiposreturn'''
+    #End Func
     variables_control.scope_back()
     semantics.resetCounter()
     pass
 
 def p_addArgs(p):
     '''addArgs : epsilon'''
+    variables_control.addFuncInitialAddress(semantics.getCounter())
     variables_control.addArgs()
     pass
 
