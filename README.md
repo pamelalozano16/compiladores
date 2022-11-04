@@ -29,3 +29,6 @@
 ## Avance 5: Direccionamiento de Variables
 <img src="/Avance5_tests.png" alt="Avance5" width="400"/>
 <img src="/Avance5.1_tests.png" alt="Avance5.1" width="400"/>
+
+## Avance 6: Funciones
+<img src="/Avance6_tests.png" alt="Avance6" width="400"/>

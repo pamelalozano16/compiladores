@@ -13,7 +13,7 @@ start() {
             };
             b=a;
         };
-        a=b;
+        a=k;
         do {
             a=b*c*(a+b);
         } while(a + b > c);

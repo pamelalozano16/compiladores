@@ -24,6 +24,9 @@ class Semantics:
                     if(x[0]=='goto'):
                         quadStr+=f', {x[-1]}'
                         break
+                    if(x[0]=='gotoF' or x[0]=='gotoV'):
+                        quadStr+=f', {self.variables_control.find_dir_name(x[1])}, {x[-1]}'
+                        break
                     else:
                         dirName =self.variables_control.find_dir_name(j)
                         if dirName : quadStr+=f', {dirName}'
@@ -131,7 +134,7 @@ class Semantics:
             self.quads.append(quadGoto.getQuad())
             self.pSaltos.append(len(self.quads)-1)
         else: 
-            raise ValueError("IF and WHILE blocks are conditional")
+            raise ValueError("IF, WHILE and FOR blocks are conditional")
 
     def createGoToV(self):
         quadGoto = quadruple.createGoToV(self.variables_control.find_vars_dir(self.pilaO.pop()))
@@ -139,7 +142,7 @@ class Semantics:
             self.quads.append(quadGoto.getQuad())
             self.pSaltos.append(len(self.quads)-1)
         else: 
-            raise ValueError("IF and WHILE blocks are conditional")
+            raise ValueError("IF, WHILE and FOR blocks are conditional")
     
     def assignGoTo(self, plus=0):
         if 0<len(self.pSaltos):
@@ -197,12 +200,13 @@ class Semantics:
         self.quads.append(quad.getQuad())
 
     def endFunc(self):
-        current_function, initial_address = self.variables_control.get_current_scope()
-        quad = quadruple.endFunc()
-        self.quads.append(quad.getQuad())
         #Append initial direction to goto main after function is done
+        current_function, initial_address = self.variables_control.get_current_scope()
         if current_function == 'main':
             self.quads[0][-1] = initial_address
+        else:
+            quad = quadruple.endFunc()
+            self.quads.append(quad.getQuad())
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
