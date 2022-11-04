@@ -127,13 +127,19 @@ class Semantics:
 
     def createGoToF(self):
         quadGoto = quadruple.createGoToF(self.variables_control.find_vars_dir(self.pilaO.pop()))
-        self.quads.append(quadGoto.getQuad())
-        self.pSaltos.append(len(self.quads)-1)
+        if self.pTypes.pop() == 'bool':
+            self.quads.append(quadGoto.getQuad())
+            self.pSaltos.append(len(self.quads)-1)
+        else: 
+            raise ValueError("IF and WHILE blocks are conditional")
 
     def createGoToV(self):
         quadGoto = quadruple.createGoToV(self.variables_control.find_vars_dir(self.pilaO.pop()))
-        self.quads.append(quadGoto.getQuad())
-        self.pSaltos.append(len(self.quads)-1)
+        if self.pTypes.pop() == 'bool':
+            self.quads.append(quadGoto.getQuad())
+            self.pSaltos.append(len(self.quads)-1)
+        else: 
+            raise ValueError("IF and WHILE blocks are conditional")
     
     def assignGoTo(self, plus=0):
         if 0<len(self.pSaltos):
@@ -162,19 +168,6 @@ class Semantics:
             quad= self.quads[falso]
             quad[-1] = len(self.quads)
             self.quads[falso] = quad
-
-    def addVarMatch(self, varType):
-        #Add a pending return type check
-       self.resultMatch.append(varType) 
-
-    def checkVarMatch(self, variables_control): 
-        #Check if the expression return is the expected type (if, while = bool)
-        if 0 < len(self.resultMatch):
-            varName = variables_control.find_dir_name(self.quads[-1][-1])
-            varType = variables_control.find_vars_type(varName)
-            if varType != self.resultMatch.pop():
-                raise ValueError('Types mismatch', varName)
-          #  print(variables_control.find_vars_type(varName))
     
     def resetCounter(self):
         self.tempCounter=0
