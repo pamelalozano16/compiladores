@@ -42,6 +42,34 @@ class Quadruple:
         self.right=-1
         self.res=None
         return self
+
+    def createEra(self, func):
+        self.operator="ERA"
+        self.left=f'{func}'
+        self.right=-1
+        self.res=None
+        return self
+    
+    def createParam(self, op, num):
+        self.operator="PARAMETER"
+        self.left=op
+        self.right=f'#{num}'
+        self.res=None
+        return self
+
+    def createGoSub(self, func, initial_address):
+        self.operator="GOSUB"
+        self.left=f'{func}'
+        self.right=f'{initial_address}'
+        self.res=None
+        return self
+
+    def endFunc(self):
+        self.operator="ENDPROC"
+        self.left=-1
+        self.right=-1
+        self.res=None
+        return self
     
     def addDestination(self, dest):
         self.res = dest

@@ -196,7 +196,8 @@ def p_else(p):
 
 def p_funcion(p):
     '''funcion : FUNCTION funcdef LPAREN declaracion addArgs RPAREN COLON tiposreturn'''
-    #End Func
+    semantics.resetArgumentCount()
+    semantics.endFunc()
     variables_control.scope_back()
     semantics.resetCounter()
     pass
@@ -224,6 +225,7 @@ def p_tiposreturn(p):
 
 def p_functionCall(p):
     '''functionCall : funCall LPAREN funcArgs RPAREN'''
+    semantics.addFuncGoSub()
     pass
 
 def p_funCall(p):
@@ -231,6 +233,7 @@ def p_funCall(p):
     if(variables_control.is_in_table(p[1]) == None):
         raise ValueError(f'Function not declared {p[1]}')
     variables_control.change_scope(p[1])
+    semantics.addFuncEra(p[1])
     pass
 
 def p_funcArgs(p):
@@ -240,7 +243,8 @@ def p_funcArgs(p):
     pass
 
 def p_checkArgs(p):
-    '''checkArgs : ID EQUAL expresion'''
+    '''checkArgs : expresion'''
+    semantics.addFuncArguments()
     pass
 
 def p_argumentos(p):

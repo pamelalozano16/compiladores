@@ -8,10 +8,12 @@ class Semantics:
         self.pTypes= []
         self.pilaO = []
         self.pOper = []
+        #gotoMain = (quadruple.createGoTo()).getQuad()
         self.quads = []
         self.pSaltos = []
         self.resultMatch = [] #Append a type check before expression is finished
         self.tempCounter = 0
+        self.k_arguments = 0
 
     def printQuadsWithNames(self): 
         #Imprime quads con nombres en lugar de direcciones
@@ -39,10 +41,10 @@ class Semantics:
             print(i, x)
 
     def endStatus(self):
-        self.printQuadsWithNames()
-        #self.printQuads()
+       # self.printQuadsWithNames()
+        self.printQuads()
         self.variables_control.print_table()
-        print("PilaO:", self.pilaO, "pOper:", self.pOper,"pSalos:", self.pSaltos)
+        print("PilaO:", self.pilaO, "PTypes:", self.pTypes, "pOper:", self.pOper,"pSalos:", self.pSaltos)
     
     def getCounter(self):
         return len(self.quads)
@@ -169,10 +171,38 @@ class Semantics:
             varType = variables_control.find_vars_type(varName)
             if varType != self.resultMatch.pop():
                 raise ValueError('Types mismatch', varName)
-            print(variables_control.find_vars_type(varName))
+          #  print(variables_control.find_vars_type(varName))
     
     def resetCounter(self):
         self.tempCounter=0
+
+    def resetArgumentCount(self):
+        self.k_arguments=0
+
+    def addFuncArguments(self):
+        op = self.pilaO.pop()
+        varType = self.pTypes.pop()
+        expectedType = self.variables_control.get_arg_type(self.k_arguments)
+        if(varType == expectedType):
+            varDir = self.variables_control.find_vars_dir(op)
+            quad = quadruple.createParam(varDir, self.k_arguments)
+            self.quads.append(quad.getQuad())
+        else:
+            raise ValueError(f'Expected {op} of type {expectedType}')
+        self.k_arguments += 1
+    
+    def addFuncEra(self, name):
+        quad = quadruple.createEra(name)
+        self.quads.append(quad.getQuad())
+    
+    def addFuncGoSub(self):
+        current_function, initial_address = self.variables_control.get_current_scope()
+        quad = quadruple.createGoSub(current_function, initial_address)
+        self.quads.append(quad.getQuad())
+
+    def endFunc(self):
+        quad = quadruple.endFunc()
+        self.quads.append(quad.getQuad())
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)

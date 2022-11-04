@@ -37,13 +37,23 @@ class VariableControl:
     def change_scope(self, scope):
         self.current_scope=scope
 
+    def get_current_scope(self):
+        return self.current_scope, self.variables_table[self.current_scope]['initial_address']
+
     def print_table(self):
         print('Func table:', self.variables_table)
         print('Args table:', self.args)
+        print('Const table:', self.constants)
     
     def is_in_table(self, func_name):
         return func_name in self.variables_table
-    
+
+    def get_arg_type(self, num):
+        args_expected = len(self.args[self.current_scope])
+        if(args_expected <= num):
+            raise ValueError(f'Expected {args_expected} argument but got {num+1}')
+        return self.args[self.current_scope][num]
+
     def find_dir_name(self, num):
         opCode = directions_control.getOpSign(num)
         if opCode: return opCode
@@ -150,6 +160,8 @@ class VariableControl:
        # print("Scope", self.current_scope)
     
     def addConst(self, num, varType):
+        if(num in self.constants['vars_table']):
+            return self.constants['vars_dir']
         self.constants['vars_table'].append(num)
         self.constants['vars_dir'].append(self.getDir(varType, 'const'))
         self.constants['vars_types'].append(varType)

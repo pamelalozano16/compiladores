@@ -13,5 +13,6 @@ start() {
     function jeje(var z: int;): void {
         a=k*c;
     };
-    jeje(z=6, x=3);
+    k=b+c;
+    jeje(6+7);
 }
