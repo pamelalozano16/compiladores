@@ -3,15 +3,16 @@ start() {
     var c: float;
     var b: float;
     var k: float;
+    function jeje(var z: int;): void {
+        a=k*c;
+    };
+    
     function main(): void {
         var lol: float;
         var sos: float;
         var ja: bool;
         ja=True;
         c=5+(a+k+b+5)*sos;
-    };
-    function jeje(var z: int;): void {
-        a=k*c;
     };
     k=b+c;
     jeje(6+7);

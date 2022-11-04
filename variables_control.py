@@ -50,7 +50,7 @@ class VariableControl:
 
     def get_arg_type(self, num):
         args_expected = len(self.args[self.current_scope])
-        if(args_expected <= num):
+        if(args_expected <= num): #Compare number of args expected
             raise ValueError(f'Expected {args_expected} argument but got {num+1}')
         return self.args[self.current_scope][num]
 
