@@ -3,10 +3,11 @@ start() {
     var c: float;
     var b: float;
     var k: float;
-    function jeje(var z: int;): void {
+    function jeje(var z: int;): int {
         a=k*c;
+        return 5;
     };
-    
+
     function main(): void {
         var lol: float;
         var sos: float;

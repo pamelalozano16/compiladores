@@ -86,6 +86,11 @@ def p_estatuto(p):
                     
 def p_returnexp(p):
     '''returnexp : RETURN expresion SEMICOLON'''
+    semantics.returnExpression()
+    semantics.addAssign()
+    semantics.checkAssign()
+    #Check return type
+    #Assign exp to temp
     pass
 
 def p_asignacion(p):
@@ -211,10 +216,20 @@ def p_funcdef(p):
     pass
 
 def p_tiposreturn(p):
-    '''tiposreturn : tipo bloqueReturn
+    '''tiposreturn : tiposFuncion bloqueReturn
                     | VOID bloque'''
-    variables_control.add_return(p[1])
+    if(p[1]):
+        variables_control.add_return(p[1])
       #  variables_control.print_table()
+    pass
+
+def p_tiposFuncion(p):
+    '''tiposFuncion : INT
+                    | FLOAT
+                    | BOOL
+                    | STRING'''
+    variables_control.add_return(p[1])
+     #   variables_control.print_table()
     pass
 
 def p_functionCall(p):

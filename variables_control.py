@@ -39,6 +39,9 @@ class VariableControl:
 
     def get_current_scope(self):
         return self.current_scope, self.variables_table[self.current_scope]['initial_address']
+    
+    def get_current_scope_return(self):
+        return self.variables_table[self.current_scope]['return']
 
     def print_table(self):
         print('Func table:', self.variables_table)

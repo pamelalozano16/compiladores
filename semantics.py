@@ -70,6 +70,13 @@ class Semantics:
     def addCounterToSaltos(self):
         #Add current counter (migaja)
         self.pSaltos.append(len(self.quads))
+
+    def returnExpression(self):
+        res = "t"+str(self.tempCounter)
+        typeRes = self.variables_control.get_current_scope_return()
+        dirTemp = self.variables_control.addTemp(res, typeRes)
+        self.tempCounter+=1
+        self.insertId(res, typeRes)
     
     def checkAssign(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="="):
