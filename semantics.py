@@ -10,7 +10,6 @@ class Semantics:
         self.pOper = []
         self.quads = [quadruple.createGoTo().getQuad()] #initiate with goto Main
         self.pSaltos = []
-        self.resultMatch = [] #Append a type check before expression is finished
         self.tempCounter = 0
         self.k_arguments = 0 #Number of processed arguments per function call
         self.calling_function = None #Current function call
