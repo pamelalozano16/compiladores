@@ -235,13 +235,13 @@ def p_tiposFuncion(p):
 def p_functionCall(p):
     '''functionCall : funCall LPAREN funcArgs RPAREN'''
     semantics.addFuncGoSub()
+    semantics.checkReturnValue()
     pass
 
 def p_funCall(p):
     '''funCall : ID'''
     if(variables_control.is_in_table(p[1]) == None):
         raise ValueError(f'Function not declared {p[1]}')
-    variables_control.change_scope(p[1])
     semantics.addFuncEra(p[1])
     pass
 

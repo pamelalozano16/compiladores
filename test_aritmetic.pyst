@@ -16,5 +16,6 @@ start() {
         c=5+(a+k+b+5)*sos;
     };
     k=b+c;
+    jeje(3);
     jeje(6+7);
 }

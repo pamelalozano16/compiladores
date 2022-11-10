@@ -51,11 +51,11 @@ class VariableControl:
     def is_in_table(self, func_name):
         return func_name in self.variables_table
 
-    def get_arg_type(self, num):
-        args_expected = len(self.args[self.current_scope])
+    def get_arg_type(self, num, scope):
+        args_expected = len(self.args[scope])
         if(args_expected <= num): #Compare number of args expected
             raise ValueError(f'Expected {args_expected} argument but got {num+1}')
-        return self.args[self.current_scope][num]
+        return self.args[scope][num]
 
     def find_dir_name(self, num):
         opCode = directions_control.getOpSign(num)
@@ -184,6 +184,17 @@ class VariableControl:
 
     def addFuncInitialAddress(self, count):
         self.variables_table[self.current_scope]['initial_address'] = count
+    
+    def getFuncInitialAddress(self, name):
+        return self.variables_table[name]['initial_address']
+
+    def addFuncReturn(self):
+        previousScope = self.current_scope
+        var_type = self.variables_table[self.current_scope]['return']
+        self.current_scope = 'global'
+        self.add_var(previousScope, var_type)
+        self.current_scope = previousScope
+        return previousScope, var_type
 
         
 

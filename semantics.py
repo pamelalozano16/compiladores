@@ -12,7 +12,8 @@ class Semantics:
         self.pSaltos = []
         self.resultMatch = [] #Append a type check before expression is finished
         self.tempCounter = 0
-        self.k_arguments = 0
+        self.k_arguments = 0 #Number of processed arguments per function call
+        self.calling_function = None #Current function call
 
     def printQuadsWithNames(self): 
         #Imprime quads con nombres en lugar de direcciones
@@ -72,11 +73,8 @@ class Semantics:
         self.pSaltos.append(len(self.quads))
 
     def returnExpression(self):
-        res = "t"+str(self.tempCounter)
-        typeRes = self.variables_control.get_current_scope_return()
-        dirTemp = self.variables_control.addTemp(res, typeRes)
-        self.tempCounter+=1
-        self.insertId(res, typeRes)
+        var_name, var_type = self.variables_control.addFuncReturn()
+        self.insertId(var_name, var_type)
     
     def checkAssign(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="="):
@@ -88,7 +86,7 @@ class Semantics:
 
 
     def checkTerm(self):
-        if 0<len(self.pOper) and (self.pOper[-1]=="+" or self.pOper[-1]=="-" or self.pOper[-1]=="="):
+        if 0<len(self.pOper) and (self.pOper[-1]=="+" or self.pOper[-1]=="-"):
             res = "t"+str(self.tempCounter)
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.variables_control.find_vars_dir(self.pilaO.pop()), self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), self.pTypes.pop(), res)
             dirTemp = self.variables_control.addTemp(res, typeRes)
@@ -188,7 +186,7 @@ class Semantics:
     def addFuncArguments(self):
         op = self.pilaO.pop()
         varType = self.pTypes.pop()
-        expectedType = self.variables_control.get_arg_type(self.k_arguments)
+        expectedType = self.variables_control.get_arg_type(self.k_arguments, self.calling_function)
         if(varType == expectedType): #Compare expected arg types
             varDir = self.variables_control.find_vars_dir(op)
             quad = quadruple.createParam(varDir, self.k_arguments)
@@ -200,11 +198,14 @@ class Semantics:
     def addFuncEra(self, name): #Generate Space
         quad = quadruple.createEra(name)
         self.quads.append(quad.getQuad())
+        self.calling_function=name
     
     def addFuncGoSub(self):
-        current_function, initial_address = self.variables_control.get_current_scope()
-        quad = quadruple.createGoSub(current_function, initial_address)
+        initial_address = self.variables_control.getFuncInitialAddress(self.calling_function)
+        quad = quadruple.createGoSub(self.calling_function, initial_address)
         self.quads.append(quad.getQuad())
+        self.k_arguments = 0
+  #      self.variables_control.change_scope(self.calling_function)
 
     def endFunc(self):
         #Append initial direction to goto main after function is done
@@ -214,6 +215,18 @@ class Semantics:
         else:
             quad = quadruple.endFunc()
             self.quads.append(quad.getQuad())
+        self.calling_function = None
+    
+    def checkReturnValue(self):
+        if (self.variables_control.find_vars_scope(self.calling_function) == '#'):
+            var_type = self.variables_control.find_vars_type(self.calling_function)
+            self.insertId(self.calling_function, var_type)
+            res = "t"+str(self.tempCounter)
+            dirTemp = self.variables_control.addTemp(res, var_type)
+            self.tempCounter+=1
+            self.insertId(res, var_type)
+            self.addAssign()
+            self.checkAssign()
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
