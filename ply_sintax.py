@@ -360,16 +360,18 @@ def p_string(p):
 
 # Error rule for syntax errors
 def p_error(p):
-    print("Syntax error in input!")
+    raise EOFError("Syntax error in input!")
 
 # Build the parser
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
 with open("test_aritmetic.pyst") as f:
-    contents = f.read()
-    result = parser.parse(contents)
-    print("Errors:", result)
+    try:
+        contents = f.read()
+        result = parser.parse(contents)
+    except EOFError as e:
+        print('Error:', e)
 
 # while True:
 #     try:
