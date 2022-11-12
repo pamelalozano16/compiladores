@@ -63,6 +63,13 @@ class Quadruple:
         self.right=f'{initial_address}'
         self.res=None
         return self
+    
+    def arrElem(self, dir, res):
+        self.operator="ARR"
+        self.left=dir
+        self.right=None
+        self.res=res
+        return self
 
     def endFunc(self):
         self.operator="ENDPROC"

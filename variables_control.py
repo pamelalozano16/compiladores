@@ -16,6 +16,8 @@ class VariableControl:
             'global': []
         }
 
+        self.arrays = {}
+
         self.variables_table = {
             'global':{
                 'scope': '#', #Scope Anterior
@@ -47,6 +49,7 @@ class VariableControl:
         print('Func table:', self.variables_table)
         print('Args table:', self.args)
         print('Const table:', self.constants)
+        print('Array table:', self.arrays)
     
     def is_in_table(self, func_name):
         return func_name in self.variables_table
@@ -72,7 +75,7 @@ class VariableControl:
             varName=self.constants['vars_table'][indx]
             return varName
         except:
-            return None
+            return num
     
     def find_vars_type(self, name):
         for scopes in self.variables_table:
@@ -108,6 +111,11 @@ class VariableControl:
         for scopes in self.variables_table:
             if name in self.variables_table[scopes]['vars_table']:
                 return self.variables_table[scopes]['scope']
+    
+    def find_vars_func(self, name):
+        for scopes in self.variables_table:
+            if name in self.variables_table[scopes]['vars_table']:
+                return scopes
 
     def find_var(self, name):
         current_scope = self.current_scope
@@ -149,11 +157,14 @@ class VariableControl:
     
     def getDir(self, varType, varDir):
         return directions_control.getDirection(varDir, varType)
-    
-    def add_var(self, name, var_type):
+
+    def add_var(self, name, var_type, isArray=False):
         self.variables_table[self.current_scope]['vars_table'].append(name)
         self.variables_table[self.current_scope]['vars_types'].append(var_type)
-        self.variables_table[self.current_scope]['vars_dir'].append(self.getDir(var_type, self.current_scope))
+        varDir = None
+        if(not isArray):
+            varDir = self.getDir(var_type, self.current_scope)
+        self.variables_table[self.current_scope]['vars_dir'].append(varDir)
         self.variables_table[self.current_scope]['resource_count'][var_type]+=1
        # self.print_table()
     
@@ -166,8 +177,10 @@ class VariableControl:
         if(num in self.constants['vars_table']):
             return self.constants['vars_dir']
         self.constants['vars_table'].append(num)
-        self.constants['vars_dir'].append(self.getDir(varType, 'const'))
+        varDir = self.getDir(varType, 'const')
+        self.constants['vars_dir'].append(varDir)
         self.constants['vars_types'].append(varType)
+        return varDir
 
     def addTemp(self, temp, varType):
         self.variables_table[self.current_scope]['vars_table'].append(temp)
@@ -195,6 +208,25 @@ class VariableControl:
         self.add_var(previousScope, var_type)
         self.current_scope = previousScope
         return previousScope, var_type
+    
+    def declareArray(self, name, rows, cols=1):
+        varType = self.find_vars_type(name)
+        varScope, indx = self.find_var(name)
+        varDir = directions_control.getArrDirections(varScope, varType, rows, cols)
+        self.variables_table[varScope]['vars_dir'][indx] = varDir
+        self.arrays[name]={
+            'rows':rows,
+            'cols':cols,
+            'type': varType,
+            'initial_address': varDir
+        }
+        self.addConst(varDir, 'int')
+    
+    def getArrayInitialDir(self, name):
+        return self.arrays[name]['initial_address']
+    
+    def getArrayType(self, name):
+        return self.arrays[name]['type']
 
         
 

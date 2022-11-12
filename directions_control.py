@@ -48,7 +48,9 @@ class DirectionsControl:
         if scope not in self.directions: scope = 'local'
         if(self.directions[scope][varType][0] > self.directions[scope][varType][2]):
             raise ValueError("Direccion de memoria llena")
+        #Contador + dir inicial
         nextDir = self.directions[scope][varType][0]+self.directions[scope][varType][1]
+        #Contador+=1
         self.directions[scope][varType][0] += 1
         return nextDir
 
@@ -56,6 +58,16 @@ class DirectionsControl:
         for i in self.directions['local']:
             self.directions['local'][i][0]=0
             self.directions['temp'][i][0]=0
+    
+    def getArrDirections(self, scope, varType, rows, cols=1):
+        if scope not in self.directions: scope = 'local'
+        if(self.directions[scope][varType][0] > self.directions[scope][varType][2]):
+            raise ValueError("Direccion de memoria llena")
+        #Contador + dir inicial
+        nextDir = self.directions[scope][varType][0]+self.directions[scope][varType][1]
+        #Contador+=1
+        self.directions[scope][varType][0] += rows*cols
+        return nextDir
         
     def getOpCode(self, op):
         opCode = self.operationCodes[op]

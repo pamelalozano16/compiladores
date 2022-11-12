@@ -1,0 +1,9 @@
+start() {
+    var a[5]: int;
+    var k: int;
+    function main(): void {
+        var b[2][3]: int;
+        var c: int;
+        k=a[3*1];
+    };
+}

@@ -48,7 +48,7 @@ class Semantics:
 
     def endStatus(self):
         self.printQuadsWithNames()
-     #   self.printQuads()
+        self.printQuads()
         self.variables_control.print_table()
         print("PilaO:", self.pilaO, "PTypes:", self.pTypes, "pOper:", self.pOper,"pSalos:", self.pSaltos)
     
@@ -228,6 +228,41 @@ class Semantics:
             self.checkAssign()
             self.pilaO.append(res)
             self.pTypes.append(var_type)
+    
+    def findArrAddress(self, arrName):
+        print('a',self.pilaO, self.pTypes)
+        varType = self.pTypes.pop()
+        varName = self.pilaO.pop()
+        arrInitAddress = self.variables_control.getArrayInitialDir(arrName)
+        if(varType != 'int'):
+            raise ValueError("Array's index must be integers")
+        self.pTypes.extend(['int', 'int'])
+        self.pilaO.extend([varName, arrInitAddress])
+        self.addOper('+') #Direccion inicial + offset
+        self.checkTerm()
+        self.arrElemToTemp(arrName)
+    
+    def arrElemToTemp(self, arrName):
+        left = self.variables_control.find_vars_dir(self.pilaO.pop())
+        self.pTypes.pop()
+        res = "t"+str(self.tempCounter)
+        arrType = self.variables_control.getArrayType(arrName)
+        dirTemp = self.variables_control.addTemp(res, arrType)
+        quad = quadruple.arrElem(left, dirTemp) #Assigns arr elem in temp
+        self.quads.append(quad.getQuad())
+        self.pilaO.append(res)
+        self.pTypes.append(arrType)
+        self.tempCounter+=1
+
+    def findMatrixAddress(self):
+        print('m',self.pilaO, self.pTypes)
+        varType = self.pTypes.pop()
+        varName = self.pilaO.pop()
+       # varDir = self.find_vars_dir(varName)
+        # arrRows = self.getArrayInitialDir(arrName)
+        # rowsDir = directions_control.addConst(arrRows) #Add as const for addition
+        if(varType != 'int'):
+            raise ValueError("Array's index must be integers")
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)

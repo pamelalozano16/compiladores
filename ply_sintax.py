@@ -10,6 +10,7 @@ variables_control = VariableControl()
 semantics = Semantics(variables_control)
 declaring_variable = [] #Which variable am I declaring
 declaring_types = [] #Which variable type am I declaring
+declaring_array = []
 opers = []
 
 def p_programa(p):
@@ -49,7 +50,7 @@ def p_tipo(p):
             | BOOL
             | STRING'''
     if(0<len(declaring_variable)):
-        variables_control.add_var(declaring_variable.pop(), p[1])
+        variables_control.add_var(declaring_variable.pop(), p[1], 0<len(declaring_array))
      #   variables_control.print_table()
     pass
 
@@ -313,29 +314,73 @@ def p_epsilon(p):
     '''epsilon : '''
     pass
 
+def p_arrDef(p):
+    '''arrDef : ID'''
+    if(variables_control.find_var(p[1]) == None):
+        declaring_variable.append(p[1])
+        declaring_array.append(p[1])
+    else:
+        print('Variable is already declared')
+    pass 
+
 def p_declaracionArr(p):
-    '''declaracionArr : ID LBRACKET INT RBRACKET COLON tipo'''
+    '''declaracionArr : arrDef LBRACKET INT RBRACKET COLON tipo'''
+    if(0<len(declaring_array)):
+        variables_control.declareArray(declaring_array.pop(), p[3])
     pass
 
 def p_declaracionMatrix(p):
-    '''declaracionMatrix : ID LBRACKET INT RBRACKET LBRACKET INT RBRACKET COLON tipo'''
+    '''declaracionMatrix : arrDef LBRACKET INT RBRACKET LBRACKET INT RBRACKET COLON tipo'''
+    if(0<len(declaring_array)):
+        variables_control.declareArray(declaring_array.pop(), p[3], p[6])
+    pass
     pass
     
 def p_arr(p):
-    '''arr : ID LBRACKET INT RBRACKET'''
+    '''arr : callArr bracket expresion abracket matrix
+            | callArr bracket expresion abracket epsilon'''
     if (p[1]):
         if variables_control.find_var(p[1]) == None:
             raise ValueError("Variable "+str(p[1])+" is not declared")
     # Checar espacio
     pass  
 
+def p_callArr(p):
+    '''callArr : ID'''
+    declaring_array.append(p[1])
+    pass  
+
 def p_matrix(p):
-    '''matrix : ID LBRACKET INT RBRACKET LBRACKET INT RBRACKET'''
+    '''matrix : bracket expresion mbracket'''
     if (p[1]):
         if variables_control.find_var(p[1]) == None:
             raise ValueError("Variable "+str(p[1])+" is not declared")
     #Checar espacio
-    pass    
+    pass
+
+def p_bracket(p):
+    '''bracket : LBRACKET
+               | RBRACKET'''
+    if(p[1]=='['):
+#      print("(")
+      semantics.addOper('(')
+    else:
+#        print(")")
+        semantics.checkFact()
+        semantics.checkTerm()
+        semantics.checkCompare()
+        semantics.checkParen()
+    pass
+
+def p_abracket(p):
+    '''abracket : bracket'''
+    semantics.findArrAddress(declaring_array.pop())
+    pass
+
+def p_mbracket(p):
+    '''mbracket : bracket'''
+    semantics.findMatrixAddress()
+    pass
 
 def p_varcte(p):
     '''varcte : ID 
@@ -343,8 +388,8 @@ def p_varcte(p):
               | float
               | bool
               | string
-              | arr
-              | matrix'''
+              | matrix
+              | arr'''
     if (p[1]):
         if variables_control.find_var(p[1]) == None:
             raise ValueError("Variable "+str(p[1])+" is not declared")
