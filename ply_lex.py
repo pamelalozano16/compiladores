@@ -34,8 +34,6 @@ reserved_keywords = {
     'bool': 'BOOL',
     'void': 'VOID',
     'string': 'STRING',
-    'ctel': 'CTEL',
-    'ctef': 'CTEF',
 }
 
 

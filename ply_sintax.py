@@ -29,7 +29,9 @@ def p_vars(p):
     pass
 
 def p_var(p):
-    '''var : vardef COLON tipo SEMICOLON'''
+    '''var : vardef COLON tipo SEMICOLON
+           | declaracionArr SEMICOLON
+           | declaracionMatrix SEMICOLON'''
     pass
 
 def p_vardef(p):
@@ -49,15 +51,6 @@ def p_tipo(p):
     if(0<len(declaring_variable)):
         variables_control.add_var(declaring_variable.pop(), p[1])
      #   variables_control.print_table()
-    pass
-
-def p_lista(p):
-    '''lista : ID
-             | ID COMA'''
-    pass
-
-def p_arreglo(p):
-    '''arreglo : LBRACKET lista RBRACKET '''
     pass
 
 def p_bloque(p):
@@ -124,7 +117,6 @@ def p_expresion(p):
     #a/b => expresion -> exp expresion -> exp exp -> termino termino -> factor operacion factor
     '''expresion : exp
                 | condition
-                | arreglo 
                 | functionCall'''
         #       | expresion expresion ''' 
 
@@ -321,12 +313,38 @@ def p_epsilon(p):
     '''epsilon : '''
     pass
 
+def p_declaracionArr(p):
+    '''declaracionArr : ID LBRACKET INT RBRACKET COLON tipo'''
+    pass
+
+def p_declaracionMatrix(p):
+    '''declaracionMatrix : ID LBRACKET INT RBRACKET LBRACKET INT RBRACKET COLON tipo'''
+    pass
+    
+def p_arr(p):
+    '''arr : ID LBRACKET INT RBRACKET'''
+    if (p[1]):
+        if variables_control.find_var(p[1]) == None:
+            raise ValueError("Variable "+str(p[1])+" is not declared")
+    # Checar espacio
+    pass  
+
+def p_matrix(p):
+    '''matrix : ID LBRACKET INT RBRACKET LBRACKET INT RBRACKET'''
+    if (p[1]):
+        if variables_control.find_var(p[1]) == None:
+            raise ValueError("Variable "+str(p[1])+" is not declared")
+    #Checar espacio
+    pass    
+
 def p_varcte(p):
     '''varcte : ID 
               | int
               | float
               | bool
-              | string'''
+              | string
+              | arr
+              | matrix'''
     if (p[1]):
         if variables_control.find_var(p[1]) == None:
             raise ValueError("Variable "+str(p[1])+" is not declared")
@@ -366,7 +384,7 @@ def p_error(p):
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
-with open("test_aritmetic.pyst") as f:
+with open("test_array.pyst") as f:
     try:
         contents = f.read()
         result = parser.parse(contents)
