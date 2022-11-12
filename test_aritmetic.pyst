@@ -3,6 +3,7 @@ start() {
     var c: float;
     var b: float;
     var k: float;
+    var res: int;
     function jeje(var z: int;): int {
         a=k*c;
         return 5;
@@ -16,6 +17,5 @@ start() {
         c=5+(a+k+b+5)*sos;
     };
     k=b+c;
-    jeje(3);
-    jeje(6+7);
+    res = jeje(3)*jeje(6+7);
 }

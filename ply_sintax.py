@@ -233,7 +233,7 @@ def p_tiposFuncion(p):
     pass
 
 def p_functionCall(p):
-    '''functionCall : funCall LPAREN funcArgs RPAREN'''
+    '''functionCall : funCall paren funcArgs paren'''
     semantics.addFuncGoSub()
     semantics.checkReturnValue()
     pass
@@ -297,7 +297,8 @@ def p_operacion(p):
 
 def p_factor(p):
     '''factor : paren expresion paren
-               | varcte'''
+               | varcte
+               | functionCall '''
 #    print("5", "checkFact")
     semantics.checkFact()
     pass

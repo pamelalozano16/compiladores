@@ -226,6 +226,8 @@ class Semantics:
             self.insertId(res, var_type)
             self.addAssign()
             self.checkAssign()
+            self.pilaO.append(res)
+            self.pTypes.append(var_type)
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
