@@ -64,11 +64,11 @@ class Quadruple:
         self.res=None
         return self
     
-    def arrElem(self, dir, res):
-        self.operator="ARR"
-        self.left=dir
-        self.right=None
-        self.res=res
+    def arrVer(self, s1, linf, lsup):
+        self.operator="VER"
+        self.left=s1 # Temp: Dir -> Dir: Arr[elem] -> Res(Temp): Arr[Elem]
+        self.right=linf
+        self.res=lsup
         return self
 
     def endFunc(self):

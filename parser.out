@@ -103,22 +103,23 @@ Rule 97    bracket -> LBRACKET
 Rule 98    bracket -> RBRACKET
 Rule 99    abracket -> bracket
 Rule 100   mbracket -> bracket
-Rule 101   varcte -> ID
-Rule 102   varcte -> int
-Rule 103   varcte -> float
-Rule 104   varcte -> bool
-Rule 105   varcte -> string
-Rule 106   varcte -> matrix
-Rule 107   varcte -> arr
-Rule 108   int -> INT
-Rule 109   float -> FLOAT
-Rule 110   bool -> BOOL
-Rule 111   string -> STRING
+Rule 101   prueba -> epsilon
+Rule 102   varcte -> ID
+Rule 103   varcte -> int
+Rule 104   varcte -> float
+Rule 105   varcte -> bool
+Rule 106   varcte -> string
+Rule 107   varcte -> matrix
+Rule 108   varcte -> arr
+Rule 109   int -> INT
+Rule 110   float -> FLOAT
+Rule 111   bool -> BOOL
+Rule 112   string -> STRING
 
 Terminals, with rules where they appear
 
 AND                  : 41
-BOOL                 : 12 62 110
+BOOL                 : 12 62 111
 COLON                : 6 55 91 92
 COMA                 : 30 67 73
 DIFF                 : 82
@@ -127,12 +128,12 @@ DO                   : 44
 ELSE                 : 54
 EQUAL                : 27
 EXP                  : 83
-FLOAT                : 11 61 109
+FLOAT                : 11 61 110
 FOR                  : 48
 FUNCTION             : 55
-ID                   : 9 27 57 65 90 95 101
+ID                   : 9 27 57 65 90 95 102
 IF                   : 49
-INT                  : 10 60 91 92 92 108
+INT                  : 10 60 91 92 92 109
 ISEQUAL              : 39
 LBRACKET             : 91 92 92 97
 LCURLY               : 14 15
@@ -150,7 +151,7 @@ RETURN               : 26
 RPAREN               : 1 28 43 48 50 55 88
 SEMICOLON            : 6 7 8 16 26 47 51
 START                : 1
-STRING               : 13 31 63 111
+STRING               : 13 31 63 112
 TIMES                : 80
 VAR                  : 4
 VOID                 : 59
@@ -163,12 +164,12 @@ abracket             : 93 94
 addArgs              : 55
 args                 : 70 73 73
 argumentos           : 48
-arr                  : 107
+arr                  : 108
 arrDef               : 91 92
 asignacion           : 18 48 72
 bloque               : 1 43 45 48 49 52 59
 bloqueReturn         : 58
-bool                 : 104
+bool                 : 105
 bracket              : 93 94 96 99 100
 callArr              : 93 94
 checkArgs            : 66
@@ -183,7 +184,7 @@ do                   : 43
 doWhile              : 21
 else                 : 52
 endCondition         : 45 48 49
-epsilon              : 3 53 56 68 71 94
+epsilon              : 3 53 56 68 71 94 101
 escrito              : 28
 escritura            : 23
 estatuto             : 16
@@ -191,7 +192,7 @@ estatutoExp          : 14 15 17 17
 exp                  : 33 36 75
 expresion            : 26 27 32 36 43 45 48 49 69 84 93 94 96
 factor               : 78 79
-float                : 103
+float                : 104
 forLoop              : 22
 funCall              : 64
 funcArgs             : 64 67 67
@@ -199,16 +200,17 @@ funcdef              : 55
 funcion              : 24
 functionCall         : 25 35 86
 impr                 : 29 30 30
-int                  : 102
-matrix               : 93 106
+int                  : 103
+matrix               : 93 107
 mbracket             : 96
 operacion            : 79
 paren                : 64 64 84 84
 programa             : 0
+prueba               : 
 returnexp            : 15
 signo                : 75
 startCondition       : 45 48
-string               : 105
+string               : 106
 termino              : 74 75 79
 tipo                 : 6 91 92
 tiposFuncion         : 58
@@ -754,17 +756,17 @@ state 40
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -818,17 +820,17 @@ state 41
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -882,17 +884,17 @@ state 42
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -1006,17 +1008,17 @@ state 47
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -1091,17 +1093,17 @@ state 50
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -1260,7 +1262,7 @@ state 56
 state 57
 
     (65) funCall -> ID .
-    (101) varcte -> ID .
+    (102) varcte -> ID .
     (95) callArr -> ID .
 
   ! reduce/reduce conflict for LPAREN resolved using rule 65 (funCall -> ID .)
@@ -1269,27 +1271,27 @@ state 57
   ! reduce/reduce conflict for RBRACKET resolved using rule 95 (callArr -> ID .)
     LPAREN          reduce using rule 65 (funCall -> ID .)
     RPAREN          reduce using rule 65 (funCall -> ID .)
-    TIMES           reduce using rule 101 (varcte -> ID .)
-    DIVIDE          reduce using rule 101 (varcte -> ID .)
-    DIFF            reduce using rule 101 (varcte -> ID .)
-    EXP             reduce using rule 101 (varcte -> ID .)
-    PLUS            reduce using rule 101 (varcte -> ID .)
-    MINUS           reduce using rule 101 (varcte -> ID .)
-    LESSTHAN        reduce using rule 101 (varcte -> ID .)
-    MORETHAN        reduce using rule 101 (varcte -> ID .)
-    ISEQUAL         reduce using rule 101 (varcte -> ID .)
-    NOTEQUAL        reduce using rule 101 (varcte -> ID .)
-    AND             reduce using rule 101 (varcte -> ID .)
-    OR              reduce using rule 101 (varcte -> ID .)
-    SEMICOLON       reduce using rule 101 (varcte -> ID .)
-    COMA            reduce using rule 101 (varcte -> ID .)
+    TIMES           reduce using rule 102 (varcte -> ID .)
+    DIVIDE          reduce using rule 102 (varcte -> ID .)
+    DIFF            reduce using rule 102 (varcte -> ID .)
+    EXP             reduce using rule 102 (varcte -> ID .)
+    PLUS            reduce using rule 102 (varcte -> ID .)
+    MINUS           reduce using rule 102 (varcte -> ID .)
+    LESSTHAN        reduce using rule 102 (varcte -> ID .)
+    MORETHAN        reduce using rule 102 (varcte -> ID .)
+    ISEQUAL         reduce using rule 102 (varcte -> ID .)
+    NOTEQUAL        reduce using rule 102 (varcte -> ID .)
+    AND             reduce using rule 102 (varcte -> ID .)
+    OR              reduce using rule 102 (varcte -> ID .)
+    SEMICOLON       reduce using rule 102 (varcte -> ID .)
+    COMA            reduce using rule 102 (varcte -> ID .)
     LBRACKET        reduce using rule 95 (callArr -> ID .)
     RBRACKET        reduce using rule 95 (callArr -> ID .)
 
-  ! LPAREN          [ reduce using rule 101 (varcte -> ID .) ]
-  ! RPAREN          [ reduce using rule 101 (varcte -> ID .) ]
-  ! LBRACKET        [ reduce using rule 101 (varcte -> ID .) ]
-  ! RBRACKET        [ reduce using rule 101 (varcte -> ID .) ]
+  ! LPAREN          [ reduce using rule 102 (varcte -> ID .) ]
+  ! RPAREN          [ reduce using rule 102 (varcte -> ID .) ]
+  ! LBRACKET        [ reduce using rule 102 (varcte -> ID .) ]
+  ! RBRACKET        [ reduce using rule 102 (varcte -> ID .) ]
 
 
 state 58
@@ -1420,17 +1422,17 @@ state 63
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -1522,242 +1524,242 @@ state 65
 
 state 66
 
-    (102) varcte -> int .
+    (103) varcte -> int .
 
-    TIMES           reduce using rule 102 (varcte -> int .)
-    DIVIDE          reduce using rule 102 (varcte -> int .)
-    DIFF            reduce using rule 102 (varcte -> int .)
-    EXP             reduce using rule 102 (varcte -> int .)
-    PLUS            reduce using rule 102 (varcte -> int .)
-    MINUS           reduce using rule 102 (varcte -> int .)
-    LESSTHAN        reduce using rule 102 (varcte -> int .)
-    MORETHAN        reduce using rule 102 (varcte -> int .)
-    ISEQUAL         reduce using rule 102 (varcte -> int .)
-    NOTEQUAL        reduce using rule 102 (varcte -> int .)
-    AND             reduce using rule 102 (varcte -> int .)
-    OR              reduce using rule 102 (varcte -> int .)
-    SEMICOLON       reduce using rule 102 (varcte -> int .)
-    COMA            reduce using rule 102 (varcte -> int .)
-    LPAREN          reduce using rule 102 (varcte -> int .)
-    RPAREN          reduce using rule 102 (varcte -> int .)
-    LBRACKET        reduce using rule 102 (varcte -> int .)
-    RBRACKET        reduce using rule 102 (varcte -> int .)
+    TIMES           reduce using rule 103 (varcte -> int .)
+    DIVIDE          reduce using rule 103 (varcte -> int .)
+    DIFF            reduce using rule 103 (varcte -> int .)
+    EXP             reduce using rule 103 (varcte -> int .)
+    PLUS            reduce using rule 103 (varcte -> int .)
+    MINUS           reduce using rule 103 (varcte -> int .)
+    LESSTHAN        reduce using rule 103 (varcte -> int .)
+    MORETHAN        reduce using rule 103 (varcte -> int .)
+    ISEQUAL         reduce using rule 103 (varcte -> int .)
+    NOTEQUAL        reduce using rule 103 (varcte -> int .)
+    AND             reduce using rule 103 (varcte -> int .)
+    OR              reduce using rule 103 (varcte -> int .)
+    SEMICOLON       reduce using rule 103 (varcte -> int .)
+    COMA            reduce using rule 103 (varcte -> int .)
+    LPAREN          reduce using rule 103 (varcte -> int .)
+    RPAREN          reduce using rule 103 (varcte -> int .)
+    LBRACKET        reduce using rule 103 (varcte -> int .)
+    RBRACKET        reduce using rule 103 (varcte -> int .)
 
 
 state 67
 
-    (103) varcte -> float .
+    (104) varcte -> float .
 
-    TIMES           reduce using rule 103 (varcte -> float .)
-    DIVIDE          reduce using rule 103 (varcte -> float .)
-    DIFF            reduce using rule 103 (varcte -> float .)
-    EXP             reduce using rule 103 (varcte -> float .)
-    PLUS            reduce using rule 103 (varcte -> float .)
-    MINUS           reduce using rule 103 (varcte -> float .)
-    LESSTHAN        reduce using rule 103 (varcte -> float .)
-    MORETHAN        reduce using rule 103 (varcte -> float .)
-    ISEQUAL         reduce using rule 103 (varcte -> float .)
-    NOTEQUAL        reduce using rule 103 (varcte -> float .)
-    AND             reduce using rule 103 (varcte -> float .)
-    OR              reduce using rule 103 (varcte -> float .)
-    SEMICOLON       reduce using rule 103 (varcte -> float .)
-    COMA            reduce using rule 103 (varcte -> float .)
-    LPAREN          reduce using rule 103 (varcte -> float .)
-    RPAREN          reduce using rule 103 (varcte -> float .)
-    LBRACKET        reduce using rule 103 (varcte -> float .)
-    RBRACKET        reduce using rule 103 (varcte -> float .)
+    TIMES           reduce using rule 104 (varcte -> float .)
+    DIVIDE          reduce using rule 104 (varcte -> float .)
+    DIFF            reduce using rule 104 (varcte -> float .)
+    EXP             reduce using rule 104 (varcte -> float .)
+    PLUS            reduce using rule 104 (varcte -> float .)
+    MINUS           reduce using rule 104 (varcte -> float .)
+    LESSTHAN        reduce using rule 104 (varcte -> float .)
+    MORETHAN        reduce using rule 104 (varcte -> float .)
+    ISEQUAL         reduce using rule 104 (varcte -> float .)
+    NOTEQUAL        reduce using rule 104 (varcte -> float .)
+    AND             reduce using rule 104 (varcte -> float .)
+    OR              reduce using rule 104 (varcte -> float .)
+    SEMICOLON       reduce using rule 104 (varcte -> float .)
+    COMA            reduce using rule 104 (varcte -> float .)
+    LPAREN          reduce using rule 104 (varcte -> float .)
+    RPAREN          reduce using rule 104 (varcte -> float .)
+    LBRACKET        reduce using rule 104 (varcte -> float .)
+    RBRACKET        reduce using rule 104 (varcte -> float .)
 
 
 state 68
 
-    (104) varcte -> bool .
+    (105) varcte -> bool .
 
-    TIMES           reduce using rule 104 (varcte -> bool .)
-    DIVIDE          reduce using rule 104 (varcte -> bool .)
-    DIFF            reduce using rule 104 (varcte -> bool .)
-    EXP             reduce using rule 104 (varcte -> bool .)
-    PLUS            reduce using rule 104 (varcte -> bool .)
-    MINUS           reduce using rule 104 (varcte -> bool .)
-    LESSTHAN        reduce using rule 104 (varcte -> bool .)
-    MORETHAN        reduce using rule 104 (varcte -> bool .)
-    ISEQUAL         reduce using rule 104 (varcte -> bool .)
-    NOTEQUAL        reduce using rule 104 (varcte -> bool .)
-    AND             reduce using rule 104 (varcte -> bool .)
-    OR              reduce using rule 104 (varcte -> bool .)
-    SEMICOLON       reduce using rule 104 (varcte -> bool .)
-    COMA            reduce using rule 104 (varcte -> bool .)
-    LPAREN          reduce using rule 104 (varcte -> bool .)
-    RPAREN          reduce using rule 104 (varcte -> bool .)
-    LBRACKET        reduce using rule 104 (varcte -> bool .)
-    RBRACKET        reduce using rule 104 (varcte -> bool .)
+    TIMES           reduce using rule 105 (varcte -> bool .)
+    DIVIDE          reduce using rule 105 (varcte -> bool .)
+    DIFF            reduce using rule 105 (varcte -> bool .)
+    EXP             reduce using rule 105 (varcte -> bool .)
+    PLUS            reduce using rule 105 (varcte -> bool .)
+    MINUS           reduce using rule 105 (varcte -> bool .)
+    LESSTHAN        reduce using rule 105 (varcte -> bool .)
+    MORETHAN        reduce using rule 105 (varcte -> bool .)
+    ISEQUAL         reduce using rule 105 (varcte -> bool .)
+    NOTEQUAL        reduce using rule 105 (varcte -> bool .)
+    AND             reduce using rule 105 (varcte -> bool .)
+    OR              reduce using rule 105 (varcte -> bool .)
+    SEMICOLON       reduce using rule 105 (varcte -> bool .)
+    COMA            reduce using rule 105 (varcte -> bool .)
+    LPAREN          reduce using rule 105 (varcte -> bool .)
+    RPAREN          reduce using rule 105 (varcte -> bool .)
+    LBRACKET        reduce using rule 105 (varcte -> bool .)
+    RBRACKET        reduce using rule 105 (varcte -> bool .)
 
 
 state 69
 
-    (105) varcte -> string .
+    (106) varcte -> string .
 
-    TIMES           reduce using rule 105 (varcte -> string .)
-    DIVIDE          reduce using rule 105 (varcte -> string .)
-    DIFF            reduce using rule 105 (varcte -> string .)
-    EXP             reduce using rule 105 (varcte -> string .)
-    PLUS            reduce using rule 105 (varcte -> string .)
-    MINUS           reduce using rule 105 (varcte -> string .)
-    LESSTHAN        reduce using rule 105 (varcte -> string .)
-    MORETHAN        reduce using rule 105 (varcte -> string .)
-    ISEQUAL         reduce using rule 105 (varcte -> string .)
-    NOTEQUAL        reduce using rule 105 (varcte -> string .)
-    AND             reduce using rule 105 (varcte -> string .)
-    OR              reduce using rule 105 (varcte -> string .)
-    SEMICOLON       reduce using rule 105 (varcte -> string .)
-    COMA            reduce using rule 105 (varcte -> string .)
-    LPAREN          reduce using rule 105 (varcte -> string .)
-    RPAREN          reduce using rule 105 (varcte -> string .)
-    LBRACKET        reduce using rule 105 (varcte -> string .)
-    RBRACKET        reduce using rule 105 (varcte -> string .)
+    TIMES           reduce using rule 106 (varcte -> string .)
+    DIVIDE          reduce using rule 106 (varcte -> string .)
+    DIFF            reduce using rule 106 (varcte -> string .)
+    EXP             reduce using rule 106 (varcte -> string .)
+    PLUS            reduce using rule 106 (varcte -> string .)
+    MINUS           reduce using rule 106 (varcte -> string .)
+    LESSTHAN        reduce using rule 106 (varcte -> string .)
+    MORETHAN        reduce using rule 106 (varcte -> string .)
+    ISEQUAL         reduce using rule 106 (varcte -> string .)
+    NOTEQUAL        reduce using rule 106 (varcte -> string .)
+    AND             reduce using rule 106 (varcte -> string .)
+    OR              reduce using rule 106 (varcte -> string .)
+    SEMICOLON       reduce using rule 106 (varcte -> string .)
+    COMA            reduce using rule 106 (varcte -> string .)
+    LPAREN          reduce using rule 106 (varcte -> string .)
+    RPAREN          reduce using rule 106 (varcte -> string .)
+    LBRACKET        reduce using rule 106 (varcte -> string .)
+    RBRACKET        reduce using rule 106 (varcte -> string .)
 
 
 state 70
 
-    (106) varcte -> matrix .
+    (107) varcte -> matrix .
 
-    TIMES           reduce using rule 106 (varcte -> matrix .)
-    DIVIDE          reduce using rule 106 (varcte -> matrix .)
-    DIFF            reduce using rule 106 (varcte -> matrix .)
-    EXP             reduce using rule 106 (varcte -> matrix .)
-    PLUS            reduce using rule 106 (varcte -> matrix .)
-    MINUS           reduce using rule 106 (varcte -> matrix .)
-    LESSTHAN        reduce using rule 106 (varcte -> matrix .)
-    MORETHAN        reduce using rule 106 (varcte -> matrix .)
-    ISEQUAL         reduce using rule 106 (varcte -> matrix .)
-    NOTEQUAL        reduce using rule 106 (varcte -> matrix .)
-    AND             reduce using rule 106 (varcte -> matrix .)
-    OR              reduce using rule 106 (varcte -> matrix .)
-    SEMICOLON       reduce using rule 106 (varcte -> matrix .)
-    COMA            reduce using rule 106 (varcte -> matrix .)
-    LPAREN          reduce using rule 106 (varcte -> matrix .)
-    RPAREN          reduce using rule 106 (varcte -> matrix .)
-    LBRACKET        reduce using rule 106 (varcte -> matrix .)
-    RBRACKET        reduce using rule 106 (varcte -> matrix .)
+    TIMES           reduce using rule 107 (varcte -> matrix .)
+    DIVIDE          reduce using rule 107 (varcte -> matrix .)
+    DIFF            reduce using rule 107 (varcte -> matrix .)
+    EXP             reduce using rule 107 (varcte -> matrix .)
+    PLUS            reduce using rule 107 (varcte -> matrix .)
+    MINUS           reduce using rule 107 (varcte -> matrix .)
+    LESSTHAN        reduce using rule 107 (varcte -> matrix .)
+    MORETHAN        reduce using rule 107 (varcte -> matrix .)
+    ISEQUAL         reduce using rule 107 (varcte -> matrix .)
+    NOTEQUAL        reduce using rule 107 (varcte -> matrix .)
+    AND             reduce using rule 107 (varcte -> matrix .)
+    OR              reduce using rule 107 (varcte -> matrix .)
+    SEMICOLON       reduce using rule 107 (varcte -> matrix .)
+    COMA            reduce using rule 107 (varcte -> matrix .)
+    LPAREN          reduce using rule 107 (varcte -> matrix .)
+    RPAREN          reduce using rule 107 (varcte -> matrix .)
+    LBRACKET        reduce using rule 107 (varcte -> matrix .)
+    RBRACKET        reduce using rule 107 (varcte -> matrix .)
 
 
 state 71
 
-    (107) varcte -> arr .
+    (108) varcte -> arr .
 
-    TIMES           reduce using rule 107 (varcte -> arr .)
-    DIVIDE          reduce using rule 107 (varcte -> arr .)
-    DIFF            reduce using rule 107 (varcte -> arr .)
-    EXP             reduce using rule 107 (varcte -> arr .)
-    PLUS            reduce using rule 107 (varcte -> arr .)
-    MINUS           reduce using rule 107 (varcte -> arr .)
-    LESSTHAN        reduce using rule 107 (varcte -> arr .)
-    MORETHAN        reduce using rule 107 (varcte -> arr .)
-    ISEQUAL         reduce using rule 107 (varcte -> arr .)
-    NOTEQUAL        reduce using rule 107 (varcte -> arr .)
-    AND             reduce using rule 107 (varcte -> arr .)
-    OR              reduce using rule 107 (varcte -> arr .)
-    SEMICOLON       reduce using rule 107 (varcte -> arr .)
-    COMA            reduce using rule 107 (varcte -> arr .)
-    LPAREN          reduce using rule 107 (varcte -> arr .)
-    RPAREN          reduce using rule 107 (varcte -> arr .)
-    LBRACKET        reduce using rule 107 (varcte -> arr .)
-    RBRACKET        reduce using rule 107 (varcte -> arr .)
+    TIMES           reduce using rule 108 (varcte -> arr .)
+    DIVIDE          reduce using rule 108 (varcte -> arr .)
+    DIFF            reduce using rule 108 (varcte -> arr .)
+    EXP             reduce using rule 108 (varcte -> arr .)
+    PLUS            reduce using rule 108 (varcte -> arr .)
+    MINUS           reduce using rule 108 (varcte -> arr .)
+    LESSTHAN        reduce using rule 108 (varcte -> arr .)
+    MORETHAN        reduce using rule 108 (varcte -> arr .)
+    ISEQUAL         reduce using rule 108 (varcte -> arr .)
+    NOTEQUAL        reduce using rule 108 (varcte -> arr .)
+    AND             reduce using rule 108 (varcte -> arr .)
+    OR              reduce using rule 108 (varcte -> arr .)
+    SEMICOLON       reduce using rule 108 (varcte -> arr .)
+    COMA            reduce using rule 108 (varcte -> arr .)
+    LPAREN          reduce using rule 108 (varcte -> arr .)
+    RPAREN          reduce using rule 108 (varcte -> arr .)
+    LBRACKET        reduce using rule 108 (varcte -> arr .)
+    RBRACKET        reduce using rule 108 (varcte -> arr .)
 
 
 state 72
 
-    (108) int -> INT .
+    (109) int -> INT .
 
-    TIMES           reduce using rule 108 (int -> INT .)
-    DIVIDE          reduce using rule 108 (int -> INT .)
-    DIFF            reduce using rule 108 (int -> INT .)
-    EXP             reduce using rule 108 (int -> INT .)
-    PLUS            reduce using rule 108 (int -> INT .)
-    MINUS           reduce using rule 108 (int -> INT .)
-    LESSTHAN        reduce using rule 108 (int -> INT .)
-    MORETHAN        reduce using rule 108 (int -> INT .)
-    ISEQUAL         reduce using rule 108 (int -> INT .)
-    NOTEQUAL        reduce using rule 108 (int -> INT .)
-    AND             reduce using rule 108 (int -> INT .)
-    OR              reduce using rule 108 (int -> INT .)
-    SEMICOLON       reduce using rule 108 (int -> INT .)
-    COMA            reduce using rule 108 (int -> INT .)
-    LPAREN          reduce using rule 108 (int -> INT .)
-    RPAREN          reduce using rule 108 (int -> INT .)
-    LBRACKET        reduce using rule 108 (int -> INT .)
-    RBRACKET        reduce using rule 108 (int -> INT .)
+    TIMES           reduce using rule 109 (int -> INT .)
+    DIVIDE          reduce using rule 109 (int -> INT .)
+    DIFF            reduce using rule 109 (int -> INT .)
+    EXP             reduce using rule 109 (int -> INT .)
+    PLUS            reduce using rule 109 (int -> INT .)
+    MINUS           reduce using rule 109 (int -> INT .)
+    LESSTHAN        reduce using rule 109 (int -> INT .)
+    MORETHAN        reduce using rule 109 (int -> INT .)
+    ISEQUAL         reduce using rule 109 (int -> INT .)
+    NOTEQUAL        reduce using rule 109 (int -> INT .)
+    AND             reduce using rule 109 (int -> INT .)
+    OR              reduce using rule 109 (int -> INT .)
+    SEMICOLON       reduce using rule 109 (int -> INT .)
+    COMA            reduce using rule 109 (int -> INT .)
+    LPAREN          reduce using rule 109 (int -> INT .)
+    RPAREN          reduce using rule 109 (int -> INT .)
+    LBRACKET        reduce using rule 109 (int -> INT .)
+    RBRACKET        reduce using rule 109 (int -> INT .)
 
 
 state 73
 
-    (109) float -> FLOAT .
+    (110) float -> FLOAT .
 
-    TIMES           reduce using rule 109 (float -> FLOAT .)
-    DIVIDE          reduce using rule 109 (float -> FLOAT .)
-    DIFF            reduce using rule 109 (float -> FLOAT .)
-    EXP             reduce using rule 109 (float -> FLOAT .)
-    PLUS            reduce using rule 109 (float -> FLOAT .)
-    MINUS           reduce using rule 109 (float -> FLOAT .)
-    LESSTHAN        reduce using rule 109 (float -> FLOAT .)
-    MORETHAN        reduce using rule 109 (float -> FLOAT .)
-    ISEQUAL         reduce using rule 109 (float -> FLOAT .)
-    NOTEQUAL        reduce using rule 109 (float -> FLOAT .)
-    AND             reduce using rule 109 (float -> FLOAT .)
-    OR              reduce using rule 109 (float -> FLOAT .)
-    SEMICOLON       reduce using rule 109 (float -> FLOAT .)
-    COMA            reduce using rule 109 (float -> FLOAT .)
-    LPAREN          reduce using rule 109 (float -> FLOAT .)
-    RPAREN          reduce using rule 109 (float -> FLOAT .)
-    LBRACKET        reduce using rule 109 (float -> FLOAT .)
-    RBRACKET        reduce using rule 109 (float -> FLOAT .)
+    TIMES           reduce using rule 110 (float -> FLOAT .)
+    DIVIDE          reduce using rule 110 (float -> FLOAT .)
+    DIFF            reduce using rule 110 (float -> FLOAT .)
+    EXP             reduce using rule 110 (float -> FLOAT .)
+    PLUS            reduce using rule 110 (float -> FLOAT .)
+    MINUS           reduce using rule 110 (float -> FLOAT .)
+    LESSTHAN        reduce using rule 110 (float -> FLOAT .)
+    MORETHAN        reduce using rule 110 (float -> FLOAT .)
+    ISEQUAL         reduce using rule 110 (float -> FLOAT .)
+    NOTEQUAL        reduce using rule 110 (float -> FLOAT .)
+    AND             reduce using rule 110 (float -> FLOAT .)
+    OR              reduce using rule 110 (float -> FLOAT .)
+    SEMICOLON       reduce using rule 110 (float -> FLOAT .)
+    COMA            reduce using rule 110 (float -> FLOAT .)
+    LPAREN          reduce using rule 110 (float -> FLOAT .)
+    RPAREN          reduce using rule 110 (float -> FLOAT .)
+    LBRACKET        reduce using rule 110 (float -> FLOAT .)
+    RBRACKET        reduce using rule 110 (float -> FLOAT .)
 
 
 state 74
 
-    (110) bool -> BOOL .
+    (111) bool -> BOOL .
 
-    TIMES           reduce using rule 110 (bool -> BOOL .)
-    DIVIDE          reduce using rule 110 (bool -> BOOL .)
-    DIFF            reduce using rule 110 (bool -> BOOL .)
-    EXP             reduce using rule 110 (bool -> BOOL .)
-    PLUS            reduce using rule 110 (bool -> BOOL .)
-    MINUS           reduce using rule 110 (bool -> BOOL .)
-    LESSTHAN        reduce using rule 110 (bool -> BOOL .)
-    MORETHAN        reduce using rule 110 (bool -> BOOL .)
-    ISEQUAL         reduce using rule 110 (bool -> BOOL .)
-    NOTEQUAL        reduce using rule 110 (bool -> BOOL .)
-    AND             reduce using rule 110 (bool -> BOOL .)
-    OR              reduce using rule 110 (bool -> BOOL .)
-    SEMICOLON       reduce using rule 110 (bool -> BOOL .)
-    COMA            reduce using rule 110 (bool -> BOOL .)
-    LPAREN          reduce using rule 110 (bool -> BOOL .)
-    RPAREN          reduce using rule 110 (bool -> BOOL .)
-    LBRACKET        reduce using rule 110 (bool -> BOOL .)
-    RBRACKET        reduce using rule 110 (bool -> BOOL .)
+    TIMES           reduce using rule 111 (bool -> BOOL .)
+    DIVIDE          reduce using rule 111 (bool -> BOOL .)
+    DIFF            reduce using rule 111 (bool -> BOOL .)
+    EXP             reduce using rule 111 (bool -> BOOL .)
+    PLUS            reduce using rule 111 (bool -> BOOL .)
+    MINUS           reduce using rule 111 (bool -> BOOL .)
+    LESSTHAN        reduce using rule 111 (bool -> BOOL .)
+    MORETHAN        reduce using rule 111 (bool -> BOOL .)
+    ISEQUAL         reduce using rule 111 (bool -> BOOL .)
+    NOTEQUAL        reduce using rule 111 (bool -> BOOL .)
+    AND             reduce using rule 111 (bool -> BOOL .)
+    OR              reduce using rule 111 (bool -> BOOL .)
+    SEMICOLON       reduce using rule 111 (bool -> BOOL .)
+    COMA            reduce using rule 111 (bool -> BOOL .)
+    LPAREN          reduce using rule 111 (bool -> BOOL .)
+    RPAREN          reduce using rule 111 (bool -> BOOL .)
+    LBRACKET        reduce using rule 111 (bool -> BOOL .)
+    RBRACKET        reduce using rule 111 (bool -> BOOL .)
 
 
 state 75
 
-    (111) string -> STRING .
+    (112) string -> STRING .
 
-    TIMES           reduce using rule 111 (string -> STRING .)
-    DIVIDE          reduce using rule 111 (string -> STRING .)
-    DIFF            reduce using rule 111 (string -> STRING .)
-    EXP             reduce using rule 111 (string -> STRING .)
-    PLUS            reduce using rule 111 (string -> STRING .)
-    MINUS           reduce using rule 111 (string -> STRING .)
-    LESSTHAN        reduce using rule 111 (string -> STRING .)
-    MORETHAN        reduce using rule 111 (string -> STRING .)
-    ISEQUAL         reduce using rule 111 (string -> STRING .)
-    NOTEQUAL        reduce using rule 111 (string -> STRING .)
-    AND             reduce using rule 111 (string -> STRING .)
-    OR              reduce using rule 111 (string -> STRING .)
-    SEMICOLON       reduce using rule 111 (string -> STRING .)
-    COMA            reduce using rule 111 (string -> STRING .)
-    LPAREN          reduce using rule 111 (string -> STRING .)
-    RPAREN          reduce using rule 111 (string -> STRING .)
-    LBRACKET        reduce using rule 111 (string -> STRING .)
-    RBRACKET        reduce using rule 111 (string -> STRING .)
+    TIMES           reduce using rule 112 (string -> STRING .)
+    DIVIDE          reduce using rule 112 (string -> STRING .)
+    DIFF            reduce using rule 112 (string -> STRING .)
+    EXP             reduce using rule 112 (string -> STRING .)
+    PLUS            reduce using rule 112 (string -> STRING .)
+    MINUS           reduce using rule 112 (string -> STRING .)
+    LESSTHAN        reduce using rule 112 (string -> STRING .)
+    MORETHAN        reduce using rule 112 (string -> STRING .)
+    ISEQUAL         reduce using rule 112 (string -> STRING .)
+    NOTEQUAL        reduce using rule 112 (string -> STRING .)
+    AND             reduce using rule 112 (string -> STRING .)
+    OR              reduce using rule 112 (string -> STRING .)
+    SEMICOLON       reduce using rule 112 (string -> STRING .)
+    COMA            reduce using rule 112 (string -> STRING .)
+    LPAREN          reduce using rule 112 (string -> STRING .)
+    RPAREN          reduce using rule 112 (string -> STRING .)
+    LBRACKET        reduce using rule 112 (string -> STRING .)
+    RBRACKET        reduce using rule 112 (string -> STRING .)
 
 
 state 76
@@ -1778,17 +1780,17 @@ state 76
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -1987,27 +1989,27 @@ state 89
 state 90
 
     (31) impr -> STRING .
-    (111) string -> STRING .
+    (112) string -> STRING .
 
   ! reduce/reduce conflict for COMA resolved using rule 31 (impr -> STRING .)
   ! reduce/reduce conflict for RPAREN resolved using rule 31 (impr -> STRING .)
     COMA            reduce using rule 31 (impr -> STRING .)
     RPAREN          reduce using rule 31 (impr -> STRING .)
-    TIMES           reduce using rule 111 (string -> STRING .)
-    DIVIDE          reduce using rule 111 (string -> STRING .)
-    DIFF            reduce using rule 111 (string -> STRING .)
-    EXP             reduce using rule 111 (string -> STRING .)
-    PLUS            reduce using rule 111 (string -> STRING .)
-    MINUS           reduce using rule 111 (string -> STRING .)
-    LESSTHAN        reduce using rule 111 (string -> STRING .)
-    MORETHAN        reduce using rule 111 (string -> STRING .)
-    ISEQUAL         reduce using rule 111 (string -> STRING .)
-    NOTEQUAL        reduce using rule 111 (string -> STRING .)
-    AND             reduce using rule 111 (string -> STRING .)
-    OR              reduce using rule 111 (string -> STRING .)
+    TIMES           reduce using rule 112 (string -> STRING .)
+    DIVIDE          reduce using rule 112 (string -> STRING .)
+    DIFF            reduce using rule 112 (string -> STRING .)
+    EXP             reduce using rule 112 (string -> STRING .)
+    PLUS            reduce using rule 112 (string -> STRING .)
+    MINUS           reduce using rule 112 (string -> STRING .)
+    LESSTHAN        reduce using rule 112 (string -> STRING .)
+    MORETHAN        reduce using rule 112 (string -> STRING .)
+    ISEQUAL         reduce using rule 112 (string -> STRING .)
+    NOTEQUAL        reduce using rule 112 (string -> STRING .)
+    AND             reduce using rule 112 (string -> STRING .)
+    OR              reduce using rule 112 (string -> STRING .)
 
-  ! COMA            [ reduce using rule 111 (string -> STRING .) ]
-  ! RPAREN          [ reduce using rule 111 (string -> STRING .) ]
+  ! COMA            [ reduce using rule 112 (string -> STRING .) ]
+  ! RPAREN          [ reduce using rule 112 (string -> STRING .) ]
 
 
 state 91
@@ -2135,17 +2137,17 @@ state 103
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -2283,18 +2285,18 @@ state 110
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
     (64) functionCall -> . funCall paren funcArgs paren
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -2380,18 +2382,18 @@ state 114
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
     (64) functionCall -> . funCall paren funcArgs paren
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -2517,17 +2519,17 @@ state 120
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -2615,17 +2617,17 @@ state 125
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -2679,17 +2681,17 @@ state 126
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -2764,17 +2766,17 @@ state 129
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -2869,17 +2871,17 @@ state 132
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon
@@ -3004,7 +3006,7 @@ state 137
 
 state 138
 
-    (101) varcte -> ID .
+    (102) varcte -> ID .
     (65) funCall -> ID .
     (95) callArr -> ID .
 
@@ -3012,29 +3014,29 @@ state 138
   ! reduce/reduce conflict for RPAREN resolved using rule 65 (funCall -> ID .)
   ! reduce/reduce conflict for LBRACKET resolved using rule 95 (callArr -> ID .)
   ! reduce/reduce conflict for RBRACKET resolved using rule 95 (callArr -> ID .)
-    TIMES           reduce using rule 101 (varcte -> ID .)
-    DIVIDE          reduce using rule 101 (varcte -> ID .)
-    DIFF            reduce using rule 101 (varcte -> ID .)
-    EXP             reduce using rule 101 (varcte -> ID .)
-    PLUS            reduce using rule 101 (varcte -> ID .)
-    MINUS           reduce using rule 101 (varcte -> ID .)
-    LESSTHAN        reduce using rule 101 (varcte -> ID .)
-    MORETHAN        reduce using rule 101 (varcte -> ID .)
-    ISEQUAL         reduce using rule 101 (varcte -> ID .)
-    NOTEQUAL        reduce using rule 101 (varcte -> ID .)
-    AND             reduce using rule 101 (varcte -> ID .)
-    OR              reduce using rule 101 (varcte -> ID .)
-    SEMICOLON       reduce using rule 101 (varcte -> ID .)
-    COMA            reduce using rule 101 (varcte -> ID .)
+    TIMES           reduce using rule 102 (varcte -> ID .)
+    DIVIDE          reduce using rule 102 (varcte -> ID .)
+    DIFF            reduce using rule 102 (varcte -> ID .)
+    EXP             reduce using rule 102 (varcte -> ID .)
+    PLUS            reduce using rule 102 (varcte -> ID .)
+    MINUS           reduce using rule 102 (varcte -> ID .)
+    LESSTHAN        reduce using rule 102 (varcte -> ID .)
+    MORETHAN        reduce using rule 102 (varcte -> ID .)
+    ISEQUAL         reduce using rule 102 (varcte -> ID .)
+    NOTEQUAL        reduce using rule 102 (varcte -> ID .)
+    AND             reduce using rule 102 (varcte -> ID .)
+    OR              reduce using rule 102 (varcte -> ID .)
+    SEMICOLON       reduce using rule 102 (varcte -> ID .)
+    COMA            reduce using rule 102 (varcte -> ID .)
     LPAREN          reduce using rule 65 (funCall -> ID .)
     RPAREN          reduce using rule 65 (funCall -> ID .)
     LBRACKET        reduce using rule 95 (callArr -> ID .)
     RBRACKET        reduce using rule 95 (callArr -> ID .)
 
-  ! LPAREN          [ reduce using rule 101 (varcte -> ID .) ]
-  ! RPAREN          [ reduce using rule 101 (varcte -> ID .) ]
-  ! LBRACKET        [ reduce using rule 101 (varcte -> ID .) ]
-  ! RBRACKET        [ reduce using rule 101 (varcte -> ID .) ]
+  ! LPAREN          [ reduce using rule 102 (varcte -> ID .) ]
+  ! RPAREN          [ reduce using rule 102 (varcte -> ID .) ]
+  ! LBRACKET        [ reduce using rule 102 (varcte -> ID .) ]
+  ! RBRACKET        [ reduce using rule 102 (varcte -> ID .) ]
 
 
 state 139
@@ -3714,17 +3716,17 @@ state 189
     (86) factor -> . functionCall
     (87) paren -> . LPAREN
     (88) paren -> . RPAREN
-    (101) varcte -> . ID
-    (102) varcte -> . int
-    (103) varcte -> . float
-    (104) varcte -> . bool
-    (105) varcte -> . string
-    (106) varcte -> . matrix
-    (107) varcte -> . arr
-    (108) int -> . INT
-    (109) float -> . FLOAT
-    (110) bool -> . BOOL
-    (111) string -> . STRING
+    (102) varcte -> . ID
+    (103) varcte -> . int
+    (104) varcte -> . float
+    (105) varcte -> . bool
+    (106) varcte -> . string
+    (107) varcte -> . matrix
+    (108) varcte -> . arr
+    (109) int -> . INT
+    (110) float -> . FLOAT
+    (111) bool -> . BOOL
+    (112) string -> . STRING
     (96) matrix -> . bracket expresion mbracket
     (93) arr -> . callArr bracket expresion abracket matrix
     (94) arr -> . callArr bracket expresion abracket epsilon

@@ -13,29 +13,37 @@ class Semantics:
         self.tempCounter = 0
         self.k_arguments = 0 #Number of processed arguments per function call
         self.calling_function = None #Current function call
+        self.calling_arrray=None
+        self.isPointer=[]
 
     def printQuadsWithNames(self): 
         #Imprime quads con nombres en lugar de direcciones
         print("Quads:")
         quadStr = "["
         for i, x in enumerate(self.quads):
-            for j in x:
-                if type(j)!=str and type(x[0])!=int:
-                    if(x[0]=='goto'):
-                        quadStr+=f', {x[-1]}'
-                        break
-                    if(x[0]=='gotoF' or x[0]=='gotoV'):
-                        quadStr+=f', {self.variables_control.find_dir_name(x[1])}, {x[-1]}'
-                        break
+            if(x[0]=='VER'):
+                quadStr="["
+                for j in x:
+                    dirName =self.variables_control.find_dir_name(j)
+                    quadStr+=f', {dirName}'
+            else:
+                for j in x:
+                    if type(j)!=str and type(x[0])!=int:
+                        if(x[0]=='goto'):
+                            quadStr+=f', {x[-1]}'
+                            break
+                        if(x[0]=='gotoF' or x[0]=='gotoV'):
+                            quadStr+=f', {self.variables_control.find_dir_name(x[1])}, {x[-1]}'
+                            break
+                        else:
+                            dirName =self.variables_control.find_dir_name(j)
+                            if dirName : quadStr+=f', {dirName}'
                     else:
                         dirName =self.variables_control.find_dir_name(j)
-                        if dirName : quadStr+=f', {dirName}'
-                else:
-                    dirName =self.variables_control.find_dir_name(j)
-                    if dirName : 
-                        quadStr+=f', {dirName}'
-                    else:
-                        quadStr+=f', {str(j)}'
+                        if dirName : 
+                            quadStr+=f', {dirName}'
+                        else:
+                            quadStr+=f', {str(j)}'
             quadStr = quadStr[:1] + '' + quadStr[2 + 1:]
             quadStr+=']'
             print(i, quadStr)
@@ -58,7 +66,7 @@ class Semantics:
     def insertId(self, id, idType):
         self.pTypes.append(idType)
         self.pilaO.append(id)
-      #  print("Pilas:", self.pilaO, self.pTypes)
+        print("Pilas:", self.pilaO, self.pTypes)
 
     def addOper(self, oper):
         self.pOper.append(oper)
@@ -81,23 +89,33 @@ class Semantics:
             left = self.variables_control.find_vars_dir(self.pilaO.pop())
             right_type = self.pTypes.pop()
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), -1, left, self.pTypes.pop(), right_type, right)
-            self.quads.append(quad.getQuad())
+            newQuad = quad.getQuad()
+            for x, i in enumerate(newQuad):
+                if i in self.isPointer:
+                    newQuad[x]=f'({newQuad[x]})'
+            self.quads.append(newQuad)
 
 
-    def checkTerm(self):
+    def checkTerm(self, isPointer=False):
         if 0<len(self.pOper) and (self.pOper[-1]=="+" or self.pOper[-1]=="-"):
             res = "t"+str(self.tempCounter)
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.variables_control.find_vars_dir(self.pilaO.pop()), self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), self.pTypes.pop(), res)
             dirTemp = self.variables_control.addTemp(res, typeRes)
             newQuad = quad.getQuad()
             newQuad[-1] = dirTemp
+            if isPointer:
+                self.isPointer.append(dirTemp)
+            for x, i in enumerate(newQuad):
+                if i in self.isPointer:
+                    newQuad[x]=f'({newQuad[x]})'
             self.quads.append(newQuad)
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
             self.tempCounter+=1
-     #   print("Res:'", self.quads, self.pilaO, self.pTypes)
+  #      print("Res:'", self.quads, self.pilaO, self.pTypes)
 
     def checkFact(self):
+        print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
         if 0<len(self.pOper) and (self.pOper[-1]=="*" or self.pOper[-1]=="/"):
             res = "t"+str(self.tempCounter)
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.variables_control.find_vars_dir(self.pilaO.pop()), self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), self.pTypes.pop(), res)
@@ -108,7 +126,7 @@ class Semantics:
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
             self.tempCounter+=1
-     #   print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
+        print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
 
     def checkCompare(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="&&" or self.pOper[-1]=="!!" or self.pOper[-1]==">" or self.pOper[-1]=="<" or self.pOper[-1]=="==" or self.pOper[-1]=="!="):
@@ -126,6 +144,7 @@ class Semantics:
         #Fondo negro    
         if 0<len(self.pOper) and (self.pOper[-1]=="("):
             self.pOper.pop()
+        print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
 
     def createGoTo(self):
         quadGoto = quadruple.createGoTo()
@@ -229,40 +248,42 @@ class Semantics:
             self.pilaO.append(res)
             self.pTypes.append(var_type)
     
+    def createVerQuad(self, arrayObj, varName, kind):
+        lSup = self.variables_control.find_vars_dir(arrayObj[kind])
+        lInf = self.variables_control.find_vars_dir(0)
+        quad = quadruple.arrVer(self.variables_control.find_vars_dir(varName), lInf, lSup)
+        self.quads.append(quad.getQuad())
+    
     def findArrAddress(self, arrName):
         print('a',self.pilaO, self.pTypes)
+        self.calling_arrray=arrName
         varType = self.pTypes.pop()
         varName = self.pilaO.pop()
-        arrInitAddress = self.variables_control.getArrayInitialDir(arrName)
+        arrayObj = self.variables_control.getArray(arrName)
+        arrInitAddress=arrayObj['initial_address']
+        self.createVerQuad(arrayObj, varName, 'rows')
         if(varType != 'int'):
             raise ValueError("Array's index must be integers")
         self.pTypes.extend(['int', 'int'])
         self.pilaO.extend([varName, arrInitAddress])
-        self.addOper('+') #Direccion inicial + offset
-        self.checkTerm()
-        self.arrElemToTemp(arrName)
-    
-    def arrElemToTemp(self, arrName):
-        left = self.variables_control.find_vars_dir(self.pilaO.pop())
-        self.pTypes.pop()
-        res = "t"+str(self.tempCounter)
-        arrType = self.variables_control.getArrayType(arrName)
-        dirTemp = self.variables_control.addTemp(res, arrType)
-        quad = quadruple.arrElem(left, dirTemp) #Assigns arr elem in temp
-        self.quads.append(quad.getQuad())
-        self.pilaO.append(res)
-        self.pTypes.append(arrType)
-        self.tempCounter+=1
+        self.addOper('+') #DirBase + s1
+        self.checkTerm(isPointer=True)
 
     def findMatrixAddress(self):
         print('m',self.pilaO, self.pTypes)
         varType = self.pTypes.pop()
         varName = self.pilaO.pop()
-       # varDir = self.find_vars_dir(varName)
-        # arrRows = self.getArrayInitialDir(arrName)
-        # rowsDir = directions_control.addConst(arrRows) #Add as const for addition
+        arrayObj = self.variables_control.getArray(self.calling_arrray)
         if(varType != 'int'):
             raise ValueError("Array's index must be integers")
+        self.createVerQuad(arrayObj, varName, 'cols')
+        self.pTypes.extend(['int', 'int'])
+        self.pilaO.extend([varName, arrayObj['rows']])
+        self.addOper('*') #s2 * NumRows
+        self.checkFact()
+        self.addOper('+') #dirBase + s1 + s2 * NumRows
+        self.checkTerm(isPointer=True)
+        self.calling_arrray = None
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)

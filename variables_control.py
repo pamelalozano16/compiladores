@@ -220,10 +220,16 @@ class VariableControl:
             'type': varType,
             'initial_address': varDir
         }
+        self.addConst(0, 'int') #Linf de arrays
         self.addConst(varDir, 'int')
-    
-    def getArrayInitialDir(self, name):
-        return self.arrays[name]['initial_address']
+        self.addConst(rows, 'int')
+
+    def getArrayRows(self, name):
+        rows = self.arrays[name]['rows']
+        return rows
+
+    def getArray(self, name):
+        return self.arrays[name]
     
     def getArrayType(self, name):
         return self.arrays[name]['type']
