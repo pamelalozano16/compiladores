@@ -56,7 +56,7 @@ class Semantics:
 
     def endStatus(self):
         self.printQuadsWithNames()
-        self.printQuads()
+      #  self.printQuads()
         self.variables_control.print_table()
         print("PilaO:", self.pilaO, "PTypes:", self.pTypes, "pOper:", self.pOper,"pSalos:", self.pSaltos)
     
@@ -66,7 +66,7 @@ class Semantics:
     def insertId(self, id, idType):
         self.pTypes.append(idType)
         self.pilaO.append(id)
-        print("Pilas:", self.pilaO, self.pTypes)
+     #   print("Pilas:", self.pilaO, self.pTypes)
 
     def addOper(self, oper):
         self.pOper.append(oper)
@@ -115,7 +115,7 @@ class Semantics:
   #      print("Res:'", self.quads, self.pilaO, self.pTypes)
 
     def checkFact(self):
-        print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
+       # print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
         if 0<len(self.pOper) and (self.pOper[-1]=="*" or self.pOper[-1]=="/"):
             res = "t"+str(self.tempCounter)
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.variables_control.find_vars_dir(self.pilaO.pop()), self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), self.pTypes.pop(), res)
@@ -126,7 +126,7 @@ class Semantics:
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
             self.tempCounter+=1
-        print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
+     #   print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
 
     def checkCompare(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="&&" or self.pOper[-1]=="!!" or self.pOper[-1]==">" or self.pOper[-1]=="<" or self.pOper[-1]=="==" or self.pOper[-1]=="!="):
@@ -144,7 +144,7 @@ class Semantics:
         #Fondo negro    
         if 0<len(self.pOper) and (self.pOper[-1]=="("):
             self.pOper.pop()
-        print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
+       # print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
 
     def createGoTo(self):
         quadGoto = quadruple.createGoTo()
@@ -255,7 +255,7 @@ class Semantics:
         self.quads.append(quad.getQuad())
     
     def findArrAddress(self, arrName):
-        print('a',self.pilaO, self.pTypes)
+     #   print('a',self.pilaO, self.pTypes)
         self.calling_arrray=arrName
         varType = self.pTypes.pop()
         varName = self.pilaO.pop()
@@ -270,7 +270,7 @@ class Semantics:
         self.checkTerm(isPointer=True)
 
     def findMatrixAddress(self):
-        print('m',self.pilaO, self.pTypes)
+      #  print('m',self.pilaO, self.pTypes)
         varType = self.pTypes.pop()
         varName = self.pilaO.pop()
         arrayObj = self.variables_control.getArray(self.calling_arrray)

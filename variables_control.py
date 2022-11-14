@@ -1,4 +1,5 @@
 from directions_control import DirectionsControl
+from pprint import pprint
 
 directions_control = DirectionsControl()
 
@@ -44,6 +45,16 @@ class VariableControl:
     
     def get_current_scope_return(self):
         return self.variables_table[self.current_scope]['return']
+
+    # def print_table(self):
+    #     print('Func table:')
+    #     pprint(self.variables_table)
+    #     # print('Args table:')
+    #     # pprint(self.args)
+    #     print('Const table:')
+    #     pprint(self.constants)
+    #     print('Array table:')
+    #     pprint(self.arrays)
 
     def print_table(self):
         print('Func table:', self.variables_table)
@@ -223,6 +234,7 @@ class VariableControl:
         self.addConst(0, 'int') #Linf de arrays
         self.addConst(varDir, 'int')
         self.addConst(rows, 'int')
+        self.addConst(cols, 'int')
 
     def getArrayRows(self, name):
         rows = self.arrays[name]['rows']

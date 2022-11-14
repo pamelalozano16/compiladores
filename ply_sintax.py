@@ -337,8 +337,8 @@ def p_declaracionMatrix(p):
     pass
     
 def p_arr(p):
-    '''arr : callArr bracket expresion abracket matrix
-            | callArr bracket expresion abracket epsilon'''
+    '''arr : callArr openBracket expresion abracket matrix
+            | callArr openBracket expresion abracket epsilon'''
     if (p[1]):
         if variables_control.find_var(p[1]) == None:
             raise ValueError("Variable "+str(p[1])+" is not declared")
@@ -351,34 +351,34 @@ def p_callArr(p):
     pass  
 
 def p_matrix(p):
-    '''matrix : bracket expresion mbracket'''
+    '''matrix : openBracket expresion mbracket'''
     if (p[1]):
         if variables_control.find_var(p[1]) == None:
             raise ValueError("Variable "+str(p[1])+" is not declared")
     #Checar espacio
     pass
 
-def p_bracket(p):
-    '''bracket : LBRACKET
-               | RBRACKET'''
-    if(p[1]=='['):
-#      print("(")
-      semantics.addOper('(')
-    else:
+def p_openBracket(p):
+    '''openBracket : LBRACKET'''
+    semantics.addOper('(')
+    pass
+
+def p_closeBracket(p):
+    '''closeBracket : RBRACKET'''
 #        print(")")
-        semantics.checkFact()
-        semantics.checkTerm()
-        semantics.checkCompare()
-        semantics.checkParen()
+    semantics.checkFact()
+    semantics.checkTerm()
+    semantics.checkCompare()
+    semantics.checkParen()
     pass
 
 def p_abracket(p):
-    '''abracket : bracket'''
+    '''abracket : closeBracket'''
     semantics.findArrAddress(declaring_array.pop())
     pass
 
 def p_mbracket(p):
-    '''mbracket : bracket'''
+    '''mbracket : closeBracket'''
     semantics.findMatrixAddress()
     pass
 
