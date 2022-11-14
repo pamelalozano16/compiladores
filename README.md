@@ -32,3 +32,6 @@
 
 ## Avance 6: Funciones
 <img src="/Avance6_tests.png" alt="Avance6" width="400"/>
+
+## Avance 7: Arreglos y Matrices
+<img src="/Avance7_tests.png" alt="Avance7" width="600"/>
