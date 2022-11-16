@@ -193,7 +193,7 @@
       null
     ]
   ],
-  "function_dictionary": {
+  "function_table": {
     "global": {
       "scope": "#",
       "return": "void",
@@ -242,7 +242,12 @@
         "float": 4,
         "bool": 0,
         "string": 0,
-        "temp": 5
+        "temp": {
+          "int": 4,
+          "float": 1,
+          "bool": 0,
+          "string": 0
+        }
       }
     },
     "jeje": {
@@ -266,7 +271,12 @@
         "float": 0,
         "bool": 0,
         "string": 0,
-        "temp": 1
+        "temp": {
+          "int": 0,
+          "float": 1,
+          "bool": 0,
+          "string": 0
+        }
       }
     },
     "main": {
@@ -314,7 +324,68 @@
         "float": 2,
         "bool": 1,
         "string": 0,
-        "temp": 7
+        "temp": {
+          "int": 2,
+          "float": 5,
+          "bool": 0,
+          "string": 0
+        }
+      }
+    }
+  },
+  "global": {
+    "scope": "#",
+    "return": "void",
+    "vars_table": [
+      "a",
+      "c",
+      "b",
+      "k",
+      "res",
+      "jeje",
+      "t0",
+      "t1",
+      "t2",
+      "t3",
+      "t4"
+    ],
+    "vars_types": [
+      "float",
+      "float",
+      "float",
+      "float",
+      "int",
+      "int",
+      "float",
+      "int",
+      "int",
+      "int",
+      "int"
+    ],
+    "vars_dir": [
+      1001,
+      1002,
+      1003,
+      1004,
+      15,
+      16,
+      13001,
+      12001,
+      12002,
+      12003,
+      12004
+    ],
+    "initial_address": -1,
+    "resource_count": {
+      "int": 2,
+      "float": 4,
+      "bool": 0,
+      "string": 0,
+      "temp": {
+        "int": 4,
+        "float": 1,
+        "bool": 0,
+        "string": 0
       }
     }
   },
@@ -339,6 +410,12 @@
       8002,
       8003,
       8004
-    ]
+    ],
+    "resource_count": {
+      "int": 4,
+      "float": 0,
+      "bool": 1,
+      "string": 0
+    }
   }
 }

@@ -10,7 +10,13 @@ class VariableControl:
         self.constants = {
             'vars_table': [],
             'vars_types': [],
-            'vars_dir':[]            
+            'vars_dir':[],
+            'resource_count':{
+                'int':0,
+                'float':0,
+                'bool':0,
+                'string':0,
+            }          
         }
 
         self.args = {
@@ -32,7 +38,12 @@ class VariableControl:
                     'float':0,
                     'bool':0,
                     'string':0,
-                    'temp':0
+                    'temp':{
+                        'int':0,
+                        'float':0,
+                        'bool':0,
+                        'string':0,
+                    }         
                 }
             },  
         }
@@ -155,7 +166,12 @@ class VariableControl:
                 'float':0,
                 'bool':0,
                 'string':0,
-                'temp':0
+                'temp':{
+                    'int':0,
+                    'float':0,
+                    'bool':0,
+                    'string':0,
+                }
             }
         }
         self.args[name]=[]
@@ -193,6 +209,7 @@ class VariableControl:
         varDir = self.getDir(varType, 'const')
         self.constants['vars_dir'].append(varDir)
         self.constants['vars_types'].append(varType)
+        self.constants['resource_count'][varType]+=1
         return varDir
 
     def addTemp(self, temp, varType):
@@ -200,7 +217,7 @@ class VariableControl:
         varDir = self.getDir(varType, 'temp')
         self.variables_table[self.current_scope]['vars_dir'].append(varDir)
         self.variables_table[self.current_scope]['vars_types'].append(varType)
-        self.variables_table[self.current_scope]['resource_count']['temp']+=1
+        self.variables_table[self.current_scope]['resource_count']['temp'][varType]+=1
         return varDir
 
     def addArgs(self):
