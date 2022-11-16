@@ -1,12 +1,15 @@
 # Yacc example
 import ply.yacc as yacc
+import sys
  
  # Get the token map from the lexer.  This is required.
 from ply_lex import tokens
 from variables_control import VariableControl
 from semantics import Semantics
+from maquina_virtual import MaquinaVirtual
 
 variables_control = VariableControl()
+maquina_virtual = MaquinaVirtual()
 semantics = Semantics(variables_control)
 declaring_variable = [] #Which variable am I declaring
 declaring_types = [] #Which variable type am I declaring
@@ -17,6 +20,7 @@ def p_programa(p):
     '''programa : START LPAREN RPAREN bloque'''
     semantics.endProgram()
     semantics.endStatus()
+    maquina_virtual.run()
     pass
 
 def p_declaracion(p):
@@ -429,8 +433,12 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc(debug=True)
 
-#fileName = input('Pystachio > ')
-with open("test_aritmetic.pyst") as f:
+fileName =''
+if 1<len(sys.argv):
+    fileName = str(sys.argv[1])
+else:
+    fileName = input('Pystachio > ')
+with open(f'test_{fileName}.pyst') as f:
     try:
         contents = f.read()
         result = parser.parse(contents)

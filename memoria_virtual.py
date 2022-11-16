@@ -84,7 +84,7 @@ class MemoriaVirtual:
     def insertarValor(self, valor, dirVar):
         scope, varType, dirInicial, isTemp = self.encontrarScope(dirVar)
         dir = dirVar-dirInicial
-        print(f'INSERT [{scope}][{varType}][{dir}]', valor)
+      #  print(f'INSERT [{scope}][{varType}][{dir}]', valor)
         if isTemp:
             self.memoria['local'][-1]['temp'][varType][dir] = valor
         elif scope == 'local':

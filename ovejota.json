@@ -79,6 +79,30 @@
       12004
     ],
     [
+      3,
+      8001,
+      8005,
+      12005
+    ],
+    [
+      12,
+      10001,
+      10003,
+      14001
+    ],
+    [
+      "PRINT",
+      null,
+      null,
+      14001
+    ],
+    [
+      "PRINT",
+      null,
+      null,
+      12005
+    ],
+    [
       "PRINT",
       null,
       null,
@@ -172,7 +196,9 @@
         "t0",
         "t1",
         "t2",
-        "t3"
+        "t3",
+        "t4",
+        "t5"
       ],
       "vars_types": [
         "int",
@@ -181,7 +207,9 @@
         "int",
         "int",
         "int",
-        "int"
+        "int",
+        "int",
+        "bool"
       ],
       "vars_dir": [
         4001,
@@ -190,7 +218,9 @@
         12001,
         12002,
         12003,
-        12004
+        12004,
+        12005,
+        14001
       ],
       "initial_address": 5,
       "resource_count": {
@@ -199,9 +229,9 @@
         "bool": 1,
         "string": 0,
         "temp": {
-          "int": 4,
+          "int": 5,
           "float": 0,
-          "bool": 0,
+          "bool": 1,
           "string": 0
         }
       }
@@ -254,26 +284,35 @@
       true,
       3,
       8,
-      2
+      2,
+      6,
+      true,
+      false
     ],
     "vars_types": [
       "int",
       "bool",
       "int",
       "int",
-      "int"
+      "int",
+      "int",
+      "bool",
+      "bool"
     ],
     "vars_dir": [
       8001,
       10001,
       8002,
       8003,
-      8004
+      8004,
+      8005,
+      10002,
+      10003
     ],
     "resource_count": {
-      "int": 4,
+      "int": 5,
       "float": 0,
-      "bool": 1,
+      "bool": 3,
       "string": 0
     }
   }

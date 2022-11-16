@@ -26,7 +26,15 @@ class QuadsOperations:
             self.substraction,
             self.multiplication,
             self.division,
-            self.assign
+            None,
+            self.lessthan,
+            self.greaterthan,
+            self.notequal,
+            self.equals,
+            self.diff,
+            self.or_,
+            self.and_,
+            self.exp
         ]
     
     def quadArtimetic(self, op, value1, value2):
@@ -35,33 +43,61 @@ class QuadsOperations:
             return operation(value1, value2)
     
     def addition(self, value1, value2):
-        print(value1,'+',value2)
+     #   print(value1,'+',value2)
         if not value1 or not value2:
-            raise ValueError("Addition invalid, both operators should have values")
+            raise ValueError("Added operators should have values")
         return value1 + value2
 
     def substraction(self, value1, value2):
-        print(value1,'-',value2)
+     #   print(value1,'-',value2)
         if not value1 or not value2:
-            raise ValueError("Substraction invalid, both operators should have values")
+            raise ValueError("Substracted operators should have values")
         return value1 - value2
     
     def multiplication(self, value1, value2):
-        print(value1,'*',value2)
+     #   print(value1,'*',value2)
         if not value1 or not value2:
-            raise ValueError("Multiplication invalid, both operators should have values")
+            raise ValueError("Multiplied operators should have values")
         return value1 * value2
     
     def division(self, value1, value2):
-        print(value1,'/',value2)
+     #   print(value1,'/',value2)
         if not value1 or not value2:
-            raise ValueError("Division invalid, both operators should have values")
+            raise ValueError("Divided operators should have values")
         return value1 / value2
     
-    def assign(self, value1, value2):
-        return value1
-        
+    def diff(self, value1, value2):
+        if not value1 or not value2:
+            raise ValueError("Compared operators should have values")
+        return value1 % value2
 
+    def exp(self, value1, value2):
+        if not value1 or not value2:
+            raise ValueError("Exp operators should have values")
+        return value1 ^ value2
+        
+    def lessthan(self, value1, value2):
+        if not value1 or not value2:
+            raise ValueError("Compared operators should have values")
+      #  print((value1,'>',value2),value1 > value2)
+        return value1 > value2
+
+    def greaterthan(self, value1, value2):
+        if not value1 or not value2:
+            raise ValueError("Compared operators should have values")
+        return value1 < value2
+
+    def notequal(self, value1, value2):
+        return value1 != value2
+
+    def equals(self, value1, value2):
+        return value1 == value2
+
+    def or_(self, value1, value2):
+        return (value1 or value2)
+
+    def and_(self, value1, value2):
+        return (value1 and value2)
 
 
 
