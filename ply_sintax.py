@@ -424,7 +424,7 @@ def p_string(p):
 
 # Error rule for syntax errors
 def p_error(p):
-    raise EOFError("Syntax error in input!")
+    raise EOFError("Syntax error in input!", p)
 
 # Build the parser
 parser = yacc.yacc(debug=True)

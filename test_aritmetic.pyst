@@ -1,22 +1,23 @@
 start() {
     var a: float;
-    var c: float;
+    var c: int;
     var b: float;
     var k: float;
     var res: int;
     function jeje(var z: int;): int {
-        a=k*c;
-        return 5;
+        var res: int;
+        res = z*5;
+        return res;
     };
 
     function main(): void {
-        var lol: float;
-        var sos: float;
+        var lol: int;
+        var sos: int;
         var ja: bool;
         ja=True;
-        c=5+(a+k+b+5)*sos;
-        print(jeje(3*res));
+        lol=3;
+        sos=8;
+        c=lol*sos;
+        print(lol*sos*2/3);
     };
-    k=b+c;
-    res = jeje(3)*jeje(6+7);
 }

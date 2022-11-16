@@ -24,36 +24,36 @@ class Quadruple:
     
     def createPrint(self, res):
         self.operator="PRINT"
-        self.left=-1
-        self.right=-1
+        self.left=None
+        self.right=None
         self.res=res
         return self
     
     def createGoToV(self, temp):
         self.operator="gotoV"
         self.left=temp
-        self.right=-1
+        self.right=None
         self.res=None
         return self
 
     def createGoToF(self, temp):
         self.operator="gotoF"
         self.left=temp
-        self.right=-1
+        self.right=None
         self.res=None
         return self
 
     def createGoTo(self):
         self.operator="goto"
-        self.left=-1
-        self.right=-1
+        self.left=None
+        self.right=None
         self.res=None
         return self
 
     def createEra(self, func):
         self.operator="ERA"
         self.left=f'{func}'
-        self.right=-1
+        self.right=None
         self.res=None
         return self
     
@@ -80,8 +80,8 @@ class Quadruple:
 
     def endFunc(self):
         self.operator="ENDPROC"
-        self.left=-1
-        self.right=-1
+        self.left=None
+        self.right=None
         self.res=None
         return self
     

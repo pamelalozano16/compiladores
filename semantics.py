@@ -98,7 +98,7 @@ class Semantics:
             right = self.variables_control.find_vars_dir(self.pilaO.pop())
             left = self.variables_control.find_vars_dir(self.pilaO.pop())
             right_type = self.pTypes.pop()
-            quad, typeRes = quadruple.createQuad(self.pOper.pop(), -1, left, self.pTypes.pop(), right_type, right)
+            quad, typeRes = quadruple.createQuad(self.pOper.pop(), None, left, self.pTypes.pop(), right_type, right)
             newQuad = quad.getQuad()
             for x, i in enumerate(newQuad):
                 if i in self.isPointer:
