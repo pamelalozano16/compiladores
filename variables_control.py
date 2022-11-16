@@ -115,13 +115,14 @@ class VariableControl:
             return None
 
     def find_vars_dir(self, name):
-        for scopes in self.variables_table:
+        current_scope = self.current_scope
+        while current_scope != '#': #Sube hasta global
             try:
-                indx=self.variables_table[scopes]['vars_table'].index(name)
-                varDir=self.variables_table[scopes]['vars_dir'][indx]
+                indx = self.variables_table[current_scope]['vars_table'].index(name)
+                varDir=self.variables_table[current_scope]['vars_dir'][indx]
                 return varDir
             except:
-                continue
+                current_scope = self.variables_table[current_scope]['scope']
         try:
             indx=self.constants['vars_table'].index(name)
             varDir=self.constants['vars_dir'][indx]
@@ -270,7 +271,3 @@ class VariableControl:
     
     def getConstants(self):
         return self.constants
-
-        
-
-
