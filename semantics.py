@@ -139,7 +139,7 @@ class Semantics:
      #   print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
 
     def checkCompare(self):
-        if 0<len(self.pOper) and (self.pOper[-1]=="&&" or self.pOper[-1]=="!!" or self.pOper[-1]==">" or self.pOper[-1]=="<" or self.pOper[-1]=="==" or self.pOper[-1]=="!="):
+        if 0<len(self.pOper) and (self.pOper[-1]=="&&" or self.pOper[-1]=="!!" or self.pOper[-1]==">" or self.pOper[-1]=="<" or self.pOper[-1]=="!==" or self.pOper[-1]=="!="):
             res = "t"+str(self.tempCounter)
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), self.variables_control.find_vars_dir(self.pilaO.pop()), self.variables_control.find_vars_dir(self.pilaO.pop()), self.pTypes.pop(), self.pTypes.pop(), res)
             dirTemp = self.variables_control.addTemp(res, typeRes)

@@ -52,7 +52,7 @@ class MaquinaVirtual:
                  #   print('ASSIGN', quad[1], value1, quad[3])
                     memoria_virtual.insertarValor(value1, quad[3])
                 elif quad[0] == END:
-                    print('END\n')
+                    print('\n-----------------------END--------------------------------\n')
                   #  memoria_virtual.printCurrent()
                 else:
                     value1 = memoria_virtual.obtenerValor(quad[1])
@@ -64,7 +64,7 @@ class MaquinaVirtual:
             else: #Is command
                 if quad[0] == 'PRINT':
                     value1 = memoria_virtual.obtenerValor(quad[3])
-                    print('PRINT', value1)
+                    print('PRINT: ', value1)
             self.instruction_pointer+=1
 
-        print('\n-----------------------END--------------------------------\n')
+

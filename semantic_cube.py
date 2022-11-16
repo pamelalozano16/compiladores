@@ -16,7 +16,7 @@ class SemanticCube:
                     '!!':'bool',
                     '&&':'bool',
                     '!=':'bool',
-                    '==':'bool',
+                    '!==':'bool',
                 },
                'float': {
                     '+':'float',
@@ -30,7 +30,7 @@ class SemanticCube:
                     '!!':'bool',
                     '&&':'bool',
                     '!=':'bool',
-                    '==':'bool',
+                    '!==':'bool',
                 },
                 'bool': {
                     '!!':'bool',
@@ -50,7 +50,7 @@ class SemanticCube:
                     '!!':'bool',
                     '&&':'bool',
                     '!=':'bool',
-                    '==':'bool',
+                    '!==':'bool',
                 },
                'float': {
                     '+':'float',
@@ -65,7 +65,7 @@ class SemanticCube:
                     '!!':'bool',
                     '&&':'bool',
                     '!=':'bool',
-                    '==':'bool',
+                    '!==':'bool',
                 },
                 'bool': {
                     '!!':'bool',
@@ -86,12 +86,14 @@ class SemanticCube:
                     '!!':'bool',
                     '&&':'bool',
                     '!=':'bool',
-                    '==':'bool',                   
+                    '!==':'bool',                   
                 },
             },
             'string':{
                 'string': {
                    '=':'string', 
+                   '!==':'string', 
+                   '!=':'string', 
                 },
                 'bool': {
                     '!!':'bool',

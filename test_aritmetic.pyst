@@ -14,10 +14,10 @@ start() {
         var lol: int;
         var sos: int;
         var ja: bool;
-        ja=True;
+        ja= 222>333;
         lol=3;
         sos=8;
         c=lol*sos;
-        print(lol*sos*2/3, 5*6, True&&False);
+        print(lol*sos*2/3, 5*6, True&&False, "pamela"!=="pamela", ja);
     };
 }
