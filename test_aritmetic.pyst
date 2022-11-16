@@ -15,6 +15,7 @@ start() {
         var ja: bool;
         ja=True;
         c=5+(a+k+b+5)*sos;
+        print(jeje(3*res));
     };
     k=b+c;
     res = jeje(3)*jeje(6+7);

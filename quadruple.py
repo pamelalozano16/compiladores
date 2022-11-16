@@ -22,6 +22,13 @@ class Quadruple:
         else:
             raise ValueError('Types mismatch', typeLeft, typeRight, operator)
     
+    def createPrint(self, res):
+        self.operator="PRINT"
+        self.left=-1
+        self.right=-1
+        self.res=res
+        return self
+    
     def createGoToV(self, temp):
         self.operator="gotoV"
         self.left=temp

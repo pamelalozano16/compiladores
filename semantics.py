@@ -84,6 +84,15 @@ class Semantics:
         var_name, var_type = self.variables_control.addFuncReturn()
         self.insertId(var_name, var_type)
     
+    def checkPrint(self):
+        while 0<len(self.pOper) and self.pOper[-1]=="PRINT":
+            self.pOper.pop()
+            if 0<len(self.pTypes):
+                self.pTypes.pop()
+            if 0<len(self.pilaO):
+                quad = quadruple.createPrint(self.variables_control.find_vars_dir(self.pilaO.pop()))
+                self.quads.append(quad.getQuad())
+    
     def checkAssign(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="="):
             right = self.variables_control.find_vars_dir(self.pilaO.pop())

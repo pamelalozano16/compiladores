@@ -99,15 +99,17 @@ def p_asignacion(p):
 
 def p_escritura(p):
     '''escritura : PRINT LPAREN escrito RPAREN'''
+    semantics.checkPrint()
     pass
 
 def p_escrito(p):
     '''escrito : impr
-               | impr COMA impr'''
+               | impr COMA escrito'''
     pass
 
 def p_impr(p):
     '''impr : expresion'''
+    semantics.addOper("PRINT")
     pass
 
 def p_expresion(p): 
@@ -225,7 +227,7 @@ def p_tiposFuncion(p):
     pass
 
 def p_functionCall(p):
-    '''functionCall : funCall paren funcArgs paren'''
+    '''functionCall : funCall lparen funcArgs rparen'''
     semantics.addFuncGoSub()
     semantics.checkReturnValue()
     pass
@@ -288,25 +290,24 @@ def p_operacion(p):
     pass
 
 def p_factor(p):
-    '''factor : paren expresion paren
-               | varcte
+    '''factor : varcte
+               | lparen expresion rparen
                | functionCall '''
 #    print("5", "checkFact")
     semantics.checkFact()
     pass
 
-def p_paren(p):
-    '''paren : LPAREN
-            | RPAREN'''
-    if(p[1]=='('):
-#      print("(")
-      semantics.addOper(p[1])
-    else:
-#        print(")")
-        semantics.checkFact()
-        semantics.checkTerm()
-        semantics.checkCompare()
-        semantics.checkParen()
+def p_lparen(p):
+    '''lparen : LPAREN'''
+    semantics.addOper(p[1])
+    pass
+
+def p_rparen(p):
+    '''rparen : RPAREN'''
+    semantics.checkFact()
+    semantics.checkTerm()
+    semantics.checkCompare()
+    semantics.checkParen()
     pass
 
 def p_epsilon(p):
@@ -429,7 +430,7 @@ def p_error(p):
 parser = yacc.yacc(debug=True)
 
 #fileName = input('Pystachio > ')
-with open("test_array.pyst") as f:
+with open("test_aritmetic.pyst") as f:
     try:
         contents = f.read()
         result = parser.parse(contents)
