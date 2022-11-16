@@ -4,6 +4,7 @@ start() {
     function main(): void {
         var b[3][4]: int;
         var c: int;
+        print("Pamela");
         c=a[2];
         k=b[3*c][c*k];
     };

@@ -1,4 +1,4 @@
- # Yacc example
+# Yacc example
 import ply.yacc as yacc
  
  # Get the token map from the lexer.  This is required.
@@ -107,8 +107,7 @@ def p_escrito(p):
     pass
 
 def p_impr(p):
-    '''impr : STRING
-            | expresion'''
+    '''impr : expresion'''
     pass
 
 def p_expresion(p): 
@@ -417,8 +416,9 @@ def p_bool(p):
 
 def p_string(p):
     '''string : STRING'''
-    variables_control.addConst(p[1], 'string')
-    semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
+    name, varType = p[1]
+    variables_control.addConst(name.replace('\"',''), varType)
+    semantics.insertId(name.replace('\"',''), varType)
     pass
 
 # Error rule for syntax errors

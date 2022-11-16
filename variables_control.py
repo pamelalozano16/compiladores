@@ -186,7 +186,9 @@ class VariableControl:
     
     def addConst(self, num, varType):
         if(num in self.constants['vars_table']):
-            return self.constants['vars_dir']
+            indx=self.constants['vars_table'].index(num)
+            if((varType == 'bool' and self.constants['vars_table'][indx] == 'bool') or (varType != 'bool')):
+                return self.constants['vars_dir']
         self.constants['vars_table'].append(num)
         varDir = self.getDir(varType, 'const')
         self.constants['vars_dir'].append(varDir)
@@ -245,6 +247,12 @@ class VariableControl:
     
     def getArrayType(self, name):
         return self.arrays[name]['type']
+    
+    def getFuncTable(self):
+        return self.variables_table
+    
+    def getConstants(self):
+        return self.constants
 
         
 

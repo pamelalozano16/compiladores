@@ -100,7 +100,9 @@ t_AND = r'&&'
 def t_BOOL(t):
     r'True|False'
     t.type = reserved_keywords.get(t.value, 'BOOL')
-    t.value = bool(t.value)    
+    if t.value == 'False':
+        t.value=0
+    t.value = bool(t.value)
     return t
 
 def t_ID(t):

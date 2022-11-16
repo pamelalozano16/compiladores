@@ -1,4 +1,5 @@
 from quadruple import Quadruple
+import json
 
 quadruple = Quadruple()
 
@@ -288,3 +289,6 @@ class Semantics:
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
         self.quads.append(quad.getQuad())
+        obj = {"quads":self.quads, "function_dictionary": self.variables_control.getFuncTable(), "constants": self.variables_control.getConstants()}
+        with open('ovejota.json', "w") as output_file:
+            json.dump(obj, output_file, indent=2)
