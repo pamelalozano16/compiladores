@@ -40,8 +40,8 @@ class MaquinaVirtual:
     def runQuads(self):
         if len(self.quads) > 10000:
             raise OverflowError('Stack overflow: too many calls')
-        if self.quads[0][0] == 'goto':
-            self.instruction_pointer = self.quads[0][3]
+     #   if self.quads[0][0] == 'goto':
+      #      self.instruction_pointer = self.quads[0][3]
         print('\n--------------------PYSTACHIO-----------------------------\n')
         while self.instruction_pointer < len(self.quads):
             quad = self.quads[self.instruction_pointer]
@@ -62,6 +62,17 @@ class MaquinaVirtual:
                 #    print('RESULT', value3, quad[3])
                     memoria_virtual.insertarValor(value3, quad[3])
             else: #Is command
+                if quad[0] == 'goto':
+                    self.instruction_pointer = quad[3]-1
+                if quad[0] == 'gotoF':
+                   value1 = memoria_virtual.obtenerValor(quad[1])
+                   if value1 == False:
+                        self.instruction_pointer = quad[3]-1
+                       # print('QUAD',quad, value1, quad[3])
+                if quad[0] == 'gotoT':
+                   value1 = memoria_virtual.obtenerValor(quad[1])
+                   if value1 == True:
+                        self.instruction_pointer = quad[3]-1
                 if quad[0] == 'PRINT':
                     value1 = memoria_virtual.obtenerValor(quad[3])
                     print('PRINT: ', value1)

@@ -16,11 +16,11 @@
       5,
       12001,
       null,
-      16
+      4002
     ],
     [
       5,
-      16,
+      4002,
       null,
       17
     ],
@@ -31,106 +31,94 @@
       null
     ],
     [
-      6,
+      5,
       8002,
-      8003,
-      14001
-    ],
-    [
-      5,
-      14001,
-      null,
-      6001
-    ],
-    [
-      5,
-      8004,
-      null,
-      4001
-    ],
-    [
-      5,
-      8005,
-      null,
-      4002
-    ],
-    [
-      3,
-      4001,
-      4002,
-      12001
-    ],
-    [
-      5,
-      12001,
       null,
       15
     ],
     [
-      3,
-      4001,
-      4002,
+      5,
+      8003,
+      null,
+      16
+    ],
+    [
+      6,
+      16,
+      15,
+      14001
+    ],
+    [
+      "gotoF",
+      14001,
+      null,
+      18
+    ],
+    [
+      1,
+      16,
+      15,
+      12001
+    ],
+    [
+      7,
+      12001,
+      8004,
+      14002
+    ],
+    [
+      "gotoF",
+      14002,
+      null,
+      14
+    ],
+    [
+      "PRINT",
+      null,
+      null,
+      11001
+    ],
+    [
+      "goto",
+      null,
+      null,
+      15
+    ],
+    [
+      "PRINT",
+      null,
+      null,
+      11002
+    ],
+    [
+      1,
+      15,
+      8002,
       12002
     ],
     [
-      3,
+      5,
       12002,
-      8006,
+      null,
+      15
+    ],
+    [
+      "goto",
+      null,
+      null,
+      7
+    ],
+    [
+      1,
+      15,
+      16,
       12003
     ],
     [
-      4,
-      12003,
-      8004,
-      12004
-    ],
-    [
-      3,
-      8001,
-      8007,
-      12005
-    ],
-    [
-      12,
-      10001,
-      10002,
-      14002
-    ],
-    [
-      9,
-      11001,
-      11001,
-      15001
-    ],
-    [
       "PRINT",
       null,
       null,
-      6001
-    ],
-    [
-      "PRINT",
-      null,
-      null,
-      15001
-    ],
-    [
-      "PRINT",
-      null,
-      null,
-      14002
-    ],
-    [
-      "PRINT",
-      null,
-      null,
-      12005
-    ],
-    [
-      "PRINT",
-      null,
-      null,
-      12004
+      12003
     ],
     [
       14,
@@ -146,31 +134,22 @@
       "vars_table": [
         "a",
         "c",
-        "b",
-        "k",
-        "res",
         "jeje"
       ],
       "vars_types": [
-        "float",
         "int",
-        "float",
-        "float",
         "int",
         "int"
       ],
       "vars_dir": [
-        1001,
         15,
-        1002,
-        1003,
         16,
         17
       ],
       "initial_address": -1,
       "resource_count": {
         "int": 3,
-        "float": 3,
+        "float": 0,
         "bool": 0,
         "string": 0,
         "temp": {
@@ -186,19 +165,22 @@
       "scope": "global",
       "vars_table": [
         "z",
+        "res",
         "t0"
       ],
       "vars_types": [
+        "int",
         "int",
         "int"
       ],
       "vars_dir": [
         4001,
+        4002,
         12001
       ],
       "initial_address": 1,
       "resource_count": {
-        "int": 1,
+        "int": 2,
         "float": 0,
         "bool": 0,
         "string": 0,
@@ -214,55 +196,37 @@
       "return": "void",
       "scope": "global",
       "vars_table": [
-        "lol",
-        "sos",
-        "ja",
         "t0",
         "t1",
         "t2",
         "t3",
-        "t4",
-        "t5",
-        "t6",
-        "t7"
+        "t4"
       ],
       "vars_types": [
-        "int",
-        "int",
-        "bool",
         "bool",
         "int",
-        "int",
-        "int",
-        "int",
-        "int",
         "bool",
-        "string"
+        "int",
+        "int"
       ],
       "vars_dir": [
-        4001,
-        4002,
-        6001,
         14001,
         12001,
-        12002,
-        12003,
-        12004,
-        12005,
         14002,
-        15001
+        12002,
+        12003
       ],
       "initial_address": 5,
       "resource_count": {
-        "int": 2,
+        "int": 0,
         "float": 0,
-        "bool": 1,
+        "bool": 0,
         "string": 0,
         "temp": {
-          "int": 5,
+          "int": 3,
           "float": 0,
           "bool": 2,
-          "string": 1
+          "string": 0
         }
       }
     }
@@ -273,31 +237,22 @@
     "vars_table": [
       "a",
       "c",
-      "b",
-      "k",
-      "res",
       "jeje"
     ],
     "vars_types": [
-      "float",
       "int",
-      "float",
-      "float",
       "int",
       "int"
     ],
     "vars_dir": [
-      1001,
       15,
-      1002,
-      1003,
       16,
       17
     ],
     "initial_address": -1,
     "resource_count": {
       "int": 3,
-      "float": 3,
+      "float": 0,
       "bool": 0,
       "string": 0,
       "temp": {
@@ -311,26 +266,18 @@
   "constants": {
     "vars_table": [
       5,
-      222,
-      333,
-      3,
+      1,
       8,
-      2,
-      6,
-      true,
-      false,
-      "pamela"
+      11,
+      "yes",
+      "no"
     ],
     "vars_types": [
       "int",
       "int",
       "int",
       "int",
-      "int",
-      "int",
-      "int",
-      "bool",
-      "bool",
+      "string",
       "string"
     ],
     "vars_dir": [
@@ -338,18 +285,14 @@
       8002,
       8003,
       8004,
-      8005,
-      8006,
-      8007,
-      10001,
-      10002,
-      11001
+      11001,
+      11002
     ],
     "resource_count": {
-      "int": 7,
+      "int": 4,
       "float": 0,
-      "bool": 2,
-      "string": 1
+      "bool": 0,
+      "string": 2
     }
   }
 }

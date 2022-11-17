@@ -1,0 +1,23 @@
+start() {
+    var a: int;
+    var c: int;
+    function jeje(var z: int;): int {
+        var res: int;
+        res = z*5;
+        return res;
+    };
+
+    function main(): void {
+        a = 1;
+        c = 8;
+        while(c>a){
+            if(c+a<11) {
+               print("yes");
+            } else {
+                print("no");
+            };
+            a = a+1;
+        };
+        print(a+c);    
+    };
+}
