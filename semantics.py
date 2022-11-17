@@ -299,6 +299,6 @@ class Semantics:
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
         self.quads.append(quad.getQuad())
         funcTable = self.variables_control.getFuncTable()
-        obj = {"quads":self.quads, "function_table": funcTable, "global":funcTable['global'], "constants": self.variables_control.getConstants()}
+        obj = {"quads":self.quads, "function_table": funcTable, "global":funcTable['global'], "constants": self.variables_control.getConstants(), "args_table":self.variables_control.get_args_table()}
         with open('ovejota.json', "w") as output_file:
             json.dump(obj, output_file, indent=2)

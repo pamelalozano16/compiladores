@@ -61,12 +61,19 @@ class MemoriaVirtual:
                 'bool' : [],
                 'string' : [],
             },
+            'nombre': None,
         }
         self.memoria['local'].append(newMem)
         return newMem
     
     def borrarMemoriaLocal(self):
         self.memoria['local'].pop()
+
+    def encontrarDir(self, scope, varType, indx):
+        return self.vars[scope][varType][1]+indx
+    
+    def currentFuncName(self):
+        return self.memoria['local'][-1]['nombre']
     
     def encontrarScope(self, dirVar):
         if dirVar in self.dp:
@@ -120,8 +127,9 @@ class MemoriaVirtual:
         for ind, value in enumerate(memoria['vars_dir']):
             self.insertarValor(memoria['vars_table'][ind], value)
     
-    def crearMemoriaFunc(self, resource_count):
+    def crearMemoriaFunc(self, resource_count, nombre):
         self.crearMemoriaLocal()
+        self.memoria['local'][-1]['nombre'] = nombre
         for i in resource_count:
            # print(i, resource_count[i])
             if i != 'temp':

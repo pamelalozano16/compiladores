@@ -81,6 +81,9 @@ class VariableControl:
         if(args_expected <= num): #Compare number of args expected
             raise ValueError(f'Expected {args_expected} argument but got {num+1}')
         return self.args[scope][num]
+    
+    def get_args_table(self):
+        return self.args
 
     def find_dir_name(self, num):
         opCode = directions_control.getOpSign(num)

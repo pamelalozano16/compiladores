@@ -60,7 +60,7 @@ class Quadruple:
     def createParam(self, op, num):
         self.operator="PARAMETER"
         self.left=op
-        self.right=f'#{num}'
+        self.right=num
         self.res=None
         return self
 

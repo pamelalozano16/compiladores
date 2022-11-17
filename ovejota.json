@@ -4,85 +4,151 @@
       "goto",
       null,
       null,
-      1
+      5
     ],
     [
-      5,
-      8001,
-      null,
-      16
-    ],
-    [
-      5,
-      8002,
-      null,
-      4001
-    ],
-    [
-      5,
-      8003,
-      null,
-      15
-    ],
-    [
-      7,
-      15,
+      3,
       4001,
-      14001
-    ],
-    [
-      "gotoF",
-      14001,
-      null,
-      12
-    ],
-    [
-      1,
-      15,
-      8004,
+      8001,
       12001
     ],
     [
       5,
       12001,
       null,
-      15
-    ],
-    [
-      3,
-      16,
-      8005,
-      12002
+      4002
     ],
     [
       5,
+      4002,
+      null,
+      17
+    ],
+    [
+      "ENDPROC",
+      null,
+      null,
+      null
+    ],
+    [
+      5,
+      8002,
+      null,
+      16
+    ],
+    [
+      5,
+      8003,
+      null,
+      4001
+    ],
+    [
+      "ERA",
+      "jeje",
+      null,
+      null
+    ],
+    [
+      3,
+      8004,
+      8005,
+      12001
+    ],
+    [
+      1,
+      12001,
+      8001,
+      12002
+    ],
+    [
+      "PARAMETER",
       12002,
+      0,
+      null
+    ],
+    [
+      "GOSUB",
+      "jeje",
+      "1",
+      null
+    ],
+    [
+      5,
+      17,
       null,
-      16
+      12003
+    ],
+    [
+      5,
+      12003,
+      null,
+      4002
+    ],
+    [
+      "ERA",
+      "jeje",
+      null,
+      null
+    ],
+    [
+      "PARAMETER",
+      8002,
+      0,
+      null
+    ],
+    [
+      "GOSUB",
+      "jeje",
+      "1",
+      null
+    ],
+    [
+      5,
+      17,
+      null,
+      12004
+    ],
+    [
+      "ERA",
+      "jeje",
+      null,
+      null
+    ],
+    [
+      "PARAMETER",
+      8005,
+      0,
+      null
+    ],
+    [
+      "GOSUB",
+      "jeje",
+      "1",
+      null
+    ],
+    [
+      5,
+      17,
+      null,
+      12005
     ],
     [
       "PRINT",
       null,
       null,
-      16
-    ],
-    [
-      "goto",
-      null,
-      null,
-      4
+      4002
     ],
     [
       "PRINT",
       null,
       null,
-      11001
+      12005
     ],
     [
       "PRINT",
       null,
       null,
-      16
+      12004
     ],
     [
       14,
@@ -97,19 +163,22 @@
       "return": "void",
       "vars_table": [
         "a",
-        "b"
+        "b",
+        "jeje"
       ],
       "vars_types": [
+        "int",
         "int",
         "int"
       ],
       "vars_dir": [
         15,
-        16
+        16,
+        17
       ],
       "initial_address": -1,
       "resource_count": {
-        "int": 2,
+        "int": 3,
         "float": 0,
         "bool": 0,
         "string": 0,
@@ -121,37 +190,78 @@
         }
       }
     },
-    "main": {
-      "return": "void",
+    "jeje": {
+      "return": "int",
       "scope": "global",
       "vars_table": [
-        "c",
-        "t0",
-        "t1",
-        "t2"
+        "z",
+        "res",
+        "t0"
       ],
       "vars_types": [
         "int",
-        "bool",
         "int",
         "int"
       ],
       "vars_dir": [
         4001,
-        14001,
-        12001,
-        12002
+        4002,
+        12001
       ],
       "initial_address": 1,
       "resource_count": {
-        "int": 1,
+        "int": 2,
         "float": 0,
         "bool": 0,
         "string": 0,
         "temp": {
-          "int": 2,
+          "int": 1,
           "float": 0,
-          "bool": 1,
+          "bool": 0,
+          "string": 0
+        }
+      }
+    },
+    "main": {
+      "return": "void",
+      "scope": "global",
+      "vars_table": [
+        "c",
+        "k",
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "vars_types": [
+        "int",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int"
+      ],
+      "vars_dir": [
+        4001,
+        4002,
+        12001,
+        12002,
+        12003,
+        12004,
+        12005
+      ],
+      "initial_address": 5,
+      "resource_count": {
+        "int": 2,
+        "float": 0,
+        "bool": 0,
+        "string": 0,
+        "temp": {
+          "int": 5,
+          "float": 0,
+          "bool": 0,
           "string": 0
         }
       }
@@ -162,19 +272,22 @@
     "return": "void",
     "vars_table": [
       "a",
-      "b"
+      "b",
+      "jeje"
     ],
     "vars_types": [
+      "int",
       "int",
       "int"
     ],
     "vars_dir": [
       15,
-      16
+      16,
+      17
     ],
     "initial_address": -1,
     "resource_count": {
-      "int": 2,
+      "int": 3,
       "float": 0,
       "bool": 0,
       "string": 0,
@@ -188,34 +301,38 @@
   },
   "constants": {
     "vars_table": [
+      5,
       3,
       9,
-      0,
-      1,
       2,
-      "\\nTotal:"
+      4
     ],
     "vars_types": [
       "int",
       "int",
       "int",
       "int",
-      "int",
-      "string"
+      "int"
     ],
     "vars_dir": [
       8001,
       8002,
       8003,
       8004,
-      8005,
-      11001
+      8005
     ],
     "resource_count": {
       "int": 5,
       "float": 0,
       "bool": 0,
-      "string": 1
+      "string": 0
     }
+  },
+  "args_table": {
+    "global": [],
+    "jeje": [
+      "int"
+    ],
+    "main": []
   }
 }
