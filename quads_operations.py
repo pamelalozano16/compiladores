@@ -44,46 +44,46 @@ class QuadsOperations:
     
     def addition(self, value1, value2):
      #   print(value1,'+',value2)
-        if not value1 or not value2:
+        if int(value1) is None or int(value2) is None:
             raise ValueError("Added operators should have values")
         return value1 + value2
 
     def substraction(self, value1, value2):
      #   print(value1,'-',value2)
-        if not value1 or not value2:
+        if int(value1) is None or int(value2) is None:
             raise ValueError("Substracted operators should have values")
         return value1 - value2
     
     def multiplication(self, value1, value2):
      #   print(value1,'*',value2)
-        if not value1 or not value2:
+        if int(value1) is None or int(value2) is None:
             raise ValueError("Multiplied operators should have values")
         return value1 * value2
     
     def division(self, value1, value2):
      #   print(value1,'/',value2)
-        if not value1 or not value2:
+        if int(value1) is None or int(value2) is None:
             raise ValueError("Divided operators should have values")
         return value1 / value2
     
     def diff(self, value1, value2):
-        if not value1 or not value2:
+        if int(value1) is None or int(value2) is None:
             raise ValueError("Compared operators should have values")
         return value1 % value2
 
     def exp(self, value1, value2):
-        if not value1 or not value2:
+        if int(value1) is None or int(value2) is None:
             raise ValueError("Exp operators should have values")
         return value1 ^ value2
         
     def lessthan(self, value1, value2):
-        if not value1 or not value2:
+        if int(value1) is None or int(value2) is None:
             raise ValueError("Compared operators should have values")
       #  print((value1,'>',value2),value1 > value2)
         return value1 > value2
 
     def greaterthan(self, value1, value2):
-        if not value1 or not value2:
+        if int(value1) is None or int(value2) is None:
             raise ValueError("Compared operators should have values")
         return value1 < value2
 

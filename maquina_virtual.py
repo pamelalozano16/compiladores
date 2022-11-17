@@ -75,7 +75,10 @@ class MaquinaVirtual:
                         self.instruction_pointer = quad[3]-1
                 if quad[0] == 'PRINT':
                     value1 = memoria_virtual.obtenerValor(quad[3])
-                    print('PRINT: ', value1)
+                    if r"\n" in str(value1):
+                        print("\n")
+                        value1=str(value1).replace(r"\n", '')
+                    print(value1)
             self.instruction_pointer+=1
 
 

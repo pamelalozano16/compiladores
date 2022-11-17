@@ -1,22 +1,25 @@
 start() {
-    var a: float;
-    var c: float;
-    var b:float;
-    var k:float;
+    var a: int;
+    var c: int;
+    function jeje(var z: int;): int {
+        var res: int;
+        res = z*5;
+        return res;
+    };
+
     function main(): void {
-        a=a*k;
-        while(a + b > c) {
-            if(b && c) {
-                b=k;
+        var res: int;
+        a = 1;
+        c = 8;
+        res = 3;
+        while(c>a){
+            if(c+a<11) {
+               print("yes");
             } else {
-                k=b+a;
+                print("no");
             };
-            b=a;
+            a = a+1;
         };
-        a=k;
-        do {
-            a=b*c*(a+b);
-        } while(a + b > c);
-        a=k;
+        print(a+c, 3);    
     };
 }
