@@ -4,17 +4,77 @@
       "goto",
       null,
       null,
+      16
+    ],
+    [
+      6,
+      4001,
+      8001,
+      14001
+    ],
+    [
+      "gotoF",
+      14001,
+      null,
       6
     ],
     [
-      3,
-      4001,
-      8001,
-      12001
+      "PRINT",
+      null,
+      null,
+      11001
     ],
     [
       5,
+      4001,
+      null,
+      17
+    ],
+    [
+      "RETURN",
+      null,
+      null,
+      null
+    ],
+    [
+      "PRINT",
+      null,
+      null,
+      4001
+    ],
+    [
+      "ERA",
+      "jeje",
+      null,
+      null
+    ],
+    [
+      1,
+      4001,
+      8002,
+      12001
+    ],
+    [
+      "PARAMETER",
       12001,
+      0,
+      null
+    ],
+    [
+      "GOSUB",
+      "jeje",
+      "1",
+      null
+    ],
+    [
+      5,
+      17,
+      null,
+      12002
+    ],
+    [
+      5,
+      12002,
       null,
       4002
     ],
@@ -38,13 +98,13 @@
     ],
     [
       5,
-      8002,
+      8003,
       null,
       16
     ],
     [
       5,
-      8003,
+      8001,
       null,
       4001
     ],
@@ -56,91 +116,31 @@
     ],
     [
       3,
-      8004,
-      8005,
+      8002,
+      16,
       12001
     ],
     [
-      1,
+      "PARAMETER",
       12001,
-      8001,
+      0,
+      null
+    ],
+    [
+      "GOSUB",
+      "jeje",
+      "1",
+      null
+    ],
+    [
+      5,
+      17,
+      null,
       12002
     ],
     [
-      "PARAMETER",
+      5,
       12002,
-      0,
-      null
-    ],
-    [
-      "GOSUB",
-      "jeje",
-      "1",
-      null
-    ],
-    [
-      5,
-      17,
-      null,
-      12003
-    ],
-    [
-      5,
-      12003,
-      null,
-      4002
-    ],
-    [
-      "ERA",
-      "jeje",
-      null,
-      null
-    ],
-    [
-      "PARAMETER",
-      8002,
-      0,
-      null
-    ],
-    [
-      "GOSUB",
-      "jeje",
-      "1",
-      null
-    ],
-    [
-      5,
-      17,
-      null,
-      12004
-    ],
-    [
-      "ERA",
-      "jeje",
-      null,
-      null
-    ],
-    [
-      "PARAMETER",
-      8005,
-      0,
-      null
-    ],
-    [
-      "GOSUB",
-      "jeje",
-      "1",
-      null
-    ],
-    [
-      5,
-      17,
-      null,
-      12005
-    ],
-    [
-      "PRINT",
-      null,
       null,
       4002
     ],
@@ -148,13 +148,7 @@
       "PRINT",
       null,
       null,
-      12005
-    ],
-    [
-      "PRINT",
-      null,
-      null,
-      12004
+      4002
     ],
     [
       14,
@@ -170,9 +164,11 @@
       "vars_table": [
         "a",
         "b",
+        "jeje",
         "jeje"
       ],
       "vars_types": [
+        "int",
         "int",
         "int",
         "int"
@@ -180,12 +176,13 @@
       "vars_dir": [
         15,
         16,
-        17
+        17,
+        18
       ],
       "initial_address": -1,
       "end_address": -1,
       "resource_count": {
-        "int": 3,
+        "int": 4,
         "float": 0,
         "bool": 0,
         "string": 0,
@@ -203,29 +200,35 @@
       "vars_table": [
         "z",
         "res",
-        "t0"
+        "t0",
+        "t1",
+        "t2"
       ],
       "vars_types": [
         "int",
+        "int",
+        "bool",
         "int",
         "int"
       ],
       "vars_dir": [
         4001,
         4002,
-        12001
+        14001,
+        12001,
+        12002
       ],
       "initial_address": 1,
-      "end_address": 5,
+      "end_address": 15,
       "resource_count": {
         "int": 2,
         "float": 0,
         "bool": 0,
         "string": 0,
         "temp": {
-          "int": 1,
+          "int": 2,
           "float": 0,
-          "bool": 0,
+          "bool": 1,
           "string": 0
         }
       }
@@ -237,15 +240,9 @@
         "c",
         "k",
         "t0",
-        "t1",
-        "t2",
-        "t3",
-        "t4"
+        "t1"
       ],
       "vars_types": [
-        "int",
-        "int",
-        "int",
         "int",
         "int",
         "int",
@@ -255,12 +252,9 @@
         4001,
         4002,
         12001,
-        12002,
-        12003,
-        12004,
-        12005
+        12002
       ],
-      "initial_address": 6,
+      "initial_address": 16,
       "end_address": -1,
       "resource_count": {
         "int": 2,
@@ -268,7 +262,7 @@
         "bool": 0,
         "string": 0,
         "temp": {
-          "int": 5,
+          "int": 2,
           "float": 0,
           "bool": 0,
           "string": 0
@@ -282,9 +276,11 @@
     "vars_table": [
       "a",
       "b",
+      "jeje",
       "jeje"
     ],
     "vars_types": [
+      "int",
       "int",
       "int",
       "int"
@@ -292,12 +288,13 @@
     "vars_dir": [
       15,
       16,
-      17
+      17,
+      18
     ],
     "initial_address": -1,
     "end_address": -1,
     "resource_count": {
-      "int": 3,
+      "int": 4,
       "float": 0,
       "bool": 0,
       "string": 0,
@@ -311,31 +308,28 @@
   },
   "constants": {
     "vars_table": [
-      5,
-      3,
       9,
-      2,
-      4
+      "\\nDONE",
+      1,
+      3
     ],
     "vars_types": [
       "int",
-      "int",
-      "int",
+      "string",
       "int",
       "int"
     ],
     "vars_dir": [
       8001,
+      11001,
       8002,
-      8003,
-      8004,
-      8005
+      8003
     ],
     "resource_count": {
-      "int": 5,
+      "int": 3,
       "float": 0,
       "bool": 0,
-      "string": 0
+      "string": 1
     }
   },
   "args_table": {

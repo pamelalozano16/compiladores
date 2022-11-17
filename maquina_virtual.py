@@ -60,9 +60,10 @@ class MaquinaVirtual:
                     print('\n-----------------------END--------------------------------\n')
                   #  memoria_virtual.printCurrent()
                 else:
-                    value1 = memoria_virtual.obtenerValor(quad[1])
-                    value2 = memoria_virtual.obtenerValor(quad[2])
-               #     print('OPERATION', value1, value2)
+                 #   memoria_virtual.printCurrent()
+                    value1 = memoria_virtual.obtenerValor(quad[1], True)
+                    value2 = memoria_virtual.obtenerValor(quad[2], True)
+                  #  print('OPERATION', value1, quad[1], value2)
                     value3 = quads_operations.quadArtimetic(quad[0], value1, value2)
                 #    print('RESULT', value3, quad[3])
                     memoria_virtual.insertarValor(value3, quad[3])

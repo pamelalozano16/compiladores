@@ -101,15 +101,17 @@ class MemoriaVirtual:
         #print('RESULT')
         #pprint(self.memoria)
     
-    def obtenerValor(self, dirVar):
+    def obtenerValor(self, dirVar, isParam=False):
         if not dirVar:
             return None
         scope, varType, dirInicial, isTemp = self.encontrarScope(dirVar)
         dir = dirVar-dirInicial
-       # print('obt', scope, varType, dirInicial, dir)
+      #  print('OBTENER', scope, varType, dirInicial, dir, self.memoria['local'][-1])
         if scope == 'temp':
             return self.memoria['local'][-1][scope][varType][dir]
         if scope == 'local':
+                if isParam and self.memoria[scope][-2]:
+                    return self.memoria[scope][-2][varType][dir]
                 return self.memoria[scope][-1][varType][dir]
         else:
                return self.memoria[scope][varType][dir]
