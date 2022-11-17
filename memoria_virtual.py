@@ -3,6 +3,7 @@ from pprint import pprint
 class MemoriaVirtual:
     def __init__(self):   
         self.dp={}
+        self.crear_memoria=[]
 
         self.memoria = {
             'global': {
@@ -63,7 +64,7 @@ class MemoriaVirtual:
             },
             'nombre': None,
         }
-        self.memoria['local'].append(newMem)
+        self.crear_memoria.append(newMem)
         return newMem
     
     def borrarMemoriaLocal(self):
@@ -72,7 +73,10 @@ class MemoriaVirtual:
     def encontrarDir(self, scope, varType, indx):
         return self.vars[scope][varType][1]+indx
     
-    def currentFuncName(self):
+    def currentFuncName(self, isParam=False):
+        if isParam and self.crear_memoria:
+      #      print('2',self.crear_memoria)
+            return self.crear_memoria[-1]['nombre']
         return self.memoria['local'][-1]['nombre']
     
     def encontrarScope(self, dirVar):
@@ -88,14 +92,19 @@ class MemoriaVirtual:
                     self.dp[dirVar] = (x, i, dirs[1], isTemp)
                     return x, i, dirs[1], isTemp
     
-    def insertarValor(self, valor, dirVar):
+    def insertarValor(self, valor, dirVar, isParam=False):
         scope, varType, dirInicial, isTemp = self.encontrarScope(dirVar)
         dir = dirVar-dirInicial
       #  print(f'INSERT [{scope}][{varType}][{dir}]', valor)
         if isTemp:
             self.memoria['local'][-1]['temp'][varType][dir] = valor
         elif scope == 'local':
-            self.memoria[scope][-1][varType][dir] = valor
+               # print(self.crear_memoria)
+                if isParam and self.crear_memoria[-1]:
+         #           print('4',self.crear_memoria)
+                    self.crear_memoria[-1][varType][dir] = valor
+                else:
+                    self.memoria[scope][-1][varType][dir] = valor
         else:
             self.memoria[scope][varType][dir] = valor
         #print('RESULT')
@@ -110,8 +119,9 @@ class MemoriaVirtual:
         if scope == 'temp':
             return self.memoria['local'][-1][scope][varType][dir]
         if scope == 'local':
-                if isParam and self.memoria[scope][-2]:
-                    return self.memoria[scope][-2][varType][dir]
+                if isParam and self.crear_memoria:
+        #            print('3',self.crear_memoria)
+                    return self.crear_memoria[-1][varType][dir]
                 return self.memoria[scope][-1][varType][dir]
         else:
                return self.memoria[scope][varType][dir]
@@ -131,14 +141,19 @@ class MemoriaVirtual:
     
     def crearMemoriaFunc(self, resource_count, nombre):
         self.crearMemoriaLocal()
-        self.memoria['local'][-1]['nombre'] = nombre
+        self.crear_memoria[-1]['nombre'] = nombre
         for i in resource_count:
            # print(i, resource_count[i])
             if i != 'temp':
-                self.memoria['local'][-1][i] = [None] * resource_count[i]
+                self.crear_memoria[-1][i] = [None] * resource_count[i]
             else:
                 for j in resource_count[i]:
-                    self.memoria['local'][-1][i][j] = [None] * (resource_count[i][j] + 1)
+                    self.crear_memoria[-1][i][j] = [None] * (resource_count[i][j] + 1)
+     #   print('1',self.crear_memoria)
+    
+    def goSub(self):
+       # print('MEM', self.crear_memoria)
+        self.memoria['local'].append(self.crear_memoria.pop())
 
 
 

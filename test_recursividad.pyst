@@ -18,7 +18,8 @@ start() {
         var k:int;
         b=3;
         c=9;
-        k=jeje(1*b);
+        print(b);
+        k=jeje(2*b);
         print(k);
     };
 }

@@ -35,6 +35,7 @@ class MaquinaVirtual:
             print('\nMemoria main')
             pprint(ovejota['function_table']['main']['resource_count'])
             memoria_virtual.crearMemoriaFunc(ovejota['function_table']['main']['resource_count'], 'main')
+            memoria_virtual.goSub()
             self.quads = ovejota['quads']
             self.function_table = ovejota['function_table']
             self.args_table = ovejota['args_table']
@@ -61,8 +62,8 @@ class MaquinaVirtual:
                   #  memoria_virtual.printCurrent()
                 else:
                  #   memoria_virtual.printCurrent()
-                    value1 = memoria_virtual.obtenerValor(quad[1], True)
-                    value2 = memoria_virtual.obtenerValor(quad[2], True)
+                    value1 = memoria_virtual.obtenerValor(quad[1])
+                    value2 = memoria_virtual.obtenerValor(quad[2])
                   #  print('OPERATION', value1, quad[1], value2)
                     value3 = quads_operations.quadArtimetic(quad[0], value1, value2)
                 #    print('RESULT', value3, quad[3])
@@ -83,13 +84,15 @@ class MaquinaVirtual:
                     resource_count = self.function_table[str(quad[1])]['resource_count']
                     memoria_virtual.crearMemoriaFunc(resource_count, str(quad[1]))
                 if quad[0] == 'PARAMETER':
-                    name = memoria_virtual.currentFuncName()
+                    name = memoria_virtual.currentFuncName(True)
+                  #  print('local', self.args_table, name, quad[2])
                     varDir = memoria_virtual.encontrarDir('local', self.args_table[name][quad[2]], quad[2])
                     value1 = memoria_virtual.obtenerValor(quad[1])
                    # print('PARAM', value1, varDir)
-                    memoria_virtual.insertarValor(value1, varDir)
+                    memoria_virtual.insertarValor(value1, varDir, True)
                   #  memoria_virtual.printCurrent()
                 if quad[0] == 'GOSUB':
+                    memoria_virtual.goSub()
                     name = memoria_virtual.currentFuncName()
                     initial_address = self.function_table[name]['initial_address']
                     self.stored_pointers.append(self.instruction_pointer)
