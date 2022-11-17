@@ -79,10 +79,21 @@ def p_estatuto(p):
                 | forLoop
                 | escritura
                 | funcion
-                | functionCall'''
+                | functionCall
+                | break'''
+    pass
+
+def p_break(p): #For returns before end of func
+    '''break : BREAK expresion'''
+    semantics.returnExpression()
+    semantics.addAssign()
+    semantics.checkAssign()
+    semantics.addReturnQuad()
+    #Check return type
+    #Assign exp to temp
     pass
                     
-def p_returnexp(p):
+def p_returnexp(p): #Exclusive for end of func
     '''returnexp : RETURN expresion SEMICOLON'''
     semantics.returnExpression()
     semantics.addAssign()
