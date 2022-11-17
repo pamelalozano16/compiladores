@@ -87,6 +87,7 @@ def p_returnexp(p):
     semantics.returnExpression()
     semantics.addAssign()
     semantics.checkAssign()
+    semantics.addReturnQuad()
     #Check return type
     #Assign exp to temp
     pass

@@ -84,6 +84,13 @@ class Quadruple:
         self.right=None
         self.res=None
         return self
+
+    def returnFunc(self):
+        self.operator="RETURN"
+        self.left=None
+        self.right=None
+        self.res=None
+        return self
     
     def addDestination(self, dest):
         self.res = dest

@@ -83,6 +83,10 @@ class Semantics:
     def returnExpression(self):
         var_name, var_type = self.variables_control.addFuncReturn()
         self.insertId(var_name, var_type)
+
+    def addReturnQuad(self):
+        quadreturnFunc = quadruple.returnFunc()
+        self.quads.append(quadreturnFunc.getQuad())
     
     def checkPrint(self):
         while 0<len(self.pOper) and self.pOper[-1]=="PRINT":
@@ -242,6 +246,7 @@ class Semantics:
             self.quads[0][-1] = initial_address
         else:
             quad = quadruple.endFunc()
+            self.variables_control.addFuncEndAdd(len(self.quads))
             self.quads.append(quad.getQuad())
         self.calling_function = None
     

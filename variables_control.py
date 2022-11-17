@@ -33,6 +33,7 @@ class VariableControl:
                 'vars_types': [],
                 'vars_dir':[],
                 'initial_address':-1,
+                'end_address':-1,
                 'resource_count':{
                     'int':0,
                     'float':0,
@@ -165,6 +166,7 @@ class VariableControl:
             'vars_types': [],
             'vars_dir':[],
             'initial_address':-1,
+            'end_address':-1,
             'resource_count':{
                 'int':0,
                 'float':0,
@@ -242,6 +244,10 @@ class VariableControl:
         self.add_var(previousScope, var_type)
         self.current_scope = previousScope
         return previousScope, var_type
+    
+    def addFuncEndAdd(self, endDir):
+      #  print('CURRENT', self.current_scope)
+        self.variables_table[self.current_scope]['end_address'] = endDir
     
     def declareArray(self, name, rows, cols=1):
         varType = self.find_vars_type(name)

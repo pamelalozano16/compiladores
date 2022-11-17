@@ -94,6 +94,9 @@ class MaquinaVirtual:
                     self.stored_pointers.append(self.instruction_pointer)
                     self.instruction_pointer = initial_address-1
                    # print('GOSUB', name, initial_address)
+                if quad[0] == 'RETURN':
+                    name = memoria_virtual.currentFuncName()
+                    self.instruction_pointer = self.function_table[name]['end_address']-1
                 if quad[0] == 'ENDPROC':
                     memoria_virtual.borrarMemoriaLocal()
                     self.instruction_pointer = self.stored_pointers.pop()

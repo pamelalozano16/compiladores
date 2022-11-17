@@ -4,7 +4,7 @@
       "goto",
       null,
       null,
-      5
+      6
     ],
     [
       3,
@@ -23,6 +23,12 @@
       4002,
       null,
       17
+    ],
+    [
+      "RETURN",
+      null,
+      null,
+      null
     ],
     [
       "ENDPROC",
@@ -177,6 +183,7 @@
         17
       ],
       "initial_address": -1,
+      "end_address": -1,
       "resource_count": {
         "int": 3,
         "float": 0,
@@ -209,6 +216,7 @@
         12001
       ],
       "initial_address": 1,
+      "end_address": 5,
       "resource_count": {
         "int": 2,
         "float": 0,
@@ -252,7 +260,8 @@
         12004,
         12005
       ],
-      "initial_address": 5,
+      "initial_address": 6,
+      "end_address": -1,
       "resource_count": {
         "int": 2,
         "float": 0,
@@ -286,6 +295,7 @@
       17
     ],
     "initial_address": -1,
+    "end_address": -1,
     "resource_count": {
       "int": 3,
       "float": 0,
