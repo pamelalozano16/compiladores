@@ -114,12 +114,6 @@ def p_asignacion(p):
         semantics.checkAssign()
     pass
 
-def p_asignacionArr(p):
-    '''asignacionArr : arr EQUAL expresion'''
-    semantics.addAssign()
-    semantics.checkAssign()
-    pass
-
 def p_escritura(p):
     '''escritura : PRINT LPAREN escrito RPAREN'''
     semantics.checkPrint()
@@ -142,7 +136,8 @@ def p_expresion(p):
     #a/b => expresion -> exp expresion -> exp exp -> termino termino -> factor operacion factor
     '''expresion : exp
                 | condition
-                | functionCall'''
+                | functionCall
+                | arr'''
         #       | expresion expresion ''' 
 
 def p_condition(p):
@@ -358,18 +353,29 @@ def p_declaracionMatrix(p):
         variables_control.declareArray(declaring_array.pop(), p[3], p[6])
     pass
     pass
-    
+
+def p_asignacionArr(p):
+    '''asignacionArr : arr arrayEqual expresion'''
+    semantics.addAssign()
+    semantics.checkAssign()
+    pass
+
+def p_arrayEqual(p):
+    '''arrayEqual : EQUAL'''
+    semantics.arrayAssign()
+    pass
+
 def p_arr(p):
     '''arr : callArr openBracket expresion abracket matrix
             | callArr openBracket expresion abracket epsilon'''
-    if (p[1]):
-        if variables_control.find_var(p[1]) == None:
-            raise ValueError("Variable "+str(p[1])+" is not declared")
     # Checar espacio
     pass  
 
 def p_callArr(p):
     '''callArr : ID'''
+    if (p[1]):
+        if variables_control.find_var(p[1]) == None:
+            raise ValueError("Variable "+str(p[1])+" is not declared")
     declaring_array.append(p[1])
     pass  
 

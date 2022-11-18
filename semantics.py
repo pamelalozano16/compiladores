@@ -15,6 +15,7 @@ class Semantics:
         self.k_arguments = 0 #Number of processed arguments per function call
         self.calling_function = None #Current function call
         self.calling_arrray=None
+        self.assignToArray=[]
         self.isPointer=[]
 
     def printQuadsWithNames(self): 
@@ -95,15 +96,22 @@ class Semantics:
                 self.pTypes.pop()
             if 0<len(self.pilaO):
                 quad = quadruple.createPrint(self.variables_control.find_vars_dir(self.pilaO.pop()))
-                self.quads.append(quad.getQuad())
+                newQuad = quad.getQuad()
+                for x, i in enumerate(newQuad):
+                    if i in self.isPointer:
+                        newQuad[x]=f'({newQuad[x]})'
+                self.quads.append(newQuad)
     
     def checkAssign(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="="):
+            if self.assignToArray: #Retrieving arr[i] if exists
+                self.pilaO.append(self.assignToArray.pop())
             right = self.variables_control.find_vars_dir(self.pilaO.pop())
             left = self.variables_control.find_vars_dir(self.pilaO.pop())
             right_type = self.pTypes.pop()
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), None, left, self.pTypes.pop(), right_type, right)
             newQuad = quad.getQuad()
+           # print('SOS',newQuad)
             for x, i in enumerate(newQuad):
                 if i in self.isPointer:
                     newQuad[x]=f'({newQuad[x]})'
@@ -283,6 +291,12 @@ class Semantics:
         self.pilaO.extend([varName, arrInitAddress])
         self.addOper('+') #DirBase + s1
         self.checkTerm(isPointer=True)
+    
+    def arrayAssign(self):
+        #Array was processed before expresion, since assigning to array is arr[i]=x
+        #we are removing arr[i] from pilaO so expresion goes first
+        if self.pilaO:
+            self.assignToArray.append(self.pilaO.pop())
 
     def findMatrixAddress(self):
       #  print('m',self.pilaO, self.pTypes)
