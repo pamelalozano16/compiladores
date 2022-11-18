@@ -17,7 +17,7 @@ start() {
     function main(): void {
         var c:int;
         var k:int;
-        arr[1]=0;
+        arr[4]=0;
         b=3;
         c=9;
         print(b);

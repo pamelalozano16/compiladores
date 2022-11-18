@@ -54,12 +54,19 @@ class MaquinaVirtual:
         #  print('\nCurrent: ', quad)
             if type(quad[0]) != str: #Is operation
                 if quad[0] == ASSIGN:
-                    value1 = memoria_virtual.obtenerValor(quad[1])
-                 #   print('ASSIGN', quad[1], value1, quad[3])
-                    memoria_virtual.insertarValor(value1, quad[3])
+                    if '(' in str(quad[1]):
+                        ptr = str(quad[1])
+                        quad[1]=ptr[1:-1]
+                        value1 = memoria_virtual.obtenerValor(int(quad[1]))
+                        value2 = memoria_virtual.obtenerValor(quad[3])
+                        memoria_virtual.insertarValor(value2, value1)
+                    else:
+                        value1 = memoria_virtual.obtenerValor(int(quad[1]))
+                    #   print('ASSIGN', quad[1], value1, quad[3])
+                        memoria_virtual.insertarValor(value1, quad[3])
                 elif quad[0] == END:
                     print('\n-----------------------END--------------------------------\n')
-                  #  memoria_virtual.printCurrent()
+                    memoria_virtual.printCurrent()
                 else:
                  #   memoria_virtual.printCurrent()
                     value1 = memoria_virtual.obtenerValor(quad[1])
@@ -109,9 +116,13 @@ class MaquinaVirtual:
                     self.instruction_pointer = self.stored_pointers.pop()
                    # print('END PROC', self.instruction_pointer)
                 if quad[0] == 'VER':
-                    value1 = memoria_virtual.obtenerValor(quad[1])
-                    value2 = memoria_virtual.obtenerValor(quad[2])
-                    print('VER', value1, value2)
+                    value1 = int(memoria_virtual.obtenerValor(quad[1]))
+                    value2 = int(memoria_virtual.obtenerValor(quad[2]))-1
+                    value3 = int(memoria_virtual.obtenerValor(quad[3]))
+                    first = quads_operations.quadArtimetic(7, value2, value1)
+                    second = quads_operations.quadArtimetic(7, value1, value3)
+                    if not (first and second):
+                        raise ValueError(f'Index out of range: {value1} in [{value2+1}, {value3}]')
                 if quad[0] == 'PRINT':
                     value1 = memoria_virtual.obtenerValor(quad[3])
                     if r"\n" in str(value1):

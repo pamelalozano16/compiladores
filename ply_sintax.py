@@ -72,7 +72,8 @@ def p_estatutoExp(p):
     pass
 
 def p_estatuto(p):
-    '''estatuto : asignacion 
+    '''estatuto : asignacion
+                | asignacionArr
                 | condicion
                 | whileLoop
                 | doWhile
@@ -104,14 +105,19 @@ def p_returnexp(p): #Exclusive for end of func
     pass
 
 def p_asignacion(p):
-    '''asignacion : ID EQUAL expresion
-                | arr EQUAL expresion'''
+    '''asignacion : ID EQUAL expresion'''
     if(variables_control.find_var(p[1]) == None):
         print("Error: Variable "+str(p[1])+" is not declared")
     else:
         semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
         semantics.addAssign()
         semantics.checkAssign()
+    pass
+
+def p_asignacionArr(p):
+    '''asignacionArr : arr EQUAL expresion'''
+    semantics.addAssign()
+    semantics.checkAssign()
     pass
 
 def p_escritura(p):
