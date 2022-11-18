@@ -1,11 +1,31 @@
 start() {
-    var a[5]: int;
-    var k: int;
+    var a: int;
+    var b: int;
+    var arr[5]: int;
+
+    function jeje(var z: int;): int {
+        var res: int;
+        if(z > 9) {
+            print("\nDONE");
+            break z;
+        };
+        print(z);
+        res = jeje(z+1);
+        return res;
+    };
+
     function main(): void {
-        var b[3][4]: int;
-        var c: int;
-        print("Pamela", c*a+7, k*c+34);
-        c=a[2];
-        k=b[3*c][c*k];
+        var c:int;
+        var k:int;
+        arr[4]=88;
+        arr[3]=60;
+        b=3;
+        c=arr[3];
+        print(arr[4]);
+        print(c);
+
+        print(b);
+        k=jeje(2*b);
+        print(k);
     };
 }
