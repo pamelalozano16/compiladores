@@ -3,29 +3,26 @@ start() {
     var b: int;
     var arr[5]: int;
 
-    function jeje(var z: int;): int {
-        var res: int;
-        if(z > 9) {
-            print("\nDONE");
-            break z;
+    function createArr(): void {
+        var i: int;
+        for(i=(0-1);i<4;i=i+1) {
+           arr[i]=i+1;
         };
-        print(z);
-        res = jeje(z+1);
-        return res;
+        
+        for(i=(0-1);i<4;i=i+1) {
+           print(arr[i]);
+        };
     };
 
     function main(): void {
         var c:int;
         var k:int;
-        arr[4]=88;
+        arr[0]=99;
         arr[3]=60;
+        print(arr[0]);
         b=3;
         c=arr[3];
-        print(arr[4]);
         print(c);
-
-        print(b);
-        k=jeje(2*b);
-        print(k);
+        createArr();
     };
 }

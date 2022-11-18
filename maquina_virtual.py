@@ -54,36 +54,38 @@ class MaquinaVirtual:
         #  print('\nCurrent: ', quad)
             if type(quad[0]) != str: #Is operation
                 if quad[0] == ASSIGN:
+                    ptrQuad = quad[3]
                     if '(' in str(quad[1]):
                         ptr = str(quad[1])
-                        quad[1]=ptr[1:-1]
-                        value1 = memoria_virtual.obtenerValor(int(quad[1]))
+                        ptrQuad2=ptr[1:-1]
+                        value1 = memoria_virtual.obtenerValor(int(ptrQuad2))
                         value2 = memoria_virtual.obtenerValor(value1)
                         memoria_virtual.insertarValor(value2, quad[3])
                     elif '(' in str(quad[3]):
                         ptr = str(quad[3])
-                        quad[3]=ptr[1:-1]
+                        ptrQuad=ptr[1:-1]
                         value1 = memoria_virtual.obtenerValor(int(quad[1]))
-                        value2 = memoria_virtual.obtenerValor(int(quad[3]))
+                        value2 = memoria_virtual.obtenerValor(int(ptrQuad))
                         memoria_virtual.insertarValor(value1, value2)
                     else:
                         value1 = memoria_virtual.obtenerValor(int(quad[1]))
-                    #   print('ASSIGN', quad[1], value1, quad[3])
-                        memoria_virtual.insertarValor(value1, quad[3])
+                    #   print('ASSIGN', quad[1], value1, ptrQuad)
+                        memoria_virtual.insertarValor(value1, ptrQuad)
                 elif quad[0] == END:
                     print('\n-----------------------END--------------------------------\n')
-                   # memoria_virtual.printCurrent()
+                  #  memoria_virtual.printCurrent()
                 else:
                  #   memoria_virtual.printCurrent()
                     value1 = memoria_virtual.obtenerValor(quad[1])
                     value2 = memoria_virtual.obtenerValor(quad[2])
                   #  print('OPERATION', value1, quad[1], value2)
                     value3 = quads_operations.quadArtimetic(quad[0], value1, value2)
+                    ptrQuad = quad[3]
                 #    print('RESULT', value3, quad[3])
                     if '(' in str(quad[3]):
                         ptr = str(quad[3])
-                        quad[3]=ptr[1:-1]
-                    memoria_virtual.insertarValor(value3, int(quad[3]))
+                        ptrQuad=int(ptr[1:-1])
+                    memoria_virtual.insertarValor(value3, ptrQuad)
             else: #Is command
                 if quad[0] == 'goto':
                     self.instruction_pointer = quad[3]-1
@@ -93,7 +95,7 @@ class MaquinaVirtual:
                         self.instruction_pointer = quad[3]-1
                        # print('QUAD',quad, value1, quad[3])
                 if quad[0] == 'gotoT':
-                   value1 = memoria_virtual.obtenerValor(quad[1])
+                   value1 = memoria_virtual.obtenerValor(int(quad[1]))
                    if value1 == True:
                         self.instruction_pointer = quad[3]-1
                 if quad[0] == 'ERA':
@@ -130,11 +132,13 @@ class MaquinaVirtual:
                     if not (first and second):
                         raise ValueError(f'Index out of range: {value1} in [{value2+1}, {value3}]')
                 if quad[0] == 'PRINT':
+                   # print(quad)
                     if '(' in str(quad[3]):
                         ptr = str(quad[3])
-                        quad[3]=ptr[1:-1]
-                        ptrDir = memoria_virtual.obtenerValor(int(quad[3]))
+                        ptrQuad=ptr[1:-1]
+                        ptrDir = memoria_virtual.obtenerValor(int(ptrQuad))
                         value1 = memoria_virtual.obtenerValor(int(ptrDir))
+                       # print('PING', ptrQuad, ptrDir, value1)
                     else:
                         value1 = memoria_virtual.obtenerValor(int(quad[3]))
                     if r"\n" in str(value1):
