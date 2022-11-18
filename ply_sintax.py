@@ -104,7 +104,8 @@ def p_returnexp(p): #Exclusive for end of func
     pass
 
 def p_asignacion(p):
-    '''asignacion : ID EQUAL expresion'''
+    '''asignacion : ID EQUAL expresion
+                | arr EQUAL expresion'''
     if(variables_control.find_var(p[1]) == None):
         print("Error: Variable "+str(p[1])+" is not declared")
     else:

@@ -260,6 +260,7 @@ class VariableControl:
             'type': varType,
             'initial_address': varDir
         }
+        self.variables_table[varScope]['resource_count'][varType]+=(rows*cols)
         self.addConst(0, 'int') #Linf de arrays
         self.addConst(varDir, 'int')
         self.addConst(rows, 'int')

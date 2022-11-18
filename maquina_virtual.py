@@ -67,7 +67,10 @@ class MaquinaVirtual:
                   #  print('OPERATION', value1, quad[1], value2)
                     value3 = quads_operations.quadArtimetic(quad[0], value1, value2)
                 #    print('RESULT', value3, quad[3])
-                    memoria_virtual.insertarValor(value3, quad[3])
+                    if '(' in str(quad[3]):
+                        ptr = str(quad[3])
+                        quad[3]=ptr[1:-1]
+                    memoria_virtual.insertarValor(value3, int(quad[3]))
             else: #Is command
                 if quad[0] == 'goto':
                     self.instruction_pointer = quad[3]-1
@@ -105,6 +108,10 @@ class MaquinaVirtual:
                     memoria_virtual.borrarMemoriaLocal()
                     self.instruction_pointer = self.stored_pointers.pop()
                    # print('END PROC', self.instruction_pointer)
+                if quad[0] == 'VER':
+                    value1 = memoria_virtual.obtenerValor(quad[1])
+                    value2 = memoria_virtual.obtenerValor(quad[2])
+                    print('VER', value1, value2)
                 if quad[0] == 'PRINT':
                     value1 = memoria_virtual.obtenerValor(quad[3])
                     if r"\n" in str(value1):
