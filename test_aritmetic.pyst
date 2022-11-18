@@ -3,7 +3,6 @@ start() {
     var c: int;
     var b: float;
     var k: float;
-    var res: int;
     function jeje(var z: int;): int {
         var res: int;
         res = z*5;

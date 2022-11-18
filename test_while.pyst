@@ -1,11 +1,6 @@
 start() {
     var a: int;
     var c: int;
-    function jeje(var z: int;): int {
-        var res: int;
-        res = z*5;
-        return res;
-    };
 
     function main(): void {
         var res: int;

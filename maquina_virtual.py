@@ -26,14 +26,14 @@ class MaquinaVirtual:
     def run(self):
         with open('ovejota.json') as json_file:
             ovejota = json.load(json_file)
-            print('Memoria Global')
-            pprint(ovejota['global']['resource_count'])
+            # print('Memoria Global')
+            # pprint(ovejota['global']['resource_count'])
             memoria_virtual.crearMemoriaGlobal(ovejota['global']['resource_count'])
-            print('\nMemoria Const')
-            pprint(ovejota['constants'])
+            # print('\nMemoria Const')
+            # pprint(ovejota['constants'])
             memoria_virtual.crearMemoriaConst(ovejota['constants'])
-            print('\nMemoria main')
-            pprint(ovejota['function_table']['main']['resource_count'])
+            # print('\nMemoria main')
+            # pprint(ovejota['function_table']['main']['resource_count'])
             memoria_virtual.crearMemoriaFunc(ovejota['function_table']['main']['resource_count'], 'main')
             memoria_virtual.goSub()
             self.quads = ovejota['quads']

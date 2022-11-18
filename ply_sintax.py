@@ -445,18 +445,6 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc(debug=True)
 
-fileName =''
-if 1<len(sys.argv):
-    fileName = str(sys.argv[1])
-else:
-    fileName = input('Pystachio > ')
-with open(f'test_{fileName}.pyst') as f:
-    try:
-        contents = f.read()
-        result = parser.parse(contents)
-    except EOFError as e:
-        print('Error:', e)
-
 # while True:
 #     try:
 #         s = input('Pystachio > ')
