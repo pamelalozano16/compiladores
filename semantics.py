@@ -17,6 +17,11 @@ class Semantics:
         self.calling_arrray=None
         self.assignToArray=[]
         self.isPointer=[]
+    
+    def checkIfIsPointer(self, newQuad):
+        for x, i in enumerate(newQuad):
+            if i in self.isPointer:
+                newQuad[x]=f'({newQuad[x]})'
 
     def printQuadsWithNames(self): 
         #Imprime quads con nombres en lugar de direcciones
@@ -97,9 +102,7 @@ class Semantics:
             if 0<len(self.pilaO):
                 quad = quadruple.createPrint(self.variables_control.find_vars_dir(self.pilaO.pop()))
                 newQuad = quad.getQuad()
-                for x, i in enumerate(newQuad):
-                    if i in self.isPointer:
-                        newQuad[x]=f'({newQuad[x]})'
+                self.checkIfIsPointer(newQuad)
                 self.quads.append(newQuad)
     
     def checkAssign(self):
@@ -112,9 +115,7 @@ class Semantics:
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), None, left, self.pTypes.pop(), right_type, right)
             newQuad = quad.getQuad()
            # print('SOS',newQuad)
-            for x, i in enumerate(newQuad):
-                if i in self.isPointer:
-                    newQuad[x]=f'({newQuad[x]})'
+            self.checkIfIsPointer(newQuad)
             self.quads.append(newQuad)
 
 
@@ -127,9 +128,7 @@ class Semantics:
             newQuad[-1] = dirTemp
             if isPointer:
                 self.isPointer.append(dirTemp)
-            for x, i in enumerate(newQuad):
-                if i in self.isPointer:
-                    newQuad[x]=f'({newQuad[x]})'
+            self.checkIfIsPointer(newQuad)
             self.quads.append(newQuad)
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
@@ -144,6 +143,7 @@ class Semantics:
             dirTemp = self.variables_control.addTemp(res, typeRes)
             newQuad = quad.getQuad()
             newQuad[-1] = dirTemp
+            self.checkIfIsPointer(newQuad)
             self.quads.append(newQuad)
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
@@ -157,6 +157,7 @@ class Semantics:
             dirTemp = self.variables_control.addTemp(res, typeRes)
             newQuad = quad.getQuad()
             newQuad[-1] = dirTemp
+            self.checkIfIsPointer(newQuad)
             self.quads.append(newQuad)
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
@@ -176,7 +177,9 @@ class Semantics:
     def createGoToF(self):
         quadGoto = quadruple.createGoToF(self.variables_control.find_vars_dir(self.pilaO.pop()))
         if self.pTypes.pop() == 'bool':
-            self.quads.append(quadGoto.getQuad())
+            newQuad = quadGoto.getQuad()
+            self.checkIfIsPointer(newQuad)
+            self.quads.append(newQuad)
             self.pSaltos.append(len(self.quads)-1)
         else: 
             raise ValueError("IF, WHILE and FOR blocks are conditional")
@@ -184,7 +187,9 @@ class Semantics:
     def createGoToV(self):
         quadGoto = quadruple.createGoToV(self.variables_control.find_vars_dir(self.pilaO.pop()))
         if self.pTypes.pop() == 'bool':
-            self.quads.append(quadGoto.getQuad())
+            newQuad = quadGoto.getQuad()
+            self.checkIfIsPointer(newQuad)
+            self.quads.append(newQuad)
             self.pSaltos.append(len(self.quads)-1)
         else: 
             raise ValueError("IF, WHILE and FOR blocks are conditional")
@@ -230,20 +235,26 @@ class Semantics:
         if(varType == expectedType): #Compare expected arg types
             varDir = self.variables_control.find_vars_dir(op)
             quad = quadruple.createParam(varDir, self.k_arguments)
-            self.quads.append(quad.getQuad())
+            newQuad = quad.getQuad()
+            self.checkIfIsPointer(newQuad)
+            self.quads.append(newQuad)
         else:
             raise ValueError(f'Expected {op} of type {expectedType}')
         self.k_arguments += 1
     
     def addFuncEra(self, name): #Generate Space
         quad = quadruple.createEra(name)
-        self.quads.append(quad.getQuad())
+        newQuad = quad.getQuad()
+        self.checkIfIsPointer(newQuad)
+        self.quads.append(newQuad)
         self.calling_function=name
     
     def addFuncGoSub(self):
         initial_address = self.variables_control.getFuncInitialAddress(self.calling_function)
         quad = quadruple.createGoSub(self.calling_function, initial_address)
-        self.quads.append(quad.getQuad())
+        newQuad = quad.getQuad()
+        self.checkIfIsPointer(newQuad)
+        self.quads.append(newQuad)
         self.k_arguments = 0
   #      self.variables_control.change_scope(self.calling_function)
 
@@ -255,7 +266,9 @@ class Semantics:
         else:
             quad = quadruple.endFunc()
             self.variables_control.addFuncEndAdd(len(self.quads))
-            self.quads.append(quad.getQuad())
+            newQuad = quad.getQuad()
+            self.checkIfIsPointer(newQuad)
+            self.quads.append(newQuad)
         self.calling_function = None
     
     def checkReturnValue(self):
@@ -275,7 +288,9 @@ class Semantics:
         lSup = self.variables_control.find_vars_dir(arrayObj[kind])
         lInf = self.variables_control.find_vars_dir(0)
         quad = quadruple.arrVer(self.variables_control.find_vars_dir(varName), lInf, lSup)
-        self.quads.append(quad.getQuad())
+        newQuad = quad.getQuad()
+        self.checkIfIsPointer(newQuad)
+        self.quads.append(newQuad)
     
     def findArrAddress(self, arrName):
      #   print('a',self.pilaO, self.pTypes)
@@ -316,7 +331,9 @@ class Semantics:
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)
-        self.quads.append(quad.getQuad())
+        newQuad = quad.getQuad()
+        self.checkIfIsPointer(newQuad)
+        self.quads.append(newQuad)
         funcTable = self.variables_control.getFuncTable()
         obj = {"quads":self.quads, "function_table": funcTable, "global":funcTable['global'], "constants": self.variables_control.getConstants(), "args_table":self.variables_control.get_args_table()}
         with open('ovejota.json', "w") as output_file:
