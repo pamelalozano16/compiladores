@@ -76,8 +76,19 @@ class MaquinaVirtual:
                   #  memoria_virtual.printCurrent()
                 else:
                  #   memoria_virtual.printCurrent()
-                    value1 = memoria_virtual.obtenerValor(quad[1])
-                    value2 = memoria_virtual.obtenerValor(quad[2])
+                    ptrQuad1 = quad[1]
+                    if '(' in str(quad[1]):
+                        ptr = str(quad[1])
+                        ptrDir=int(ptr[1:-1])
+                        ptrQuad1 = memoria_virtual.obtenerValor(int(ptrDir))
+                    value1 = memoria_virtual.obtenerValor(int(ptrQuad1))
+
+                    ptrQuad2 = quad[2]
+                    if '(' in str(quad[2]):
+                        ptr = str(quad[2])
+                        ptrDir=int(ptr[1:-1])
+                        ptrQuad2 = memoria_virtual.obtenerValor(int(ptrDir))
+                    value2 = memoria_virtual.obtenerValor(int(ptrQuad2))
                   #  print('OPERATION', value1, quad[1], value2)
                     value3 = quads_operations.quadArtimetic(quad[0], value1, value2)
                     ptrQuad = quad[3]
