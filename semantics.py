@@ -22,6 +22,7 @@ class Semantics:
         for x, i in enumerate(newQuad):
             if i in self.isPointer:
                 newQuad[x]=f'({newQuad[x]})'
+        return newQuad
 
     def printQuadsWithNames(self): 
         #Imprime quads con nombres en lugar de direcciones
@@ -115,7 +116,7 @@ class Semantics:
             quad, typeRes = quadruple.createQuad(self.pOper.pop(), None, left, self.pTypes.pop(), right_type, right)
             newQuad = quad.getQuad()
            # print('SOS',newQuad)
-            self.checkIfIsPointer(newQuad)
+            newQuad = self.checkIfIsPointer(newQuad)
             self.quads.append(newQuad)
 
 
@@ -135,7 +136,7 @@ class Semantics:
             self.tempCounter+=1
   #      print("Res:'", self.quads, self.pilaO, self.pTypes)
 
-    def checkFact(self):
+    def checkFact(self, isPointer=False):
        # print("Res:", self.quads, self.pilaO, self.pTypes, self.pOper)
         if 0<len(self.pOper) and (self.pOper[-1]=="*" or self.pOper[-1]=="/"):
             res = "t"+str(self.tempCounter)
@@ -143,7 +144,9 @@ class Semantics:
             dirTemp = self.variables_control.addTemp(res, typeRes)
             newQuad = quad.getQuad()
             newQuad[-1] = dirTemp
-            self.checkIfIsPointer(newQuad)
+            if isPointer:
+                self.isPointer.append(dirTemp)
+            newQuad = self.checkIfIsPointer(newQuad)
             self.quads.append(newQuad)
             self.pilaO.append(res)
             self.pTypes.append(typeRes)
@@ -325,8 +328,15 @@ class Semantics:
         self.pilaO.extend([varName, arrayObj['rows']])
         self.addOper('*') #s2 * NumRows
         self.checkFact()
+        pendingPtr = None
+        if 1<len(self.pilaO):
+            pendingPtr = self.pilaO[-2]
+            dir = self.variables_control.find_vars_dir(pendingPtr)
+            self.isPointer.remove(dir)
         self.addOper('+') #dirBase + s1 + s2 * NumRows
         self.checkTerm(isPointer=True)
+        if pendingPtr:
+            self.isPointer.append(pendingPtr)
         self.calling_arrray = None
 
     def endProgram(self):
