@@ -1,10 +1,7 @@
 start() {
     function main(): void {
-        var arr[5][6]: int;
-        var c:int;
-        arr[0][3]=99;
-        arr[0][1]=33*2;
-        print(arr[0][1]);
-        print(arr[0][3]);
+        var i: int;
+        input(i);
+        print(i);
     };
 }

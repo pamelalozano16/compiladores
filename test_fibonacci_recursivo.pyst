@@ -16,6 +16,8 @@ start() {
     };
 
     function main(): void {
-        print(fibonacci(12));
+        var n: int;
+        input(n);
+        print(fibonacci(n));
     };
 }

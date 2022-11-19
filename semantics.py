@@ -338,6 +338,40 @@ class Semantics:
         if pendingPtr:
             self.isPointer.append(pendingPtr)
         self.calling_arrray = None
+    
+    def addInput(self, inp, id):
+        inpType = self.variables_control.find_vars_type(id)
+        inpToAdd=inp
+        if(inpType == 'int'):
+            try:
+                inpToAdd=int(inp)
+               # print('INP', int(inp))
+                self.variables_control.addConst(int(inp), 'int')
+            except:
+                raise ValueError("Must enter same type as variable")
+        elif(inpType == 'float' and float(inp)):
+            try:
+                inpToAdd=float(inp)
+                self.variables_control.addConst(inp, 'float')
+            except:
+                raise ValueError("Must enter same type as variable")
+        elif(inpType == 'bool' and (inp=='True' or inp=='False')):
+            self.variables_control.addConst(inp, 'bool')
+        elif(inpType == 'string'):
+            try:
+                inpToAdd=str(inp)
+                self.variables_control.addConst(inp, 'string')
+            except:
+                raise ValueError("Must enter same type as variable")
+        else:
+            raise ValueError("Must enter same type as variable")
+        self.pilaO.append(inpToAdd)
+        self.pTypes.append(inpType)
+        self.pilaO.append(id)
+        self.pTypes.append(inpType)
+        self.pOper.append('=')
+        self.checkAssign()
+
 
     def endProgram(self):
         quad, typeRes = quadruple.createQuad("end", None, None, "#", "#", None)

@@ -26,6 +26,7 @@ reserved_keywords = {
     'for': 'FOR',
     'return': 'RETURN',
     'break': 'BREAK',
+    'input': 'INPUT',
     'float': 'FLOAT',
     'print': 'PRINT',
     'do': 'DO',

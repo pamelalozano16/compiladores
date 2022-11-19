@@ -81,7 +81,8 @@ def p_estatuto(p):
                 | escritura
                 | funcion
                 | functionCall
-                | break'''
+                | break
+                | input'''
     pass
 
 def p_break(p): #For returns before end of func
@@ -410,6 +411,12 @@ def p_mbracket(p):
     '''mbracket : closeBracket'''
     semantics.findMatrixAddress()
     pass
+
+def p_input(p):
+    '''input : INPUT LPAREN ID RPAREN'''
+    s = input('Pystachio > ')
+    semantics.addInput(s, p[3])
+    pass   
 
 def p_varcte(p):
     '''varcte : ID 

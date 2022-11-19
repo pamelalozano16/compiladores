@@ -4,157 +4,229 @@
       "goto",
       null,
       null,
-      1
+      32
     ],
     [
-      "VER",
+      7,
+      4001,
       8001,
-      8001,
-      8003
+      14001
     ],
     [
-      1,
+      "gotoF",
+      14001,
+      null,
+      7
+    ],
+    [
+      "PRINT",
+      null,
+      null,
+      11001
+    ],
+    [
+      2,
       8001,
       8002,
-      "(12001)"
-    ],
-    [
-      "VER",
-      8005,
-      8001,
-      8004
-    ],
-    [
-      3,
-      8005,
-      8003,
-      12002
-    ],
-    [
-      1,
-      12001,
-      12002,
-      "(12003)"
+      12001
     ],
     [
       5,
-      8006,
+      12001,
       null,
-      "(12003)"
+      15
     ],
     [
-      "VER",
-      8001,
-      8001,
-      8003
+      "RETURN",
+      null,
+      null,
+      null
     ],
     [
-      1,
+      9,
+      4001,
       8001,
+      14002
+    ],
+    [
+      "gotoF",
+      14002,
+      null,
+      11
+    ],
+    [
+      5,
+      8001,
+      null,
+      15
+    ],
+    [
+      "RETURN",
+      null,
+      null,
+      null
+    ],
+    [
+      9,
+      4001,
       8002,
-      "(12004)"
+      14003
     ],
     [
-      "VER",
-      8007,
-      8001,
-      8004
-    ],
-    [
-      3,
-      8007,
+      9,
+      4001,
       8003,
+      14004
+    ],
+    [
+      11,
+      14003,
+      14004,
+      14005
+    ],
+    [
+      "gotoF",
+      14005,
+      null,
+      17
+    ],
+    [
+      5,
+      8002,
+      null,
+      15
+    ],
+    [
+      "RETURN",
+      null,
+      null,
+      null
+    ],
+    [
+      "ERA",
+      "fibonacci",
+      null,
+      null
+    ],
+    [
+      2,
+      4001,
+      8002,
+      12002
+    ],
+    [
+      "PARAMETER",
+      12002,
+      0,
+      null
+    ],
+    [
+      "GOSUB",
+      "fibonacci",
+      "1",
+      null
+    ],
+    [
+      5,
+      15,
+      null,
+      12003
+    ],
+    [
+      "ERA",
+      "fibonacci",
+      null,
+      null
+    ],
+    [
+      2,
+      4001,
+      8003,
+      12004
+    ],
+    [
+      "PARAMETER",
+      12004,
+      0,
+      null
+    ],
+    [
+      "GOSUB",
+      "fibonacci",
+      "1",
+      null
+    ],
+    [
+      5,
+      15,
+      null,
       12005
     ],
     [
       1,
-      12004,
+      12003,
       12005,
-      "(12006)"
-    ],
-    [
-      3,
-      8008,
-      8009,
-      12007
+      12006
     ],
     [
       5,
-      12007,
+      12006,
       null,
-      "(12006)"
+      4002
     ],
     [
-      "VER",
-      8001,
-      8001,
-      8003
+      5,
+      4002,
+      null,
+      15
     ],
     [
-      1,
-      8001,
-      8002,
-      "(12008)"
+      "RETURN",
+      null,
+      null,
+      null
     ],
     [
-      "VER",
-      8007,
-      8001,
-      8004
+      "ENDPROC",
+      null,
+      null,
+      null
     ],
     [
-      3,
-      8007,
-      8003,
-      12009
+      5,
+      8004,
+      null,
+      4001
     ],
     [
-      1,
-      12008,
-      12009,
-      "(12010)"
+      "ERA",
+      "fibonacci",
+      null,
+      null
+    ],
+    [
+      "PARAMETER",
+      4001,
+      0,
+      null
+    ],
+    [
+      "GOSUB",
+      "fibonacci",
+      "1",
+      null
+    ],
+    [
+      5,
+      15,
+      null,
+      12001
     ],
     [
       "PRINT",
       null,
       null,
-      "(12010)"
-    ],
-    [
-      "VER",
-      8001,
-      8001,
-      8003
-    ],
-    [
-      1,
-      8001,
-      8002,
-      "(12011)"
-    ],
-    [
-      "VER",
-      8005,
-      8001,
-      8004
-    ],
-    [
-      3,
-      8005,
-      8003,
-      12012
-    ],
-    [
-      1,
-      12011,
-      12012,
-      "(12013)"
-    ],
-    [
-      "PRINT",
-      null,
-      null,
-      "(12013)"
+      12001
     ],
     [
       14,
@@ -167,13 +239,28 @@
     "global": {
       "scope": "#",
       "return": "void",
-      "vars_table": [],
-      "vars_types": [],
-      "vars_dir": [],
+      "vars_table": [
+        "fibonacci",
+        "fibonacci",
+        "fibonacci",
+        "fibonacci"
+      ],
+      "vars_types": [
+        "int",
+        "int",
+        "int",
+        "int"
+      ],
+      "vars_dir": [
+        15,
+        16,
+        17,
+        18
+      ],
       "initial_address": -1,
       "end_address": -1,
       "resource_count": {
-        "int": 0,
+        "int": 4,
         "float": 0,
         "bool": 0,
         "string": 0,
@@ -185,12 +272,12 @@
         }
       }
     },
-    "main": {
-      "return": "void",
+    "fibonacci": {
+      "return": "int",
       "scope": "global",
       "vars_table": [
-        "arr",
-        "c",
+        "n",
+        "res",
         "t0",
         "t1",
         "t2",
@@ -201,21 +288,17 @@
         "t7",
         "t8",
         "t9",
-        "t10",
-        "t11",
-        "t12"
+        "t10"
       ],
       "vars_types": [
         "int",
         "int",
+        "bool",
         "int",
-        "int",
-        "int",
-        "int",
-        "int",
-        "int",
-        "int",
-        "int",
+        "bool",
+        "bool",
+        "bool",
+        "bool",
         "int",
         "int",
         "int",
@@ -224,30 +307,58 @@
       ],
       "vars_dir": [
         4001,
-        4031,
+        4002,
+        14001,
         12001,
+        14002,
+        14003,
+        14004,
+        14005,
         12002,
         12003,
         12004,
         12005,
-        12006,
-        12007,
-        12008,
-        12009,
-        12010,
-        12011,
-        12012,
-        12013
+        12006
       ],
       "initial_address": 1,
-      "end_address": -1,
+      "end_address": 31,
       "resource_count": {
-        "int": 32,
+        "int": 2,
         "float": 0,
         "bool": 0,
         "string": 0,
         "temp": {
-          "int": 13,
+          "int": 6,
+          "float": 0,
+          "bool": 5,
+          "string": 0
+        }
+      }
+    },
+    "main": {
+      "return": "void",
+      "scope": "global",
+      "vars_table": [
+        "n",
+        "t0"
+      ],
+      "vars_types": [
+        "int",
+        "int"
+      ],
+      "vars_dir": [
+        4001,
+        12001
+      ],
+      "initial_address": 32,
+      "end_address": -1,
+      "resource_count": {
+        "int": 1,
+        "float": 0,
+        "bool": 0,
+        "string": 0,
+        "temp": {
+          "int": 1,
           "float": 0,
           "bool": 0,
           "string": 0
@@ -258,13 +369,28 @@
   "global": {
     "scope": "#",
     "return": "void",
-    "vars_table": [],
-    "vars_types": [],
-    "vars_dir": [],
+    "vars_table": [
+      "fibonacci",
+      "fibonacci",
+      "fibonacci",
+      "fibonacci"
+    ],
+    "vars_types": [
+      "int",
+      "int",
+      "int",
+      "int"
+    ],
+    "vars_dir": [
+      15,
+      16,
+      17,
+      18
+    ],
     "initial_address": -1,
     "end_address": -1,
     "resource_count": {
-      "int": 0,
+      "int": 4,
       "float": 0,
       "bool": 0,
       "string": 0,
@@ -279,46 +405,37 @@
   "constants": {
     "vars_table": [
       0,
-      4001,
-      5,
-      6,
-      3,
-      99,
+      "Wrong Input",
       1,
-      33,
-      2
+      2,
+      12
     ],
     "vars_types": [
       "int",
-      "int",
-      "int",
-      "int",
-      "int",
-      "int",
+      "string",
       "int",
       "int",
       "int"
     ],
     "vars_dir": [
       8001,
+      11001,
       8002,
       8003,
-      8004,
-      8005,
-      8006,
-      8007,
-      8008,
-      8009
+      8004
     ],
     "resource_count": {
-      "int": 9,
+      "int": 4,
       "float": 0,
       "bool": 0,
-      "string": 0
+      "string": 1
     }
   },
   "args_table": {
     "global": [],
+    "fibonacci": [
+      "int"
+    ],
     "main": []
   }
 }
