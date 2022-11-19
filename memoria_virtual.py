@@ -79,6 +79,16 @@ class MemoriaVirtual:
             return self.crear_memoria[-1]['nombre']
         return self.memoria['local'][-1]['nombre']
     
+    def encontrarType(self, dirVar):
+        for x in self.vars:
+            isTemp = False
+            if x == 'temp':
+                isTemp = True
+            for i in self.vars[x]:
+                dirs = self.vars[x][i]
+                if(dirs[1]<=dirVar and dirVar<=dirs[2]):
+                    return x, i, isTemp
+    
     def encontrarScope(self, dirVar):
         if dirVar in self.dp:
             return self.dp[dirVar]

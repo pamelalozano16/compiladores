@@ -128,6 +128,9 @@ class VariableControl:
             except:
                 current_scope = self.variables_table[current_scope]['scope']
         try:
+            if(type(name) == float):
+                 indx=self.constants['vars_table'].index(float(name))
+                 print('INDX', indx)
             indx=self.constants['vars_table'].index(name)
             varDir=self.constants['vars_dir'][indx]
             return varDir
@@ -209,7 +212,7 @@ class VariableControl:
     def addConst(self, num, varType):
         if(num in self.constants['vars_table']):
             indx=self.constants['vars_table'].index(num)
-            if((varType == 'bool' and self.constants['vars_table'][indx] == 'bool') or (varType != 'bool')):
+            if((varType == 'bool' and self.constants['vars_table'][indx] == 'bool') or (varType != 'bool' and self.constants['vars_types'][indx]==varType)):
                 return self.constants['vars_dir']
         self.constants['vars_table'].append(num)
         varDir = self.getDir(varType, 'const')

@@ -72,6 +72,8 @@ class MaquinaVirtual:
                         ptrQuad=ptr[1:-1]
                         value1 = memoria_virtual.obtenerValor(int(quad[1]))
                         value2 = memoria_virtual.obtenerValor(int(ptrQuad))
+                        print('PING',memoria_virtual.encontrarType(value2))
+                        print('PING2',memoria_virtual.encontrarType(int(quad[1])))
                         memoria_virtual.insertarValor(value1, value2)
                     else:
                         value1 = memoria_virtual.obtenerValor(int(quad[1]))

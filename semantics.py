@@ -109,12 +109,25 @@ class Semantics:
     def checkAssign(self):
         if 0<len(self.pOper) and (self.pOper[-1]=="="):
             if self.assignToArray: #Retrieving arr[i] if exists
+                self.pTypes.append(self.assignToArray.pop())
                 self.pilaO.append(self.assignToArray.pop())
-            right = self.variables_control.find_vars_dir(self.pilaO.pop())
-            left = self.variables_control.find_vars_dir(self.pilaO.pop())
+            print(self.pilaO, self.pTypes)
             right_type = self.pTypes.pop()
-            quad, typeRes = quadruple.createQuad(self.pOper.pop(), None, left, self.pTypes.pop(), right_type, right)
+            if right_type == 'float':
+                right = self.variables_control.find_vars_dir(float(self.pilaO.pop()))
+            else:
+                right = self.variables_control.find_vars_dir(self.pilaO.pop())
+            left_type = self.pTypes.pop()
+            if left_type == 'float':
+                left = self.variables_control.find_vars_dir(float(self.pilaO.pop()))
+            else:
+                left = self.variables_control.find_vars_dir(self.pilaO.pop())
+            checkCube = True
+            if(left in self.isPointer or right in self.isPointer):
+                checkCube = False
+            quad, typeRes = quadruple.createQuad(self.pOper.pop(), None, left, left_type, right_type, right, checkCube)
             newQuad = quad.getQuad()
+            print('NEWQ', newQuad)
            # print('SOS',newQuad)
             newQuad = self.checkIfIsPointer(newQuad)
             self.quads.append(newQuad)
@@ -315,6 +328,8 @@ class Semantics:
         #we are removing arr[i] from pilaO so expresion goes first
         if self.pilaO:
             self.assignToArray.append(self.pilaO.pop())
+        if self.pTypes:
+            self.assignToArray.append(self.pTypes.pop())
 
     def findMatrixAddress(self):
       #  print('m',self.pilaO, self.pTypes)
@@ -349,10 +364,10 @@ class Semantics:
                 self.variables_control.addConst(int(inp), 'int')
             except:
                 raise ValueError("Must enter same type as variable")
-        elif(inpType == 'float' and float(inp)):
+        elif(inpType == 'float'):
             try:
                 inpToAdd=float(inp)
-                self.variables_control.addConst(inp, 'float')
+                self.variables_control.addConst(inpToAdd, 'float')
             except:
                 raise ValueError("Must enter same type as variable")
         elif(inpType == 'bool' and (inp=='True' or inp=='False')):
@@ -360,7 +375,7 @@ class Semantics:
         elif(inpType == 'string'):
             try:
                 inpToAdd=str(inp)
-                self.variables_control.addConst(inp, 'string')
+                self.variables_control.addConst(inpToAdd, 'string')
             except:
                 raise ValueError("Must enter same type as variable")
         else:
@@ -369,6 +384,7 @@ class Semantics:
         self.pTypes.append(inpType)
         self.pilaO.append(id)
         self.pTypes.append(inpType)
+        print('comp',self.pilaO, self.pTypes)
         self.pOper.append('=')
         self.checkAssign()
 

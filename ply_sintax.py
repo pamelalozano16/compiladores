@@ -442,7 +442,7 @@ def p_int(p):
 def p_float(p):
     '''float : FLOAT'''
     variables_control.addConst(p[1], 'float')
-    semantics.insertId(p[1], variables_control.find_vars_type(p[1]))
+    semantics.insertId(p[1], 'float')
     pass
 
 def p_bool(p):
