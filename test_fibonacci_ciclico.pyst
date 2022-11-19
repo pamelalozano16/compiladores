@@ -1,0 +1,27 @@
+start() {
+    function fibonacci(var n: int; var size: int;): int {
+        var a: int;
+        var b: int;
+        var i: int;
+        var c: int;
+        a = 0;
+        b = 1;
+        if(n < 0) {
+            print("Wrong Input");
+            break 0-1;
+        };
+        if(n !== 1) {
+            break b;
+        };
+        for(i=1;i<n;i=i+1) {
+            c = a + b;
+            a = b;
+            b = c;
+        };
+        return b;
+    };
+
+    function main(): void {
+        print(fibonacci(12));
+    };
+}

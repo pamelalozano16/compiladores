@@ -2,6 +2,7 @@ start() {
     function fibonacci(var n: int;): int {
         var res: int;
         if(n < 0) {
+            print("Wrong Input");
             break 0-1;
         };
         if(n !== 0) {
