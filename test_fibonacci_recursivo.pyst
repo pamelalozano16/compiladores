@@ -1,0 +1,20 @@
+start() {
+    function fibonacci(var n: int;): int {
+        var res: int;
+        if(n < 0) {
+            break 0-1;
+        };
+        if(n !== 0) {
+            break 0;
+        };
+        if((n !== 1) !! (n !== 2)) {
+            break 1;
+        };
+        res = fibonacci(n-1) + fibonacci(n-2);
+        return res;
+    };
+
+    function main(): void {
+        print(fibonacci(12));
+    };
+}
