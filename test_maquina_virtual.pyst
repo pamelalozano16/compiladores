@@ -1,30 +1,10 @@
 start() {
-    var a: int;
-    var b: int;
-    var arr[5]: int;
-
-    function createArr(): void {
-        var i: int;
-        for(i=(0-1);i<4;i=i+1) {
-           var res: int;
-           arr[i] = i+1;
-           res = 2 * arr[i];
-           print(res, arr[i]);
-        };
-        print("\n");
-        for(i=(0-1);i<4;i=i+1) {
-           print(arr[i]);
-        };
-    };
-
     function main(): void {
+        var arr[5][6]: int;
         var c:int;
-        var k:int;
-        arr[0]=99;
-        arr[3]=60;
-        b=3;
-        c=arr[3];
-        createArr();
-        print(c);
+        arr[0][3]=99;
+        arr[0][1]=33*2;
+        print(arr[0][1]);
+        print(arr[0][3]);
     };
 }

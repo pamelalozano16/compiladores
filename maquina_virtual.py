@@ -60,7 +60,13 @@ class MaquinaVirtual:
                         ptrQuad2=ptr[1:-1]
                         value1 = memoria_virtual.obtenerValor(int(ptrQuad2))
                         value2 = memoria_virtual.obtenerValor(value1)
-                        memoria_virtual.insertarValor(value2, quad[3])
+                        value3 = quad[3]
+                        if '(' in str(quad[3]):
+                            ptr = str(quad[3])
+                            ptrQuad=int(ptr[1:-1])
+                            value3 = memoria_virtual.obtenerValor(ptrQuad)
+                      #  print(ptrQuad)
+                        memoria_virtual.insertarValor(value2, int(value3))
                     elif '(' in str(quad[3]):
                         ptr = str(quad[3])
                         ptrQuad=ptr[1:-1]

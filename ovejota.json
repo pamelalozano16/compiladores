@@ -4,187 +4,157 @@
       "goto",
       null,
       null,
-      26
+      1
     ],
     [
-      5,
+      "VER",
       8001,
-      null,
-      4003
-    ],
-    [
-      5,
-      8002,
-      null,
-      4004
-    ],
-    [
-      7,
-      4001,
       8001,
-      14001
-    ],
-    [
-      "gotoF",
-      14001,
-      null,
-      9
-    ],
-    [
-      "PRINT",
-      null,
-      null,
-      11001
-    ],
-    [
-      2,
-      8001,
-      8002,
-      12001
-    ],
-    [
-      5,
-      12001,
-      null,
-      15
-    ],
-    [
-      "RETURN",
-      null,
-      null,
-      null
-    ],
-    [
-      9,
-      4001,
-      8002,
-      14002
-    ],
-    [
-      "gotoF",
-      14002,
-      null,
-      13
-    ],
-    [
-      5,
-      4004,
-      null,
-      15
-    ],
-    [
-      "RETURN",
-      null,
-      null,
-      null
-    ],
-    [
-      5,
-      8002,
-      null,
-      4005
-    ],
-    [
-      7,
-      4005,
-      4001,
-      14003
-    ],
-    [
-      "gotoF",
-      14003,
-      null,
-      23
+      8003
     ],
     [
       1,
-      4005,
+      8001,
       8002,
+      "(12001)"
+    ],
+    [
+      "VER",
+      8005,
+      8001,
+      8004
+    ],
+    [
+      3,
+      8005,
+      8003,
       12002
     ],
     [
-      5,
+      1,
+      12001,
       12002,
+      "(12003)"
+    ],
+    [
+      5,
+      8006,
       null,
-      4005
+      "(12003)"
+    ],
+    [
+      "VER",
+      8001,
+      8001,
+      8003
     ],
     [
       1,
-      4003,
-      4004,
-      12003
+      8001,
+      8002,
+      "(12004)"
     ],
     [
-      5,
-      12003,
-      null,
-      4006
+      "VER",
+      8007,
+      8001,
+      8004
     ],
     [
-      5,
-      4004,
-      null,
-      4003
-    ],
-    [
-      5,
-      4006,
-      null,
-      4004
-    ],
-    [
-      "goto",
-      null,
-      null,
-      14
-    ],
-    [
-      5,
-      4004,
-      null,
-      15
-    ],
-    [
-      "RETURN",
-      null,
-      null,
-      null
-    ],
-    [
-      "ENDPROC",
-      null,
-      null,
-      null
-    ],
-    [
-      "ERA",
-      "fibonacci",
-      null,
-      null
-    ],
-    [
-      "PARAMETER",
+      3,
+      8007,
       8003,
-      0,
-      null
+      12005
     ],
     [
-      "GOSUB",
-      "fibonacci",
-      "1",
-      null
+      1,
+      12004,
+      12005,
+      "(12006)"
+    ],
+    [
+      3,
+      8008,
+      8009,
+      12007
     ],
     [
       5,
-      15,
+      12007,
       null,
-      12001
+      "(12006)"
+    ],
+    [
+      "VER",
+      8001,
+      8001,
+      8003
+    ],
+    [
+      1,
+      8001,
+      8002,
+      "(12008)"
+    ],
+    [
+      "VER",
+      8007,
+      8001,
+      8004
+    ],
+    [
+      3,
+      8007,
+      8003,
+      12009
+    ],
+    [
+      1,
+      12008,
+      12009,
+      "(12010)"
     ],
     [
       "PRINT",
       null,
       null,
-      12001
+      "(12010)"
+    ],
+    [
+      "VER",
+      8001,
+      8001,
+      8003
+    ],
+    [
+      1,
+      8001,
+      8002,
+      "(12011)"
+    ],
+    [
+      "VER",
+      8005,
+      8001,
+      8004
+    ],
+    [
+      3,
+      8005,
+      8003,
+      12012
+    ],
+    [
+      1,
+      12011,
+      12012,
+      "(12013)"
+    ],
+    [
+      "PRINT",
+      null,
+      null,
+      "(12013)"
     ],
     [
       14,
@@ -197,25 +167,13 @@
     "global": {
       "scope": "#",
       "return": "void",
-      "vars_table": [
-        "fibonacci",
-        "fibonacci",
-        "fibonacci"
-      ],
-      "vars_types": [
-        "int",
-        "int",
-        "int"
-      ],
-      "vars_dir": [
-        15,
-        16,
-        17
-      ],
+      "vars_table": [],
+      "vars_types": [],
+      "vars_dir": [],
       "initial_address": -1,
       "end_address": -1,
       "resource_count": {
-        "int": 3,
+        "int": 0,
         "float": 0,
         "bool": 0,
         "string": 0,
@@ -227,22 +185,25 @@
         }
       }
     },
-    "fibonacci": {
-      "return": "int",
+    "main": {
+      "return": "void",
       "scope": "global",
       "vars_table": [
-        "n",
-        "size",
-        "a",
-        "b",
-        "i",
+        "arr",
         "c",
         "t0",
         "t1",
         "t2",
         "t3",
         "t4",
-        "t5"
+        "t5",
+        "t6",
+        "t7",
+        "t8",
+        "t9",
+        "t10",
+        "t11",
+        "t12"
       ],
       "vars_types": [
         "int",
@@ -251,63 +212,42 @@
         "int",
         "int",
         "int",
-        "bool",
         "int",
-        "bool",
-        "bool",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int",
         "int",
         "int"
       ],
       "vars_dir": [
         4001,
-        4002,
-        4003,
-        4004,
-        4005,
-        4006,
-        14001,
+        4031,
         12001,
-        14002,
-        14003,
         12002,
-        12003
+        12003,
+        12004,
+        12005,
+        12006,
+        12007,
+        12008,
+        12009,
+        12010,
+        12011,
+        12012,
+        12013
       ],
       "initial_address": 1,
-      "end_address": 25,
-      "resource_count": {
-        "int": 6,
-        "float": 0,
-        "bool": 0,
-        "string": 0,
-        "temp": {
-          "int": 3,
-          "float": 0,
-          "bool": 3,
-          "string": 0
-        }
-      }
-    },
-    "main": {
-      "return": "void",
-      "scope": "global",
-      "vars_table": [
-        "t0"
-      ],
-      "vars_types": [
-        "int"
-      ],
-      "vars_dir": [
-        12001
-      ],
-      "initial_address": 26,
       "end_address": -1,
       "resource_count": {
-        "int": 0,
+        "int": 32,
         "float": 0,
         "bool": 0,
         "string": 0,
         "temp": {
-          "int": 1,
+          "int": 13,
           "float": 0,
           "bool": 0,
           "string": 0
@@ -318,25 +258,13 @@
   "global": {
     "scope": "#",
     "return": "void",
-    "vars_table": [
-      "fibonacci",
-      "fibonacci",
-      "fibonacci"
-    ],
-    "vars_types": [
-      "int",
-      "int",
-      "int"
-    ],
-    "vars_dir": [
-      15,
-      16,
-      17
-    ],
+    "vars_table": [],
+    "vars_types": [],
+    "vars_dir": [],
     "initial_address": -1,
     "end_address": -1,
     "resource_count": {
-      "int": 3,
+      "int": 0,
       "float": 0,
       "bool": 0,
       "string": 0,
@@ -351,35 +279,46 @@
   "constants": {
     "vars_table": [
       0,
+      4001,
+      5,
+      6,
+      3,
+      99,
       1,
-      "Wrong Input",
-      12
+      33,
+      2
     ],
     "vars_types": [
       "int",
       "int",
-      "string",
+      "int",
+      "int",
+      "int",
+      "int",
+      "int",
+      "int",
       "int"
     ],
     "vars_dir": [
       8001,
       8002,
-      11001,
-      8003
+      8003,
+      8004,
+      8005,
+      8006,
+      8007,
+      8008,
+      8009
     ],
     "resource_count": {
-      "int": 3,
+      "int": 9,
       "float": 0,
       "bool": 0,
-      "string": 1
+      "string": 0
     }
   },
   "args_table": {
     "global": [],
-    "fibonacci": [
-      "int",
-      "int"
-    ],
     "main": []
   }
 }

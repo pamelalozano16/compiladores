@@ -1,0 +1,30 @@
+start() {
+    var arr[5]: int;
+    var size: int;
+    function bubbleSort(var first: int; var second: int;): void {
+        var temp: int;
+        var i: int;
+        var j:int;
+        for(i=0-1;i<size-2;i=i+1) {
+           for(j=0-1;j<size-i-2;j=j+1) { 
+                if ((arr[j]) > (arr[j+1])){
+                    temp = arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                };
+           };
+        };
+        for(i=0-1;i<size-1;i=i+1) {
+            print(arr[i]);
+        };
+    };
+    function main(): void {
+        size = 5;
+        arr[0]=3;
+        arr[1]=5;
+        arr[2]=10;
+        arr[3]=60;
+        arr[4]=1;
+        bubbleSort();
+    };
+}
