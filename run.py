@@ -7,7 +7,7 @@ if 1<len(sys.argv):
     tests = [str(sys.argv[1])]
 
 for i in tests:
-    with open(f'test_{i}.pyst') as f:
+    with open(f'{i}.pyst') as f:
         try:
             contents = f.read()
             result = ply_sintax.parser.parse(contents)
