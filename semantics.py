@@ -111,24 +111,12 @@ class Semantics:
             if self.assignToArray: #Retrieving arr[i] if exists
                 self.pTypes.append(self.assignToArray.pop())
                 self.pilaO.append(self.assignToArray.pop())
-            print(self.pilaO, self.pTypes)
             right_type = self.pTypes.pop()
-            if right_type == 'float':
-                right = self.variables_control.find_vars_dir(float(self.pilaO.pop()))
-            else:
-                right = self.variables_control.find_vars_dir(self.pilaO.pop())
+            right = self.variables_control.find_vars_dir(self.pilaO.pop())
             left_type = self.pTypes.pop()
-            if left_type == 'float':
-                left = self.variables_control.find_vars_dir(float(self.pilaO.pop()))
-            else:
-                left = self.variables_control.find_vars_dir(self.pilaO.pop())
-            checkCube = True
-            if(left in self.isPointer or right in self.isPointer):
-                checkCube = False
-            quad, typeRes = quadruple.createQuad(self.pOper.pop(), None, left, left_type, right_type, right, checkCube)
+            left = self.variables_control.find_vars_dir(self.pilaO.pop())
+            quad, typeRes = quadruple.createQuad(self.pOper.pop(), None, left, left_type, right_type, right)
             newQuad = quad.getQuad()
-            print('NEWQ', newQuad)
-           # print('SOS',newQuad)
             newQuad = self.checkIfIsPointer(newQuad)
             self.quads.append(newQuad)
 
@@ -329,7 +317,9 @@ class Semantics:
         if self.pilaO:
             self.assignToArray.append(self.pilaO.pop())
         if self.pTypes:
-            self.assignToArray.append(self.pTypes.pop())
+            self.pTypes.pop()
+            arrayObj = self.variables_control.getArray(self.calling_arrray)
+            self.assignToArray.append(arrayObj['type'])
 
     def findMatrixAddress(self):
       #  print('m',self.pilaO, self.pTypes)
@@ -384,7 +374,6 @@ class Semantics:
         self.pTypes.append(inpType)
         self.pilaO.append(id)
         self.pTypes.append(inpType)
-        print('comp',self.pilaO, self.pTypes)
         self.pOper.append('=')
         self.checkAssign()
 

@@ -11,11 +11,8 @@ class Quadruple:
         right = None
         res = None
     
-    def createQuad(self, operator, right, left, typeRight, typeLeft, res, checkCube=True):
-        if checkCube:
-            resType = semantic_cube.is_match(typeLeft, typeRight, operator)
-        else:
-            resType = True
+    def createQuad(self, operator, right, left, typeRight, typeLeft, res):
+        resType = semantic_cube.is_match(typeLeft, typeRight, operator)
         if resType:
             self.operator = directions_control.getOpCode(operator)
             self.right = right

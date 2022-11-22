@@ -128,10 +128,9 @@ class VariableControl:
             except:
                 current_scope = self.variables_table[current_scope]['scope']
         try:
-            if(type(name) == float):
-                 indx=self.constants['vars_table'].index(float(name))
-                 print('INDX', indx)
             indx=self.constants['vars_table'].index(name)
+            if(type(name) == float): #Handles .0 cases
+                 indx=self.constants['vars_table'].index(float(name))
             varDir=self.constants['vars_dir'][indx]
             return varDir
         except:

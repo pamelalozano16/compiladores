@@ -51,6 +51,7 @@ class SemanticCube:
                     '&&':'bool',
                     '!=':'bool',
                     '!==':'bool',
+                    '=':'float',
                 },
                'float': {
                     '+':'float',
