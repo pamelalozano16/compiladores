@@ -1,3 +1,7 @@
+# Directions Control:
+# - Obtener direcciones según tipo de dato y scope
+# - Manejo de direcciones de variables y arreglos
+
 class DirectionsControl:
     def __init__(self):
         self.operationCodes = {

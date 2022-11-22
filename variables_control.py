@@ -3,6 +3,12 @@ from pprint import pprint
 
 directions_control = DirectionsControl()
 
+# Variable Control:
+# - Almacenamiento de tabla de funciones.
+# - Almacenamiento de tabla de variables.
+# - Almacenamiento de constantes y temporales.
+# - Manejo de memoria global y local.
+# - Obtener propiedades de variables buscando por direccion o nombre.
 class VariableControl:
     def __init__(self):
         self.current_scope = 'global'

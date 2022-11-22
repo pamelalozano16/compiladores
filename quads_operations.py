@@ -1,6 +1,8 @@
 from memoria_virtual import MemoriaVirtual
 memoria_virtual = MemoriaVirtual()
 
+# Quads Operations:
+# - Procesamiento de cuadruplos con operaciones.
 class QuadsOperations:
     def __init__(self):
         self.quad=[]

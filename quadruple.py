@@ -4,6 +4,10 @@ from directions_control import DirectionsControl
 semantic_cube = SemanticCube()
 directions_control = DirectionsControl()
 
+# Quadruple:
+# - Crear los diferentes tipos de cuadruplos como objetos
+# - Regresar cuadruplo como arreglo
+
 class Quadruple:
     def __init__(self):
         operator = None

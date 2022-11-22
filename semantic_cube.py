@@ -1,3 +1,6 @@
+# Semantic Cube:
+# - Combinaciones de datos aceptadas en operaciones.
+
 class SemanticCube:
     def __init__(self):
 

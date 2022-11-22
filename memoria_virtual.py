@@ -1,5 +1,10 @@
 from pprint import pprint
 
+# Memoria Virtual:
+# - Manejo de memoria global, local y temporal
+# - Insertar valores de direcciones
+# - Obtener valores de direcciones
+
 class MemoriaVirtual:
     def __init__(self):   
         self.dp={}

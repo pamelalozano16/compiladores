@@ -8,7 +8,10 @@ END = 14
 memoria_virtual = MemoriaVirtual()
 quads_operations = QuadsOperations()
 
-
+# Maquina Virtual:
+# - Obtener datos de ovejota.json
+# - Procesar Cuadruplos
+# - Input/Output
 class MaquinaVirtual:
     def __init__(self):
         self.quads=[]

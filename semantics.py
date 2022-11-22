@@ -3,6 +3,11 @@ import json
 
 quadruple = Quadruple()
 
+# Semantics:
+# - Analisis de Semantica sobre los estatutos.
+# - Manejo de pilas para operaciones
+# - Almacenamiento de cuadruplos.
+# - Almacenamiento de direcciones de apuntadores.
 class Semantics:
     def __init__(self, variables_control):
         self.variables_control = variables_control
