@@ -19,7 +19,7 @@ opers = []
 def p_programa(p):
     '''programa : START LPAREN RPAREN bloque'''
     semantics.endProgram()
-    semantics.endStatus()
+   # semantics.endStatus()
     maquina_virtual.run()
     pass
 

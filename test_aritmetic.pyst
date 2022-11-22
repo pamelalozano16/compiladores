@@ -1,22 +1,12 @@
 start() {
-    var a: float;
     var c: int;
-    var b: float;
-    var k: float;
-    function jeje(var z: int;): int {
-        var res: int;
-        res = z*5;
-        return res;
-    };
 
     function main(): void {
-        var lol: int;
-        var sos: int;
-        var ja: bool;
-        ja= 222>333;
-        lol=3;
-        sos=8;
-        c=lol*sos;
-        print(lol*sos*2/3, 5*6, True&&False, "pamela"!=="pamela", ja);
+        var l: int;
+        var s: int;
+        l=3;
+        s=8;
+        c=l*s;
+        print(l*s*2/3*(3+7)-c);
     };
 }
